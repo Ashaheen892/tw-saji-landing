@@ -14,6 +14,11 @@ const KEY = {
   titleHairline: "370ff065-d7d7-4d34-8861-5389d26c81dc",
   titleBrackets: "348927b7-2ae0-49e5-a21d-95a01188fe38",
   titleTicket: "81d5c9e1-a6c3-4f3d-adbb-5dc35c00d167",
+  alignCenter: "4f0c2a18-6b7d-4e21-8a55-9c1d3e7b2f04",
+  alignStart: "8e1b6c30-2a94-4d7f-b163-5f8a0c2d9e17",
+  modeLight: "1a9e4c72-5d30-4b88-9f21-6c3e8a0b7d45",
+  modeDark: "6c2d8f14-9a70-4e35-81b6-3d5f0a9c2e78",
+  modeSystem: "9b7e1a26-4c58-4f90-a2d3-8e6b1c0f5a34",
 };
 
 const text = (id, label, value, o = {}) => ({
@@ -55,6 +60,10 @@ const drop = (id, label, options, selected, desc = null) => {
   };
 };
 const line = (id) => ({ id, type: "static", format: "line" });
+const num = (id, label, value, min, max, desc = null) => ({
+  id, type: "number", format: "number", inputType: "number", label, icon: "sicon-calculator",
+  required: false, description: desc, minimum: min, maximum: max, value,
+});
 const scheme = (selected = "light") => drop(
   "color_scheme",
   "وضع الألوان",
@@ -87,6 +96,33 @@ const picked = (value, label, key) => [opt(value, label, key)];
 const ctaHint = "في صفحة منتج يفتح الشراء السريع. في صفحة العروض يتبع رابط زر الصفحة، أو هذا الرابط إن وضعته.";
 
 const components = [
+  {
+    title: "رأس الصفحة",
+    icon: "sicon-store",
+    name: "page-bar",
+    key: "c4e8a1b2-7f30-4a6e-9c15-2d8b6f0e4a71",
+    image: "",
+    props: { "min-height": "88px" },
+    fields: [
+      image("logo", "شعار مخصص", "اتركه فارغاً ليظهر شعار المتجر."),
+      image("logo_dark", "شعار للخلفية الداكنة", "يظهر فوق السلايدر الشفاف وفي الوضع الداكن. بدونه يُستخدم الشعار الأساسي."),
+      num("logo_height", "ارتفاع الشعار", 52, 28, 120, "بالبكسل."),
+      drop("align", "مكان الشعار", [["center", "الوسط", KEY.alignCenter], ["start", "البداية", KEY.alignStart]], "center"),
+      line("pb-logo"),
+      sw("sticky", "تثبيت الرأس عند التمرير", true, "يبقى الشعار ظاهراً أثناء نزول الزائر."),
+      sw("transparent", "رأس شفاف فوق القسم التالي", false, "يناسب صورة افتتاحية داكنة. عند التمرير يعود الرأس بلون الخلفية."),
+      sw("show_shadow", "خط فاصل أسفل الرأس", true),
+      line("pb-behavior"),
+      sw("show_mode_toggle", "زر الفاتح والداكن", true, "يبدّل الأقسام المضبوطة على حسب الصفحة، ويتذكر اختيار الزائر."),
+      drop("default_mode", "وضع الصفحة عند الفتح", [["light", "فاتح", KEY.modeLight], ["dark", "داكن", KEY.modeDark], ["system", "حسب جهاز الزائر", KEY.modeSystem]], "light"),
+      line("pb-mode"),
+      sw("link_to_store", "الشعار يفتح المتجر", false, "اتركه مغلقاً ليبقى الزائر في صفحة الهبوط."),
+      text("link_label", "رابط بجانب الشعار", L("المتجر", "Store")),
+      url("link_url", "عنوان الرابط", "", "اتركه فارغاً لإخفاء الرابط."),
+      color("bg_color", "لون الخلفية"),
+      scheme("light"),
+    ],
+  },
   {
     title: "مقدمة مقسومة",
     icon: "sicon-format-text-alt",
@@ -595,27 +631,53 @@ const components = [
   },
 ];
 
+const catalog = [
+  "page-bar",
+  "open-slider",
+  "product-hero",
+  "open-video",
+  "promise-row",
+  "detail-duo",
+  "close-invite",
+  "split-intro",
+  "chapter-path",
+  "voice-stack",
+  "dock-hero",
+  "count-band",
+  "reason-rail",
+  "versus-board",
+  "offer-panel",
+  "situation-pick",
+  "origin-card",
+  "receipt-note",
+  "day-parts",
+  "care-thread",
+  "maker-letter",
+  "shelf-tags",
+];
+components.sort((a, b) => catalog.indexOf(a.name) - catalog.indexOf(b.name));
+
 const templates = [
   {
     name: "wuduh",
     id: "846b8092-8d09-493a-a59e-4485260dd34c",
     is_default: true,
     primary_color: "#2457c5",
-    order: ["open-slider", "product-hero", "open-video", "promise-row", "detail-duo", "close-invite"],
+    order: [["page-bar", { sticky: true, show_mode_toggle: true }], "open-slider", "product-hero", "promise-row", "open-video", "detail-duo", "close-invite"],
   },
   {
     name: "zakham",
     id: "f4a1ec56-5f6a-4683-ab2d-9f25426104e6",
     is_default: false,
     primary_color: "#0f6e6a",
-    order: ["dock-hero", "count-band", "reason-rail", "versus-board", "offer-panel", "situation-pick"],
+    order: [["page-bar", { sticky: true, transparent: true, show_shadow: false, default_mode: "dark", color_scheme: "dark" }], "dock-hero", "count-band", "reason-rail", "versus-board", "offer-panel", "situation-pick"],
   },
   {
     name: "saji",
     id: "9d14165d-429f-4cbc-9254-ae64d434d1d7",
     is_default: false,
     primary_color: "#1c3d36",
-    order: ["receipt-note", "day-parts", "origin-card", "care-thread", "maker-letter", "shelf-tags"],
+    order: ["page-bar", "origin-card", "receipt-note", "day-parts", "care-thread", "maker-letter", "shelf-tags"],
   },
 ];
 
@@ -627,8 +689,8 @@ const previousTemplates = new Map((previous.templates || []).map((item) => [item
 const bundle = {
   name: { ar: "مجموعة ساجي", en: "Saji Collection" },
   description: {
-    ar: "ثلاث صفحات هبوط لأي متجر. الصفحة الأولى تفتح بسلايدر، وهيرو المنتج، وفيديو، ثم وعود وتفاصيل ودعوة شراء.",
-    en: "Three landing pages for any store. The first opens with a slider, a product hero, and a video, then promises, details, and a closing invite.",
+    ar: "ثلاث صفحات هبوط لأي متجر. كل صفحة تبدأ برأس فيه الشعار ووضع الألوان، ثم الأقسام بترتيب الشراء.",
+    en: "Three landing pages for any store. Each page starts with a header for the logo and the color mode, then the sections in purchase order.",
   },
   author_email: "sajispprt@gmail.com",
   support_url: "https://github.com/Ashaheen892/tw-saji-landing",
@@ -654,8 +716,25 @@ fs.writeFileSync(bundlePath, `${JSON.stringify(bundle, null, 4)}\n`);
 fs.mkdirSync(new URL("../templates/", import.meta.url), { recursive: true });
 fs.mkdirSync(new URL("../public/", import.meta.url), { recursive: true });
 const byName = new Map(components.map((component) => [component.name, component]));
+const materialize = (entry) => {
+  const [name, overrides] = Array.isArray(entry) ? entry : [entry, {}];
+  const copy = structuredClone(byName.get(name));
+  for (const [id, value] of Object.entries(overrides)) {
+    const field = copy.fields.find((item) => item.id === id);
+    if (!field) continue;
+    if (field.format === "dropdown-list") {
+      const picked = (field.options || []).filter((item) => item.value === value);
+      field.selected = picked;
+      field.value = picked;
+    } else {
+      field.value = value;
+      if ("selected" in field) field.selected = value;
+    }
+  }
+  return copy;
+};
 for (const template of templates) {
-  const list = template.order.map((name) => structuredClone(byName.get(name)));
+  const list = template.order.map((entry) => materialize(entry));
   fs.writeFileSync(new URL(`../templates/${template.name}.json`, import.meta.url), `${JSON.stringify({ id: template.id, components: list }, null, 2)}\n`);
 }
 fs.writeFileSync(new URL("../public/twilight-bundle.json", import.meta.url), `${JSON.stringify(bundle, null, 4)}\n`);

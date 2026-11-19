@@ -2,6 +2,276 @@
   "id": "846b8092-8d09-493a-a59e-4485260dd34c",
   "components": [
     {
+      "title": "رأس الصفحة",
+      "icon": "sicon-store",
+      "name": "page-bar",
+      "key": "c4e8a1b2-7f30-4a6e-9c15-2d8b6f0e4a71",
+      "image": "",
+      "props": {
+        "min-height": "88px"
+      },
+      "fields": [
+        {
+          "id": "logo",
+          "type": "string",
+          "format": "image",
+          "label": "شعار مخصص",
+          "icon": "sicon-image",
+          "required": false,
+          "description": "اتركه فارغاً ليظهر شعار المتجر.",
+          "value": ""
+        },
+        {
+          "id": "logo_dark",
+          "type": "string",
+          "format": "image",
+          "label": "شعار للخلفية الداكنة",
+          "icon": "sicon-image",
+          "required": false,
+          "description": "يظهر فوق السلايدر الشفاف وفي الوضع الداكن. بدونه يُستخدم الشعار الأساسي.",
+          "value": ""
+        },
+        {
+          "id": "logo_height",
+          "type": "number",
+          "format": "number",
+          "inputType": "number",
+          "label": "ارتفاع الشعار",
+          "icon": "sicon-calculator",
+          "required": false,
+          "description": "بالبكسل.",
+          "minimum": 28,
+          "maximum": 120,
+          "value": 52
+        },
+        {
+          "id": "align",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "مكان الشعار",
+          "icon": "sicon-list",
+          "required": false,
+          "description": null,
+          "options": [
+            {
+              "label": "الوسط",
+              "value": "center",
+              "key": "4f0c2a18-6b7d-4e21-8a55-9c1d3e7b2f04"
+            },
+            {
+              "label": "البداية",
+              "value": "start",
+              "key": "8e1b6c30-2a94-4d7f-b163-5f8a0c2d9e17"
+            }
+          ],
+          "selected": [
+            {
+              "label": "الوسط",
+              "value": "center",
+              "key": "4f0c2a18-6b7d-4e21-8a55-9c1d3e7b2f04"
+            }
+          ],
+          "value": [
+            {
+              "label": "الوسط",
+              "value": "center",
+              "key": "4f0c2a18-6b7d-4e21-8a55-9c1d3e7b2f04"
+            }
+          ]
+        },
+        {
+          "id": "pb-logo",
+          "type": "static",
+          "format": "line"
+        },
+        {
+          "id": "sticky",
+          "type": "boolean",
+          "format": "switch",
+          "label": "تثبيت الرأس عند التمرير",
+          "icon": "sicon-toggle-off",
+          "required": false,
+          "description": "يبقى الشعار ظاهراً أثناء نزول الزائر.",
+          "value": true,
+          "selected": true
+        },
+        {
+          "id": "transparent",
+          "type": "boolean",
+          "format": "switch",
+          "label": "رأس شفاف فوق القسم التالي",
+          "icon": "sicon-toggle-off",
+          "required": false,
+          "description": "يناسب صورة افتتاحية داكنة. عند التمرير يعود الرأس بلون الخلفية.",
+          "value": false,
+          "selected": false
+        },
+        {
+          "id": "show_shadow",
+          "type": "boolean",
+          "format": "switch",
+          "label": "خط فاصل أسفل الرأس",
+          "icon": "sicon-toggle-off",
+          "required": false,
+          "description": null,
+          "value": true,
+          "selected": true
+        },
+        {
+          "id": "pb-behavior",
+          "type": "static",
+          "format": "line"
+        },
+        {
+          "id": "show_mode_toggle",
+          "type": "boolean",
+          "format": "switch",
+          "label": "زر الفاتح والداكن",
+          "icon": "sicon-toggle-off",
+          "required": false,
+          "description": "يبدّل الأقسام المضبوطة على حسب الصفحة، ويتذكر اختيار الزائر.",
+          "value": true,
+          "selected": true
+        },
+        {
+          "id": "default_mode",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "وضع الصفحة عند الفتح",
+          "icon": "sicon-list",
+          "required": false,
+          "description": null,
+          "options": [
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "1a9e4c72-5d30-4b88-9f21-6c3e8a0b7d45"
+            },
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "6c2d8f14-9a70-4e35-81b6-3d5f0a9c2e78"
+            },
+            {
+              "label": "حسب جهاز الزائر",
+              "value": "system",
+              "key": "9b7e1a26-4c58-4f90-a2d3-8e6b1c0f5a34"
+            }
+          ],
+          "selected": [
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "1a9e4c72-5d30-4b88-9f21-6c3e8a0b7d45"
+            }
+          ],
+          "value": [
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "1a9e4c72-5d30-4b88-9f21-6c3e8a0b7d45"
+            }
+          ]
+        },
+        {
+          "id": "pb-mode",
+          "type": "static",
+          "format": "line"
+        },
+        {
+          "id": "link_to_store",
+          "type": "boolean",
+          "format": "switch",
+          "label": "الشعار يفتح المتجر",
+          "icon": "sicon-toggle-off",
+          "required": false,
+          "description": "اتركه مغلقاً ليبقى الزائر في صفحة الهبوط.",
+          "value": false,
+          "selected": false
+        },
+        {
+          "id": "link_label",
+          "type": "string",
+          "format": "text",
+          "label": "رابط بجانب الشعار",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "المتجر",
+            "en": "Store"
+          }
+        },
+        {
+          "id": "link_url",
+          "type": "string",
+          "format": "url",
+          "label": "عنوان الرابط",
+          "icon": "sicon-link",
+          "required": false,
+          "description": "اتركه فارغاً لإخفاء الرابط.",
+          "value": ""
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخلفية",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "color_scheme",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "وضع الألوان",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+          "options": [
+            {
+              "label": "حسب الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            },
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            },
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "selected": [
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            }
+          ],
+          "value": [
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "title": "سلايدر افتتاحي",
       "icon": "sicon-image",
       "name": "open-slider",
@@ -481,122 +751,6 @@
       ]
     },
     {
-      "title": "فيديو افتتاحي",
-      "icon": "sicon-image",
-      "name": "open-video",
-      "key": "979146a6-6e45-4011-ac04-77a4b5aa3cc8",
-      "image": "",
-      "props": {
-        "min-height": "480px"
-      },
-      "fields": [
-        {
-          "id": "title",
-          "type": "string",
-          "format": "text",
-          "label": "العنوان",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 180,
-          "value": {
-            "ar": "شاهد المنتج قبل أن تطلبه",
-            "en": "Watch the product before you order"
-          }
-        },
-        {
-          "id": "text",
-          "type": "string",
-          "format": "textarea",
-          "label": "النص",
-          "icon": "sicon-paragraph",
-          "multilanguage": true,
-          "required": false,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 500,
-          "value": {
-            "ar": "فيديو قصير يشرح الاستخدام. الزائر يضغط التشغيل، ولا يبدأ الصوت وحده.",
-            "en": "A short video that shows how it is used. The visitor presses play, and the sound does not start on its own."
-          }
-        },
-        {
-          "id": "poster",
-          "type": "string",
-          "format": "image",
-          "label": "صورة الغلاف",
-          "icon": "sicon-image",
-          "required": false,
-          "description": "المقاس المقترح 1600×900 بكسل، تظهر قبل التشغيل.",
-          "value": ""
-        },
-        {
-          "id": "video_url",
-          "type": "string",
-          "format": "url",
-          "label": "رابط الفيديو",
-          "icon": "sicon-link",
-          "required": false,
-          "description": "رابط يوتيوب أو فيميو أو ملف mp4.",
-          "value": ""
-        },
-        {
-          "id": "bg_color",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون الخلفية",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "color_scheme",
-          "type": "items",
-          "format": "dropdown-list",
-          "source": "Manual",
-          "label": "وضع الألوان",
-          "icon": "sicon-list",
-          "required": false,
-          "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
-          "options": [
-            {
-              "label": "حسب الصفحة",
-              "value": "auto",
-              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
-            },
-            {
-              "label": "فاتح",
-              "value": "light",
-              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
-            },
-            {
-              "label": "داكن",
-              "value": "dark",
-              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
-            }
-          ],
-          "selected": [
-            {
-              "label": "فاتح",
-              "value": "light",
-              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
-            }
-          ],
-          "value": [
-            {
-              "label": "فاتح",
-              "value": "light",
-              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "title": "صف الوعود",
       "icon": "sicon-shield-check",
       "name": "promise-row",
@@ -752,6 +906,122 @@
               }
             }
           ]
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخلفية",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "color_scheme",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "وضع الألوان",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+          "options": [
+            {
+              "label": "حسب الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            },
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            },
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "selected": [
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            }
+          ],
+          "value": [
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "فيديو افتتاحي",
+      "icon": "sicon-image",
+      "name": "open-video",
+      "key": "979146a6-6e45-4011-ac04-77a4b5aa3cc8",
+      "image": "",
+      "props": {
+        "min-height": "480px"
+      },
+      "fields": [
+        {
+          "id": "title",
+          "type": "string",
+          "format": "text",
+          "label": "العنوان",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "شاهد المنتج قبل أن تطلبه",
+            "en": "Watch the product before you order"
+          }
+        },
+        {
+          "id": "text",
+          "type": "string",
+          "format": "textarea",
+          "label": "النص",
+          "icon": "sicon-paragraph",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 500,
+          "value": {
+            "ar": "فيديو قصير يشرح الاستخدام. الزائر يضغط التشغيل، ولا يبدأ الصوت وحده.",
+            "en": "A short video that shows how it is used. The visitor presses play, and the sound does not start on its own."
+          }
+        },
+        {
+          "id": "poster",
+          "type": "string",
+          "format": "image",
+          "label": "صورة الغلاف",
+          "icon": "sicon-image",
+          "required": false,
+          "description": "المقاس المقترح 1600×900 بكسل، تظهر قبل التشغيل.",
+          "value": ""
+        },
+        {
+          "id": "video_url",
+          "type": "string",
+          "format": "url",
+          "label": "رابط الفيديو",
+          "icon": "sicon-link",
+          "required": false,
+          "description": "رابط يوتيوب أو فيميو أو ملف mp4.",
+          "value": ""
         },
         {
           "id": "bg_color",

@@ -7,11 +7,12 @@ const bundle = JSON.parse(fs.readFileSync(new URL("../twilight-bundle.json", imp
 const errors = [];
 const names = bundle.components.map((item) => item.name);
 if (!bundle.features?.includes("landing-page-templates")) errors.push("missing landing-page-templates");
-if (names.length !== 21) errors.push(`expected 21 sections, found ${names.length}`);
+if (names.length !== 22) errors.push(`expected 22 sections, found ${names.length}`);
 for (const template of bundle.templates || []) {
   const file = template.path.replace("templates.", "");
   const page = JSON.parse(fs.readFileSync(new URL(`../templates/${file}.json`, import.meta.url), "utf8"));
-  if (page.components.length !== 6) errors.push(`${file} should have 6 sections`);
+  if (page.components.length !== 7) errors.push(`${file} should have 7 sections`);
+  if (page.components[0]?.name !== "page-bar") errors.push(`${file} should open with the page header`);
   for (const component of page.components) {
     const dist = path.join(root, "dist", `${component.name}.js`);
     if (!fs.existsSync(dist)) errors.push(`missing dist/${component.name}.js`);
@@ -23,7 +24,7 @@ for (const template of bundle.templates) {
   const file = template.path.replace("templates.", "");
   const page = JSON.parse(fs.readFileSync(new URL(`../templates/${file}.json`, import.meta.url), "utf8"));
   for (const component of page.components) {
-    if (used.has(component.name)) errors.push(`section repeated across pages: ${component.name}`);
+    if (used.has(component.name) && component.name !== "page-bar") errors.push(`section repeated across pages: ${component.name}`);
     used.add(component.name);
   }
 }

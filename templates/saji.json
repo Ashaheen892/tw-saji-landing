@@ -2,6 +2,535 @@
   "id": "9d14165d-429f-4cbc-9254-ae64d434d1d7",
   "components": [
     {
+      "title": "رأس الصفحة",
+      "icon": "sicon-store",
+      "name": "page-bar",
+      "key": "c4e8a1b2-7f30-4a6e-9c15-2d8b6f0e4a71",
+      "image": "",
+      "props": {
+        "min-height": "88px"
+      },
+      "fields": [
+        {
+          "id": "logo",
+          "type": "string",
+          "format": "image",
+          "label": "شعار مخصص",
+          "icon": "sicon-image",
+          "required": false,
+          "description": "اتركه فارغاً ليظهر شعار المتجر.",
+          "value": ""
+        },
+        {
+          "id": "logo_dark",
+          "type": "string",
+          "format": "image",
+          "label": "شعار للخلفية الداكنة",
+          "icon": "sicon-image",
+          "required": false,
+          "description": "يظهر فوق السلايدر الشفاف وفي الوضع الداكن. بدونه يُستخدم الشعار الأساسي.",
+          "value": ""
+        },
+        {
+          "id": "logo_height",
+          "type": "number",
+          "format": "number",
+          "inputType": "number",
+          "label": "ارتفاع الشعار",
+          "icon": "sicon-calculator",
+          "required": false,
+          "description": "بالبكسل.",
+          "minimum": 28,
+          "maximum": 120,
+          "value": 52
+        },
+        {
+          "id": "align",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "مكان الشعار",
+          "icon": "sicon-list",
+          "required": false,
+          "description": null,
+          "options": [
+            {
+              "label": "الوسط",
+              "value": "center",
+              "key": "4f0c2a18-6b7d-4e21-8a55-9c1d3e7b2f04"
+            },
+            {
+              "label": "البداية",
+              "value": "start",
+              "key": "8e1b6c30-2a94-4d7f-b163-5f8a0c2d9e17"
+            }
+          ],
+          "selected": [
+            {
+              "label": "الوسط",
+              "value": "center",
+              "key": "4f0c2a18-6b7d-4e21-8a55-9c1d3e7b2f04"
+            }
+          ],
+          "value": [
+            {
+              "label": "الوسط",
+              "value": "center",
+              "key": "4f0c2a18-6b7d-4e21-8a55-9c1d3e7b2f04"
+            }
+          ]
+        },
+        {
+          "id": "pb-logo",
+          "type": "static",
+          "format": "line"
+        },
+        {
+          "id": "sticky",
+          "type": "boolean",
+          "format": "switch",
+          "label": "تثبيت الرأس عند التمرير",
+          "icon": "sicon-toggle-off",
+          "required": false,
+          "description": "يبقى الشعار ظاهراً أثناء نزول الزائر.",
+          "value": true,
+          "selected": true
+        },
+        {
+          "id": "transparent",
+          "type": "boolean",
+          "format": "switch",
+          "label": "رأس شفاف فوق القسم التالي",
+          "icon": "sicon-toggle-off",
+          "required": false,
+          "description": "يناسب صورة افتتاحية داكنة. عند التمرير يعود الرأس بلون الخلفية.",
+          "value": false,
+          "selected": false
+        },
+        {
+          "id": "show_shadow",
+          "type": "boolean",
+          "format": "switch",
+          "label": "خط فاصل أسفل الرأس",
+          "icon": "sicon-toggle-off",
+          "required": false,
+          "description": null,
+          "value": true,
+          "selected": true
+        },
+        {
+          "id": "pb-behavior",
+          "type": "static",
+          "format": "line"
+        },
+        {
+          "id": "show_mode_toggle",
+          "type": "boolean",
+          "format": "switch",
+          "label": "زر الفاتح والداكن",
+          "icon": "sicon-toggle-off",
+          "required": false,
+          "description": "يبدّل الأقسام المضبوطة على حسب الصفحة، ويتذكر اختيار الزائر.",
+          "value": true,
+          "selected": true
+        },
+        {
+          "id": "default_mode",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "وضع الصفحة عند الفتح",
+          "icon": "sicon-list",
+          "required": false,
+          "description": null,
+          "options": [
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "1a9e4c72-5d30-4b88-9f21-6c3e8a0b7d45"
+            },
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "6c2d8f14-9a70-4e35-81b6-3d5f0a9c2e78"
+            },
+            {
+              "label": "حسب جهاز الزائر",
+              "value": "system",
+              "key": "9b7e1a26-4c58-4f90-a2d3-8e6b1c0f5a34"
+            }
+          ],
+          "selected": [
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "1a9e4c72-5d30-4b88-9f21-6c3e8a0b7d45"
+            }
+          ],
+          "value": [
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "1a9e4c72-5d30-4b88-9f21-6c3e8a0b7d45"
+            }
+          ]
+        },
+        {
+          "id": "pb-mode",
+          "type": "static",
+          "format": "line"
+        },
+        {
+          "id": "link_to_store",
+          "type": "boolean",
+          "format": "switch",
+          "label": "الشعار يفتح المتجر",
+          "icon": "sicon-toggle-off",
+          "required": false,
+          "description": "اتركه مغلقاً ليبقى الزائر في صفحة الهبوط.",
+          "value": false,
+          "selected": false
+        },
+        {
+          "id": "link_label",
+          "type": "string",
+          "format": "text",
+          "label": "رابط بجانب الشعار",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "المتجر",
+            "en": "Store"
+          }
+        },
+        {
+          "id": "link_url",
+          "type": "string",
+          "format": "url",
+          "label": "عنوان الرابط",
+          "icon": "sicon-link",
+          "required": false,
+          "description": "اتركه فارغاً لإخفاء الرابط.",
+          "value": ""
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخلفية",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "color_scheme",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "وضع الألوان",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+          "options": [
+            {
+              "label": "حسب الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            },
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            },
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "selected": [
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            }
+          ],
+          "value": [
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "بطاقة المنشأ",
+      "icon": "sicon-image",
+      "name": "origin-card",
+      "key": "0ced9085-6757-4e47-8bd3-76d95b071e6d",
+      "image": "",
+      "props": {
+        "min-height": "520px"
+      },
+      "fields": [
+        {
+          "id": "title",
+          "type": "string",
+          "format": "text",
+          "label": "العنوان",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "من أين تبدأ القطعة",
+            "en": "Where the piece starts"
+          }
+        },
+        {
+          "id": "subtitle",
+          "type": "string",
+          "format": "text",
+          "label": "وصف قصير",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "مكان واحد، وثلاث حقائق يكتبها التاجر.",
+            "en": "One place, and three facts the merchant writes."
+          }
+        },
+        {
+          "id": "title_style",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "شكل العنوان",
+          "icon": "sicon-list",
+          "required": false,
+          "description": null,
+          "options": [
+            {
+              "label": "عنوان فقط",
+              "value": "plain",
+              "key": "e27e11eb-74df-43ef-be56-5f0256f91854"
+            },
+            {
+              "label": "خط قصير",
+              "value": "hairline",
+              "key": "370ff065-d7d7-4d34-8861-5389d26c81dc"
+            },
+            {
+              "label": "قوسان",
+              "value": "brackets",
+              "key": "348927b7-2ae0-49e5-a21d-95a01188fe38"
+            },
+            {
+              "label": "بطاقة",
+              "value": "ticket",
+              "key": "81d5c9e1-a6c3-4f3d-adbb-5dc35c00d167"
+            }
+          ],
+          "selected": [
+            {
+              "label": "بطاقة",
+              "value": "ticket",
+              "key": "81d5c9e1-a6c3-4f3d-adbb-5dc35c00d167"
+            }
+          ],
+          "value": [
+            {
+              "label": "بطاقة",
+              "value": "ticket",
+              "key": "81d5c9e1-a6c3-4f3d-adbb-5dc35c00d167"
+            }
+          ]
+        },
+        {
+          "id": "place",
+          "type": "string",
+          "format": "text",
+          "label": "اسم المكان",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "منشأ يكتبه التاجر",
+            "en": "An origin the merchant writes"
+          }
+        },
+        {
+          "id": "image",
+          "type": "string",
+          "format": "image",
+          "label": "صورة المكان",
+          "icon": "sicon-image",
+          "required": false,
+          "description": "المقاس المقترح 1200×900 بكسل، صورة أفقية للمكان أو الخامة.",
+          "value": ""
+        },
+        {
+          "id": "image_alt",
+          "type": "string",
+          "format": "text",
+          "label": "وصف الصورة",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "مكان تجهيز المنتج",
+            "en": "Where the product is prepared"
+          }
+        },
+        {
+          "id": "items",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 4,
+          "item_label": "حقيقة",
+          "fields": [
+            {
+              "id": "items.label",
+              "type": "string",
+              "format": "text",
+              "label": "العنوان",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "المصدر",
+                "en": "Source"
+              }
+            },
+            {
+              "id": "items.text",
+              "type": "string",
+              "format": "text",
+              "label": "التفصيل",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "من أين تأتي الخامة أو القطعة",
+                "en": "Where the material or the piece comes from"
+              }
+            }
+          ],
+          "value": [
+            {
+              "items.label": {
+                "ar": "المصدر",
+                "en": "Source"
+              },
+              "items.text": {
+                "ar": "من أين تأتي الخامة أو القطعة",
+                "en": "Where the material or the piece comes from"
+              }
+            },
+            {
+              "items.label": {
+                "ar": "الدفعة",
+                "en": "Batch"
+              },
+              "items.text": {
+                "ar": "كم قطعة تُجهَّز في المرة الواحدة",
+                "en": "How many pieces are prepared at once"
+              }
+            },
+            {
+              "items.label": {
+                "ar": "الفحص",
+                "en": "Check"
+              },
+              "items.text": {
+                "ar": "ماذا يُراجع قبل الشحن",
+                "en": "What is checked before shipping"
+              }
+            }
+          ]
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخلفية",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "color_scheme",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "وضع الألوان",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+          "options": [
+            {
+              "label": "حسب الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            },
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            },
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "selected": [
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            }
+          ],
+          "value": [
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "title": "إيصال المحتوى",
       "icon": "sicon-list",
       "name": "receipt-note",
@@ -431,265 +960,6 @@
               "items.text": {
                 "ar": "العناية سطر واحد، لا طقس طويل في آخر اليوم.",
                 "en": "Care is one line, not a long ritual at the end of the day."
-              }
-            }
-          ]
-        },
-        {
-          "id": "bg_color",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون الخلفية",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "color_scheme",
-          "type": "items",
-          "format": "dropdown-list",
-          "source": "Manual",
-          "label": "وضع الألوان",
-          "icon": "sicon-list",
-          "required": false,
-          "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
-          "options": [
-            {
-              "label": "حسب الصفحة",
-              "value": "auto",
-              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
-            },
-            {
-              "label": "فاتح",
-              "value": "light",
-              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
-            },
-            {
-              "label": "داكن",
-              "value": "dark",
-              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
-            }
-          ],
-          "selected": [
-            {
-              "label": "فاتح",
-              "value": "light",
-              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
-            }
-          ],
-          "value": [
-            {
-              "label": "فاتح",
-              "value": "light",
-              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "بطاقة المنشأ",
-      "icon": "sicon-image",
-      "name": "origin-card",
-      "key": "0ced9085-6757-4e47-8bd3-76d95b071e6d",
-      "image": "",
-      "props": {
-        "min-height": "520px"
-      },
-      "fields": [
-        {
-          "id": "title",
-          "type": "string",
-          "format": "text",
-          "label": "العنوان",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 180,
-          "value": {
-            "ar": "من أين تبدأ القطعة",
-            "en": "Where the piece starts"
-          }
-        },
-        {
-          "id": "subtitle",
-          "type": "string",
-          "format": "text",
-          "label": "وصف قصير",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 180,
-          "value": {
-            "ar": "مكان واحد، وثلاث حقائق يكتبها التاجر.",
-            "en": "One place, and three facts the merchant writes."
-          }
-        },
-        {
-          "id": "title_style",
-          "type": "items",
-          "format": "dropdown-list",
-          "source": "Manual",
-          "label": "شكل العنوان",
-          "icon": "sicon-list",
-          "required": false,
-          "description": null,
-          "options": [
-            {
-              "label": "عنوان فقط",
-              "value": "plain",
-              "key": "e27e11eb-74df-43ef-be56-5f0256f91854"
-            },
-            {
-              "label": "خط قصير",
-              "value": "hairline",
-              "key": "370ff065-d7d7-4d34-8861-5389d26c81dc"
-            },
-            {
-              "label": "قوسان",
-              "value": "brackets",
-              "key": "348927b7-2ae0-49e5-a21d-95a01188fe38"
-            },
-            {
-              "label": "بطاقة",
-              "value": "ticket",
-              "key": "81d5c9e1-a6c3-4f3d-adbb-5dc35c00d167"
-            }
-          ],
-          "selected": [
-            {
-              "label": "بطاقة",
-              "value": "ticket",
-              "key": "81d5c9e1-a6c3-4f3d-adbb-5dc35c00d167"
-            }
-          ],
-          "value": [
-            {
-              "label": "بطاقة",
-              "value": "ticket",
-              "key": "81d5c9e1-a6c3-4f3d-adbb-5dc35c00d167"
-            }
-          ]
-        },
-        {
-          "id": "place",
-          "type": "string",
-          "format": "text",
-          "label": "اسم المكان",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 180,
-          "value": {
-            "ar": "منشأ يكتبه التاجر",
-            "en": "An origin the merchant writes"
-          }
-        },
-        {
-          "id": "image",
-          "type": "string",
-          "format": "image",
-          "label": "صورة المكان",
-          "icon": "sicon-image",
-          "required": false,
-          "description": "المقاس المقترح 1200×900 بكسل، صورة أفقية للمكان أو الخامة.",
-          "value": ""
-        },
-        {
-          "id": "image_alt",
-          "type": "string",
-          "format": "text",
-          "label": "وصف الصورة",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 180,
-          "value": {
-            "ar": "مكان تجهيز المنتج",
-            "en": "Where the product is prepared"
-          }
-        },
-        {
-          "id": "items",
-          "type": "collection",
-          "format": "collection",
-          "required": true,
-          "minLength": 1,
-          "maxLength": 4,
-          "item_label": "حقيقة",
-          "fields": [
-            {
-              "id": "items.label",
-              "type": "string",
-              "format": "text",
-              "label": "العنوان",
-              "icon": "sicon-format-text-alt",
-              "multilanguage": true,
-              "required": false,
-              "description": null,
-              "minLength": 0,
-              "maxLength": 180,
-              "value": {
-                "ar": "المصدر",
-                "en": "Source"
-              }
-            },
-            {
-              "id": "items.text",
-              "type": "string",
-              "format": "text",
-              "label": "التفصيل",
-              "icon": "sicon-format-text-alt",
-              "multilanguage": true,
-              "required": false,
-              "description": null,
-              "minLength": 0,
-              "maxLength": 180,
-              "value": {
-                "ar": "من أين تأتي الخامة أو القطعة",
-                "en": "Where the material or the piece comes from"
-              }
-            }
-          ],
-          "value": [
-            {
-              "items.label": {
-                "ar": "المصدر",
-                "en": "Source"
-              },
-              "items.text": {
-                "ar": "من أين تأتي الخامة أو القطعة",
-                "en": "Where the material or the piece comes from"
-              }
-            },
-            {
-              "items.label": {
-                "ar": "الدفعة",
-                "en": "Batch"
-              },
-              "items.text": {
-                "ar": "كم قطعة تُجهَّز في المرة الواحدة",
-                "en": "How many pieces are prepared at once"
-              }
-            },
-            {
-              "items.label": {
-                "ar": "الفحص",
-                "en": "Check"
-              },
-              "items.text": {
-                "ar": "ماذا يُراجع قبل الشحن",
-                "en": "What is checked before shipping"
               }
             }
           ]
