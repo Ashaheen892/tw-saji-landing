@@ -130,7 +130,7 @@
           "label": "زر الفاتح والداكن",
           "icon": "sicon-toggle-off",
           "required": false,
-          "description": "يبدّل الأقسام المضبوطة على حسب الصفحة، ويتذكر اختيار الزائر.",
+          "description": "أيقونة في الرأس تتبدل بين القمر والشمس، وتبدّل الأقسام المضبوطة على حسب الصفحة، وتتذكر اختيار الزائر.",
           "value": true,
           "selected": true
         },
@@ -1754,7 +1754,7 @@
               "label": "الرابط",
               "icon": "sicon-link",
               "required": false,
-              "description": "اتركه فارغاً لإخفاء الرابط.",
+              "description": "صفحة السياسة أو التواصل. اتركه فارغاً ليذهب الرابط إلى المتجر.",
               "value": ""
             }
           ],
@@ -1764,14 +1764,79 @@
                 "ar": "سياسة الاستبدال",
                 "en": "Exchange policy"
               },
-              "links.url": ""
+              "links.url": "https://help.salla.sa/"
             },
             {
               "links.label": {
                 "ar": "تواصل معنا",
                 "en": "Contact us"
               },
-              "links.url": ""
+              "links.url": "https://salla.sa/contact"
+            }
+          ]
+        },
+        {
+          "id": "badges",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 0,
+          "maxLength": 6,
+          "item_label": "شارة",
+          "fields": [
+            {
+              "id": "badges.image",
+              "type": "string",
+              "format": "image",
+              "label": "الصورة",
+              "icon": "sicon-image",
+              "required": false,
+              "description": "المقاس المقترح 168×56 بكسل، شعار الجهة بخلفية شفافة.",
+              "value": ""
+            },
+            {
+              "id": "badges.alt",
+              "type": "string",
+              "format": "text",
+              "label": "وصف الصورة",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "وثيقة العمل الحر",
+                "en": "Freelance certificate"
+              }
+            },
+            {
+              "id": "badges.url",
+              "type": "string",
+              "format": "url",
+              "label": "الرابط",
+              "icon": "sicon-link",
+              "required": false,
+              "description": "صفحة التحقق، مثل وثيقة العمل الحر أو منصة الأعمال.",
+              "value": ""
+            }
+          ],
+          "value": [
+            {
+              "badges.image": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22168%22%20height%3D%2256%22%20viewBox%3D%220%200%20168%2056%22%3E%3Crect%20width%3D%22168%22%20height%3D%2256%22%20rx%3D%2210%22%20fill%3D%22%230b6b4f%22%2F%3E%3Ctext%20x%3D%2284%22%20y%3D%2234%22%20text-anchor%3D%22middle%22%20fill%3D%22%23ffffff%22%20font-family%3D%22Tahoma%2CArial%2Csans-serif%22%20font-size%3D%2214%22%3E%D9%88%D8%AB%D9%8A%D9%82%D8%A9%20%D8%A7%D9%84%D8%B9%D9%85%D9%84%20%D8%A7%D9%84%D8%AD%D8%B1%3C%2Ftext%3E%3C%2Fsvg%3E",
+              "badges.alt": {
+                "ar": "وثيقة العمل الحر",
+                "en": "Freelance certificate"
+              },
+              "badges.url": "https://freelance.sa/"
+            },
+            {
+              "badges.image": "data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22168%22%20height%3D%2256%22%20viewBox%3D%220%200%20168%2056%22%3E%3Crect%20width%3D%22168%22%20height%3D%2256%22%20rx%3D%2210%22%20fill%3D%22%23123a63%22%2F%3E%3Ctext%20x%3D%2284%22%20y%3D%2234%22%20text-anchor%3D%22middle%22%20fill%3D%22%23ffffff%22%20font-family%3D%22Tahoma%2CArial%2Csans-serif%22%20font-size%3D%2214%22%3E%D9%85%D9%86%D8%B5%D8%A9%20%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84%3C%2Ftext%3E%3C%2Fsvg%3E",
+              "badges.alt": {
+                "ar": "منصة الأعمال",
+                "en": "Business platform"
+              },
+              "badges.url": "https://business.sa/"
             }
           ]
         },

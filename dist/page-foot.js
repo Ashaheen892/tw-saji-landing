@@ -31,6 +31,19 @@ function unwrapValue(value) {
   return Array.isArray(value) ? unwrapValue(((_a = value[0]) == null ? void 0 : _a.value) ?? value[0] ?? "") : value && typeof value == "object" && "value" in value ? value.value : value ?? "";
 }
 __name(unwrapValue, "unwrapValue");
+function linkHref(value) {
+  if (value == null || value === "") return "";
+  if (typeof value == "string") return value.trim();
+  if (Array.isArray(value)) return linkHref(value[0]);
+  if (typeof value == "object") {
+    const obj = value;
+    if (obj.url) return linkHref(obj.url);
+    if ("value" in obj) return linkHref(obj.value);
+    if (obj.href) return linkHref(obj.href);
+  }
+  return "";
+}
+__name(linkHref, "linkHref");
 function flag(value) {
   const raw = unwrapValue(value);
   return raw === !0 || raw === "true" || raw === 1 || raw === "1";
@@ -127,7 +140,10 @@ const css = `
 .rw-foot__links { display: flex; flex-wrap: wrap; gap: .45rem 1.15rem; margin-top: 1.05rem; }
 .rw-foot__links a { color: inherit; font-weight: 700; text-decoration: none; }
 .rw-foot__links a:hover { text-decoration: underline; text-underline-offset: .16rem; }
-.rw-foot__links a:focus-visible, .rw-foot__brand:focus-visible { outline: 2px solid var(--color-primary, #1a1d21); outline-offset: 3px; }
+.rw-foot__links a:focus-visible, .rw-foot__brand:focus-visible, .rw-foot__badges a:focus-visible { outline: 2px solid var(--color-primary, #1a1d21); outline-offset: 3px; }
+.rw-foot__badges { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.05rem; align-items: center; }
+.rw-foot__badges a { display: inline-flex; align-items: center; justify-content: center; min-height: 3.2rem; padding: .35rem .55rem; border: 1px solid var(--rw-border); border-radius: .7rem; background: #fff; }
+.rw-foot__badges img { display: block; height: 2.4rem; width: auto; max-width: 9.5rem; object-fit: contain; }
 .rw-foot__base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .35rem 1rem; margin-top: 1.05rem; padding-top: .85rem; border-top: 1px solid var(--rw-border); color: var(--rw-muted); font-size: .9rem; }
 `, _PageFoot = class _PageFoot extends LitElement {
   constructor() {
@@ -147,22 +163,30 @@ const css = `
     const stopLocale = watchLocale(this);
     this.stop = () => {
       window.removeEventListener("rw-tone", onTone), stopLocale();
-    };
+    }, this.readStore();
     const api = window.Salla;
-    (_a = api == null ? void 0 : api.onReady) == null || _a.call(api).then(() => {
-      var _a2, _b, _c;
+    (_a = api == null ? void 0 : api.onReady) == null || _a.call(api).then(() => this.readStore());
+  }
+  readStore() {
+    var _a, _b, _c;
+    const api = window.Salla;
+    try {
       this.store = {
-        logo: ((_a2 = api.config) == null ? void 0 : _a2.get("store.logo")) || "",
-        name: ((_b = api.config) == null ? void 0 : _b.get("store.name")) || "",
-        url: ((_c = api.config) == null ? void 0 : _c.get("store.url")) || ""
+        logo: ((_a = api == null ? void 0 : api.config) == null ? void 0 : _a.get("store.logo")) || "",
+        name: ((_b = api == null ? void 0 : api.config) == null ? void 0 : _b.get("store.name")) || "",
+        url: ((_c = api == null ? void 0 : api.config) == null ? void 0 : _c.get("store.url")) || ""
       };
-    });
+    } catch {
+    }
   }
   disconnectedCallback() {
     this.stop(), super.disconnectedCallback();
   }
   render() {
-    const cfg = getConfig(this.config), name = this.store.name || t({ ar: "المتجر", en: "Store" }), logo = String(cfg.logo || this.store.logo || ""), darkLogo = String(cfg.logo_dark || ""), invert = this.dark || schemeOf(cfg) === "rw-dark", note = localizedString(cfg.note), legal = localizedString(cfg.legal), links = getCollectionItems(cfg.links, "links").map((item) => ({ label: localizedString(item.label), url: String(item.url || "").trim() })).filter((item) => item.label && item.url);
+    const cfg = getConfig(this.config), name = this.store.name || t({ ar: "المتجر", en: "Store" }), logo = String(cfg.logo || this.store.logo || ""), darkLogo = String(cfg.logo_dark || ""), invert = this.dark || schemeOf(cfg) === "rw-dark", note = localizedString(cfg.note), legal = localizedString(cfg.legal), storeUrl = String(this.store.url || "").trim(), links = getCollectionItems(cfg.links, "links").map((item) => {
+      const own = linkHref(item.url);
+      return { label: localizedString(item.label), url: own && own !== "#" ? own : storeUrl };
+    }).filter((item) => item.label && item.url), badges = getCollectionItems(cfg.badges, "badges").map((item) => ({ image: String(item.image || "").trim(), alt: localizedString(item.alt), url: linkHref(item.url) })).filter((item) => item.image && item.url && item.url !== "#");
     flag(cfg.show_store) && this.store.url && links.unshift({ label: localizedString(cfg.store_label) || t({ ar: "المتجر", en: "Store" }), url: this.store.url });
     const mark = logo ? html`<img class="rw-foot__logo rw-foot__logo--light${darkLogo ? " has-alt" : ""}" src=${logo} alt=${name} />
           ${darkLogo ? html`<img class="rw-foot__logo rw-foot__logo--dark" src=${darkLogo} alt="" />` : nothing}` : html`<span class="rw-foot__name">${name}</span>`, brand = this.store.url ? html`<a class="rw-foot__brand" href=${this.store.url}>${mark}</a>` : html`<span class="rw-foot__brand">${mark}</span>`, year = (/* @__PURE__ */ new Date()).getFullYear();
@@ -175,6 +199,9 @@ const css = `
         ${links.length ? html`<nav class="rw-foot__links" aria-label=${t({ ar: "روابط", en: "Links" })}>
           ${links.map((item) => html`<a href=${item.url}>${item.label}</a>`)}
         </nav>` : nothing}
+        ${badges.length ? html`<div class="rw-foot__badges">
+          ${badges.map((item) => html`<a href=${item.url} target="_blank" rel="noopener noreferrer"><img src=${item.image} alt=${item.alt || ""} /></a>`)}
+        </div>` : nothing}
         <div class="rw-foot__base">
           <span>© ${year} ${name}</span>
           ${legal ? html`<span>${legal}</span>` : nothing}

@@ -1,6 +1,6 @@
 import { html, LitElement, nothing } from "lit";
 import { property, state } from "lit/decorators.js";
-import { flag, getCollectionItems, getConfig, localizedString, t, watchLocale } from "../../utils/config.js";
+import { flag, getCollectionItems, getConfig, linkHref, localizedString, t, watchLocale } from "../../utils/config.js";
 import { currentTone, schemeOf } from "../../utils/landing.js";
 import { baseCss, injectStyles, sectionStyle } from "../../utils/styles.js";
 
@@ -18,7 +18,10 @@ const css = `
 .rw-foot__links { display: flex; flex-wrap: wrap; gap: .45rem 1.15rem; margin-top: 1.05rem; }
 .rw-foot__links a { color: inherit; font-weight: 700; text-decoration: none; }
 .rw-foot__links a:hover { text-decoration: underline; text-underline-offset: .16rem; }
-.rw-foot__links a:focus-visible, .rw-foot__brand:focus-visible { outline: 2px solid var(--color-primary, #1a1d21); outline-offset: 3px; }
+.rw-foot__links a:focus-visible, .rw-foot__brand:focus-visible, .rw-foot__badges a:focus-visible { outline: 2px solid var(--color-primary, #1a1d21); outline-offset: 3px; }
+.rw-foot__badges { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.05rem; align-items: center; }
+.rw-foot__badges a { display: inline-flex; align-items: center; justify-content: center; min-height: 3.2rem; padding: .35rem .55rem; border: 1px solid var(--rw-border); border-radius: .7rem; background: #fff; }
+.rw-foot__badges img { display: block; height: 2.4rem; width: auto; max-width: 9.5rem; object-fit: contain; }
 .rw-foot__base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .35rem 1rem; margin-top: 1.05rem; padding-top: .85rem; border-top: 1px solid var(--rw-border); color: var(--rw-muted); font-size: .9rem; }
 `;
 
@@ -49,14 +52,22 @@ export default class PageFoot extends LitElement {
       window.removeEventListener("rw-tone", onTone);
       stopLocale();
     };
+    this.readStore();
     const api = (window as any).Salla;
-    api?.onReady?.().then(() => {
+    api?.onReady?.().then(() => this.readStore());
+  }
+
+  private readStore() {
+    const api = (window as any).Salla;
+    try {
       this.store = {
-        logo: api.config?.get("store.logo") || "",
-        name: api.config?.get("store.name") || "",
-        url: api.config?.get("store.url") || "",
+        logo: api?.config?.get("store.logo") || "",
+        name: api?.config?.get("store.name") || "",
+        url: api?.config?.get("store.url") || "",
       };
-    });
+    } catch {
+      /* store config is not ready yet */
+    }
   }
 
   disconnectedCallback() {
@@ -72,9 +83,16 @@ export default class PageFoot extends LitElement {
     const invert = this.dark || schemeOf(cfg) === "rw-dark";
     const note = localizedString(cfg.note);
     const legal = localizedString(cfg.legal);
+    const storeUrl = String(this.store.url || "").trim();
     const links = getCollectionItems<Record<string, any>>(cfg.links, "links")
-      .map((item) => ({ label: localizedString(item.label), url: String(item.url || "").trim() }))
+      .map((item) => {
+        const own = linkHref(item.url);
+        return { label: localizedString(item.label), url: own && own !== "#" ? own : storeUrl };
+      })
       .filter((item) => item.label && item.url);
+    const badges = getCollectionItems<Record<string, any>>(cfg.badges, "badges")
+      .map((item) => ({ image: String(item.image || "").trim(), alt: localizedString(item.alt), url: linkHref(item.url) }))
+      .filter((item) => item.image && item.url && item.url !== "#");
     if (flag(cfg.show_store) && this.store.url) {
       links.unshift({ label: localizedString(cfg.store_label) || t({ ar: "المتجر", en: "Store" }), url: this.store.url });
     }
@@ -95,6 +113,9 @@ export default class PageFoot extends LitElement {
         ${links.length ? html`<nav class="rw-foot__links" aria-label=${t({ ar: "روابط", en: "Links" })}>
           ${links.map((item) => html`<a href=${item.url}>${item.label}</a>`)}
         </nav>` : nothing}
+        ${badges.length ? html`<div class="rw-foot__badges">
+          ${badges.map((item) => html`<a href=${item.url} target="_blank" rel="noopener noreferrer"><img src=${item.image} alt=${item.alt || ""} /></a>`)}
+        </div>` : nothing}
         <div class="rw-foot__base">
           <span>© ${year} ${name}</span>
           ${legal ? html`<span>${legal}</span>` : nothing}

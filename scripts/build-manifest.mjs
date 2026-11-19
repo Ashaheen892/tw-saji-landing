@@ -56,6 +56,10 @@ const sw = (id, label, value, desc = null) => ({
   id, type: "boolean", format: "switch", label, icon: "sicon-toggle-off", required: false, description: desc, value, selected: value,
 });
 const px = (id, width) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${width}`;
+const badge = (label, fill) => {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="168" height="56" viewBox="0 0 168 56"><rect width="168" height="56" rx="10" fill="${fill}"/><text x="84" y="34" text-anchor="middle" fill="#ffffff" font-family="Tahoma,Arial,sans-serif" font-size="14">${label}</text></svg>`;
+  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
+};
 const SERUM = px(4735932, 1400);
 const AMBER = px(4041392, 1400);
 const DROP = px(3762879, 1400);
@@ -142,7 +146,7 @@ const components = [
       sw("transparent", "رأس شفاف فوق القسم التالي", false, "يناسب صورة افتتاحية داكنة. عند التمرير يعود الرأس بلون الخلفية."),
       sw("show_shadow", "خط فاصل أسفل الرأس", true),
       line("pb-behavior"),
-      sw("show_mode_toggle", "زر الفاتح والداكن", true, "يبدّل الأقسام المضبوطة على حسب الصفحة، ويتذكر اختيار الزائر."),
+      sw("show_mode_toggle", "زر الفاتح والداكن", true, "أيقونة في الرأس تتبدل بين القمر والشمس، وتبدّل الأقسام المضبوطة على حسب الصفحة، وتتذكر اختيار الزائر."),
       drop("default_mode", "وضع الصفحة عند الفتح", [["light", "فاتح", KEY.modeLight], ["dark", "داكن", KEY.modeDark], ["system", "حسب جهاز الزائر", KEY.modeSystem]], "light"),
       line("pb-mode"),
       sw("link_to_store", "الشعار يفتح المتجر", false, "اتركه مغلقاً ليبقى الزائر في صفحة الهبوط."),
@@ -737,10 +741,18 @@ const components = [
       text("store_label", "نص رابط المتجر", L("المتجر", "Store")),
       collection("links", "رابط", [
         text("label", "النص", L("سياسة الاستبدال", "Exchange policy")),
-        url("url", "الرابط", "", "اتركه فارغاً لإخفاء الرابط."),
+        url("url", "الرابط", "", "صفحة السياسة أو التواصل. اتركه فارغاً ليذهب الرابط إلى المتجر."),
       ], [
-        { label: L("سياسة الاستبدال", "Exchange policy"), url: "" },
-        { label: L("تواصل معنا", "Contact us"), url: "" },
+        { label: L("سياسة الاستبدال", "Exchange policy"), url: "https://help.salla.sa/" },
+        { label: L("تواصل معنا", "Contact us"), url: "https://salla.sa/contact" },
+      ], 0, 6),
+      collection("badges", "شارة", [
+        image("image", "الصورة", "المقاس المقترح 168×56 بكسل، شعار الجهة بخلفية شفافة."),
+        text("alt", "وصف الصورة", L("وثيقة العمل الحر", "Freelance certificate")),
+        url("url", "الرابط", "", "صفحة التحقق، مثل وثيقة العمل الحر أو منصة الأعمال."),
+      ], [
+        { image: badge("وثيقة العمل الحر", "#0b6b4f"), alt: L("وثيقة العمل الحر", "Freelance certificate"), url: "https://freelance.sa/" },
+        { image: badge("منصة الأعمال", "#123a63"), alt: L("منصة الأعمال", "Business platform"), url: "https://business.sa/" },
       ], 0, 6),
       text("legal", "سطر نظامي", L("السجل التجاري يُكتب هنا إن لزم", "Add the commercial register here if needed")),
       color("bg_color", "لون الخلفية"),

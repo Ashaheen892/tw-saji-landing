@@ -123,8 +123,9 @@ const css = `
 .rw-bar.is-invert .rw-bar__logo--dark { display: block; }
 .rw-bar__name { font-size: 1.15rem; font-weight: 800; }
 .rw-bar__link { color: inherit; font-weight: 700; text-decoration: none; }
-.rw-bar__tone { min-height: 2.3rem; padding: .3rem .75rem; border: 1px solid var(--rw-border); border-radius: .7rem; background: transparent; color: inherit; cursor: pointer; }
-.rw-bar--center .rw-bar__tone { position: absolute; inset-inline-end: 1rem; top: 50%; margin-top: -1.15rem; }
+.rw-bar__tone { display: inline-grid; place-items: center; width: 2.5rem; height: 2.5rem; padding: 0; border: 1px solid var(--rw-border); border-radius: .7rem; background: transparent; color: inherit; cursor: pointer; }
+.rw-bar__tone svg { width: 1.15rem; height: 1.15rem; display: block; }
+.rw-bar--center .rw-bar__tone { position: absolute; inset-inline-end: 1rem; top: 50%; margin-top: -1.25rem; }
 .rw-bar--start .rw-bar__tone { margin-inline-start: auto; }
 .rw-bar.is-line { box-shadow: inset 0 -1px 0 var(--rw-border); }
 .rw-bar.is-clear { background: transparent; color: #f4f6f8; box-shadow: none; }
@@ -222,8 +223,8 @@ const css = `
       <div class="rw-bar__row">
         ${brand}
         ${linkLabel && cfg.link_url ? html`<a class="rw-bar__link" href=${cfg.link_url}>${linkLabel}</a>` : nothing}
-        ${flag(cfg.show_mode_toggle) ? html`<button type="button" class="rw-bar__tone" aria-pressed=${this.dark ? "true" : "false"} @click=${() => applyTone(this.dark ? "light" : "dark")}>
-              ${this.dark ? t({ ar: "فاتح", en: "Light" }) : t({ ar: "داكن", en: "Dark" })}
+        ${flag(cfg.show_mode_toggle) ? html`<button type="button" class="rw-bar__tone" aria-pressed=${this.dark ? "true" : "false"} aria-label=${this.dark ? t({ ar: "التبديل إلى الوضع الفاتح", en: "Switch to light mode" }) : t({ ar: "التبديل إلى الوضع الداكن", en: "Switch to dark mode" })} @click=${() => applyTone(this.dark ? "light" : "dark")}>
+              ${this.dark ? html`<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="currentColor" /><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.1 5.1l1.6 1.6M17.3 17.3l1.6 1.6M18.9 5.1l-1.6 1.6M6.7 17.3l-1.6 1.6" /></g></svg>` : html`<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14.5 2.4a9 9 0 1 0 7.1 13.6A8 8 0 0 1 14.5 2.4z" /></svg>`}
             </button>` : nothing}
       </div>
     </header>`;

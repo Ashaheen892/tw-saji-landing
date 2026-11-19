@@ -38,6 +38,20 @@ export function unwrapValue(value: any): any {
   return value ?? "";
 }
 
+/** A footer or button URL, whether Salla saved a string or `{ value }` / `{ url }`. */
+export function linkHref(value: unknown): string {
+  if (value == null || value === "") return "";
+  if (typeof value === "string") return value.trim();
+  if (Array.isArray(value)) return linkHref(value[0]);
+  if (typeof value === "object") {
+    const obj = value as Record<string, unknown>;
+    if (obj.url) return linkHref(obj.url);
+    if ("value" in obj) return linkHref(obj.value);
+    if (obj.href) return linkHref(obj.href);
+  }
+  return "";
+}
+
 export function flag(value: unknown): boolean {
   const raw = unwrapValue(value);
   return raw === true || raw === "true" || raw === 1 || raw === "1";
