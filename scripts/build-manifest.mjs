@@ -712,6 +712,31 @@ const components = [
       scheme(),
     ],
   },
+  {
+    title: "فوتر الصفحة",
+    icon: "sicon-link",
+    name: "page-foot",
+    key: "b7e2c4a1-6f38-4d90-8b15-3a9c0e7d2f64",
+    image: "",
+    props: { "min-height": "160px" },
+    fields: [
+      image("logo", "شعار مخصص", "اتركه فارغاً ليظهر شعار المتجر."),
+      image("logo_dark", "شعار للخلفية الداكنة", "يظهر في الوضع الداكن. بدونه يُستخدم الشعار الأساسي."),
+      area("note", "سطر التعريف", L("التفاصيل والأسعار في هذه الصفحة، والطلب يُكمَل من المتجر.", "The details and prices are on this page, and the order is completed in the store.")),
+      sw("show_store", "إظهار رابط المتجر", true, "يُضاف رابط المتجر إلى روابط الفوتر."),
+      text("store_label", "نص رابط المتجر", L("المتجر", "Store")),
+      collection("links", "رابط", [
+        text("label", "النص", L("سياسة الاستبدال", "Exchange policy")),
+        url("url", "الرابط", "", "اتركه فارغاً لإخفاء الرابط."),
+      ], [
+        { label: L("سياسة الاستبدال", "Exchange policy"), url: "" },
+        { label: L("تواصل معنا", "Contact us"), url: "" },
+      ], 0, 6),
+      text("legal", "سطر نظامي", L("السجل التجاري يُكتب هنا إن لزم", "Add the commercial register here if needed")),
+      color("bg_color", "لون الخلفية"),
+      scheme(),
+    ],
+  },
 ];
 
 const catalog = [
@@ -738,6 +763,7 @@ const catalog = [
   "care-thread",
   "maker-letter",
   "shelf-tags",
+  "page-foot",
 ];
 components.sort((a, b) => catalog.indexOf(a.name) - catalog.indexOf(b.name));
 
@@ -747,21 +773,21 @@ const templates = [
     id: "846b8092-8d09-493a-a59e-4485260dd34c",
     is_default: true,
     primary_color: "#2457c5",
-    order: [["page-bar", { sticky: true, show_mode_toggle: true }], "open-slider", "product-hero", "promise-row", "open-video", "detail-duo", "close-invite"],
+    order: [["page-bar", { sticky: true, show_mode_toggle: true }], "open-slider", "product-hero", "promise-row", "open-video", "detail-duo", "close-invite", "page-foot"],
   },
   {
     name: "zakham",
     id: "f4a1ec56-5f6a-4683-ab2d-9f25426104e6",
     is_default: false,
     primary_color: "#0f6e6a",
-    order: [["page-bar", { sticky: true, transparent: true, show_shadow: false, default_mode: "dark" }], "dock-hero", "count-band", "reason-rail", "versus-board", "offer-panel", "situation-pick"],
+    order: [["page-bar", { sticky: true, transparent: true, show_shadow: false, default_mode: "dark" }], "dock-hero", "count-band", "reason-rail", "versus-board", "offer-panel", "situation-pick", "page-foot"],
   },
   {
     name: "saji",
     id: "9d14165d-429f-4cbc-9254-ae64d434d1d7",
     is_default: false,
     primary_color: "#1c3d36",
-    order: ["page-bar", "origin-card", "receipt-note", "day-parts", "care-thread", "maker-letter", "shelf-tags"],
+    order: ["page-bar", "origin-card", "receipt-note", "day-parts", "care-thread", "maker-letter", "shelf-tags", "page-foot"],
   },
 ];
 
@@ -773,8 +799,8 @@ const previousTemplates = new Map((previous.templates || []).map((item) => [item
 const bundle = {
   name: { ar: "مجموعة ساجي", en: "Saji Collection" },
   description: {
-    ar: "ثلاث صفحات هبوط لأي متجر. كل صفحة تبدأ برأس فيه الشعار ووضع الألوان، ثم الأقسام بترتيب الشراء.",
-    en: "Three landing pages for any store. Each page starts with a header for the logo and the color mode, then the sections in purchase order.",
+    ar: "ثلاث صفحات هبوط لأي متجر. كل صفحة تبدأ برأس فيه الشعار ووضع الألوان، ثم الأقسام بترتيب الشراء، وتنتهي بفوتر.",
+    en: "Three landing pages for any store. Each page starts with a header for the logo and the color mode, then the sections in purchase order, and ends with a footer.",
   },
   author_email: "sajispprt@gmail.com",
   support_url: "https://github.com/Ashaheen892/tw-saji-landing",

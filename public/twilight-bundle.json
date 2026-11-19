@@ -4,8 +4,8 @@
         "en": "Saji Collection"
     },
     "description": {
-        "ar": "ثلاث صفحات هبوط لأي متجر. كل صفحة تبدأ برأس فيه الشعار ووضع الألوان، ثم الأقسام بترتيب الشراء.",
-        "en": "Three landing pages for any store. Each page starts with a header for the logo and the color mode, then the sections in purchase order."
+        "ar": "ثلاث صفحات هبوط لأي متجر. كل صفحة تبدأ برأس فيه الشعار ووضع الألوان، ثم الأقسام بترتيب الشراء، وتنتهي بفوتر.",
+        "en": "Three landing pages for any store. Each page starts with a header for the logo and the color mode, then the sections in purchase order, and ends with a footer."
     },
     "author_email": "sajispprt@gmail.com",
     "support_url": "https://github.com/Ashaheen892/tw-saji-landing",
@@ -5517,6 +5517,202 @@
                             }
                         }
                     ]
+                },
+                {
+                    "id": "bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الخلفية",
+                    "icon": "sicon-format-fill",
+                    "required": false,
+                    "description": null,
+                    "value": ""
+                },
+                {
+                    "id": "color_scheme",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "source": "Manual",
+                    "label": "وضع الألوان",
+                    "icon": "sicon-list",
+                    "required": false,
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
+                    "options": [
+                        {
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+                        },
+                        {
+                            "label": "فاتح دائماً",
+                            "value": "light",
+                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                        },
+                        {
+                            "label": "داكن دائماً",
+                            "value": "dark",
+                            "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+                        }
+                    ],
+                    "value": [
+                        {
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "فوتر الصفحة",
+            "icon": "sicon-link",
+            "name": "page-foot",
+            "key": "b7e2c4a1-6f38-4d90-8b15-3a9c0e7d2f64",
+            "image": "",
+            "props": {
+                "min-height": "160px"
+            },
+            "fields": [
+                {
+                    "id": "logo",
+                    "type": "string",
+                    "format": "image",
+                    "label": "شعار مخصص",
+                    "icon": "sicon-image",
+                    "required": false,
+                    "description": "اتركه فارغاً ليظهر شعار المتجر.",
+                    "value": ""
+                },
+                {
+                    "id": "logo_dark",
+                    "type": "string",
+                    "format": "image",
+                    "label": "شعار للخلفية الداكنة",
+                    "icon": "sicon-image",
+                    "required": false,
+                    "description": "يظهر في الوضع الداكن. بدونه يُستخدم الشعار الأساسي.",
+                    "value": ""
+                },
+                {
+                    "id": "note",
+                    "type": "string",
+                    "format": "textarea",
+                    "label": "سطر التعريف",
+                    "icon": "sicon-paragraph",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 500,
+                    "value": {
+                        "ar": "التفاصيل والأسعار في هذه الصفحة، والطلب يُكمَل من المتجر.",
+                        "en": "The details and prices are on this page, and the order is completed in the store."
+                    }
+                },
+                {
+                    "id": "show_store",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إظهار رابط المتجر",
+                    "icon": "sicon-toggle-off",
+                    "required": false,
+                    "description": "يُضاف رابط المتجر إلى روابط الفوتر.",
+                    "value": true,
+                    "selected": true
+                },
+                {
+                    "id": "store_label",
+                    "type": "string",
+                    "format": "text",
+                    "label": "نص رابط المتجر",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "المتجر",
+                        "en": "Store"
+                    }
+                },
+                {
+                    "id": "links",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 0,
+                    "maxLength": 6,
+                    "item_label": "رابط",
+                    "fields": [
+                        {
+                            "id": "links.label",
+                            "type": "string",
+                            "format": "text",
+                            "label": "النص",
+                            "icon": "sicon-format-text-alt",
+                            "multilanguage": true,
+                            "required": false,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 180,
+                            "value": {
+                                "ar": "سياسة الاستبدال",
+                                "en": "Exchange policy"
+                            }
+                        },
+                        {
+                            "id": "links.url",
+                            "type": "string",
+                            "format": "url",
+                            "label": "الرابط",
+                            "icon": "sicon-link",
+                            "required": false,
+                            "description": "اتركه فارغاً لإخفاء الرابط.",
+                            "value": ""
+                        }
+                    ],
+                    "value": [
+                        {
+                            "links.label": {
+                                "ar": "سياسة الاستبدال",
+                                "en": "Exchange policy"
+                            },
+                            "links.url": ""
+                        },
+                        {
+                            "links.label": {
+                                "ar": "تواصل معنا",
+                                "en": "Contact us"
+                            },
+                            "links.url": ""
+                        }
+                    ]
+                },
+                {
+                    "id": "legal",
+                    "type": "string",
+                    "format": "text",
+                    "label": "سطر نظامي",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "السجل التجاري يُكتب هنا إن لزم",
+                        "en": "Add the commercial register here if needed"
+                    }
                 },
                 {
                     "id": "bg_color",
