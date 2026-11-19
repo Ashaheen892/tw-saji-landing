@@ -175,13 +175,14 @@ const css = `
   .rw-opener { grid-template-columns: minmax(17rem, .72fr) minmax(0, 1.28fr); min-height: 34rem; }
   .rw-opener__media { order: 0; min-height: 0; aspect-ratio: auto; }
 }
-.rw-opener__copy { display: flex; flex-direction: column; justify-content: space-between; gap: 1.5rem; padding: 1.35rem 1.2rem 1.15rem; }
+.rw-opener__copy { display: flex; flex-direction: column; justify-content: center; gap: 1.35rem; padding: 1.35rem 1.2rem 1.15rem; }
 @container (min-width: 860px) { .rw-opener__copy { padding: 2.1rem 1.8rem 1.5rem; } }
 .rw-opener__copy h2 { max-width: 16ch; font-size: clamp(1.75rem, 3.2vw, 2.7rem); line-height: 1.18; font-weight: 700; letter-spacing: -.03em; }
 .rw-opener__copy p { max-width: 36rem; margin-top: .8rem; color: var(--rw-muted); line-height: 1.8; }
 .rw-opener__nav { position: absolute; z-index: 1; inset-inline: .75rem; bottom: .75rem; display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
 .rw-opener__nav button, .rw-opener__count { border: 0; border-radius: .7rem; background: rgb(18 20 23 / 74%); color: #fff; }
-.rw-opener__nav button { width: 2.75rem; height: 2.75rem; font-size: 1.35rem; line-height: 1; cursor: pointer; }
+.rw-opener__nav button { direction: ltr; display: grid; place-items: center; width: 2.75rem; height: 2.75rem; padding: 0; cursor: pointer; }
+.rw-opener__nav svg { width: 1.2rem; height: 1.2rem; display: block; }
 .rw-opener__count { direction: ltr; min-width: 4.2rem; padding: .4rem .7rem; border-radius: 999px; font-variant-numeric: tabular-nums; font-weight: 700; text-align: center; }
 .rw-opener__jumps { display: grid; }
 .rw-opener__jumps button { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .7rem; align-items: center; width: 100%; min-height: 2.9rem; padding: .55rem .35rem; border: 0; border-top: 1px solid var(--rw-border); background: transparent; color: var(--rw-muted); text-align: start; cursor: pointer; }
@@ -248,7 +249,7 @@ const css = `
       url: String(item.url || "")
     })).filter((item) => item.title);
     this.count = slides.length;
-    const slide = slides[this.index] || slides[0], label = localizedString(cfg.title) || t({ ar: "سلايدر", en: "Slider" }), prev = isRtl() ? "›" : "‹", next = isRtl() ? "‹" : "›";
+    const slide = slides[this.index] || slides[0], label = localizedString(cfg.title) || t({ ar: "سلايدر", en: "Slider" }), rtl = isRtl(), pointLeft = html`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>`, pointRight = html`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>`, prevIcon = rtl ? pointRight : pointLeft, nextIcon = rtl ? pointLeft : pointRight;
     return html`<section class="rw-block ${schemeOf(cfg)}" style=${sectionStyle(cfg)} aria-roledescription="carousel" aria-label=${label}>
       ${slide ? html`<div class="rw-opener">
             <div class="rw-opener__copy">
@@ -265,9 +266,9 @@ const css = `
             <div class="rw-opener__media" @pointerdown=${this.down} @pointerup=${this.up} @pointercancel=${this.up}>
               ${media(slide.image, slide.alt || slide.title)}
               ${slides.length > 1 ? html`<div class="rw-opener__nav">
-                    <button type="button" aria-label=${t({ ar: "الشريحة السابقة", en: "Previous slide" })} @click=${() => this.move(-1)}>${prev}</button>
+                    <button type="button" dir="ltr" aria-label=${t({ ar: "الشريحة السابقة", en: "Previous slide" })} @click=${() => this.move(-1)}>${prevIcon}</button>
                     <span class="rw-opener__count" dir="ltr">${`${String(this.index + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`}</span>
-                    <button type="button" aria-label=${t({ ar: "الشريحة التالية", en: "Next slide" })} @click=${() => this.move(1)}>${next}</button>
+                    <button type="button" dir="ltr" aria-label=${t({ ar: "الشريحة التالية", en: "Next slide" })} @click=${() => this.move(1)}>${nextIcon}</button>
                   </div>` : nothing}
             </div>
           </div>` : html`<div class="rw-section"><div class="rw-container">${emptyCopy()}</div></div>`}
