@@ -30,6 +30,9 @@ const KEY = {
   fitContain: "c5e1a9f2-0d36-4b78-8c94-3f7a8e1d5b29",
   playClick: "d6f2b0a3-1e47-4c89-9d05-4a8b9f2e6c30",
   playAuto: "e7a3c1b4-2f58-4d90-8e16-5b9c0a3f7d41",
+  reelStar5: "7c1e9a20-4b63-4d85-8f17-2a6c0d9e5b41",
+  reelStar4: "8d2f0b31-5c74-4e96-9a28-3b7d1e0f6c52",
+  reelStar3: "9e3a1c42-6d85-4fa7-8b39-4c8e2f1a7d63",
 };
 
 const text = (id, label, value, o = {}) => ({
@@ -653,7 +656,39 @@ const components = [
       drop("playback", "التشغيل", [
         ["click", "عند الضغط", KEY.playClick],
         ["auto", "تلقائي بدون صوت", KEY.playAuto],
-      ], "click", "التشغيل التلقائي يعمل مع ملف mp4 أو يوتيوب، ويبدأ صامتاً."),
+      ], "click", "التلقائي يبدأ الفيديو وحده وبلا صوت، سواء كان ملفاً أو يوتيوب أو فيميو. الزائر يفتح الصوت من المشغّل إذا أراد."),
+      color("bg_color", "لون الخلفية"),
+      scheme(),
+    ],
+  },
+  {
+    title: "ريلز التجارب",
+    icon: "sicon-star",
+    name: "review-reels",
+    key: "d4e8b1c6-2f70-4a93-9c15-6e8a0b3d7f24",
+    image: "",
+    props: { "min-height": "640px" },
+    fields: [
+      text("kicker", "سطر صغير", L("تجارب العملاء", "Customer experiences")),
+      text("title", "العنوان", L("شاهد التجربة قبل الشراء", "Watch the experience before buying"), { max: 120 }),
+      text("subtitle", "وصف قصير", L("فيديوهات قصيرة من عملاء جرّبوا المنتج. الصوت يبدأ عند الضغط.", "Short videos from customers who tried the product. Sound starts on tap.")),
+      sw("autoplay", "تشغيل الفيديو الظاهر بدون صوت", true, "يتحرك فيديو البطاقة الظاهرة وحده ويبقى صامتاً. زر الصوت يفتحه للزائر."),
+      collection("items", "تجربة", [
+        url("video_url", "رابط الفيديو", "", "رابط يوتيوب أو فيميو أو ملف mp4 طولي."),
+        image("poster", "صورة الغلاف", "المقاس المقترح 720×1280 بكسل، تظهر قبل التشغيل."),
+        text("name", "اسم العميل", L("نورة", "Noura")),
+        text("place", "المدينة", L("الرياض", "Riyadh")),
+        text("quote", "الرأي أو وصف التجربة", L("وصل كما في الصور، واستخدمته من اليوم الأول.", "It arrived as shown, and I used it the same day.")),
+        drop("stars", "الدرجة من ٥", [["5", "٥", KEY.reelStar5], ["4", "٤", KEY.reelStar4], ["3", "٣", KEY.reelStar3]], "5"),
+        text("link_label", "نص رابط المنتج", L("", "")),
+        url("link_url", "رابط المنتج", "", "اتركه فارغاً إذا كانت التجربة عن منتج الصفحة."),
+      ], [
+        { video_url: "", poster: "", name: L("نورة", "Noura"), place: L("الرياض", "Riyadh"), quote: L("وصل كما في الصور، واستخدمته من اليوم الأول.", "It arrived as shown, and I used it the same day."), stars: picked("5", "٥", KEY.reelStar5), link_label: L("", ""), link_url: "" },
+        { video_url: "", poster: "", name: L("سلمان", "Salman"), place: L("جدة", "Jeddah"), quote: L("الخيار الذي طلبته جاء مطابقاً، والتغليف سليم.", "The option I ordered matched, and the packing was intact."), stars: picked("5", "٥", KEY.reelStar5), link_label: L("", ""), link_url: "" },
+        { video_url: "", poster: "", name: L("هند", "Hind"), place: L("الخبر", "Khobar"), quote: L("واضح في الفيديو كيف يُستخدم قبل أن أطلبه.", "The video made the use clear before I ordered."), stars: picked("4", "٤", KEY.reelStar4), link_label: L("", ""), link_url: "" },
+      ], 1, 8),
+      text("button_label", "نص زر الشراء", L("اطلب الآن", "Order now")),
+      url("button_url", "رابط الزر", "", ctaHint),
       color("bg_color", "لون الخلفية"),
       scheme(),
     ],
@@ -665,6 +700,7 @@ const catalog = [
   "open-slider",
   "product-hero",
   "open-video",
+  "review-reels",
   "promise-row",
   "detail-duo",
   "close-invite",

@@ -93,6 +93,88 @@ function media(src, alt, className = "") {
   return src ? html`<img class=${className} src=${src} alt=${alt} loading="lazy" />` : html`<div class="rw-ph ${className}">${t({ ar: "أضف الصورة من إعدادات القسم. المقاس المقترح مذكور بجانب الحقل.", en: "Add an image in the section settings. The suggested size is next to the field." })}</div>`;
 }
 __name(media, "media");
+const held = /* @__PURE__ */ new WeakSet(), hushed = /* @__PURE__ */ new WeakSet();
+function clipUrl(value) {
+  const raw = unwrapValue(value);
+  if (typeof raw == "string") return raw.trim();
+  if (raw && typeof raw == "object") {
+    const url = raw.url ?? raw.src;
+    if (typeof url == "string") return url.trim();
+  }
+  return "";
+}
+__name(clipUrl, "clipUrl");
+function isFileClip(url) {
+  return /\.(mp4|webm|ogg|mov|m4v)(\?|#|$)/i.test(url);
+}
+__name(isFileClip, "isFileClip");
+function kindOf(url) {
+  if (isFileClip(url)) return "file";
+  try {
+    const host = new URL(url).hostname.replace(/^www\./, "");
+    if (host === "youtu.be" || host.includes("youtube.com") || host.includes("youtube-nocookie.com")) return "youtube";
+    if (host.includes("vimeo.com")) return "vimeo";
+  } catch {
+  }
+  return "other";
+}
+__name(kindOf, "kindOf");
+function frameSrc(url, silent, clean = !1) {
+  var _a, _b;
+  let frame = url;
+  const kind = kindOf(url);
+  try {
+    const parsed = new URL(url);
+    if (kind === "youtube") {
+      const host = parsed.hostname.replace(/^www\./, "");
+      let id = "";
+      host === "youtu.be" ? id = parsed.pathname.split("/").filter(Boolean)[0] || "" : parsed.pathname.includes("/embed/") ? id = ((_a = parsed.pathname.split("/embed/")[1]) == null ? void 0 : _a.split("/")[0]) || "" : parsed.pathname.includes("/shorts/") ? id = ((_b = parsed.pathname.split("/shorts/")[1]) == null ? void 0 : _b.split("/")[0]) || "" : id = parsed.searchParams.get("v") || "", id && (frame = `https://www.youtube-nocookie.com/embed/${id}`);
+    } else if (kind === "vimeo") {
+      const id = parsed.pathname.split("/").filter(Boolean).pop() || "";
+      /^\d+$/.test(id) && (frame = `https://player.vimeo.com/video/${id}`);
+    }
+  } catch {
+    frame = url;
+  }
+  if (!silent || kind === "file") return frame;
+  const params = new URLSearchParams();
+  return params.set("autoplay", "1"), params.set("playsinline", "1"), kind === "youtube" ? (params.set("mute", "1"), params.set("rel", "0"), params.set("enablejsapi", "1"), clean && params.set("controls", "0")) : kind === "vimeo" ? (params.set("muted", "1"), clean && (params.set("controls", "0"), params.set("loop", "1"), params.set("title", "0"), params.set("byline", "0"), params.set("portrait", "0"))) : (params.set("mute", "1"), params.set("muted", "1")), `${frame}${frame.includes("?") ? "&" : "?"}${params.toString()}`;
+}
+__name(frameSrc, "frameSrc");
+function muteFrame(frame) {
+  const src = frame.src || "", win = frame.contentWindow;
+  win && (src.includes("youtube") ? (win.postMessage(JSON.stringify({ event: "command", func: "mute", args: "" }), "*"), win.postMessage(JSON.stringify({ event: "command", func: "setVolume", args: [0] }), "*")) : src.includes("vimeo") && win.postMessage(JSON.stringify({ method: "setVolume", value: 0 }), "*"));
+}
+__name(muteFrame, "muteFrame");
+function holdSilence(video) {
+  if (video.dataset.rwSound !== "on") {
+    if (video.muted = !0, video.defaultMuted = !0, video.volume = 0, !held.has(video)) {
+      held.add(video);
+      const lock = /* @__PURE__ */ __name(() => {
+        video.dataset.rwSound !== "on" && (video.muted = !0, video.volume = 0);
+      }, "lock");
+      video.addEventListener("play", lock), video.addEventListener("volumechange", lock), video.addEventListener("pointerdown", () => {
+        video.dataset.rwSound = "on", held.delete(video);
+      }, { once: !0 });
+    }
+    video.paused && video.play().catch(() => {
+    });
+  }
+}
+__name(holdSilence, "holdSilence");
+function holdFrameSilence(frame) {
+  if (frame.dataset.rwSound === "on" || hushed.has(frame)) return;
+  hushed.add(frame);
+  const send = /* @__PURE__ */ __name(() => {
+    frame.dataset.rwSound !== "on" && muteFrame(frame);
+  }, "send");
+  frame.addEventListener("load", send), window.setTimeout(send, 400), window.setTimeout(send, 1400), window.setTimeout(send, 2500), send();
+}
+__name(holdFrameSilence, "holdFrameSilence");
+function settleSilence(root) {
+  root.querySelectorAll("video").forEach((video) => holdSilence(video)), root.querySelectorAll("iframe").forEach((frame) => holdFrameSilence(frame));
+}
+__name(settleSilence, "settleSilence");
 var __defProp2 = Object.defineProperty, __decorateClass = /* @__PURE__ */ __name((decorators, target, key, kind) => {
   for (var result = void 0, i = decorators.length - 1, decorator; i >= 0; i--)
     (decorator = decorators[i]) && (result = decorator(target, key, result) || result);
@@ -121,28 +203,7 @@ const css = `
 .rw-film--cover .rw-film__stage { max-width: none; min-height: 22rem; }
 .rw-film--cover .rw-film__copy { position: absolute; z-index: 1; inset-inline-start: 1.4rem; bottom: 1.4rem; max-width: min(36rem, calc(100% - 2.8rem)); color: #fff; }
 .rw-film--cover .rw-film__copy p { color: rgb(255 255 255 / 84%); }
-`;
-function embed(url, auto) {
-  let frame = url;
-  try {
-    const parsed = new URL(url), host = parsed.hostname.replace(/^www\./, "");
-    if (host === "youtu.be") frame = `https://www.youtube.com/embed/${parsed.pathname.slice(1)}`;
-    else if (host.includes("youtube.com")) {
-      const id = parsed.searchParams.get("v") || parsed.pathname.split("/").pop();
-      id && (frame = `https://www.youtube.com/embed/${id}`);
-    } else if (host.includes("vimeo.com")) {
-      const id = parsed.pathname.split("/").filter(Boolean).pop();
-      id && (frame = `https://player.vimeo.com/video/${id}`);
-    }
-  } catch {
-    frame = url;
-  }
-  if (!auto) return frame;
-  const joiner = frame.includes("?") ? "&" : "?";
-  return `${frame}${joiner}autoplay=1&mute=1`;
-}
-__name(embed, "embed");
-const _OpenVideo = class _OpenVideo extends LitElement {
+`, _OpenVideo = class _OpenVideo extends LitElement {
   constructor() {
     super(...arguments), this.playing = !1, this.missing = !1, this.stop = () => {
     };
@@ -156,8 +217,13 @@ const _OpenVideo = class _OpenVideo extends LitElement {
   disconnectedCallback() {
     this.stop(), super.disconnectedCallback();
   }
+  updated() {
+    String(unwrapValue(getConfig(this.config).playback) || "click") === "auto" && settleSilence(this);
+  }
   render() {
-    const cfg = getConfig(this.config), title = localizedString(cfg.title), text = localizedString(cfg.text), poster = String(cfg.poster || ""), source = String(cfg.video_url || ""), layout = String(unwrapValue(cfg.layout) || "beside"), frame = String(unwrapValue(cfg.frame) || "wide"), fit = String(unwrapValue(cfg.fit) || "cover"), auto = String(unwrapValue(cfg.playback) || "click") === "auto", file = /\.(mp4|webm)(\?|$)/i.test(source), embedded = embed(source, auto), classes = ["rw-container", "rw-film", `rw-film--${layout}`, `rw-film--${frame}`, fit === "contain" ? "rw-film--contain" : ""].filter(Boolean).join(" "), showPlayer = !!source && (auto || this.playing), player = file ? html`<video src=${source} poster=${poster} controls autoplay playsinline ?muted=${auto} ?loop=${auto}></video>` : html`<iframe src=${embedded} title=${title || "video"} allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+    const cfg = getConfig(this.config), title = localizedString(cfg.title), text = localizedString(cfg.text), poster = String(cfg.poster || ""), source = clipUrl(cfg.video_url), layout = String(unwrapValue(cfg.layout) || "beside"), frame = String(unwrapValue(cfg.frame) || "wide"), fit = String(unwrapValue(cfg.fit) || "cover"), auto = String(unwrapValue(cfg.playback) || "click") === "auto", file = isFileClip(source), classes = ["rw-container", "rw-film", `rw-film--${layout}`, `rw-film--${frame}`, fit === "contain" ? "rw-film--contain" : ""].filter(Boolean).join(" "), showPlayer = !!source && (auto || this.playing), player = file ? html`<video src=${source} poster=${poster || nothing} controls playsinline .muted=${auto} ?loop=${auto}></video>` : html`<iframe src=${frameSrc(source, auto)} title=${title || "video"} allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen @load=${() => {
+      auto && settleSilence(this);
+    }}></iframe>`;
     return html`<section class="rw-block rw-section ${schemeOf(cfg)}" style=${sectionStyle(cfg)} aria-label=${title || "video"}>
       <div class=${classes}>
         <div class="rw-film__stage">

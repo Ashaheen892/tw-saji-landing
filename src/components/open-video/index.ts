@@ -4,6 +4,7 @@ import { getConfig, localizedString, t, unwrapValue, watchLocale } from "../../u
 import { schemeOf } from "../../utils/landing.js";
 import { baseCss, injectStyles, sectionStyle } from "../../utils/styles.js";
 import { media } from "../../utils/ui.js";
+import { clipUrl, frameSrc, isFileClip, settleSilence } from "../../utils/video.js";
 
 const css = `
 .rw-film { display: grid; gap: 1.2rem; align-items: center; }
@@ -30,27 +31,6 @@ const css = `
 .rw-film--cover .rw-film__copy p { color: rgb(255 255 255 / 84%); }
 `;
 
-function embed(url: string, auto: boolean): string {
-  let frame = url;
-  try {
-    const parsed = new URL(url);
-    const host = parsed.hostname.replace(/^www\./, "");
-    if (host === "youtu.be") frame = `https://www.youtube.com/embed/${parsed.pathname.slice(1)}`;
-    else if (host.includes("youtube.com")) {
-      const id = parsed.searchParams.get("v") || parsed.pathname.split("/").pop();
-      if (id) frame = `https://www.youtube.com/embed/${id}`;
-    } else if (host.includes("vimeo.com")) {
-      const id = parsed.pathname.split("/").filter(Boolean).pop();
-      if (id) frame = `https://player.vimeo.com/video/${id}`;
-    }
-  } catch {
-    frame = url;
-  }
-  if (!auto) return frame;
-  const joiner = frame.includes("?") ? "&" : "?";
-  return `${frame}${joiner}autoplay=1&mute=1`;
-}
-
 export default class OpenVideo extends LitElement {
   @property({ type: Object }) config?: Record<string, any>;
   @state() private playing = false;
@@ -74,23 +54,27 @@ export default class OpenVideo extends LitElement {
     super.disconnectedCallback();
   }
 
+  protected updated() {
+    const auto = String(unwrapValue(getConfig(this.config).playback) || "click") === "auto";
+    if (auto) settleSilence(this);
+  }
+
   render() {
     const cfg = getConfig(this.config);
     const title = localizedString(cfg.title);
     const text = localizedString(cfg.text);
     const poster = String(cfg.poster || "");
-    const source = String(cfg.video_url || "");
+    const source = clipUrl(cfg.video_url);
     const layout = String(unwrapValue(cfg.layout) || "beside");
     const frame = String(unwrapValue(cfg.frame) || "wide");
     const fit = String(unwrapValue(cfg.fit) || "cover");
     const auto = String(unwrapValue(cfg.playback) || "click") === "auto";
-    const file = /\.(mp4|webm)(\?|$)/i.test(source);
-    const embedded = embed(source, auto);
+    const file = isFileClip(source);
     const classes = ["rw-container", "rw-film", `rw-film--${layout}`, `rw-film--${frame}`, fit === "contain" ? "rw-film--contain" : ""].filter(Boolean).join(" ");
     const showPlayer = Boolean(source) && (auto || this.playing);
     const player = file
-      ? html`<video src=${source} poster=${poster} controls autoplay playsinline ?muted=${auto} ?loop=${auto}></video>`
-      : html`<iframe src=${embedded} title=${title || "video"} allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+      ? html`<video src=${source} poster=${poster || nothing} controls playsinline .muted=${auto} ?loop=${auto}></video>`
+      : html`<iframe src=${frameSrc(source, auto)} title=${title || "video"} allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen @load=${() => { if (auto) settleSilence(this); }}></iframe>`;
     return html`<section class="rw-block rw-section ${schemeOf(cfg)}" style=${sectionStyle(cfg)} aria-label=${title || "video"}>
       <div class=${classes}>
         <div class="rw-film__stage">

@@ -961,7 +961,7 @@
                     "label": "التشغيل",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "التشغيل التلقائي يعمل مع ملف mp4 أو يوتيوب، ويبدأ صامتاً.",
+                    "description": "التلقائي يبدأ الفيديو وحده وبلا صوت، سواء كان ملفاً أو يوتيوب أو فيميو. الزائر يفتح الصوت من المشغّل إذا أراد.",
                     "options": [
                         {
                             "label": "عند الضغط",
@@ -988,6 +988,387 @@
                             "key": "d6f2b0a3-1e47-4c89-9d05-4a8b9f2e6c30"
                         }
                     ]
+                },
+                {
+                    "id": "bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الخلفية",
+                    "icon": "sicon-format-fill",
+                    "required": false,
+                    "description": null,
+                    "value": ""
+                },
+                {
+                    "id": "color_scheme",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "source": "Manual",
+                    "label": "وضع الألوان",
+                    "icon": "sicon-list",
+                    "required": false,
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
+                    "options": [
+                        {
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+                        },
+                        {
+                            "label": "فاتح دائماً",
+                            "value": "light",
+                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                        },
+                        {
+                            "label": "داكن دائماً",
+                            "value": "dark",
+                            "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+                        }
+                    ],
+                    "value": [
+                        {
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "ريلز التجارب",
+            "icon": "sicon-star",
+            "name": "review-reels",
+            "key": "d4e8b1c6-2f70-4a93-9c15-6e8a0b3d7f24",
+            "image": "",
+            "props": {
+                "min-height": "640px"
+            },
+            "fields": [
+                {
+                    "id": "kicker",
+                    "type": "string",
+                    "format": "text",
+                    "label": "سطر صغير",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "تجارب العملاء",
+                        "en": "Customer experiences"
+                    }
+                },
+                {
+                    "id": "title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 120,
+                    "value": {
+                        "ar": "شاهد التجربة قبل الشراء",
+                        "en": "Watch the experience before buying"
+                    }
+                },
+                {
+                    "id": "subtitle",
+                    "type": "string",
+                    "format": "text",
+                    "label": "وصف قصير",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "فيديوهات قصيرة من عملاء جرّبوا المنتج. الصوت يبدأ عند الضغط.",
+                        "en": "Short videos from customers who tried the product. Sound starts on tap."
+                    }
+                },
+                {
+                    "id": "autoplay",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تشغيل الفيديو الظاهر بدون صوت",
+                    "icon": "sicon-toggle-off",
+                    "required": false,
+                    "description": "يتحرك فيديو البطاقة الظاهرة وحده ويبقى صامتاً. زر الصوت يفتحه للزائر.",
+                    "value": true,
+                    "selected": true
+                },
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 8,
+                    "item_label": "تجربة",
+                    "fields": [
+                        {
+                            "id": "items.video_url",
+                            "type": "string",
+                            "format": "url",
+                            "label": "رابط الفيديو",
+                            "icon": "sicon-link",
+                            "required": false,
+                            "description": "رابط يوتيوب أو فيميو أو ملف mp4 طولي.",
+                            "value": ""
+                        },
+                        {
+                            "id": "items.poster",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة الغلاف",
+                            "icon": "sicon-image",
+                            "required": false,
+                            "description": "المقاس المقترح 720×1280 بكسل، تظهر قبل التشغيل.",
+                            "value": ""
+                        },
+                        {
+                            "id": "items.name",
+                            "type": "string",
+                            "format": "text",
+                            "label": "اسم العميل",
+                            "icon": "sicon-format-text-alt",
+                            "multilanguage": true,
+                            "required": false,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 180,
+                            "value": {
+                                "ar": "نورة",
+                                "en": "Noura"
+                            }
+                        },
+                        {
+                            "id": "items.place",
+                            "type": "string",
+                            "format": "text",
+                            "label": "المدينة",
+                            "icon": "sicon-format-text-alt",
+                            "multilanguage": true,
+                            "required": false,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 180,
+                            "value": {
+                                "ar": "الرياض",
+                                "en": "Riyadh"
+                            }
+                        },
+                        {
+                            "id": "items.quote",
+                            "type": "string",
+                            "format": "text",
+                            "label": "الرأي أو وصف التجربة",
+                            "icon": "sicon-format-text-alt",
+                            "multilanguage": true,
+                            "required": false,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 180,
+                            "value": {
+                                "ar": "وصل كما في الصور، واستخدمته من اليوم الأول.",
+                                "en": "It arrived as shown, and I used it the same day."
+                            }
+                        },
+                        {
+                            "id": "items.stars",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "source": "Manual",
+                            "label": "الدرجة من ٥",
+                            "icon": "sicon-list",
+                            "required": false,
+                            "description": null,
+                            "options": [
+                                {
+                                    "label": "٥",
+                                    "value": "5",
+                                    "key": "7c1e9a20-4b63-4d85-8f17-2a6c0d9e5b41"
+                                },
+                                {
+                                    "label": "٤",
+                                    "value": "4",
+                                    "key": "8d2f0b31-5c74-4e96-9a28-3b7d1e0f6c52"
+                                },
+                                {
+                                    "label": "٣",
+                                    "value": "3",
+                                    "key": "9e3a1c42-6d85-4fa7-8b39-4c8e2f1a7d63"
+                                }
+                            ],
+                            "selected": [
+                                {
+                                    "label": "٥",
+                                    "value": "5",
+                                    "key": "7c1e9a20-4b63-4d85-8f17-2a6c0d9e5b41"
+                                }
+                            ],
+                            "value": [
+                                {
+                                    "label": "٥",
+                                    "value": "5",
+                                    "key": "7c1e9a20-4b63-4d85-8f17-2a6c0d9e5b41"
+                                }
+                            ]
+                        },
+                        {
+                            "id": "items.link_label",
+                            "type": "string",
+                            "format": "text",
+                            "label": "نص رابط المنتج",
+                            "icon": "sicon-format-text-alt",
+                            "multilanguage": true,
+                            "required": false,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 180,
+                            "value": {
+                                "ar": "",
+                                "en": ""
+                            }
+                        },
+                        {
+                            "id": "items.link_url",
+                            "type": "string",
+                            "format": "url",
+                            "label": "رابط المنتج",
+                            "icon": "sicon-link",
+                            "required": false,
+                            "description": "اتركه فارغاً إذا كانت التجربة عن منتج الصفحة.",
+                            "value": ""
+                        }
+                    ],
+                    "value": [
+                        {
+                            "items.video_url": "",
+                            "items.poster": "",
+                            "items.name": {
+                                "ar": "نورة",
+                                "en": "Noura"
+                            },
+                            "items.place": {
+                                "ar": "الرياض",
+                                "en": "Riyadh"
+                            },
+                            "items.quote": {
+                                "ar": "وصل كما في الصور، واستخدمته من اليوم الأول.",
+                                "en": "It arrived as shown, and I used it the same day."
+                            },
+                            "items.stars": [
+                                {
+                                    "label": "٥",
+                                    "value": "5",
+                                    "key": "7c1e9a20-4b63-4d85-8f17-2a6c0d9e5b41"
+                                }
+                            ],
+                            "items.link_label": {
+                                "ar": "",
+                                "en": ""
+                            },
+                            "items.link_url": ""
+                        },
+                        {
+                            "items.video_url": "",
+                            "items.poster": "",
+                            "items.name": {
+                                "ar": "سلمان",
+                                "en": "Salman"
+                            },
+                            "items.place": {
+                                "ar": "جدة",
+                                "en": "Jeddah"
+                            },
+                            "items.quote": {
+                                "ar": "الخيار الذي طلبته جاء مطابقاً، والتغليف سليم.",
+                                "en": "The option I ordered matched, and the packing was intact."
+                            },
+                            "items.stars": [
+                                {
+                                    "label": "٥",
+                                    "value": "5",
+                                    "key": "7c1e9a20-4b63-4d85-8f17-2a6c0d9e5b41"
+                                }
+                            ],
+                            "items.link_label": {
+                                "ar": "",
+                                "en": ""
+                            },
+                            "items.link_url": ""
+                        },
+                        {
+                            "items.video_url": "",
+                            "items.poster": "",
+                            "items.name": {
+                                "ar": "هند",
+                                "en": "Hind"
+                            },
+                            "items.place": {
+                                "ar": "الخبر",
+                                "en": "Khobar"
+                            },
+                            "items.quote": {
+                                "ar": "واضح في الفيديو كيف يُستخدم قبل أن أطلبه.",
+                                "en": "The video made the use clear before I ordered."
+                            },
+                            "items.stars": [
+                                {
+                                    "label": "٤",
+                                    "value": "4",
+                                    "key": "8d2f0b31-5c74-4e96-9a28-3b7d1e0f6c52"
+                                }
+                            ],
+                            "items.link_label": {
+                                "ar": "",
+                                "en": ""
+                            },
+                            "items.link_url": ""
+                        }
+                    ]
+                },
+                {
+                    "id": "button_label",
+                    "type": "string",
+                    "format": "text",
+                    "label": "نص زر الشراء",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "اطلب الآن",
+                        "en": "Order now"
+                    }
+                },
+                {
+                    "id": "button_url",
+                    "type": "string",
+                    "format": "url",
+                    "label": "رابط الزر",
+                    "icon": "sicon-link",
+                    "required": false,
+                    "description": "في صفحة منتج يفتح الشراء السريع. في صفحة العروض يتبع رابط زر الصفحة، أو هذا الرابط إن وضعته.",
+                    "value": ""
                 },
                 {
                     "id": "bg_color",

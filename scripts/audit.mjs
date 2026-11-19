@@ -7,7 +7,7 @@ const bundle = JSON.parse(fs.readFileSync(new URL("../twilight-bundle.json", imp
 const errors = [];
 const names = bundle.components.map((item) => item.name);
 if (!bundle.features?.includes("landing-page-templates")) errors.push("missing landing-page-templates");
-if (names.length !== 22) errors.push(`expected 22 sections, found ${names.length}`);
+if (names.length !== 23) errors.push(`expected 23 sections, found ${names.length}`);
 for (const template of bundle.templates || []) {
   const file = template.path.replace("templates.", "");
   const page = JSON.parse(fs.readFileSync(new URL(`../templates/${file}.json`, import.meta.url), "utf8"));
