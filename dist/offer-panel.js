@@ -160,15 +160,23 @@ var __defProp2 = Object.defineProperty, __decorateClass = /* @__PURE__ */ __name
   return result && __defProp2(target, key, result), result;
 }, "__decorateClass");
 const css = `
-.rw-offer { display: grid; gap: 1rem; }
-@container (min-width: 860px) { .rw-offer { grid-template-columns: 1.2fr .8fr; } }
-.rw-sheet, .rw-aside { padding: 1.4rem; border: 1px solid var(--rw-border); border-radius: 1.3rem; background: var(--rw-card); }
-.rw-aside { background: color-mix(in srgb, var(--color-primary, #1a1d21) 12%, var(--rw-card)); }
-.rw-price { margin-top: .4rem; font-size: 1.35rem; font-weight: 700; }
-.rw-lines { display: grid; gap: .7rem; margin-top: 1.1rem; }
-.rw-lines li { display: flex; gap: .6rem; align-items: flex-start; line-height: 1.6; }
-.rw-lines i { color: var(--color-primary, #1a1d21); margin-top: .15rem; }
-.rw-aside p { margin-top: .6rem; color: var(--rw-muted); line-height: 1.75; }
+.rw-offer { display: grid; overflow: hidden; border: 1px solid var(--rw-border); border-radius: 1.3rem; background: var(--rw-card); }
+@container (min-width: 860px) {
+  .rw-offer:not(.rw-offer--solo) { grid-template-columns: minmax(0, 1.25fr) minmax(16rem, .75fr); align-items: stretch; }
+}
+.rw-sheet { padding: 1.35rem 1.3rem 1.15rem; }
+.rw-aside { display: flex; flex-direction: column; gap: 1.35rem; padding: 1.35rem 1.3rem; background: color-mix(in srgb, var(--color-primary, #1a1d21) 10%, var(--rw-card)); border-block-start: 1px solid var(--rw-border); }
+@container (min-width: 860px) { .rw-aside { border-block-start: 0; border-inline-start: 1px solid var(--rw-border); } }
+.rw-aside h3 { font-size: 1.25rem; line-height: 1.35; font-weight: 700; letter-spacing: -.02em; }
+.rw-aside p { margin-top: .55rem; color: var(--rw-muted); line-height: 1.75; }
+.rw-lines { display: grid; margin-top: 1.15rem; }
+.rw-lines li { display: flex; gap: .75rem; align-items: center; min-height: 3.1rem; padding-block: .65rem; border-top: 1px solid var(--rw-border); line-height: 1.6; }
+.rw-lines li:last-child { border-bottom: 1px solid var(--rw-border); }
+.rw-lines i { display: grid; place-items: center; width: 2.15rem; height: 2.15rem; flex: none; border-radius: .6rem; background: color-mix(in srgb, var(--color-primary, #1a1d21) 14%, var(--rw-soft)); color: var(--color-primary, #1a1d21); }
+.rw-offer__buy { display: grid; gap: .75rem; }
+.rw-price { font-size: 1.05rem; font-weight: 700; line-height: 1.5; }
+.rw-offer__buy .rw-actions { margin-top: 0; }
+.rw-offer__buy .rw-btn { width: 100%; }
 `, _OfferPanel = class _OfferPanel extends LitElement {
   constructor() {
     super(...arguments), this.stop = () => {
@@ -184,21 +192,25 @@ const css = `
     this.stop(), super.disconnectedCallback();
   }
   render() {
-    const cfg = getConfig(this.config), lines = getCollectionItems(cfg.items, "items").map((item) => localizedString(item.text)).filter(Boolean), title = localizedString(cfg.title);
+    const cfg = getConfig(this.config), lines = getCollectionItems(cfg.items, "items").map((item) => localizedString(item.text)).filter(Boolean), title = localizedString(cfg.title), kicker = localizedString(cfg.kicker), price = localizedString(cfg.price_note), asideTitle = localizedString(cfg.aside_title), asideText = localizedString(cfg.aside_text), cta = renderCta(cfg.button_label, cfg.button_url || ""), hasAside = !!(asideTitle || asideText || price || cta !== nothing);
     return html`<section id="rw-offer" class="rw-block rw-section ${schemeOf(cfg)}" style=${sectionStyle(cfg)} aria-label=${title || "offer"}>
       <div class="rw-container">
-        <div class="rw-offer">
+        <div class="rw-offer ${hasAside ? "" : "rw-offer--solo"}">
           <div class="rw-sheet">
-            ${localizedString(cfg.kicker) ? html`<p class="rw-kicker">${localizedString(cfg.kicker)}</p>` : nothing}
+            ${kicker ? html`<p class="rw-kicker">${kicker}</p>` : nothing}
             ${title ? html`<h2 class="rw-title">${title}</h2>` : nothing}
-            ${localizedString(cfg.price_note) ? html`<p class="rw-price">${localizedString(cfg.price_note)}</p>` : nothing}
             ${lines.length ? html`<ul class="rw-lines">${lines.map((line) => html`<li><i class="sicon-shield-check" aria-hidden="true"></i><span>${line}</span></li>`)}</ul>` : emptyCopy()}
           </div>
-          <aside class="rw-aside">
-            ${localizedString(cfg.aside_title) ? html`<h3 class="rw-title">${localizedString(cfg.aside_title)}</h3>` : nothing}
-            ${localizedString(cfg.aside_text) ? html`<p>${localizedString(cfg.aside_text)}</p>` : nothing}
-            <div class="rw-actions">${renderCta(cfg.button_label, cfg.button_url || "")}</div>
-          </aside>
+          ${hasAside ? html`<aside class="rw-aside">
+                <div>
+                  ${asideTitle ? html`<h3>${asideTitle}</h3>` : nothing}
+                  ${asideText ? html`<p>${asideText}</p>` : nothing}
+                </div>
+                ${price || cta !== nothing ? html`<div class="rw-offer__buy">
+                      ${price ? html`<p class="rw-price">${price}</p>` : nothing}
+                      ${cta !== nothing ? html`<div class="rw-actions">${cta}</div>` : nothing}
+                    </div>` : nothing}
+              </aside>` : nothing}
         </div>
       </div>
     </section>`;
