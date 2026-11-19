@@ -3058,10 +3058,10 @@
                 {
                     "id": "ends_at",
                     "type": "string",
-                    "format": "datetime",
+                    "format": "datetime-local",
+                    "inputType": "datetime-local",
                     "label": "موعد انتهاء العرض",
-                    "icon": "sicon-time",
-                    "multilanguage": false,
+                    "icon": "sicon-calendar-date",
                     "required": false,
                     "description": "اتركه فارغاً ليبدأ العد من ٧٢ ساعة عند أول زيارة.",
                     "value": ""

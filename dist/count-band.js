@@ -154,6 +154,20 @@ function formatStat(stat, progress) {
   return stat.arabic ? toArabic(text) : text;
 }
 __name(formatStat, "formatStat");
+function parseEnd(raw) {
+  const text = String(unwrapValue(raw) || "").trim();
+  if (!text) return NaN;
+  const slash = text.match(/^(\d{1,2})[\/.](\d{1,2})[\/.](\d{4})(?:[ T](\d{1,2}):(\d{2}))?$/);
+  if (slash) {
+    const hasTime = slash[4] != null;
+    return new Date(Number(slash[3]), Number(slash[2]) - 1, Number(slash[1]), hasTime ? Number(slash[4]) : 23, hasTime ? Number(slash[5]) : 59, hasTime ? 0 : 59).getTime();
+  }
+  const day = text.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (day) return new Date(Number(day[1]), Number(day[2]) - 1, Number(day[3]), 23, 59, 59).getTime();
+  const parsed = Date.parse(text);
+  return Number.isNaN(parsed) ? NaN : parsed;
+}
+__name(parseEnd, "parseEnd");
 function pad(value, arabic) {
   const text = String(value).padStart(2, "0");
   return arabic ? toArabic(text) : text;
@@ -195,7 +209,7 @@ const _CountBand = class _CountBand extends LitElement {
   }
   deadline(cfg) {
     if (cfg.show_countdown != null && !flag(cfg.show_countdown)) return null;
-    const raw = unwrapValue(cfg.ends_at), parsed = typeof raw == "string" && raw ? Date.parse(raw) : NaN;
+    const parsed = parseEnd(cfg.ends_at);
     if (!Number.isNaN(parsed)) return parsed;
     try {
       const saved = Number(localStorage.getItem(STORE) || 0);
