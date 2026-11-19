@@ -1,7 +1,7 @@
 var __defProp = Object.defineProperty;
 var __name = (target, value) => __defProp(target, "name", { value, configurable: !0 });
 import { html, LitElement, nothing } from "lit";
-import { property } from "lit/decorators.js";
+import { property, state } from "lit/decorators.js";
 function getConfig(raw) {
   return raw ? raw.component && typeof raw.component == "object" ? raw.component : raw : {};
 }
@@ -31,6 +31,11 @@ function unwrapValue(value) {
   return Array.isArray(value) ? unwrapValue(((_a = value[0]) == null ? void 0 : _a.value) ?? value[0] ?? "") : value && typeof value == "object" && "value" in value ? value.value : value ?? "";
 }
 __name(unwrapValue, "unwrapValue");
+function flag(value) {
+  const raw = unwrapValue(value);
+  return raw === !0 || raw === "true" || raw === 1 || raw === "1";
+}
+__name(flag, "flag");
 function getCollectionItems(items, prefix) {
   return Array.isArray(items) ? items.map((item) => {
     if (!item || typeof item != "object") return {};
@@ -109,37 +114,123 @@ var __defProp2 = Object.defineProperty, __decorateClass = /* @__PURE__ */ __name
   return result && __defProp2(target, key, result), result;
 }, "__decorateClass");
 const css = `
+.rw-timer { margin-bottom: 1.5rem; text-align: center; }
+.rw-timer__label { color: var(--rw-muted); }
+.rw-timer__cells { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: .8rem; }
+.rw-timer__cells div { padding: .2rem .4rem; }
+.rw-timer__cells div + div { border-inline-start: 1px solid var(--rw-border); }
+.rw-timer__cells strong { display: block; font-variant-numeric: tabular-nums; font-size: clamp(1.7rem, 4vw, 2.8rem); line-height: 1; letter-spacing: -.04em; }
+.rw-timer__cells span { display: block; margin-top: .3rem; color: var(--rw-muted); font-size: .85rem; }
 .rw-counts { display: grid; }
 @container (min-width: 720px) { .rw-counts { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .rw-count { padding: 1.4rem 1rem; text-align: center; }
 @container (min-width: 720px) { .rw-count + .rw-count { border-inline-start: 1px solid var(--rw-border); } }
-.rw-count strong { display: block; font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1; letter-spacing: -.05em; }
+.rw-count strong { display: flex; align-items: baseline; justify-content: center; gap: .15rem; font-variant-numeric: tabular-nums; font-size: clamp(2.2rem, 5vw, 3.5rem); line-height: 1; letter-spacing: -.05em; }
+.rw-count__affix { font-size: .38em; font-weight: 650; letter-spacing: 0; }
 .rw-count b { display: block; margin-top: .55rem; font-size: 1rem; }
 .rw-count span { display: block; margin-top: .3rem; color: var(--rw-muted); }
-`, _CountBand = class _CountBand extends LitElement {
+`, DIGITS = "٠١٢٣٤٥٦٧٨٩", STORE = "rw-count-band-end";
+function toArabic(value) {
+  return value.replace(/\d/g, (digit) => DIGITS[Number(digit)] || digit);
+}
+__name(toArabic, "toArabic");
+function parseStat(value) {
+  const match = value.replace(/[٠-٩]/g, (digit) => String(DIGITS.indexOf(digit))).match(/\d+(?:[.,]\d+)?/);
+  if (!match || match.index == null) return { prefix: "", suffix: "", number: 0, decimals: 0, arabic: !1, raw: value };
+  const token = match[0], decimals = /[.,]/.test(token) ? token.split(/[.,]/)[1].length : 0;
+  return {
+    prefix: value.slice(0, match.index),
+    suffix: value.slice(match.index + token.length),
+    number: Number(token.replace(",", ".")),
+    decimals,
+    arabic: /[٠-٩]/.test(value),
+    raw: ""
+  };
+}
+__name(parseStat, "parseStat");
+function formatStat(stat, progress) {
+  if (stat.raw) return stat.raw;
+  const amount = stat.number * progress, text = stat.decimals ? amount.toFixed(stat.decimals) : String(Math.round(amount));
+  return stat.arabic ? toArabic(text) : text;
+}
+__name(formatStat, "formatStat");
+function pad(value, arabic) {
+  const text = String(value).padStart(2, "0");
+  return arabic ? toArabic(text) : text;
+}
+__name(pad, "pad");
+const _CountBand = class _CountBand extends LitElement {
   constructor() {
-    super(...arguments), this.stop = () => {
-    };
+    super(...arguments), this.progress = 0, this.now = Date.now(), this.stop = () => {
+    }, this.clock = 0, this.frame = 0, this.look = null, this.saw = !1, this.reduced = !1;
   }
   createRenderRoot() {
     return this;
   }
   connectedCallback() {
-    super.connectedCallback(), this.classList.add("rw-host"), injectStyles("rw-base", baseCss), injectStyles("rw-count-band", css), this.stop = watchLocale(this);
+    super.connectedCallback(), this.classList.add("rw-host"), injectStyles("rw-base", baseCss), injectStyles("rw-count-band", css), this.stop = watchLocale(this), this.reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches, this.clock = window.setInterval(() => {
+      this.now = Date.now();
+    }, 1e3);
   }
   disconnectedCallback() {
-    this.stop(), super.disconnectedCallback();
+    var _a;
+    this.stop(), (_a = this.look) == null || _a.disconnect(), window.clearInterval(this.clock), window.cancelAnimationFrame(this.frame), super.disconnectedCallback();
+  }
+  updated() {
+    this.saw || this.look || (this.look = new IntersectionObserver((entries) => {
+      var _a;
+      entries.some((entry) => entry.isIntersecting) && (this.saw = !0, (_a = this.look) == null || _a.disconnect(), this.rise());
+    }, { threshold: 0.35 }), this.look.observe(this));
+  }
+  rise() {
+    if (this.reduced) {
+      this.progress = 1;
+      return;
+    }
+    const start = performance.now(), step = /* @__PURE__ */ __name((now) => {
+      const ratio = Math.min(1, (now - start) / 1100);
+      this.progress = 1 - (1 - ratio) ** 3, ratio < 1 && (this.frame = window.requestAnimationFrame(step));
+    }, "step");
+    this.frame = window.requestAnimationFrame(step);
+  }
+  deadline(cfg) {
+    if (cfg.show_countdown != null && !flag(cfg.show_countdown)) return null;
+    const raw = unwrapValue(cfg.ends_at), parsed = typeof raw == "string" && raw ? Date.parse(raw) : NaN;
+    if (!Number.isNaN(parsed)) return parsed;
+    try {
+      const saved = Number(localStorage.getItem(STORE) || 0);
+      if (saved > this.now) return saved;
+      const end = Date.now() + 4320 * 60 * 1e3;
+      return localStorage.setItem(STORE, String(end)), end;
+    } catch {
+      return Date.now() + 4320 * 60 * 1e3;
+    }
   }
   render() {
-    const cfg = getConfig(this.config), items = getCollectionItems(cfg.items, "items").map((item) => ({
-      value: localizedString(item.value),
+    const cfg = getConfig(this.config), arabic = getLocale() !== "en", items = getCollectionItems(cfg.items, "items").map((item) => ({
+      stat: parseStat(localizedString(item.value)),
       label: localizedString(item.label),
       hint: localizedString(item.hint)
-    })).filter((item) => item.value);
-    return html`<section class="rw-block rw-section ${schemeOf(cfg)}" style=${sectionStyle(cfg)} aria-label=${localizedString(cfg.title) || "counts"}>
+    })).filter((item) => item.stat.raw || item.stat.number || item.stat.prefix || item.stat.suffix), end = this.deadline(cfg), left = end == null ? 0 : Math.max(0, end - this.now), parts = [
+      { value: Math.floor(left / 864e5), label: t({ ar: "يوم", en: "Days" }) },
+      { value: Math.floor(left % 864e5 / 36e5), label: t({ ar: "ساعة", en: "Hours" }) },
+      { value: Math.floor(left % 36e5 / 6e4), label: t({ ar: "دقيقة", en: "Minutes" }) },
+      { value: Math.floor(left % 6e4 / 1e3), label: t({ ar: "ثانية", en: "Seconds" }) }
+    ], label = end != null && left <= 0 ? t({ ar: "انتهى العرض", en: "The offer has ended" }) : localizedString(cfg.countdown_label) || t({ ar: "ينتهي العرض خلال", en: "The offer ends in" });
+    return html`<section class="rw-block rw-section ${schemeOf(cfg)}" style=${sectionStyle(cfg)} aria-label=${label || "counts"}>
       <div class="rw-container">
+        ${end != null ? html`<div class="rw-timer">
+          <p class="rw-timer__label">${label}</p>
+          <div class="rw-timer__cells" aria-live="polite">
+            ${parts.map((part) => html`<div><strong>${pad(part.value, arabic)}</strong><span>${part.label}</span></div>`)}
+          </div>
+        </div>` : nothing}
         ${items.length ? html`<div class="rw-counts">${items.map((item) => html`<article class="rw-count">
-              <strong>${item.value}</strong>
+              <strong>
+                ${item.stat.prefix ? html`<span class="rw-count__affix">${item.stat.prefix.trim()}</span>` : nothing}
+                ${formatStat(item.stat, this.progress || (this.reduced ? 1 : 0))}
+                ${item.stat.suffix ? html`<span class="rw-count__affix">${item.stat.suffix.trim()}</span>` : nothing}
+              </strong>
               ${item.label ? html`<b>${item.label}</b>` : nothing}
               ${item.hint ? html`<span>${item.hint}</span>` : nothing}
             </article>`)}</div>` : emptyCopy()}
@@ -152,6 +243,12 @@ let CountBand = _CountBand;
 __decorateClass([
   property({ type: Object })
 ], CountBand.prototype, "config");
+__decorateClass([
+  state()
+], CountBand.prototype, "progress");
+__decorateClass([
+  state()
+], CountBand.prototype, "now");
 typeof CountBand < "u" && CountBand.registerSallaComponent("salla-count-band");
 export {
   CountBand as default

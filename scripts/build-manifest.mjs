@@ -317,6 +317,19 @@ const components = [
     image: "",
     props: { "min-height": "180px" },
     fields: [
+      sw("show_countdown", "إظهار العد التنازلي", true, "يظهر فوق الأرقام. إن تُرك الموعد فارغاً يبدأ من ٧٢ ساعة عند أول زيارة."),
+      {
+        id: "ends_at",
+        type: "string",
+        format: "datetime",
+        label: "موعد انتهاء العرض",
+        icon: "sicon-time",
+        multilanguage: false,
+        required: false,
+        description: "اتركه فارغاً ليبدأ العد من ٧٢ ساعة عند أول زيارة.",
+        value: "",
+      },
+      text("countdown_label", "عنوان العد", L("ينتهي العرض خلال", "The offer ends in")),
       collection("items", "رقم", [
         text("value", "الرقم", L("+١٢ ألف", "+12k")),
         text("label", "العنوان", L("طلب", "Orders")),
@@ -678,7 +691,7 @@ const components = [
       text("kicker", "سطر صغير", L("تجارب العملاء", "Customer experiences")),
       text("title", "العنوان", L("شاهد التجربة قبل الشراء", "Watch the experience before buying"), { max: 120 }),
       text("subtitle", "وصف قصير", L("فيديوهات قصيرة من عملاء جرّبوا المنتج. الصوت يبدأ عند الضغط.", "Short videos from customers who tried the product. Sound starts on tap.")),
-      sw("autoplay", "تشغيل الفيديو الظاهر بدون صوت", true, "يتحرك فيديو البطاقة الظاهرة وحده ويبقى صامتاً. زر الصوت يفتحه للزائر."),
+      sw("autoplay", "تشغيل الفيديوهات بدون صوت", true, "عند الوصول إلى الريلز تعمل كل الفيديوهات معاً وبلا صوت. كل بطاقة فيها زر للصوت والكتم."),
       collection("items", "تجربة", [
         url("video_url", "رابط الفيديو", "", "رابط يوتيوب أو فيميو أو ملف mp4 طولي."),
         image("poster", "صورة الغلاف", "المقاس المقترح 720×1280 بكسل، تظهر قبل التشغيل."),

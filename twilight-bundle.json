@@ -1121,10 +1121,10 @@
                     "id": "autoplay",
                     "type": "boolean",
                     "format": "switch",
-                    "label": "تشغيل الفيديو الظاهر بدون صوت",
+                    "label": "تشغيل الفيديوهات بدون صوت",
                     "icon": "sicon-toggle-off",
                     "required": false,
-                    "description": "يتحرك فيديو البطاقة الظاهرة وحده ويبقى صامتاً. زر الصوت يفتحه للزائر.",
+                    "description": "عند الوصول إلى الريلز تعمل كل الفيديوهات معاً وبلا صوت. كل بطاقة فيها زر للصوت والكتم.",
                     "value": true,
                     "selected": true
                 },
@@ -3044,6 +3044,44 @@
                 "min-height": "180px"
             },
             "fields": [
+                {
+                    "id": "show_countdown",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إظهار العد التنازلي",
+                    "icon": "sicon-toggle-off",
+                    "required": false,
+                    "description": "يظهر فوق الأرقام. إن تُرك الموعد فارغاً يبدأ من ٧٢ ساعة عند أول زيارة.",
+                    "value": true,
+                    "selected": true
+                },
+                {
+                    "id": "ends_at",
+                    "type": "string",
+                    "format": "datetime",
+                    "label": "موعد انتهاء العرض",
+                    "icon": "sicon-time",
+                    "multilanguage": false,
+                    "required": false,
+                    "description": "اتركه فارغاً ليبدأ العد من ٧٢ ساعة عند أول زيارة.",
+                    "value": ""
+                },
+                {
+                    "id": "countdown_label",
+                    "type": "string",
+                    "format": "text",
+                    "label": "عنوان العد",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "ينتهي العرض خلال",
+                        "en": "The offer ends in"
+                    }
+                },
                 {
                     "id": "items",
                     "type": "collection",

@@ -297,18 +297,20 @@ const css = `
 .rw-reel { position: relative; flex: 0 0 min(16rem, 72%); scroll-snap-align: center; aspect-ratio: 9 / 16; overflow: hidden; border-radius: 1rem; background: #121417; color: #fff; }
 .rw-reel video, .rw-reel img, .rw-reel iframe, .rw-reel .rw-ph { width: 100%; height: 100%; object-fit: cover; border: 0; }
 .rw-reel iframe { position: absolute; inset: 0; pointer-events: none; }
-.rw-reel.is-audible iframe { pointer-events: auto; }
 .rw-reel__hit { position: absolute; inset: 0; border: 0; background: transparent; color: inherit; cursor: pointer; }
 .rw-reel__meta { position: absolute; z-index: 1; inset-inline: 0; bottom: 0; display: grid; gap: .28rem; padding: .95rem .85rem .8rem; background: linear-gradient(transparent, rgb(0 0 0 / 78%)); pointer-events: none; }
 .rw-reel__meta strong { font-size: .98rem; }
 .rw-reel__meta p { font-size: .9rem; line-height: 1.55; color: rgb(255 255 255 / 88%); }
-.rw-reel__stars { letter-spacing: .12em; color: #fff; font-size: .82rem; }
+.rw-reel__stars { display: inline-flex; align-items: center; gap: .18rem; direction: ltr; }
+.rw-reel__stars svg { width: .95rem; height: .95rem; display: block; }
+.rw-reel__stars .is-on { fill: #f5c451; }
+.rw-reel__stars .is-off { fill: rgb(255 255 255 / 18%); stroke: rgb(255 255 255 / 80%); }
 .rw-reel__sound { position: absolute; z-index: 2; top: .7rem; inset-inline-end: .7rem; min-height: 2.4rem; padding: .35rem .7rem; border-radius: .7rem; background: rgb(18 20 23 / 72%); color: #fff; border-color: transparent; }
 .rw-reel__link { justify-self: start; color: #fff; font-weight: 700; pointer-events: auto; text-decoration: underline; text-underline-offset: .18rem; }
 .rw-reels .rw-actions { margin-top: 1.2rem; }
 `, _ReviewReels = class _ReviewReels extends LitElement {
   constructor() {
-    super(...arguments), this.active = 0, this.audible = !1, this.opened = !1, this.picked = -1, this.stop = () => {
+    super(...arguments), this.active = 0, this.audible = !1, this.opened = !1, this.seen = !1, this.sound = -1, this.picked = -1, this.stop = () => {
     }, this.observer = null, this.reduced = !1;
   }
   createRenderRoot() {
@@ -322,16 +324,10 @@ const css = `
     (_a = this.observer) == null || _a.disconnect(), this.stop(), super.disconnectedCallback();
   }
   updated() {
-    this.watch();
-    const card = this.querySelector(".rw-reel.is-live");
-    if (!card) return;
-    if (this.audible) {
-      releaseSound(card);
-      return;
-    }
-    if (this.reduced) return;
-    const cfg = getConfig(this.config);
-    (flag(cfg.autoplay) || this.opened) && settleSilence(card);
+    this.watch(), this.querySelectorAll(".rw-reel.is-live").forEach((card) => {
+      const index = Number(card.dataset.index || 0);
+      (flag(getConfig(this.config).autoplay) ? index === this.sound : this.audible) ? releaseSound(card) : settleSilence(card);
+    });
   }
   reels() {
     return getCollectionItems(getConfig(this.config).items, "items").map((item) => ({
@@ -346,9 +342,21 @@ const css = `
     })).filter((item) => item.source || item.poster || item.quote || item.name);
   }
   watch() {
-    var _a;
+    var _a, _b;
     const row = this.querySelector(".rw-reels__row");
-    (_a = this.observer) == null || _a.disconnect(), row && (this.observer = new IntersectionObserver((entries) => {
+    if (!row) return;
+    if (flag(getConfig(this.config).autoplay) && !this.reduced) {
+      if (this.seen) {
+        (_a = this.observer) == null || _a.disconnect(), this.observer = null;
+        return;
+      }
+      if (this.observer) return;
+      this.observer = new IntersectionObserver((entries) => {
+        entries.some((entry) => entry.isIntersecting) && (this.seen = !0);
+      }, { threshold: 0.2 }), this.observer.observe(row);
+      return;
+    }
+    (_b = this.observer) == null || _b.disconnect(), this.observer = new IntersectionObserver((entries) => {
       const best = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
       if (!best) return;
       const index = Number(best.target.dataset.index || 0);
@@ -356,7 +364,7 @@ const css = `
     }, { root: row, threshold: [0.65, 0.85] }), row.querySelectorAll(".rw-reel").forEach((card) => {
       var _a2;
       return (_a2 = this.observer) == null ? void 0 : _a2.observe(card);
-    }));
+    });
   }
   move(dir) {
     const row = this.querySelector(".rw-reels__row"), card = row == null ? void 0 : row.querySelector(".rw-reel");
@@ -364,8 +372,18 @@ const css = `
     const delta = (card.getBoundingClientRect().width + 12) * dir * (isRtl() ? -1 : 1);
     row.scrollBy({ left: delta, behavior: this.reduced ? "auto" : "smooth" });
   }
+  toggleSound(index) {
+    const next = this.sound === index ? -1 : index;
+    this.querySelectorAll(".rw-reel").forEach((card) => {
+      Number(card.dataset.index || 0) === next ? releaseSound(card) : hushRoot(card);
+    }), this.sound = next;
+  }
   playCard(index, event) {
     const card = event.currentTarget.closest(".rw-reel");
+    if (flag(getConfig(this.config).autoplay) && !this.reduced) {
+      this.seen = !0, index !== this.active && (card == null || card.scrollIntoView({ inline: "center", block: "nearest", behavior: "smooth" }));
+      return;
+    }
     if (index !== this.active) {
       this.picked = index, this.audible = !1, this.opened = !1, this.active = index, card == null || card.scrollIntoView({ inline: "center", block: "nearest", behavior: this.reduced ? "auto" : "smooth" });
       return;
@@ -389,13 +407,13 @@ const css = `
         </div>
         ${items.length ? html`<div class="rw-reels__row">
           ${items.map((item, index) => {
-      const live = index === this.active && (auto || this.opened), file = isFileClip(item.source);
-      return html`<article class="rw-reel ${live ? "is-live" : ""} ${live && this.audible ? "is-audible" : ""}" data-index=${index}>
-              ${live && item.source ? file ? html`<video src=${item.source} poster=${item.poster || nothing} playsinline loop .muted=${!this.audible} ?controls=${this.audible}></video>` : html`<iframe src=${frameSrc(item.source, !0, !0)} title=${item.name || item.quote || "reel"} allow="autoplay; encrypted-media; picture-in-picture"></iframe>` : item.poster ? media(item.poster, item.name || item.quote) : html`<div class="rw-ph">${item.source ? "▶" : t({ ar: "أضف فيديو التجربة", en: "Add the experience video" })}</div>`}
+      const voiced = auto ? index === this.sound : this.audible && index === this.active, live = !!item.source && (auto ? this.seen : index === this.active && (this.opened || voiced)), file = isFileClip(item.source);
+      return html`<article class="rw-reel ${live ? "is-live" : ""}" data-index=${index}>
+              ${live && item.source ? file ? html`<video src=${item.source} poster=${item.poster || nothing} playsinline loop .muted=${!voiced}></video>` : html`<iframe src=${frameSrc(item.source, !0, !0)} title=${item.name || item.quote || "reel"} allow="autoplay; encrypted-media; picture-in-picture"></iframe>` : item.poster ? media(item.poster, item.name || item.quote) : html`<div class="rw-ph">${item.source ? "▶" : t({ ar: "أضف فيديو التجربة", en: "Add the experience video" })}</div>`}
               ${live ? nothing : html`<button type="button" class="rw-reel__hit" aria-label=${item.name || t({ ar: "تشغيل", en: "Play" })} @click=${(event) => this.playCard(index, event)}></button>`}
-              ${live ? html`<button type="button" class="rw-reel__sound" aria-pressed=${this.audible ? "true" : "false"} @click=${(event) => this.playCard(index, event)}>${this.audible ? t({ ar: "كتم", en: "Mute" }) : t({ ar: "صوت", en: "Sound" })}</button>` : nothing}
+              ${live ? html`<button type="button" class="rw-reel__sound" aria-pressed=${voiced ? "true" : "false"} @click=${(event) => auto ? this.toggleSound(index) : this.playCard(index, event)}>${t(voiced ? { ar: "كتم", en: "Mute" } : { ar: "صوت", en: "Sound" })}</button>` : nothing}
               <div class="rw-reel__meta">
-                ${item.stars ? html`<span class="rw-reel__stars" aria-label=${`${item.stars}/5`}>${"●".repeat(item.stars)}${"○".repeat(5 - item.stars)}</span>` : nothing}
+                ${item.stars ? html`<span class="rw-reel__stars" dir="ltr" role="img" aria-label=${`${item.stars}/5`}>${[1, 2, 3, 4, 5].map((star) => html`<svg viewBox="0 0 24 24" class=${star <= item.stars ? "is-on" : "is-off"} aria-hidden="true"><path d="M12 2.4 14.8 8.7l6.8.6-5.2 4.4 1.6 6.6L12 17.2 6 20.3l1.6-6.6L2.4 9.3l6.8-.6L12 2.4z" /></svg>`)}</span>` : nothing}
                 ${item.name ? html`<strong>${item.name}${item.place ? ` · ${item.place}` : ""}</strong>` : nothing}
                 ${item.quote ? html`<p>${item.quote}</p>` : nothing}
                 ${item.link && item.linkLabel ? html`<a class="rw-reel__link" href=${item.link}>${item.linkLabel}</a>` : nothing}
@@ -422,6 +440,12 @@ __decorateClass([
 __decorateClass([
   state()
 ], ReviewReels.prototype, "opened");
+__decorateClass([
+  state()
+], ReviewReels.prototype, "seen");
+__decorateClass([
+  state()
+], ReviewReels.prototype, "sound");
 typeof ReviewReels < "u" && ReviewReels.registerSallaComponent("salla-review-reels");
 export {
   ReviewReels as default
