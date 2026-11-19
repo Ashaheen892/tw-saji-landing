@@ -309,8 +309,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "حقيبة جلد ليوم طويل",
-            "en": "A leather bag for a long day"
+            "ar": "قطعة تُختار من العلاقة",
+            "en": "A piece chosen from the rail"
           }
         },
         {
@@ -325,8 +325,8 @@
           "minLength": 0,
           "maxLength": 500,
           "value": {
-            "ar": "حزام يُفك، وجيب أمامي. الصورة كافية قبل أن تفتح التفاصيل.",
-            "en": "A strap that unclips, and a front pocket. The photo is enough before you open the details."
+            "ar": "القماش ظاهر، والقصة تُرى قبل جدول المقاسات.",
+            "en": "The fabric shows, and the cut is visible before the size chart."
           }
         },
         {
@@ -363,7 +363,7 @@
           "icon": "sicon-image",
           "required": false,
           "description": "المقاس المقترح 1920×1080 بكسل. إن تركتها فارغة تظهر خلفية لونية.",
-          "value": "https://images.pexels.com/photos/27204288/pexels-photo-27204288.jpeg?auto=compress&cs=tinysrgb&w=1800"
+          "value": "https://images.pexels.com/photos/7679720/pexels-photo-7679720.jpeg?auto=compress&cs=tinysrgb&w=1800"
         },
         {
           "id": "image_alt",
@@ -377,8 +377,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "حقيبة جلد بنية بحزام ذهبي",
-            "en": "A brown leather bag with a gold-tone strap"
+            "ar": "اختيار قطعة من علاقة ملابس",
+            "en": "Choosing a piece from a clothing rail"
           }
         },
         {
@@ -649,12 +649,12 @@
                 "en": "+12k"
               },
               "items.label": {
-                "ar": "طلب",
-                "en": "Orders"
+                "ar": "قطعة",
+                "en": "Pieces"
               },
               "items.hint": {
-                "ar": "منذ إطلاق المنتج",
-                "en": "Since the product launched"
+                "ar": "منذ أول تشكيلة",
+                "en": "Since the first collection"
               }
             },
             {
@@ -663,12 +663,12 @@
                 "en": "4.8"
               },
               "items.label": {
-                "ar": "تقييم المتجر",
-                "en": "Store rating"
+                "ar": "تقييم المقاس",
+                "en": "Size rating"
               },
               "items.hint": {
-                "ar": "على الطلبات المكتملة",
-                "en": "On completed orders"
+                "ar": "على القطع المستلمة",
+                "en": "On received pieces"
               }
             },
             {
@@ -681,8 +681,8 @@
                 "en": "Dispatch"
               },
               "items.hint": {
-                "ar": "للطلبات داخل المدينة",
-                "en": "For in-city orders"
+                "ar": "لتجهيز المقاس داخل المدينة",
+                "en": "To prepare an in-city size"
               }
             }
           ]
@@ -763,8 +763,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "لماذا هذه",
-            "en": "Why this one"
+            "ar": "لماذا هذه القطعة",
+            "en": "Why this piece"
           }
         },
         {
@@ -830,8 +830,8 @@
               "minLength": 0,
               "maxLength": 180,
               "value": {
-                "ar": "خامة واضحة",
-                "en": "A clear material"
+                "ar": "قماش واضح",
+                "en": "A clear fabric"
               }
             },
             {
@@ -846,8 +846,8 @@
               "minLength": 0,
               "maxLength": 500,
               "value": {
-                "ar": "اكتب خامة واحدة يلمسها المشتري أو يراها في الصورة.",
-                "en": "Name one material the buyer can touch or see in the photo."
+                "ar": "اكتب قماشاً واحداً يلمسه المشتري أو يراه في الصورة.",
+                "en": "Name one fabric the buyer can touch or see in the photo."
               }
             }
           ],
@@ -855,12 +855,12 @@
             {
               "items.icon": "sicon-shield-check",
               "items.title": {
-                "ar": "جلد يُرى في الصورة",
-                "en": "Leather you can see"
+                "ar": "كتان يُرى نسيجه",
+                "en": "Linen you can see"
               },
               "items.text": {
-                "ar": "الحزام والمقبض من الجلد نفسه، بلا طبقة لامعة تخفي الخامة.",
-                "en": "The strap and the handle are the same leather, with no shiny coat hiding it."
+                "ar": "النسيج ظاهر في الصورة، بلا طباعة تخفي القماش.",
+                "en": "The weave shows in the photo, with no print hiding the cloth."
               }
             },
             {
@@ -877,12 +877,12 @@
             {
               "items.icon": "sicon-star2",
               "items.title": {
-                "ar": "استخدام يومي",
-                "en": "Daily use"
+                "ar": "للدوام",
+                "en": "For the workday"
               },
               "items.text": {
-                "ar": "جملة واحدة عن اللحظة التي يُستخدم فيها المنتج.",
-                "en": "One sentence about the moment the product is used."
+                "ar": "قصة مستقيمة لا تضيق عند الكتف خلال اليوم.",
+                "en": "A straight cut that does not tighten at the shoulder through the day."
               }
             },
             {
@@ -892,19 +892,19 @@
                 "en": "Tidy packing"
               },
               "items.text": {
-                "ar": "ما يصل في الصندوق، بلا قطع زائدة.",
-                "en": "What arrives in the box, with nothing extra."
+                "ar": "القميص يصل معلقاً، مع بطاقة المقاس.",
+                "en": "The shirt arrives on a hanger, with the size card."
               }
             },
             {
               "items.icon": "sicon-rotate",
               "items.title": {
-                "ar": "استبدال سهل",
-                "en": "An easy exchange"
+                "ar": "استبدال المقاس",
+                "en": "A size exchange"
               },
               "items.text": {
-                "ar": "شرط الاستبدال في سطر، إن وصل المنتج بغير حالته.",
-                "en": "The exchange rule in one line, if it arrives damaged."
+                "ar": "خلال ١٤ يوماً إن اختلف المقاس عن الجدول.",
+                "en": "Within 14 days if the size differs from the chart."
               }
             },
             {
@@ -914,8 +914,8 @@
                 "en": "Ready to gift"
               },
               "items.text": {
-                "ar": "هل يصلح هدية؟ اكتب ذلك هنا إن كان صحيحاً.",
-                "en": "Does it work as a gift? Write that here if it does."
+                "ar": "يصل في كيس قماش، بلا تغليف إضافي.",
+                "en": "It arrives in a cloth bag, with no extra wrapping."
               }
             }
           ]
@@ -1109,42 +1109,42 @@
           "value": [
             {
               "items.off": {
-                "ar": "البحث عن البديل يستغرق وقتاً",
-                "en": "Looking for a substitute takes time"
+                "ar": "المقاس يُخمَّن من الصورة",
+                "en": "The size is guessed from the photo"
               },
               "items.on": {
-                "ar": "الخيار جاهز في صفحة واحدة",
-                "en": "The choice is ready on one page"
+                "ar": "المقاس مكتوب في الجدول",
+                "en": "The size is written in the chart"
               }
             },
             {
               "items.off": {
-                "ar": "المواصفات موزعة على أكثر من شاشة",
-                "en": "Specs are split across screens"
+                "ar": "القماش غير مذكور",
+                "en": "The fabric is not named"
               },
               "items.on": {
-                "ar": "المعلومة المهمة في سطر واحد",
-                "en": "The important fact is one line"
+                "ar": "كتان، ووزنه في سطر",
+                "en": "Linen, and its weight is one line"
               }
             },
             {
               "items.off": {
-                "ar": "الشحن غير واضح قبل الدفع",
-                "en": "Shipping is unclear before payment"
+                "ar": "اللون يختلف بعد الوصول",
+                "en": "The color changes after it arrives"
               },
               "items.on": {
-                "ar": "الموعد مكتوب بجانب السعر",
-                "en": "The date is written beside the price"
+                "ar": "لون الصورة هو لون القطعة",
+                "en": "The photo color is the piece color"
               }
             },
             {
               "items.off": {
-                "ar": "الاستبدال يحتاج مراسلات طويلة",
-                "en": "An exchange needs a long thread"
+                "ar": "تبديل المقاس يحتاج مراسلات",
+                "en": "A size change needs a long thread"
               },
               "items.on": {
-                "ar": "الشرط مكتوب قبل الطلب",
-                "en": "The rule is written before the order"
+                "ar": "شرط الاستبدال مكتوب قبل الطلب",
+                "en": "The exchange rule is written before the order"
               }
             }
           ]
@@ -1241,8 +1241,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "ماذا يصل مع الطلب",
-            "en": "What arrives with the order"
+            "ar": "ماذا يصل مع القميص",
+            "en": "What arrives with the shirt"
           }
         },
         {
@@ -1290,26 +1290,26 @@
           "value": [
             {
               "items.text": {
-                "ar": "المنتج الأساسي",
-                "en": "The main product"
+                "ar": "قميص الكتان",
+                "en": "The linen shirt"
               }
             },
             {
               "items.text": {
-                "ar": "تغليف يحمي القطعة",
-                "en": "Packing that protects the piece"
+                "ar": "كيس قماش للتعليق",
+                "en": "A cloth bag for hanging"
               }
             },
             {
               "items.text": {
-                "ar": "بطاقة استخدام قصيرة",
-                "en": "A short use card"
+                "ar": "بطاقة المقاس والعناية",
+                "en": "The size and care card"
               }
             },
             {
               "items.text": {
-                "ar": "شرط الاستبدال مكتوب",
-                "en": "The exchange rule, written down"
+                "ar": "شرط استبدال المقاس",
+                "en": "The size-exchange rule"
               }
             }
           ]
@@ -1326,8 +1326,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "ابدأ بطلب واحد",
-            "en": "Start with one order"
+            "ar": "ابدأ بمقاس واحد",
+            "en": "Start with one size"
           }
         },
         {
@@ -1342,8 +1342,8 @@
           "minLength": 0,
           "maxLength": 500,
           "value": {
-            "ar": "الزر يفتح شراء الصفحة. إن كانت الصفحة عرضاً، يتبع رابط الزر الرئيسي.",
-            "en": "The button opens this page's checkout. On a promotion page it follows the main button link."
+            "ar": "الزر يفتح شراء الصفحة. اختر المقاس من جدول القطعة.",
+            "en": "The button opens this page's checkout. Choose the size from the piece chart."
           }
         },
         {
@@ -1358,8 +1358,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "أضفها للطلب",
-            "en": "Add it to the order"
+            "ar": "أضف القميص",
+            "en": "Add the shirt"
           }
         },
         {
@@ -1464,8 +1464,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "اختر يومك، نكتب لك الجملة",
-            "en": "Pick your day, and we write the line"
+            "ar": "اختر المناسبة، نكتب لك الجملة",
+            "en": "Pick the occasion, and we write the line"
           }
         },
         {
@@ -1481,7 +1481,7 @@
           "maxLength": 180,
           "value": {
             "ar": "كل موقف يفتح رسالة وزر شراء.",
-            "en": "Each situation opens a message and a buy button."
+            "en": "Each occasion opens a message and a buy button."
           }
         },
         {
@@ -1571,26 +1571,26 @@
           "value": [
             {
               "items.label": {
-                "ar": "أحتاجه اليوم",
-                "en": "I need it today"
+                "ar": "ألبسه للدوام",
+                "en": "I will wear it to work"
               },
               "items.message": {
-                "ar": "اكتب مدة التجهيز للشحن داخل المدينة.",
-                "en": "Write the dispatch time for in-city shipping."
+                "ar": "قصة مستقيمة وقماش خفيف، والتجهيز داخل المدينة خلال يومين.",
+                "en": "A straight cut and a light fabric, with in-city dispatch within two days."
               },
               "items.button": {
-                "ar": "اطلبه الآن",
-                "en": "Order it now"
+                "ar": "اطلبه للدوام",
+                "en": "Order it for work"
               }
             },
             {
               "items.label": {
-                "ar": "أهداه لغيري",
+                "ar": "أهداه",
                 "en": "I am gifting it"
               },
               "items.message": {
-                "ar": "اكتب إن كان التغليف يصلح هدية دون شراء إضافي.",
-                "en": "Write whether the packing works as a gift with nothing extra."
+                "ar": "يصل في كيس قماش، وبطاقة المقاس داخله.",
+                "en": "It arrives in a cloth bag, with the size card inside."
               },
               "items.button": {
                 "ar": "اطلبه هدية",
@@ -1599,16 +1599,16 @@
             },
             {
               "items.label": {
-                "ar": "أجربه أولاً",
-                "en": "I want to try it"
+                "ar": "أجرب المقاس",
+                "en": "I want to try the size"
               },
               "items.message": {
-                "ar": "اكتب شرط الاستبدال إن لم يناسب الاستخدام.",
-                "en": "Write the exchange rule if it does not fit the use."
+                "ar": "إن اختلف المقاس عن الجدول، الاستبدال خلال ١٤ يوماً.",
+                "en": "If the size differs from the chart, the exchange is within 14 days."
               },
               "items.button": {
-                "ar": "ابدأ بالتجربة",
-                "en": "Start with a trial"
+                "ar": "ابدأ بالمقاس",
+                "en": "Start with the size"
               }
             }
           ]
@@ -1709,8 +1709,8 @@
           "minLength": 0,
           "maxLength": 500,
           "value": {
-            "ar": "التفاصيل والأسعار في هذه الصفحة، والطلب يُكمَل من المتجر.",
-            "en": "The details and prices are on this page, and the order is completed in the store."
+            "ar": "المقاس والقماش في هذه الصفحة، والطلب يُكمَل من المتجر.",
+            "en": "The size and the fabric are on this page, and the order is completed in the store."
           }
         },
         {

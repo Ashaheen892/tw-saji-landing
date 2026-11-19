@@ -293,8 +293,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "من المقلاة إلى الكيس",
-            "en": "From the roaster to the bag"
+            "ar": "من المشغل إلى العلاقة",
+            "en": "From the workshop to the rail"
           }
         },
         {
@@ -309,8 +309,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "محمصة واحدة، وثلاث حقائق عن الدفعة.",
-            "en": "One roaster, and three facts about the batch."
+            "ar": "مشغل واحد، وثلاث حقائق عن القطعة.",
+            "en": "One workshop, and three facts about the piece."
           }
         },
         {
@@ -371,8 +371,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "محمصة صغيرة",
-            "en": "A small roastery"
+            "ar": "مشغل صغير",
+            "en": "A small workshop"
           }
         },
         {
@@ -383,7 +383,7 @@
           "icon": "sicon-image",
           "required": false,
           "description": "المقاس المقترح 1200×900 بكسل، صورة أفقية للمكان أو الخامة.",
-          "value": "https://images.pexels.com/photos/894695/pexels-photo-894695.jpeg?auto=compress&cs=tinysrgb&w=1400"
+          "value": "https://images.pexels.com/photos/3738088/pexels-photo-3738088.jpeg?auto=compress&cs=tinysrgb&w=1400"
         },
         {
           "id": "image_alt",
@@ -397,8 +397,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "حبوب تُحمّص داخل المقلاة",
-            "en": "Beans roasting in the drum"
+            "ar": "خياطة قماش فاتح على الماكينة",
+            "en": "Sewing a light cloth on the machine"
           }
         },
         {
@@ -450,18 +450,18 @@
                 "en": "Source"
               },
               "items.text": {
-                "ar": "حبوب تُحمّص على دفعات صغيرة",
-                "en": "Beans roasted in small batches"
+                "ar": "كتان يُفصَّل على دفعات صغيرة",
+                "en": "Linen cut in small batches"
               }
             },
             {
               "items.label": {
-                "ar": "الدفعة",
-                "en": "Batch"
+                "ar": "القصة",
+                "en": "Cut"
               },
               "items.text": {
-                "ar": "كيس ٢٥٠ غراماً من التحميص نفسه",
-                "en": "A 250 g bag from the same roast"
+                "ar": "مستقيمة، والكم يُطوّى",
+                "en": "Straight, and the sleeve rolls up"
               }
             },
             {
@@ -470,8 +470,8 @@
                 "en": "Check"
               },
               "items.text": {
-                "ar": "يُراجع تاريخ التحميص قبل إغلاق الكيس",
-                "en": "The roast date is checked before the bag is sealed"
+                "ar": "المقاس يُراجع قبل وضع القطعة في الكيس",
+                "en": "The size is checked before the piece goes in the bag"
               }
             }
           ]
@@ -552,8 +552,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "ماذا داخل الكيس",
-            "en": "What is in the bag"
+            "ar": "ماذا داخل الطلب",
+            "en": "What is in the order"
           }
         },
         {
@@ -568,8 +568,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "سطر لكل شيء يصل مع القهوة.",
-            "en": "One line for everything that arrives with the coffee."
+            "ar": "سطر لكل شيء يصل مع القطعة.",
+            "en": "One line for everything that arrives with the piece."
           }
         },
         {
@@ -663,42 +663,42 @@
           "value": [
             {
               "items.label": {
-                "ar": "الوزن",
-                "en": "Weight"
+                "ar": "القطعة",
+                "en": "Piece"
               },
               "items.value": {
-                "ar": "٢٥٠ غراماً",
-                "en": "250 g"
+                "ar": "قميص كتان",
+                "en": "A linen shirt"
               }
             },
             {
               "items.label": {
-                "ar": "التحميص",
-                "en": "Roast"
+                "ar": "المقاس",
+                "en": "Size"
               },
               "items.value": {
-                "ar": "وسط، يميل للشوكولاتة",
-                "en": "Medium, leaning toward chocolate"
+                "ar": "يُختار من الجدول",
+                "en": "Chosen from the chart"
               }
             },
             {
               "items.label": {
-                "ar": "التغليف",
-                "en": "Packing"
+                "ar": "القماش",
+                "en": "Fabric"
               },
               "items.value": {
-                "ar": "كيس بصمام يحفظ الرائحة",
-                "en": "A valve bag that keeps the aroma"
+                "ar": "كتان خفيف",
+                "en": "Light linen"
               }
             },
             {
               "items.label": {
-                "ar": "التاريخ",
-                "en": "Date"
+                "ar": "العناية",
+                "en": "Care"
               },
               "items.value": {
-                "ar": "تاريخ التحميص مطبوع على الكيس",
-                "en": "The roast date is printed on the bag"
+                "ar": "غسيل بارد وكي من الداخل",
+                "en": "A cold wash, and iron from the inside"
               }
             }
           ]
@@ -715,8 +715,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "الوزن وتاريخ التحميص مكتوبان على الكيس.",
-            "en": "The weight and roast date are printed on the bag."
+            "ar": "المقاس والقماش مكتوبان على البطاقة.",
+            "en": "The size and the fabric are printed on the card."
           }
         },
         {
@@ -795,8 +795,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "متى يُشرب؟",
-            "en": "When is it drunk?"
+            "ar": "متى يُلبس؟",
+            "en": "When is it worn?"
           }
         },
         {
@@ -811,8 +811,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "اختر وقتاً لتقرأ طريقة الفنجان.",
-            "en": "Pick a time to read how the cup is made."
+            "ar": "اختر وقتاً لتقرأ كيف تُلبس القطعة.",
+            "en": "Pick a time to read how the piece is worn."
           }
         },
         {
@@ -926,12 +926,12 @@
                 "en": "Morning"
               },
               "items.title": {
-                "ar": "قبل الخروج",
-                "en": "Before leaving"
+                "ar": "قبل الدوام",
+                "en": "Before work"
               },
               "items.text": {
-                "ar": "فنجان بعد التحميص بيومين، حين تهدأ الحبوب.",
-                "en": "A cup two days after roasting, once the beans have settled."
+                "ar": "قطعة خفيفة، والكم يُطوّى إن طال اليوم.",
+                "en": "A light piece, and the sleeve rolls up if the day runs long."
               }
             },
             {
@@ -944,8 +944,8 @@
                 "en": "Between two errands"
               },
               "items.text": {
-                "ar": "جرعة قصيرة، من غير أدوات أكثر من المطحنة.",
-                "en": "A short cup, with nothing more than a grinder."
+                "ar": "الطبقة تُخلع، والقميص يبقى وحده.",
+                "en": "The layer comes off, and the shirt stays on its own."
               }
             },
             {
@@ -958,8 +958,8 @@
                 "en": "After coming home"
               },
               "items.text": {
-                "ar": "آخر فنجان، ثم يُغلق الكيس حتى الصباح.",
-                "en": "A last cup, then the bag is sealed until morning."
+                "ar": "يُعلّق على العلاقة حتى يرجع شكله.",
+                "en": "It hangs on the rail until it finds its shape again."
               }
             }
           ]
@@ -1040,8 +1040,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "ثلاث عادات تحفظ الطعم",
-            "en": "Three habits that keep the taste"
+            "ar": "ثلاث عادات تحفظ القميص",
+            "en": "Three habits that keep the shirt"
           }
         },
         {
@@ -1056,8 +1056,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "الكيس يُغلق، ويبتعد عن الحرارة، ويُطحن عند الفنجان.",
-            "en": "The bag is sealed, kept away from heat, and ground at the cup."
+            "ar": "غسيل بارد، وكي من الداخل، وتعليق بدل الطي الطويل.",
+            "en": "A cold wash, ironing from the inside, and hanging instead of a long fold."
           }
         },
         {
@@ -1127,8 +1127,8 @@
               "minLength": 0,
               "maxLength": 180,
               "value": {
-                "ar": "انفض الغبار",
-                "en": "Shake off the dust"
+                "ar": "اغسله بارداً",
+                "en": "Wash it cold"
               }
             },
             {
@@ -1143,40 +1143,40 @@
               "minLength": 0,
               "maxLength": 500,
               "value": {
-                "ar": "قبل أي غسيل، حتى تبقى الخامة في شكلها.",
-                "en": "Before any wash, so the material keeps its shape."
+                "ar": "دورة باردة حتى يبقى لون القماش.",
+                "en": "A cold cycle so the cloth keeps its color."
               }
             }
           ],
           "value": [
             {
               "items.title": {
-                "ar": "أغلق الكيس",
-                "en": "Seal the bag"
+                "ar": "اغسله بارداً",
+                "en": "Wash it cold"
               },
               "items.text": {
-                "ar": "بعد كل فنجان، حتى لا تخرج الرائحة.",
-                "en": "After every cup, so the aroma does not escape."
+                "ar": "دورة باردة، حتى يبقى لون الكتان.",
+                "en": "A cold cycle, so the linen keeps its color."
               }
             },
             {
               "items.title": {
-                "ar": "بعيداً عن الحرارة",
-                "en": "Away from heat"
+                "ar": "كيّه من الداخل",
+                "en": "Iron it from the inside"
               },
               "items.text": {
-                "ar": "رف عادي، لا بجانب الفرن ولا في الشمس.",
-                "en": "An ordinary shelf, not beside the oven or in the sun."
+                "ar": "الحرارة على القفا، لا على وجه القماش.",
+                "en": "The heat stays on the reverse, not on the face of the cloth."
               }
             },
             {
               "items.title": {
-                "ar": "اطحن عند الاستخدام",
-                "en": "Grind when you brew"
+                "ar": "علّقه",
+                "en": "Hang it"
               },
               "items.text": {
-                "ar": "الطحن المبكر يذهب بالطعم قبل الفنجان.",
-                "en": "Grinding early loses the taste before the cup."
+                "ar": "علاقة عريضة، لا طي طويل يترك خطاً على الكتف.",
+                "en": "A wide hanger, not a long fold that marks the shoulder."
               }
             }
           ]
@@ -1257,8 +1257,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "كلمة من المحمصة",
-            "en": "A word from the roastery"
+            "ar": "كلمة من المشغل",
+            "en": "A word from the workshop"
           }
         },
         {
@@ -1335,8 +1335,8 @@
           "minLength": 0,
           "maxLength": 500,
           "value": {
-            "ar": "نحمّص كمية نقدر نراجع تاريخها. إن وصل الكيس بغير التاريخ المكتوب عليه، نبدّله دون جدال طويل.",
-            "en": "We roast an amount whose date we can still check. If the bag arrives with a different date, we replace it without a long argument."
+            "ar": "نخيط كمية نقدر نراجع مقاسها. إن وصل القميص بغير المقاس المكتوب على البطاقة، نبدّله دون جدال طويل.",
+            "en": "We sew an amount whose size we can still check. If the shirt arrives in a different size from the card, we exchange it without a long argument."
           }
         },
         {
@@ -1351,8 +1351,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "فريق التحميص",
-            "en": "The roasting team"
+            "ar": "فريق التفصيل",
+            "en": "The cutting team"
           }
         },
         {
@@ -1367,8 +1367,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "المحمصة",
-            "en": "The roastery"
+            "ar": "المشغل",
+            "en": "The workshop"
           }
         },
         {
@@ -1383,8 +1383,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "اطلب الكيس",
-            "en": "Order the bag"
+            "ar": "اطلب القميص",
+            "en": "Order the shirt"
           }
         },
         {
@@ -1473,8 +1473,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "كلمات على كيس القهوة",
-            "en": "Words on the coffee bag"
+            "ar": "كلمات على بطاقة القطعة",
+            "en": "Words on the piece card"
           }
         },
         {
@@ -1489,8 +1489,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "أربع بطاقات، لا جدول مواصفات.",
-            "en": "Four tickets, not a spec table."
+            "ar": "أربع بطاقات، لا جدول طويل.",
+            "en": "Four tickets, not a long table."
           }
         },
         {
@@ -1584,32 +1584,32 @@
           "value": [
             {
               "items.word": {
-                "ar": "محمّص",
-                "en": "Roasted"
+                "ar": "كتان",
+                "en": "Linen"
               },
               "items.note": {
-                "ar": "التاريخ على الكيس",
-                "en": "The date is on the bag"
+                "ar": "النسيج ظاهر",
+                "en": "The weave shows"
               }
             },
             {
               "items.word": {
-                "ar": "طازج",
-                "en": "Fresh"
+                "ar": "مستقيم",
+                "en": "Straight"
               },
               "items.note": {
-                "ar": "دفعة صغيرة لا مخزون طويل",
-                "en": "A small batch, not a long stock"
+                "ar": "القصة لا تضيق عند الكتف",
+                "en": "The cut is not tight at the shoulder"
               }
             },
             {
               "items.word": {
-                "ar": "مغلق",
-                "en": "Sealed"
+                "ar": "خفيف",
+                "en": "Light"
               },
               "items.note": {
-                "ar": "صمام يحفظ الرائحة",
-                "en": "A valve keeps the aroma"
+                "ar": "يناسب الدوام",
+                "en": "It suits the workday"
               }
             },
             {
@@ -1618,8 +1618,8 @@
                 "en": "Exchangeable"
               },
               "items.note": {
-                "ar": "إن اختلف التاريخ المكتوب",
-                "en": "If the printed date differs"
+                "ar": "إن اختلف المقاس المكتوب",
+                "en": "If the printed size differs"
               }
             }
           ]
@@ -1720,8 +1720,8 @@
           "minLength": 0,
           "maxLength": 500,
           "value": {
-            "ar": "التفاصيل والأسعار في هذه الصفحة، والطلب يُكمَل من المتجر.",
-            "en": "The details and prices are on this page, and the order is completed in the store."
+            "ar": "المقاس والقماش في هذه الصفحة، والطلب يُكمَل من المتجر.",
+            "en": "The size and the fabric are on this page, and the order is completed in the store."
           }
         },
         {

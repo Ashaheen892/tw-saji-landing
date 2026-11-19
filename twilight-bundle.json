@@ -357,8 +357,8 @@
                             "minLength": 0,
                             "maxLength": 180,
                             "value": {
-                                "ar": "المنتج الذي يبيع نفسه من أول نظرة",
-                                "en": "The product that explains itself at first glance"
+                                "ar": "القطعة التي تبيع نفسها من أول نظرة",
+                                "en": "The piece that explains itself at first glance"
                             }
                         },
                         {
@@ -373,8 +373,8 @@
                             "minLength": 0,
                             "maxLength": 500,
                             "value": {
-                                "ar": "اكتب جملة واحدة عن الفائدة، ثم ادعُ الزائر للطلب.",
-                                "en": "Write one sentence about the benefit, then invite the visitor to order."
+                                "ar": "اكتب جملة واحدة عن القماش أو القصة، ثم ادعُ الزائر للطلب.",
+                                "en": "Write one sentence about the fabric or the cut, then invite the visitor to order."
                             }
                         },
                         {
@@ -406,38 +406,38 @@
                     ],
                     "value": [
                         {
-                            "items.image": "https://images.pexels.com/photos/4735932/pexels-photo-4735932.jpeg?auto=compress&cs=tinysrgb&w=1400",
+                            "items.image": "https://images.pexels.com/photos/5709665/pexels-photo-5709665.jpeg?auto=compress&cs=tinysrgb&w=1400",
                             "items.alt": {
-                                "ar": "زجاجة سيروم على رخام أبيض",
-                                "en": "A serum bottle on white marble"
+                                "ar": "قميص كتان فاتح على علاقة",
+                                "en": "A light linen shirt on a hanger"
                             },
                             "items.title": {
-                                "ar": "سيروم صافٍ من أول نظرة",
-                                "en": "A clear serum at first glance"
+                                "ar": "قميص كتان من أول نظرة",
+                                "en": "A linen shirt at first glance"
                             },
                             "items.text": {
-                                "ar": "زجاجة زجاجية وقطارة بيضاء. السعر في القسم التالي.",
-                                "en": "A glass bottle and a white dropper. The price is in the next section."
+                                "ar": "أزرار ظاهرة وجيب صدر. المقاس في القسم التالي.",
+                                "en": "Visible buttons and a chest pocket. The size is in the next section."
                             },
                             "items.button": {
-                                "ar": "شاهد المنتج",
-                                "en": "See the product"
+                                "ar": "شاهد القطعة",
+                                "en": "See the piece"
                             },
                             "items.url": "#rw-product"
                         },
                         {
-                            "items.image": "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=1400",
+                            "items.image": "https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=1400",
                             "items.alt": {
-                                "ar": "زجاجة داكنة على طبق خشب",
-                                "en": "A dark bottle on a wooden dish"
+                                "ar": "ملابس على علاقات خشبية",
+                                "en": "Clothes on wooden hangers"
                             },
                             "items.title": {
-                                "ar": "الزجاج الداكن يحفظ الزيت",
-                                "en": "Dark glass keeps the oil"
+                                "ar": "التشكيلة على العلاقة",
+                                "en": "The collection on the rail"
                             },
                             "items.text": {
-                                "ar": "اللون يُرى داخل الزجاجة، والقطارة تقيس الكمية.",
-                                "en": "The color shows inside the bottle, and the dropper measures the amount."
+                                "ar": "أكثر من قطعة، واللون يُرى قبل الاختيار.",
+                                "en": "More than one piece, and the color shows before you choose."
                             },
                             "items.button": {
                                 "ar": "اطلب الآن",
@@ -446,18 +446,18 @@
                             "items.url": ""
                         },
                         {
-                            "items.image": "https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg?auto=compress&cs=tinysrgb&w=1400",
+                            "items.image": "https://images.pexels.com/photos/7679720/pexels-photo-7679720.jpeg?auto=compress&cs=tinysrgb&w=1800",
                             "items.alt": {
-                                "ar": "قطرة تنزل من القطارة",
-                                "en": "A drop falling from the dropper"
+                                "ar": "اختيار قطعة من علاقة الملابس",
+                                "en": "Choosing a piece from a clothing rail"
                             },
                             "items.title": {
-                                "ar": "قطرة واحدة قبل الخروج",
-                                "en": "One drop before leaving"
+                                "ar": "الاختيار قبل الخروج",
+                                "en": "The choice before leaving"
                             },
                             "items.text": {
-                                "ar": "على بشرة نظيفة، ثم يُفرد. لا خطوات أكثر من ذلك.",
-                                "en": "On clean skin, then spread. No more steps than that."
+                                "ar": "من العلاقة إلى المقاس. لا خطوات أكثر من ذلك.",
+                                "en": "From the rail to the size. No more steps than that."
                             },
                             "items.button": {
                                 "ar": "أضف للطلب",
@@ -559,8 +559,8 @@
                     "minLength": 0,
                     "maxLength": 120,
                     "value": {
-                        "ar": "سيروم صافٍ",
-                        "en": "Clear serum"
+                        "ar": "قميص كتان",
+                        "en": "Linen shirt"
                     }
                 },
                 {
@@ -575,8 +575,8 @@
                     "minLength": 0,
                     "maxLength": 500,
                     "value": {
-                        "ar": "زيت خفيف في زجاجة قطارة. عند اختيار منتج من المتجر يُستبدل الاسم والسعر والصور ببياناته.",
-                        "en": "A light oil in a dropper bottle. Choosing a store product replaces the name, price, and photos with its own."
+                        "ar": "قصة مستقيمة وقماش خفيف. عند اختيار منتج من المتجر يُستبدل الاسم والسعر والصور ببياناته.",
+                        "en": "A straight cut and a light fabric. Choosing a store product replaces the name, price, and photos with its own."
                     }
                 },
                 {
@@ -691,36 +691,36 @@
                     ],
                     "value": [
                         {
-                            "views.image": "https://images.pexels.com/photos/4735932/pexels-photo-4735932.jpeg?auto=compress&cs=tinysrgb&w=1400",
+                            "views.image": "https://images.pexels.com/photos/5709665/pexels-photo-5709665.jpeg?auto=compress&cs=tinysrgb&w=1400",
                             "views.label": {
-                                "ar": "الزجاجة",
-                                "en": "Bottle"
+                                "ar": "القميص",
+                                "en": "Shirt"
                             },
                             "views.alt": {
-                                "ar": "زجاجة السيروم على الرخام",
-                                "en": "The serum bottle on marble"
+                                "ar": "قميص الكتان من الأمام",
+                                "en": "The linen shirt from the front"
                             }
                         },
                         {
-                            "views.image": "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=1400",
+                            "views.image": "https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=1400",
                             "views.label": {
-                                "ar": "اللون",
-                                "en": "Color"
+                                "ar": "العلاقة",
+                                "en": "Rail"
                             },
                             "views.alt": {
-                                "ar": "الزجاجة الداكنة عن قرب",
-                                "en": "The dark bottle up close"
+                                "ar": "قطع على علاقات خشبية",
+                                "en": "Pieces on wooden hangers"
                             }
                         },
                         {
-                            "views.image": "https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg?auto=compress&cs=tinysrgb&w=1400",
+                            "views.image": "https://images.pexels.com/photos/3755706/pexels-photo-3755706.jpeg?auto=compress&cs=tinysrgb&w=1400",
                             "views.label": {
-                                "ar": "القطرة",
-                                "en": "Drop"
+                                "ar": "الطبقة",
+                                "en": "Layer"
                             },
                             "views.alt": {
-                                "ar": "قطرة السيروم على اليد",
-                                "en": "A drop of serum on the hand"
+                                "ar": "جاكيت فوق قميص",
+                                "en": "A jacket over a shirt"
                             }
                         }
                     ]
@@ -801,8 +801,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "شاهد القطرة قبل أن تطلب",
-                        "en": "Watch the drop before you order"
+                        "ar": "شاهد الاختيار قبل أن تطلب",
+                        "en": "Watch the choice before you order"
                     }
                 },
                 {
@@ -817,8 +817,8 @@
                     "minLength": 0,
                     "maxLength": 500,
                     "value": {
-                        "ar": "فيديو قصير لفتح الزجاجة ووضع السيروم. يبدأ عند الضغط، والصوت لا يفتح وحده.",
-                        "en": "A short video of opening the bottle and applying the serum. It starts on tap, and the sound does not start on its own."
+                        "ar": "فيديو قصير لاختيار القطعة من العلاقة. يبدأ عند الضغط، والصوت لا يفتح وحده.",
+                        "en": "A short video of choosing the piece from the rail. It starts on tap, and the sound does not start on its own."
                     }
                 },
                 {
@@ -829,7 +829,7 @@
                     "icon": "sicon-image",
                     "required": false,
                     "description": "المقاس المقترح 1600×900 بكسل، تظهر قبل التشغيل.",
-                    "value": "https://images.pexels.com/photos/4735932/pexels-photo-4735932.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                    "value": "https://images.pexels.com/photos/7679720/pexels-photo-7679720.jpeg?auto=compress&cs=tinysrgb&w=1800"
                 },
                 {
                     "id": "video_url",
@@ -839,7 +839,7 @@
                     "icon": "sicon-link",
                     "required": false,
                     "description": "رابط يوتيوب أو فيميو أو ملف mp4.",
-                    "value": "https://videos.pexels.com/video-files/9697876/9697876-hd_1920_1080_25fps.mp4"
+                    "value": "https://videos.pexels.com/video-files/8322527/8322527-hd_2048_1080_25fps.mp4"
                 },
                 {
                     "id": "ov-view",
@@ -1201,8 +1201,8 @@
                             "minLength": 0,
                             "maxLength": 180,
                             "value": {
-                                "ar": "وصل كما في الصور، واستخدمته من اليوم الأول.",
-                                "en": "It arrived as shown, and I used it the same day."
+                                "ar": "المقاس طابق الجدول، ولبست القطعة من اليوم الأول.",
+                                "en": "The size matched the chart, and I wore the piece the same day."
                             }
                         },
                         {
@@ -1275,8 +1275,8 @@
                     ],
                     "value": [
                         {
-                            "items.video_url": "https://videos.pexels.com/video-files/8479098/8479098-sd_360_640_24fps.mp4",
-                            "items.poster": "https://images.pexels.com/photos/4735932/pexels-photo-4735932.jpeg?auto=compress&cs=tinysrgb&w=1400",
+                            "items.video_url": "https://videos.pexels.com/video-files/5585950/5585950-sd_360_640_30fps.mp4",
+                            "items.poster": "https://images.pexels.com/photos/6311652/pexels-photo-6311652.jpeg?auto=compress&cs=tinysrgb&w=1400",
                             "items.name": {
                                 "ar": "نورة",
                                 "en": "Noura"
@@ -1286,8 +1286,8 @@
                                 "en": "Riyadh"
                             },
                             "items.quote": {
-                                "ar": "القطرة واضحة، واستخدمت السيروم من أول صباح.",
-                                "en": "The drop was clear, and I used the serum the first morning."
+                                "ar": "المقاس طابق الجدول، ولبست القطعة من أول يوم.",
+                                "en": "The size matched the chart, and I wore the piece the first day."
                             },
                             "items.stars": [
                                 {
@@ -1303,8 +1303,8 @@
                             "items.link_url": ""
                         },
                         {
-                            "items.video_url": "https://videos.pexels.com/video-files/6925815/6925815-sd_360_640_25fps.mp4",
-                            "items.poster": "https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg?auto=compress&cs=tinysrgb&w=1400",
+                            "items.video_url": "https://videos.pexels.com/video-files/8788548/8788548-sd_360_640_25fps.mp4",
+                            "items.poster": "https://images.pexels.com/photos/1055691/pexels-photo-1055691.jpeg?auto=compress&cs=tinysrgb&w=1400",
                             "items.name": {
                                 "ar": "سلمان",
                                 "en": "Salman"
@@ -1314,8 +1314,8 @@
                                 "en": "Jeddah"
                             },
                             "items.quote": {
-                                "ar": "الكمية قليلة، والزيت ما ثقل على البشرة.",
-                                "en": "The amount is small, and the oil did not feel heavy."
+                                "ar": "القصة مريحة، والقماش ما ثقل خلال الدوام.",
+                                "en": "The cut is easy, and the fabric did not feel heavy through the workday."
                             },
                             "items.stars": [
                                 {
@@ -1331,8 +1331,8 @@
                             "items.link_url": ""
                         },
                         {
-                            "items.video_url": "https://videos.pexels.com/video-files/7118137/7118137-sd_640_360_25fps.mp4",
-                            "items.poster": "https://images.pexels.com/photos/894695/pexels-photo-894695.jpeg?auto=compress&cs=tinysrgb&w=1400",
+                            "items.video_url": "https://videos.pexels.com/video-files/5586005/5586005-sd_360_640_30fps.mp4",
+                            "items.poster": "https://images.pexels.com/photos/3755706/pexels-photo-3755706.jpeg?auto=compress&cs=tinysrgb&w=1400",
                             "items.name": {
                                 "ar": "هند",
                                 "en": "Hind"
@@ -1342,8 +1342,8 @@
                                 "en": "Khobar"
                             },
                             "items.quote": {
-                                "ar": "حبيت أشوف الحبوب قبل ما أطلب الكيس.",
-                                "en": "I wanted to see the beans before I ordered the bag."
+                                "ar": "حبيت أشوف الطبقة قبل ما أطلب المقاس.",
+                                "en": "I wanted to see the layer before I ordered the size."
                             },
                             "items.stars": [
                                 {
@@ -1554,45 +1554,45 @@
                         {
                             "items.icon": "sicon-shipping-fast",
                             "items.title": {
-                                "ar": "شحن واضح",
-                                "en": "Clear shipping"
+                                "ar": "مقاس مكتوب",
+                                "en": "The size is written"
                             },
                             "items.note": {
-                                "ar": "مدة الوصول مكتوبة قبل الدفع",
-                                "en": "The arrival window is written before checkout"
+                                "ar": "جدول المقاسات قبل الدفع",
+                                "en": "The size chart is shown before checkout"
                             }
                         },
                         {
                             "items.icon": "sicon-shield-check",
                             "items.title": {
-                                "ar": "دفع آمن",
-                                "en": "Secure payment"
+                                "ar": "قماش مذكور",
+                                "en": "The fabric is named"
                             },
                             "items.note": {
-                                "ar": "خيارات الدفع المعتمدة في المتجر",
-                                "en": "The store's own payment options"
+                                "ar": "كتان، ووزنه بجانب المقاس",
+                                "en": "Linen, and its weight sits beside the size"
                             }
                         },
                         {
                             "items.icon": "sicon-rotate",
                             "items.title": {
-                                "ar": "استبدال واضح",
-                                "en": "A clear exchange"
+                                "ar": "استبدال المقاس",
+                                "en": "A size exchange"
                             },
                             "items.note": {
-                                "ar": "إن وصل المنتج بحالة غير سليمة",
-                                "en": "If the product arrives damaged"
+                                "ar": "خلال ١٤ يوماً إن اختلف المقاس",
+                                "en": "Within 14 days if the size is off"
                             }
                         },
                         {
                             "items.icon": "sicon-time",
                             "items.title": {
-                                "ar": "رد سريع",
-                                "en": "A quick reply"
+                                "ar": "تجهيز واضح",
+                                "en": "Clear dispatch"
                             },
                             "items.note": {
-                                "ar": "سؤال المنتج يُجاب قبل الشراء",
-                                "en": "A product question is answered before purchase"
+                                "ar": "مدة تجهيز القطعة قبل الطلب",
+                                "en": "The making time is written before the order"
                             }
                         }
                     ]
@@ -1689,8 +1689,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "الزجاجة، ثم القطرة",
-                        "en": "The bottle, then the drop"
+                        "ar": "القميص، ثم الطبقات",
+                        "en": "The shirt, then the layers"
                     }
                 },
                 {
@@ -1705,8 +1705,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "لقطة للزجاج الداكن، ولقطة لقطرة واحدة على اليد.",
-                        "en": "One frame of the dark glass, and one of a single drop on the hand."
+                        "ar": "لقطة للقميص على العلاقة، ولقطة للطبقة التي فوقه.",
+                        "en": "One frame of the shirt on the hanger, and one of the layer over it."
                     }
                 },
                 {
@@ -1722,7 +1722,7 @@
                     "icon": "sicon-image",
                     "required": false,
                     "description": "المقاس المقترح 1200×1500 بكسل.",
-                    "value": "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                    "value": "https://images.pexels.com/photos/5709665/pexels-photo-5709665.jpeg?auto=compress&cs=tinysrgb&w=1400"
                 },
                 {
                     "id": "alt_a",
@@ -1736,8 +1736,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "زجاجة سيروم داكنة على طبق خشب",
-                        "en": "A dark serum bottle on a wooden dish"
+                        "ar": "قميص كتان فاتح بأزرار ظاهرة",
+                        "en": "A light linen shirt with visible buttons"
                     }
                 },
                 {
@@ -1752,8 +1752,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "الزجاج",
-                        "en": "The glass"
+                        "ar": "القميص",
+                        "en": "The shirt"
                     }
                 },
                 {
@@ -1768,8 +1768,8 @@
                     "minLength": 0,
                     "maxLength": 500,
                     "value": {
-                        "ar": "زجاجة داكنة تحفظ الزيت من الضوء، والقطارة تقيس الكمية.",
-                        "en": "Dark glass keeps the oil from the light, and the dropper measures the amount."
+                        "ar": "أزرار ظاهرة وجيب صدر، ونسيج الكتان يبين عن قرب.",
+                        "en": "Visible buttons and a chest pocket, and the linen weave shows up close."
                     }
                 },
                 {
@@ -1785,7 +1785,7 @@
                     "icon": "sicon-image",
                     "required": false,
                     "description": "المقاس المقترح 1000×1300 بكسل.",
-                    "value": "https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                    "value": "https://images.pexels.com/photos/3755706/pexels-photo-3755706.jpeg?auto=compress&cs=tinysrgb&w=1400"
                 },
                 {
                     "id": "alt_b",
@@ -1799,8 +1799,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "قطرة سيروم تنزل على راحة اليد",
-                        "en": "A drop of serum falling onto an open hand"
+                        "ar": "جاكيت فوق قميص وربطة",
+                        "en": "A jacket over a shirt and a tie"
                     }
                 },
                 {
@@ -1815,8 +1815,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "الاستخدام",
-                        "en": "In use"
+                        "ar": "الطبقة",
+                        "en": "The layer"
                     }
                 },
                 {
@@ -1831,8 +1831,8 @@
                     "minLength": 0,
                     "maxLength": 500,
                     "value": {
-                        "ar": "قطرة واحدة على راحة اليد، ثم تُفرد على بشرة نظيفة.",
-                        "en": "One drop on the palm, then spread it over clean skin."
+                        "ar": "القميص يبقى تحت الطبقة، والياقة لا تتحرك من مكانها.",
+                        "en": "The shirt stays under the layer, and the collar does not shift."
                     }
                 },
                 {
@@ -1927,8 +1927,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "اطلب السيروم اليوم، ويصلك خلال يومين",
-                        "en": "Order the serum today, and it arrives within two days"
+                        "ar": "اطلب القميص اليوم، ويصلك خلال يومين",
+                        "en": "Order the shirt today, and it arrives within two days"
                     }
                 },
                 {
@@ -1943,8 +1943,8 @@
                     "minLength": 0,
                     "maxLength": 500,
                     "value": {
-                        "ar": "التجهيز داخل المدينة خلال يومين. إن وصلت الزجاجة مفتوحة نستبدلها خلال ١٤ يوماً.",
-                        "en": "In-city dispatch is within two days. If the bottle arrives open, we replace it within 14 days."
+                        "ar": "التجهيز داخل المدينة خلال يومين. إن اختلف المقاس نستبدله خلال ١٤ يوماً.",
+                        "en": "In-city dispatch is within two days. If the size is off, we exchange it within 14 days."
                     }
                 },
                 {
@@ -2065,8 +2065,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "منتج واحد",
-                        "en": "One product"
+                        "ar": "قطعة واحدة",
+                        "en": "One piece"
                     }
                 },
                 {
@@ -2081,8 +2081,8 @@
                     "minLength": 0,
                     "maxLength": 120,
                     "value": {
-                        "ar": "سيروم خفيف في زجاجة تُرى",
-                        "en": "A light serum in a bottle you can see"
+                        "ar": "قميص كتان بقصة مستقيمة",
+                        "en": "A straight-cut linen shirt"
                     }
                 },
                 {
@@ -2097,8 +2097,8 @@
                     "minLength": 0,
                     "maxLength": 500,
                     "value": {
-                        "ar": "قطرة واحدة على بشرة نظيفة. الصورة جانبية حتى يبقى النص قصيراً.",
-                        "en": "One drop on clean skin. The photo sits beside the text so the line stays short."
+                        "ar": "القماش يُرى نسيجه، والكم يُطوّى. الصورة بجانب النص حتى يبقى الوصف قصيراً.",
+                        "en": "The weave shows, and the sleeve rolls up. The photo sits beside the text so the description stays short."
                     }
                 },
                 {
@@ -2165,8 +2165,8 @@
                     "label": "صورة الجانب",
                     "icon": "sicon-image",
                     "required": false,
-                    "description": "المقاس المقترح 900×1200 بكسل، صورة طولية للمنتج أو الطقس المحيط به.",
-                    "value": "https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                    "description": "المقاس المقترح 900×1200 بكسل، صورة طولية للقطعة أو طريقة لبسها.",
+                    "value": "https://images.pexels.com/photos/5709665/pexels-photo-5709665.jpeg?auto=compress&cs=tinysrgb&w=1400"
                 },
                 {
                     "id": "image_alt",
@@ -2180,8 +2180,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "قطرة السيروم على راحة اليد",
-                        "en": "A drop of serum on an open hand"
+                        "ar": "قميص كتان فاتح على علاقة",
+                        "en": "A light linen shirt on a hanger"
                     }
                 },
                 {
@@ -2312,8 +2312,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "من الاختيار حتى الوصول",
-                        "en": "From the choice to the arrival"
+                        "ar": "من المقاس حتى الوصول",
+                        "en": "From the size to the arrival"
                     }
                 },
                 {
@@ -2328,8 +2328,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "طريق قصير، بلا مفاجآت بعد الدفع.",
-                        "en": "A short path, with no surprises after checkout."
+                        "ar": "طريق قصير، والمقاس واضح قبل الدفع.",
+                        "en": "A short path, and the size is clear before checkout."
                     }
                 },
                 {
@@ -2377,27 +2377,27 @@
                     "value": [
                         {
                             "items.title": {
-                                "ar": "اختر المنتج",
-                                "en": "Choose the product"
+                                "ar": "اختر القطعة",
+                                "en": "Choose the piece"
                             },
                             "items.text": {
-                                "ar": "خيار واضح، وبجانبه سطر يشرح الفرق.",
-                                "en": "A clear option, with a line that explains the difference."
+                                "ar": "القميص أو الطبقة التي تناسبه، وفي سطر واحد.",
+                                "en": "The shirt or the layer that fits, in one line."
                             }
                         },
                         {
                             "items.title": {
-                                "ar": "حدد الخيار",
-                                "en": "Set the option"
+                                "ar": "حدد المقاس",
+                                "en": "Set the size"
                             },
                             "items.text": {
-                                "ar": "مقاس أو لون أو كمية، حسب ما يبيعه المتجر.",
-                                "en": "A size, a color, or a quantity, depending on what the store sells."
+                                "ar": "المقاس واللون من الجدول، قبل الدفع.",
+                                "en": "The size and color come from the chart, before checkout."
                             }
                         },
                         {
                             "items.title": {
-                                "ar": "نجهّز الطلب",
+                                "ar": "نفصّل الطلب",
                                 "en": "We prepare the order"
                             },
                             "items.text": {
@@ -2407,7 +2407,7 @@
                         },
                         {
                             "items.title": {
-                                "ar": "يصلك في الموعد",
+                                "ar": "تصلك في الموعد",
                                 "en": "It arrives on time"
                             },
                             "items.text": {
@@ -2493,8 +2493,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "من جرّب المنتج",
-                        "en": "From people who tried it"
+                        "ar": "من لبس القطعة",
+                        "en": "From people who wore it"
                     }
                 },
                 {
@@ -2509,8 +2509,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "جمل قصيرة، بلا مبالغة",
-                        "en": "Short lines, without exaggeration"
+                        "ar": "جمل قصيرة عن المقاس والقماش",
+                        "en": "Short lines about the size and the fabric"
                     }
                 },
                 {
@@ -2631,8 +2631,8 @@
                     "value": [
                         {
                             "items.quote": {
-                                "ar": "وصل كما في الصورة، والتغليف كان سليماً.",
-                                "en": "It arrived as shown, and the packing was intact."
+                                "ar": "المقاس طابق الجدول، والقماش خفيف على الدوام.",
+                                "en": "The size matched the chart, and the fabric was light for work."
                             },
                             "items.name": {
                                 "ar": "نورة",
@@ -2652,8 +2652,8 @@
                         },
                         {
                             "items.quote": {
-                                "ar": "الخيار الذي طلبته جاء مطابقاً لما كتبته.",
-                                "en": "The option I ordered matched what I wrote."
+                                "ar": "اللون في الصورة هو لون القميص الذي وصل.",
+                                "en": "The color in the photo is the color of the shirt that arrived."
                             },
                             "items.name": {
                                 "ar": "سلمان",
@@ -2673,8 +2673,8 @@
                         },
                         {
                             "items.quote": {
-                                "ar": "الشحن جاء في المدة المكتوبة على الصفحة.",
-                                "en": "Shipping arrived within the window written on the page."
+                                "ar": "الكم ينطوي بسهولة، والقصة ما ضاقت عند الكتف.",
+                                "en": "The sleeve rolls easily, and the cut was not tight at the shoulder."
                             },
                             "items.name": {
                                 "ar": "هند",
@@ -2694,8 +2694,8 @@
                         },
                         {
                             "items.quote": {
-                                "ar": "بدأت بقطعة واحدة قبل أن أكرر الطلب.",
-                                "en": "I started with one piece before ordering again."
+                                "ar": "بدأت بقطعة واحدة، ثم طلبت اللون الثاني.",
+                                "en": "I started with one piece, then ordered the second color."
                             },
                             "items.name": {
                                 "ar": "فيصل",
@@ -2807,8 +2807,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "حقيبة جلد ليوم طويل",
-                        "en": "A leather bag for a long day"
+                        "ar": "قطعة تُختار من العلاقة",
+                        "en": "A piece chosen from the rail"
                     }
                 },
                 {
@@ -2823,8 +2823,8 @@
                     "minLength": 0,
                     "maxLength": 500,
                     "value": {
-                        "ar": "حزام يُفك، وجيب أمامي. الصورة كافية قبل أن تفتح التفاصيل.",
-                        "en": "A strap that unclips, and a front pocket. The photo is enough before you open the details."
+                        "ar": "القماش ظاهر، والقصة تُرى قبل جدول المقاسات.",
+                        "en": "The fabric shows, and the cut is visible before the size chart."
                     }
                 },
                 {
@@ -2861,7 +2861,7 @@
                     "icon": "sicon-image",
                     "required": false,
                     "description": "المقاس المقترح 1920×1080 بكسل. إن تركتها فارغة تظهر خلفية لونية.",
-                    "value": "https://images.pexels.com/photos/27204288/pexels-photo-27204288.jpeg?auto=compress&cs=tinysrgb&w=1800"
+                    "value": "https://images.pexels.com/photos/7679720/pexels-photo-7679720.jpeg?auto=compress&cs=tinysrgb&w=1800"
                 },
                 {
                     "id": "image_alt",
@@ -2875,8 +2875,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "حقيبة جلد بنية بحزام ذهبي",
-                        "en": "A brown leather bag with a gold-tone strap"
+                        "ar": "اختيار قطعة من علاقة ملابس",
+                        "en": "Choosing a piece from a clothing rail"
                     }
                 },
                 {
@@ -3147,12 +3147,12 @@
                                 "en": "+12k"
                             },
                             "items.label": {
-                                "ar": "طلب",
-                                "en": "Orders"
+                                "ar": "قطعة",
+                                "en": "Pieces"
                             },
                             "items.hint": {
-                                "ar": "منذ إطلاق المنتج",
-                                "en": "Since the product launched"
+                                "ar": "منذ أول تشكيلة",
+                                "en": "Since the first collection"
                             }
                         },
                         {
@@ -3161,12 +3161,12 @@
                                 "en": "4.8"
                             },
                             "items.label": {
-                                "ar": "تقييم المتجر",
-                                "en": "Store rating"
+                                "ar": "تقييم المقاس",
+                                "en": "Size rating"
                             },
                             "items.hint": {
-                                "ar": "على الطلبات المكتملة",
-                                "en": "On completed orders"
+                                "ar": "على القطع المستلمة",
+                                "en": "On received pieces"
                             }
                         },
                         {
@@ -3179,8 +3179,8 @@
                                 "en": "Dispatch"
                             },
                             "items.hint": {
-                                "ar": "للطلبات داخل المدينة",
-                                "en": "For in-city orders"
+                                "ar": "لتجهيز المقاس داخل المدينة",
+                                "en": "To prepare an in-city size"
                             }
                         }
                     ]
@@ -3261,8 +3261,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "لماذا هذه",
-                        "en": "Why this one"
+                        "ar": "لماذا هذه القطعة",
+                        "en": "Why this piece"
                     }
                 },
                 {
@@ -3328,8 +3328,8 @@
                             "minLength": 0,
                             "maxLength": 180,
                             "value": {
-                                "ar": "خامة واضحة",
-                                "en": "A clear material"
+                                "ar": "قماش واضح",
+                                "en": "A clear fabric"
                             }
                         },
                         {
@@ -3344,8 +3344,8 @@
                             "minLength": 0,
                             "maxLength": 500,
                             "value": {
-                                "ar": "اكتب خامة واحدة يلمسها المشتري أو يراها في الصورة.",
-                                "en": "Name one material the buyer can touch or see in the photo."
+                                "ar": "اكتب قماشاً واحداً يلمسه المشتري أو يراه في الصورة.",
+                                "en": "Name one fabric the buyer can touch or see in the photo."
                             }
                         }
                     ],
@@ -3353,12 +3353,12 @@
                         {
                             "items.icon": "sicon-shield-check",
                             "items.title": {
-                                "ar": "جلد يُرى في الصورة",
-                                "en": "Leather you can see"
+                                "ar": "كتان يُرى نسيجه",
+                                "en": "Linen you can see"
                             },
                             "items.text": {
-                                "ar": "الحزام والمقبض من الجلد نفسه، بلا طبقة لامعة تخفي الخامة.",
-                                "en": "The strap and the handle are the same leather, with no shiny coat hiding it."
+                                "ar": "النسيج ظاهر في الصورة، بلا طباعة تخفي القماش.",
+                                "en": "The weave shows in the photo, with no print hiding the cloth."
                             }
                         },
                         {
@@ -3375,12 +3375,12 @@
                         {
                             "items.icon": "sicon-star2",
                             "items.title": {
-                                "ar": "استخدام يومي",
-                                "en": "Daily use"
+                                "ar": "للدوام",
+                                "en": "For the workday"
                             },
                             "items.text": {
-                                "ar": "جملة واحدة عن اللحظة التي يُستخدم فيها المنتج.",
-                                "en": "One sentence about the moment the product is used."
+                                "ar": "قصة مستقيمة لا تضيق عند الكتف خلال اليوم.",
+                                "en": "A straight cut that does not tighten at the shoulder through the day."
                             }
                         },
                         {
@@ -3390,19 +3390,19 @@
                                 "en": "Tidy packing"
                             },
                             "items.text": {
-                                "ar": "ما يصل في الصندوق، بلا قطع زائدة.",
-                                "en": "What arrives in the box, with nothing extra."
+                                "ar": "القميص يصل معلقاً، مع بطاقة المقاس.",
+                                "en": "The shirt arrives on a hanger, with the size card."
                             }
                         },
                         {
                             "items.icon": "sicon-rotate",
                             "items.title": {
-                                "ar": "استبدال سهل",
-                                "en": "An easy exchange"
+                                "ar": "استبدال المقاس",
+                                "en": "A size exchange"
                             },
                             "items.text": {
-                                "ar": "شرط الاستبدال في سطر، إن وصل المنتج بغير حالته.",
-                                "en": "The exchange rule in one line, if it arrives damaged."
+                                "ar": "خلال ١٤ يوماً إن اختلف المقاس عن الجدول.",
+                                "en": "Within 14 days if the size differs from the chart."
                             }
                         },
                         {
@@ -3412,8 +3412,8 @@
                                 "en": "Ready to gift"
                             },
                             "items.text": {
-                                "ar": "هل يصلح هدية؟ اكتب ذلك هنا إن كان صحيحاً.",
-                                "en": "Does it work as a gift? Write that here if it does."
+                                "ar": "يصل في كيس قماش، بلا تغليف إضافي.",
+                                "en": "It arrives in a cloth bag, with no extra wrapping."
                             }
                         }
                     ]
@@ -3607,42 +3607,42 @@
                     "value": [
                         {
                             "items.off": {
-                                "ar": "البحث عن البديل يستغرق وقتاً",
-                                "en": "Looking for a substitute takes time"
+                                "ar": "المقاس يُخمَّن من الصورة",
+                                "en": "The size is guessed from the photo"
                             },
                             "items.on": {
-                                "ar": "الخيار جاهز في صفحة واحدة",
-                                "en": "The choice is ready on one page"
+                                "ar": "المقاس مكتوب في الجدول",
+                                "en": "The size is written in the chart"
                             }
                         },
                         {
                             "items.off": {
-                                "ar": "المواصفات موزعة على أكثر من شاشة",
-                                "en": "Specs are split across screens"
+                                "ar": "القماش غير مذكور",
+                                "en": "The fabric is not named"
                             },
                             "items.on": {
-                                "ar": "المعلومة المهمة في سطر واحد",
-                                "en": "The important fact is one line"
+                                "ar": "كتان، ووزنه في سطر",
+                                "en": "Linen, and its weight is one line"
                             }
                         },
                         {
                             "items.off": {
-                                "ar": "الشحن غير واضح قبل الدفع",
-                                "en": "Shipping is unclear before payment"
+                                "ar": "اللون يختلف بعد الوصول",
+                                "en": "The color changes after it arrives"
                             },
                             "items.on": {
-                                "ar": "الموعد مكتوب بجانب السعر",
-                                "en": "The date is written beside the price"
+                                "ar": "لون الصورة هو لون القطعة",
+                                "en": "The photo color is the piece color"
                             }
                         },
                         {
                             "items.off": {
-                                "ar": "الاستبدال يحتاج مراسلات طويلة",
-                                "en": "An exchange needs a long thread"
+                                "ar": "تبديل المقاس يحتاج مراسلات",
+                                "en": "A size change needs a long thread"
                             },
                             "items.on": {
-                                "ar": "الشرط مكتوب قبل الطلب",
-                                "en": "The rule is written before the order"
+                                "ar": "شرط الاستبدال مكتوب قبل الطلب",
+                                "en": "The exchange rule is written before the order"
                             }
                         }
                     ]
@@ -3739,8 +3739,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "ماذا يصل مع الطلب",
-                        "en": "What arrives with the order"
+                        "ar": "ماذا يصل مع القميص",
+                        "en": "What arrives with the shirt"
                     }
                 },
                 {
@@ -3788,26 +3788,26 @@
                     "value": [
                         {
                             "items.text": {
-                                "ar": "المنتج الأساسي",
-                                "en": "The main product"
+                                "ar": "قميص الكتان",
+                                "en": "The linen shirt"
                             }
                         },
                         {
                             "items.text": {
-                                "ar": "تغليف يحمي القطعة",
-                                "en": "Packing that protects the piece"
+                                "ar": "كيس قماش للتعليق",
+                                "en": "A cloth bag for hanging"
                             }
                         },
                         {
                             "items.text": {
-                                "ar": "بطاقة استخدام قصيرة",
-                                "en": "A short use card"
+                                "ar": "بطاقة المقاس والعناية",
+                                "en": "The size and care card"
                             }
                         },
                         {
                             "items.text": {
-                                "ar": "شرط الاستبدال مكتوب",
-                                "en": "The exchange rule, written down"
+                                "ar": "شرط استبدال المقاس",
+                                "en": "The size-exchange rule"
                             }
                         }
                     ]
@@ -3824,8 +3824,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "ابدأ بطلب واحد",
-                        "en": "Start with one order"
+                        "ar": "ابدأ بمقاس واحد",
+                        "en": "Start with one size"
                     }
                 },
                 {
@@ -3840,8 +3840,8 @@
                     "minLength": 0,
                     "maxLength": 500,
                     "value": {
-                        "ar": "الزر يفتح شراء الصفحة. إن كانت الصفحة عرضاً، يتبع رابط الزر الرئيسي.",
-                        "en": "The button opens this page's checkout. On a promotion page it follows the main button link."
+                        "ar": "الزر يفتح شراء الصفحة. اختر المقاس من جدول القطعة.",
+                        "en": "The button opens this page's checkout. Choose the size from the piece chart."
                     }
                 },
                 {
@@ -3856,8 +3856,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "أضفها للطلب",
-                        "en": "Add it to the order"
+                        "ar": "أضف القميص",
+                        "en": "Add the shirt"
                     }
                 },
                 {
@@ -3962,8 +3962,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "اختر يومك، نكتب لك الجملة",
-                        "en": "Pick your day, and we write the line"
+                        "ar": "اختر المناسبة، نكتب لك الجملة",
+                        "en": "Pick the occasion, and we write the line"
                     }
                 },
                 {
@@ -3979,7 +3979,7 @@
                     "maxLength": 180,
                     "value": {
                         "ar": "كل موقف يفتح رسالة وزر شراء.",
-                        "en": "Each situation opens a message and a buy button."
+                        "en": "Each occasion opens a message and a buy button."
                     }
                 },
                 {
@@ -4069,26 +4069,26 @@
                     "value": [
                         {
                             "items.label": {
-                                "ar": "أحتاجه اليوم",
-                                "en": "I need it today"
+                                "ar": "ألبسه للدوام",
+                                "en": "I will wear it to work"
                             },
                             "items.message": {
-                                "ar": "اكتب مدة التجهيز للشحن داخل المدينة.",
-                                "en": "Write the dispatch time for in-city shipping."
+                                "ar": "قصة مستقيمة وقماش خفيف، والتجهيز داخل المدينة خلال يومين.",
+                                "en": "A straight cut and a light fabric, with in-city dispatch within two days."
                             },
                             "items.button": {
-                                "ar": "اطلبه الآن",
-                                "en": "Order it now"
+                                "ar": "اطلبه للدوام",
+                                "en": "Order it for work"
                             }
                         },
                         {
                             "items.label": {
-                                "ar": "أهداه لغيري",
+                                "ar": "أهداه",
                                 "en": "I am gifting it"
                             },
                             "items.message": {
-                                "ar": "اكتب إن كان التغليف يصلح هدية دون شراء إضافي.",
-                                "en": "Write whether the packing works as a gift with nothing extra."
+                                "ar": "يصل في كيس قماش، وبطاقة المقاس داخله.",
+                                "en": "It arrives in a cloth bag, with the size card inside."
                             },
                             "items.button": {
                                 "ar": "اطلبه هدية",
@@ -4097,16 +4097,16 @@
                         },
                         {
                             "items.label": {
-                                "ar": "أجربه أولاً",
-                                "en": "I want to try it"
+                                "ar": "أجرب المقاس",
+                                "en": "I want to try the size"
                             },
                             "items.message": {
-                                "ar": "اكتب شرط الاستبدال إن لم يناسب الاستخدام.",
-                                "en": "Write the exchange rule if it does not fit the use."
+                                "ar": "إن اختلف المقاس عن الجدول، الاستبدال خلال ١٤ يوماً.",
+                                "en": "If the size differs from the chart, the exchange is within 14 days."
                             },
                             "items.button": {
-                                "ar": "ابدأ بالتجربة",
-                                "en": "Start with a trial"
+                                "ar": "ابدأ بالمقاس",
+                                "en": "Start with the size"
                             }
                         }
                     ]
@@ -4187,8 +4187,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "من المقلاة إلى الكيس",
-                        "en": "From the roaster to the bag"
+                        "ar": "من المشغل إلى العلاقة",
+                        "en": "From the workshop to the rail"
                     }
                 },
                 {
@@ -4203,8 +4203,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "محمصة واحدة، وثلاث حقائق عن الدفعة.",
-                        "en": "One roaster, and three facts about the batch."
+                        "ar": "مشغل واحد، وثلاث حقائق عن القطعة.",
+                        "en": "One workshop, and three facts about the piece."
                     }
                 },
                 {
@@ -4265,8 +4265,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "محمصة صغيرة",
-                        "en": "A small roastery"
+                        "ar": "مشغل صغير",
+                        "en": "A small workshop"
                     }
                 },
                 {
@@ -4277,7 +4277,7 @@
                     "icon": "sicon-image",
                     "required": false,
                     "description": "المقاس المقترح 1200×900 بكسل، صورة أفقية للمكان أو الخامة.",
-                    "value": "https://images.pexels.com/photos/894695/pexels-photo-894695.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                    "value": "https://images.pexels.com/photos/3738088/pexels-photo-3738088.jpeg?auto=compress&cs=tinysrgb&w=1400"
                 },
                 {
                     "id": "image_alt",
@@ -4291,8 +4291,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "حبوب تُحمّص داخل المقلاة",
-                        "en": "Beans roasting in the drum"
+                        "ar": "خياطة قماش فاتح على الماكينة",
+                        "en": "Sewing a light cloth on the machine"
                     }
                 },
                 {
@@ -4344,18 +4344,18 @@
                                 "en": "Source"
                             },
                             "items.text": {
-                                "ar": "حبوب تُحمّص على دفعات صغيرة",
-                                "en": "Beans roasted in small batches"
+                                "ar": "كتان يُفصَّل على دفعات صغيرة",
+                                "en": "Linen cut in small batches"
                             }
                         },
                         {
                             "items.label": {
-                                "ar": "الدفعة",
-                                "en": "Batch"
+                                "ar": "القصة",
+                                "en": "Cut"
                             },
                             "items.text": {
-                                "ar": "كيس ٢٥٠ غراماً من التحميص نفسه",
-                                "en": "A 250 g bag from the same roast"
+                                "ar": "مستقيمة، والكم يُطوّى",
+                                "en": "Straight, and the sleeve rolls up"
                             }
                         },
                         {
@@ -4364,8 +4364,8 @@
                                 "en": "Check"
                             },
                             "items.text": {
-                                "ar": "يُراجع تاريخ التحميص قبل إغلاق الكيس",
-                                "en": "The roast date is checked before the bag is sealed"
+                                "ar": "المقاس يُراجع قبل وضع القطعة في الكيس",
+                                "en": "The size is checked before the piece goes in the bag"
                             }
                         }
                     ]
@@ -4446,8 +4446,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "ماذا داخل الكيس",
-                        "en": "What is in the bag"
+                        "ar": "ماذا داخل الطلب",
+                        "en": "What is in the order"
                     }
                 },
                 {
@@ -4462,8 +4462,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "سطر لكل شيء يصل مع القهوة.",
-                        "en": "One line for everything that arrives with the coffee."
+                        "ar": "سطر لكل شيء يصل مع القطعة.",
+                        "en": "One line for everything that arrives with the piece."
                     }
                 },
                 {
@@ -4557,42 +4557,42 @@
                     "value": [
                         {
                             "items.label": {
-                                "ar": "الوزن",
-                                "en": "Weight"
+                                "ar": "القطعة",
+                                "en": "Piece"
                             },
                             "items.value": {
-                                "ar": "٢٥٠ غراماً",
-                                "en": "250 g"
+                                "ar": "قميص كتان",
+                                "en": "A linen shirt"
                             }
                         },
                         {
                             "items.label": {
-                                "ar": "التحميص",
-                                "en": "Roast"
+                                "ar": "المقاس",
+                                "en": "Size"
                             },
                             "items.value": {
-                                "ar": "وسط، يميل للشوكولاتة",
-                                "en": "Medium, leaning toward chocolate"
+                                "ar": "يُختار من الجدول",
+                                "en": "Chosen from the chart"
                             }
                         },
                         {
                             "items.label": {
-                                "ar": "التغليف",
-                                "en": "Packing"
+                                "ar": "القماش",
+                                "en": "Fabric"
                             },
                             "items.value": {
-                                "ar": "كيس بصمام يحفظ الرائحة",
-                                "en": "A valve bag that keeps the aroma"
+                                "ar": "كتان خفيف",
+                                "en": "Light linen"
                             }
                         },
                         {
                             "items.label": {
-                                "ar": "التاريخ",
-                                "en": "Date"
+                                "ar": "العناية",
+                                "en": "Care"
                             },
                             "items.value": {
-                                "ar": "تاريخ التحميص مطبوع على الكيس",
-                                "en": "The roast date is printed on the bag"
+                                "ar": "غسيل بارد وكي من الداخل",
+                                "en": "A cold wash, and iron from the inside"
                             }
                         }
                     ]
@@ -4609,8 +4609,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "الوزن وتاريخ التحميص مكتوبان على الكيس.",
-                        "en": "The weight and roast date are printed on the bag."
+                        "ar": "المقاس والقماش مكتوبان على البطاقة.",
+                        "en": "The size and the fabric are printed on the card."
                     }
                 },
                 {
@@ -4689,8 +4689,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "متى يُشرب؟",
-                        "en": "When is it drunk?"
+                        "ar": "متى يُلبس؟",
+                        "en": "When is it worn?"
                     }
                 },
                 {
@@ -4705,8 +4705,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "اختر وقتاً لتقرأ طريقة الفنجان.",
-                        "en": "Pick a time to read how the cup is made."
+                        "ar": "اختر وقتاً لتقرأ كيف تُلبس القطعة.",
+                        "en": "Pick a time to read how the piece is worn."
                     }
                 },
                 {
@@ -4820,12 +4820,12 @@
                                 "en": "Morning"
                             },
                             "items.title": {
-                                "ar": "قبل الخروج",
-                                "en": "Before leaving"
+                                "ar": "قبل الدوام",
+                                "en": "Before work"
                             },
                             "items.text": {
-                                "ar": "فنجان بعد التحميص بيومين، حين تهدأ الحبوب.",
-                                "en": "A cup two days after roasting, once the beans have settled."
+                                "ar": "قطعة خفيفة، والكم يُطوّى إن طال اليوم.",
+                                "en": "A light piece, and the sleeve rolls up if the day runs long."
                             }
                         },
                         {
@@ -4838,8 +4838,8 @@
                                 "en": "Between two errands"
                             },
                             "items.text": {
-                                "ar": "جرعة قصيرة، من غير أدوات أكثر من المطحنة.",
-                                "en": "A short cup, with nothing more than a grinder."
+                                "ar": "الطبقة تُخلع، والقميص يبقى وحده.",
+                                "en": "The layer comes off, and the shirt stays on its own."
                             }
                         },
                         {
@@ -4852,8 +4852,8 @@
                                 "en": "After coming home"
                             },
                             "items.text": {
-                                "ar": "آخر فنجان، ثم يُغلق الكيس حتى الصباح.",
-                                "en": "A last cup, then the bag is sealed until morning."
+                                "ar": "يُعلّق على العلاقة حتى يرجع شكله.",
+                                "en": "It hangs on the rail until it finds its shape again."
                             }
                         }
                     ]
@@ -4934,8 +4934,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "ثلاث عادات تحفظ الطعم",
-                        "en": "Three habits that keep the taste"
+                        "ar": "ثلاث عادات تحفظ القميص",
+                        "en": "Three habits that keep the shirt"
                     }
                 },
                 {
@@ -4950,8 +4950,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "الكيس يُغلق، ويبتعد عن الحرارة، ويُطحن عند الفنجان.",
-                        "en": "The bag is sealed, kept away from heat, and ground at the cup."
+                        "ar": "غسيل بارد، وكي من الداخل، وتعليق بدل الطي الطويل.",
+                        "en": "A cold wash, ironing from the inside, and hanging instead of a long fold."
                     }
                 },
                 {
@@ -5021,8 +5021,8 @@
                             "minLength": 0,
                             "maxLength": 180,
                             "value": {
-                                "ar": "انفض الغبار",
-                                "en": "Shake off the dust"
+                                "ar": "اغسله بارداً",
+                                "en": "Wash it cold"
                             }
                         },
                         {
@@ -5037,40 +5037,40 @@
                             "minLength": 0,
                             "maxLength": 500,
                             "value": {
-                                "ar": "قبل أي غسيل، حتى تبقى الخامة في شكلها.",
-                                "en": "Before any wash, so the material keeps its shape."
+                                "ar": "دورة باردة حتى يبقى لون القماش.",
+                                "en": "A cold cycle so the cloth keeps its color."
                             }
                         }
                     ],
                     "value": [
                         {
                             "items.title": {
-                                "ar": "أغلق الكيس",
-                                "en": "Seal the bag"
+                                "ar": "اغسله بارداً",
+                                "en": "Wash it cold"
                             },
                             "items.text": {
-                                "ar": "بعد كل فنجان، حتى لا تخرج الرائحة.",
-                                "en": "After every cup, so the aroma does not escape."
+                                "ar": "دورة باردة، حتى يبقى لون الكتان.",
+                                "en": "A cold cycle, so the linen keeps its color."
                             }
                         },
                         {
                             "items.title": {
-                                "ar": "بعيداً عن الحرارة",
-                                "en": "Away from heat"
+                                "ar": "كيّه من الداخل",
+                                "en": "Iron it from the inside"
                             },
                             "items.text": {
-                                "ar": "رف عادي، لا بجانب الفرن ولا في الشمس.",
-                                "en": "An ordinary shelf, not beside the oven or in the sun."
+                                "ar": "الحرارة على القفا، لا على وجه القماش.",
+                                "en": "The heat stays on the reverse, not on the face of the cloth."
                             }
                         },
                         {
                             "items.title": {
-                                "ar": "اطحن عند الاستخدام",
-                                "en": "Grind when you brew"
+                                "ar": "علّقه",
+                                "en": "Hang it"
                             },
                             "items.text": {
-                                "ar": "الطحن المبكر يذهب بالطعم قبل الفنجان.",
-                                "en": "Grinding early loses the taste before the cup."
+                                "ar": "علاقة عريضة، لا طي طويل يترك خطاً على الكتف.",
+                                "en": "A wide hanger, not a long fold that marks the shoulder."
                             }
                         }
                     ]
@@ -5151,8 +5151,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "كلمة من المحمصة",
-                        "en": "A word from the roastery"
+                        "ar": "كلمة من المشغل",
+                        "en": "A word from the workshop"
                     }
                 },
                 {
@@ -5229,8 +5229,8 @@
                     "minLength": 0,
                     "maxLength": 500,
                     "value": {
-                        "ar": "نحمّص كمية نقدر نراجع تاريخها. إن وصل الكيس بغير التاريخ المكتوب عليه، نبدّله دون جدال طويل.",
-                        "en": "We roast an amount whose date we can still check. If the bag arrives with a different date, we replace it without a long argument."
+                        "ar": "نخيط كمية نقدر نراجع مقاسها. إن وصل القميص بغير المقاس المكتوب على البطاقة، نبدّله دون جدال طويل.",
+                        "en": "We sew an amount whose size we can still check. If the shirt arrives in a different size from the card, we exchange it without a long argument."
                     }
                 },
                 {
@@ -5245,8 +5245,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "فريق التحميص",
-                        "en": "The roasting team"
+                        "ar": "فريق التفصيل",
+                        "en": "The cutting team"
                     }
                 },
                 {
@@ -5261,8 +5261,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "المحمصة",
-                        "en": "The roastery"
+                        "ar": "المشغل",
+                        "en": "The workshop"
                     }
                 },
                 {
@@ -5277,8 +5277,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "اطلب الكيس",
-                        "en": "Order the bag"
+                        "ar": "اطلب القميص",
+                        "en": "Order the shirt"
                     }
                 },
                 {
@@ -5367,8 +5367,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "كلمات على كيس القهوة",
-                        "en": "Words on the coffee bag"
+                        "ar": "كلمات على بطاقة القطعة",
+                        "en": "Words on the piece card"
                     }
                 },
                 {
@@ -5383,8 +5383,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "أربع بطاقات، لا جدول مواصفات.",
-                        "en": "Four tickets, not a spec table."
+                        "ar": "أربع بطاقات، لا جدول طويل.",
+                        "en": "Four tickets, not a long table."
                     }
                 },
                 {
@@ -5478,32 +5478,32 @@
                     "value": [
                         {
                             "items.word": {
-                                "ar": "محمّص",
-                                "en": "Roasted"
+                                "ar": "كتان",
+                                "en": "Linen"
                             },
                             "items.note": {
-                                "ar": "التاريخ على الكيس",
-                                "en": "The date is on the bag"
+                                "ar": "النسيج ظاهر",
+                                "en": "The weave shows"
                             }
                         },
                         {
                             "items.word": {
-                                "ar": "طازج",
-                                "en": "Fresh"
+                                "ar": "مستقيم",
+                                "en": "Straight"
                             },
                             "items.note": {
-                                "ar": "دفعة صغيرة لا مخزون طويل",
-                                "en": "A small batch, not a long stock"
+                                "ar": "القصة لا تضيق عند الكتف",
+                                "en": "The cut is not tight at the shoulder"
                             }
                         },
                         {
                             "items.word": {
-                                "ar": "مغلق",
-                                "en": "Sealed"
+                                "ar": "خفيف",
+                                "en": "Light"
                             },
                             "items.note": {
-                                "ar": "صمام يحفظ الرائحة",
-                                "en": "A valve keeps the aroma"
+                                "ar": "يناسب الدوام",
+                                "en": "It suits the workday"
                             }
                         },
                         {
@@ -5512,8 +5512,8 @@
                                 "en": "Exchangeable"
                             },
                             "items.note": {
-                                "ar": "إن اختلف التاريخ المكتوب",
-                                "en": "If the printed date differs"
+                                "ar": "إن اختلف المقاس المكتوب",
+                                "en": "If the printed size differs"
                             }
                         }
                     ]
@@ -5614,8 +5614,8 @@
                     "minLength": 0,
                     "maxLength": 500,
                     "value": {
-                        "ar": "التفاصيل والأسعار في هذه الصفحة، والطلب يُكمَل من المتجر.",
-                        "en": "The details and prices are on this page, and the order is completed in the store."
+                        "ar": "المقاس والقماش في هذه الصفحة، والطلب يُكمَل من المتجر.",
+                        "en": "The size and the fabric are on this page, and the order is completed in the store."
                     }
                 },
                 {
