@@ -1,21 +1,28 @@
 {
-    "name": "tw-ataba",
-    "version": "1.0.0",
-    "description": "",
-    "type": "module",
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "preview": "vite preview"
-    },
-    "devDependencies": {
-        "@salla.sa/twilight-bundles": "^0.1.0",
-        "vite": "^5.0.0"
-    },
-    "author": "sajispprt@gmail.com",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Ashaheen892/tw-ataba"
-    },
-    "private": true
+  "name": "tw-ataba",
+  "version": "1.0.0",
+  "description": "Ataba landing pages for Salla: a calm clarity page and a conversion momentum page",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "prebuild": "node scripts/build-manifest.mjs && python3 scripts/normalize_uuid_keys.py",
+    "build": "vite build && node scripts/sync-bundle.mjs",
+    "preview": "vite preview",
+    "audit:salla": "node scripts/audit.mjs"
+  },
+  "dependencies": {
+    "@salla.sa/twilight-bundles": "0.1.64",
+    "lit": "^3.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.1",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0"
+  },
+  "author": "sajispprt@gmail.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Ashaheen892/tw-ataba"
+  },
+  "private": true
 }

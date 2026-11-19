@@ -1,0 +1,1374 @@
+{
+  "id": "f4a1ec56-5f6a-4683-ab2d-9f25426104e6",
+  "components": [
+    {
+      "title": "واجهة الرصيف",
+      "icon": "sicon-image",
+      "name": "dock-hero",
+      "key": "8372091d-dfb6-46ab-8481-6170917e1444",
+      "image": "",
+      "props": {
+        "min-height": "640px"
+      },
+      "fields": [
+        {
+          "id": "kicker",
+          "type": "string",
+          "format": "text",
+          "label": "سطر صغير",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "للعمل العميق",
+            "en": "For deep work"
+          }
+        },
+        {
+          "id": "title",
+          "type": "string",
+          "format": "text",
+          "label": "العنوان",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "ركّز ساعتين. العالم ينتظر.",
+            "en": "Focus for two hours. The world can wait."
+          }
+        },
+        {
+          "id": "text",
+          "type": "string",
+          "format": "textarea",
+          "label": "النص",
+          "icon": "sicon-paragraph",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 500,
+          "value": {
+            "ar": "عزل هادئ، ووزن لا يُشعر به بعد الدقيقة العاشرة.",
+            "en": "Quiet isolation, and a weight you stop noticing after the tenth minute."
+          }
+        },
+        {
+          "id": "button_label",
+          "type": "string",
+          "format": "text",
+          "label": "نص الزر",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "اطلب السماعة",
+            "en": "Order the headset"
+          }
+        },
+        {
+          "id": "button_url",
+          "type": "string",
+          "format": "url",
+          "label": "رابط الزر",
+          "icon": "sicon-link",
+          "required": false,
+          "description": "في صفحة منتج يفتح الشراء السريع. في صفحة العروض يتبع رابط زر الصفحة، أو هذا الرابط إن وضعته.",
+          "value": ""
+        },
+        {
+          "id": "image",
+          "type": "string",
+          "format": "image",
+          "label": "صورة الخلفية",
+          "icon": "sicon-image",
+          "required": false,
+          "description": "المقاس المقترح 1920×1080 بكسل. إن تركتها فارغة تظهر خلفية لونية.",
+          "value": ""
+        },
+        {
+          "id": "image_alt",
+          "type": "string",
+          "format": "text",
+          "label": "وصف الصورة",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "سماعة عمل على مكتب",
+            "en": "A work headset on a desk"
+          }
+        },
+        {
+          "id": "dh-1",
+          "type": "static",
+          "format": "line"
+        },
+        {
+          "id": "fact_1_value",
+          "type": "string",
+          "format": "text",
+          "label": "الرقم الأول",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "١٨ ساعة",
+            "en": "18 hours"
+          }
+        },
+        {
+          "id": "fact_1_label",
+          "type": "string",
+          "format": "text",
+          "label": "تسمية الرقم الأول",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "بطارية",
+            "en": "Battery"
+          }
+        },
+        {
+          "id": "fact_2_value",
+          "type": "string",
+          "format": "text",
+          "label": "الرقم الثاني",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "٢٤٠ غ",
+            "en": "240 g"
+          }
+        },
+        {
+          "id": "fact_2_label",
+          "type": "string",
+          "format": "text",
+          "label": "تسمية الرقم الثاني",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "الوزن",
+            "en": "Weight"
+          }
+        },
+        {
+          "id": "fact_3_value",
+          "type": "string",
+          "format": "text",
+          "label": "الرقم الثالث",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "سنة",
+            "en": "1 year"
+          }
+        },
+        {
+          "id": "fact_3_label",
+          "type": "string",
+          "format": "text",
+          "label": "تسمية الرقم الثالث",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "ضمان",
+            "en": "Warranty"
+          }
+        },
+        {
+          "id": "show_tone",
+          "type": "boolean",
+          "format": "switch",
+          "label": "زر التبديل بين الفاتح والداكن",
+          "icon": "sicon-toggle-off",
+          "required": false,
+          "description": "يبدل بقية أقسام الصفحة المضبوطة على حسب الصفحة",
+          "value": true,
+          "selected": true
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخلفية",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "color_scheme",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "وضع الألوان",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+          "options": [
+            {
+              "label": "حسب الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            },
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            },
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "selected": [
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "value": [
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "شريط الأرقام",
+      "icon": "sicon-calculator",
+      "name": "count-band",
+      "key": "dcc89e15-44f7-406d-901a-b20fd2e3afd9",
+      "image": "",
+      "props": {
+        "min-height": "180px"
+      },
+      "fields": [
+        {
+          "id": "items",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 3,
+          "item_label": "رقم",
+          "fields": [
+            {
+              "id": "items.value",
+              "type": "string",
+              "format": "text",
+              "label": "الرقم",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "+١٢ ألف",
+                "en": "+12k"
+              }
+            },
+            {
+              "id": "items.label",
+              "type": "string",
+              "format": "text",
+              "label": "العنوان",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "طلب",
+                "en": "Orders"
+              }
+            },
+            {
+              "id": "items.hint",
+              "type": "string",
+              "format": "text",
+              "label": "سطر صغير",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "منذ إطلاق السماعة",
+                "en": "Since the headset launched"
+              }
+            }
+          ],
+          "value": [
+            {
+              "items.value": {
+                "ar": "+١٢ ألف",
+                "en": "+12k"
+              },
+              "items.label": {
+                "ar": "طلب",
+                "en": "Orders"
+              },
+              "items.hint": {
+                "ar": "منذ إطلاق السماعة",
+                "en": "Since the headset launched"
+              }
+            },
+            {
+              "items.value": {
+                "ar": "٤.٨",
+                "en": "4.8"
+              },
+              "items.label": {
+                "ar": "تقييم المتجر",
+                "en": "Store rating"
+              },
+              "items.hint": {
+                "ar": "على الطلبات المكتملة",
+                "en": "On completed orders"
+              }
+            },
+            {
+              "items.value": {
+                "ar": "٤٨ س",
+                "en": "48 h"
+              },
+              "items.label": {
+                "ar": "تجهيز",
+                "en": "Dispatch"
+              },
+              "items.hint": {
+                "ar": "للطلبات داخل المدينة",
+                "en": "For in-city orders"
+              }
+            }
+          ]
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخلفية",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "color_scheme",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "وضع الألوان",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+          "options": [
+            {
+              "label": "حسب الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            },
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            },
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "selected": [
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "value": [
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "سكة الأسباب",
+      "icon": "sicon-star2",
+      "name": "reason-rail",
+      "key": "e0307a54-f504-420e-856f-d4c949390ada",
+      "image": "",
+      "props": {
+        "min-height": "320px"
+      },
+      "fields": [
+        {
+          "id": "kicker",
+          "type": "string",
+          "format": "text",
+          "label": "سطر صغير",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "لماذا هذه",
+            "en": "Why this one"
+          }
+        },
+        {
+          "id": "title",
+          "type": "string",
+          "format": "text",
+          "label": "العنوان",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "ستة أسباب تُمرَّر باليد",
+            "en": "Six reasons you scroll by hand"
+          }
+        },
+        {
+          "id": "subtitle",
+          "type": "string",
+          "format": "text",
+          "label": "وصف قصير",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "اسحب السكة. كل بطاقة سبب واحد فقط.",
+            "en": "Drag the rail. Each card is one reason."
+          }
+        },
+        {
+          "id": "items",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 8,
+          "item_label": "سبب",
+          "fields": [
+            {
+              "id": "items.icon",
+              "type": "string",
+              "format": "icon",
+              "label": "الأيقونة",
+              "icon": "sicon-star2",
+              "required": false,
+              "class": "form--inline",
+              "value": "sicon-star2"
+            },
+            {
+              "id": "items.title",
+              "type": "string",
+              "format": "text",
+              "label": "السبب",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "عزل بلا ضغط",
+                "en": "Isolation without pressure"
+              }
+            },
+            {
+              "id": "items.text",
+              "type": "string",
+              "format": "textarea",
+              "label": "الشرح",
+              "icon": "sicon-paragraph",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 500,
+              "value": {
+                "ar": "الوسادة تحيط بالأذن دون أن تضغط على الذراع.",
+                "en": "The cushion surrounds the ear without pressing the arm."
+              }
+            }
+          ],
+          "value": [
+            {
+              "items.icon": "sicon-shield-check",
+              "items.title": {
+                "ar": "عزل بلا ضغط",
+                "en": "Isolation without pressure"
+              },
+              "items.text": {
+                "ar": "الوسادة تحيط بالأذن دون أن تضغط على الذراع.",
+                "en": "The cushion surrounds the ear without pressing the arm."
+              }
+            },
+            {
+              "items.icon": "sicon-time",
+              "items.title": {
+                "ar": "يوم عمل كامل",
+                "en": "A full workday"
+              },
+              "items.text": {
+                "ar": "البطارية تغطي اجتماعات اليوم دون شحن منتصف الظهر.",
+                "en": "The battery covers the day's meetings without a midday charge."
+              }
+            },
+            {
+              "items.icon": "sicon-star2",
+              "items.title": {
+                "ar": "صوت الاجتماع واضح",
+                "en": "A clear meeting voice"
+              },
+              "items.text": {
+                "ar": "الميكروفون يقترب من الفم، لا من ضجيج الغرفة.",
+                "en": "The microphone sits near the mouth, not the room noise."
+              }
+            },
+            {
+              "items.icon": "sicon-box",
+              "items.title": {
+                "ar": "طيّ داخل الحقيبة",
+                "en": "Folds into a bag"
+              },
+              "items.text": {
+                "ar": "المفصل يطوي الكأسين إلى داخل الطوق.",
+                "en": "The hinge folds both cups into the band."
+              }
+            },
+            {
+              "items.icon": "sicon-rotate",
+              "items.title": {
+                "ar": "قماش قابل للتبديل",
+                "en": "A pad you can swap"
+              },
+              "items.text": {
+                "ar": "الوسادة تُفك بزر واحد حين تبلى.",
+                "en": "The pad comes off with one snap when it wears out."
+              }
+            },
+            {
+              "items.icon": "sicon-gift",
+              "items.title": {
+                "ar": "صندوق مرتب",
+                "en": "A tidy box"
+              },
+              "items.text": {
+                "ar": "السماعة، الكيس، وسلك قصير. لا ورق زائد.",
+                "en": "Headset, pouch, and a short cable. No extra paper."
+              }
+            }
+          ]
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخلفية",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "color_scheme",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "وضع الألوان",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+          "options": [
+            {
+              "label": "حسب الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            },
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            },
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "selected": [
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "value": [
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "لوحة المقارنة",
+      "icon": "sicon-list",
+      "name": "versus-board",
+      "key": "0a595a3a-69c2-4733-92cf-599565958d8f",
+      "image": "",
+      "props": {
+        "min-height": "380px"
+      },
+      "fields": [
+        {
+          "id": "kicker",
+          "type": "string",
+          "format": "text",
+          "label": "سطر صغير",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "قبل وبعد",
+            "en": "Before and after"
+          }
+        },
+        {
+          "id": "title",
+          "type": "string",
+          "format": "text",
+          "label": "العنوان",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "يوم العمل نفسه، بضوضاء أقل",
+            "en": "The same workday, with less noise"
+          }
+        },
+        {
+          "id": "subtitle",
+          "type": "string",
+          "format": "text",
+          "label": "وصف قصير",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "",
+            "en": ""
+          }
+        },
+        {
+          "id": "col_off",
+          "type": "string",
+          "format": "text",
+          "label": "عنوان العمود الأول",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "بدونها",
+            "en": "Without it"
+          }
+        },
+        {
+          "id": "col_on",
+          "type": "string",
+          "format": "text",
+          "label": "عنوان العمود الثاني",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "معها",
+            "en": "With it"
+          }
+        },
+        {
+          "id": "items",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 6,
+          "item_label": "صف",
+          "fields": [
+            {
+              "id": "items.off",
+              "type": "string",
+              "format": "text",
+              "label": "بدونها",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "صوت المقهى يدخل الاجتماع",
+                "en": "Cafe noise joins the meeting"
+              }
+            },
+            {
+              "id": "items.on",
+              "type": "string",
+              "format": "text",
+              "label": "معها",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "صوتك يبقى في المقدمة",
+                "en": "Your voice stays in front"
+              }
+            }
+          ],
+          "value": [
+            {
+              "items.off": {
+                "ar": "صوت المقهى يدخل الاجتماع",
+                "en": "Cafe noise joins the meeting"
+              },
+              "items.on": {
+                "ar": "صوتك يبقى في المقدمة",
+                "en": "Your voice stays in front"
+              }
+            },
+            {
+              "items.off": {
+                "ar": "تعيد الشحن قبل العصر",
+                "en": "You recharge before the afternoon"
+              },
+              "items.on": {
+                "ar": "اليوم ينتهي وفيها شحن",
+                "en": "The day ends with charge left"
+              }
+            },
+            {
+              "items.off": {
+                "ar": "السماعة تضغط بعد ساعة",
+                "en": "The headset presses after an hour"
+              },
+              "items.on": {
+                "ar": "الذراع يبقى خفيفاً",
+                "en": "The arm stays light"
+              }
+            },
+            {
+              "items.off": {
+                "ar": "الكيس منفصل وتبحث عنه",
+                "en": "The pouch is separate and you hunt for it"
+              },
+              "items.on": {
+                "ar": "تُطوى وتدخل الكيس نفسه",
+                "en": "It folds into its own pouch"
+              }
+            }
+          ]
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخلفية",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "color_scheme",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "وضع الألوان",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+          "options": [
+            {
+              "label": "حسب الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            },
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            },
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "selected": [
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "value": [
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "لوحة العرض",
+      "icon": "sicon-box",
+      "name": "offer-panel",
+      "key": "711a6a61-9a20-4885-9968-9e39bbd8b92a",
+      "image": "",
+      "props": {
+        "min-height": "360px"
+      },
+      "fields": [
+        {
+          "id": "kicker",
+          "type": "string",
+          "format": "text",
+          "label": "سطر صغير",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "ما يصلك",
+            "en": "What arrives"
+          }
+        },
+        {
+          "id": "title",
+          "type": "string",
+          "format": "text",
+          "label": "العنوان",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "صندوق واحد، ثلاث قطع",
+            "en": "One box, three pieces"
+          }
+        },
+        {
+          "id": "price_note",
+          "type": "string",
+          "format": "text",
+          "label": "سطر السعر أو الملاحظة",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "السعر يظهر من منتج الصفحة",
+            "en": "The price comes from the page product"
+          }
+        },
+        {
+          "id": "items",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 8,
+          "item_label": "سطر",
+          "fields": [
+            {
+              "id": "items.text",
+              "type": "string",
+              "format": "text",
+              "label": "النص",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "السماعة مع وسادتين",
+                "en": "The headset with two pads"
+              }
+            }
+          ],
+          "value": [
+            {
+              "items.text": {
+                "ar": "السماعة مع وسادتين",
+                "en": "The headset with two pads"
+              }
+            },
+            {
+              "items.text": {
+                "ar": "كيس قماشي للطي",
+                "en": "A cloth pouch for folding"
+              }
+            },
+            {
+              "items.text": {
+                "ar": "سلك شحن قصير",
+                "en": "A short charging cable"
+              }
+            },
+            {
+              "items.text": {
+                "ar": "بطاقة الضمان لسنة",
+                "en": "A one-year warranty card"
+              }
+            }
+          ]
+        },
+        {
+          "id": "aside_title",
+          "type": "string",
+          "format": "text",
+          "label": "عنوان الجانب",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "ابدأ بالقطعة لا بالاشتراك",
+            "en": "Start with the piece, not a subscription"
+          }
+        },
+        {
+          "id": "aside_text",
+          "type": "string",
+          "format": "textarea",
+          "label": "نص الجانب",
+          "icon": "sicon-paragraph",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 500,
+          "value": {
+            "ar": "الزر يفتح شراء الصفحة. إن كانت الصفحة عرضاً، يتبع رابط الزر الرئيسي.",
+            "en": "The button opens this page's checkout. On a promotion page it follows the main button link."
+          }
+        },
+        {
+          "id": "button_label",
+          "type": "string",
+          "format": "text",
+          "label": "نص الزر",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "أضفها للطلب",
+            "en": "Add it to the order"
+          }
+        },
+        {
+          "id": "button_url",
+          "type": "string",
+          "format": "url",
+          "label": "رابط الزر",
+          "icon": "sicon-link",
+          "required": false,
+          "description": "في صفحة منتج يفتح الشراء السريع. في صفحة العروض يتبع رابط زر الصفحة، أو هذا الرابط إن وضعته.",
+          "value": ""
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخلفية",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "color_scheme",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "وضع الألوان",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+          "options": [
+            {
+              "label": "حسب الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            },
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            },
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "selected": [
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "value": [
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "اختيار الموقف",
+      "icon": "sicon-star2",
+      "name": "situation-pick",
+      "key": "11351c9b-6d4d-4e9a-86b0-49fa1071f75c",
+      "image": "",
+      "props": {
+        "min-height": "340px"
+      },
+      "fields": [
+        {
+          "id": "kicker",
+          "type": "string",
+          "format": "text",
+          "label": "سطر صغير",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "هل تناسبك؟",
+            "en": "Is it for you?"
+          }
+        },
+        {
+          "id": "title",
+          "type": "string",
+          "format": "text",
+          "label": "العنوان",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "اختر يومك، نكتب لك الجملة",
+            "en": "Pick your day, and we write the line"
+          }
+        },
+        {
+          "id": "subtitle",
+          "type": "string",
+          "format": "text",
+          "label": "وصف قصير",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "كل موقف يفتح رسالة وزر شراء.",
+            "en": "Each situation opens a message and a buy button."
+          }
+        },
+        {
+          "id": "button_label",
+          "type": "string",
+          "format": "text",
+          "label": "نص الزر الاحتياطي",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "اطلبها الآن",
+            "en": "Order it now"
+          }
+        },
+        {
+          "id": "button_url",
+          "type": "string",
+          "format": "url",
+          "label": "رابط الزر",
+          "icon": "sicon-link",
+          "required": false,
+          "description": "في صفحة منتج يفتح الشراء السريع. في صفحة العروض يتبع رابط زر الصفحة، أو هذا الرابط إن وضعته.",
+          "value": ""
+        },
+        {
+          "id": "items",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 6,
+          "item_label": "موقف",
+          "fields": [
+            {
+              "id": "items.label",
+              "type": "string",
+              "format": "text",
+              "label": "الموقف",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "أعمل من البيت",
+                "en": "I work from home"
+              }
+            },
+            {
+              "id": "items.message",
+              "type": "string",
+              "format": "textarea",
+              "label": "الرسالة",
+              "icon": "sicon-paragraph",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 500,
+              "value": {
+                "ar": "إن كانت الغرفة قريبة من المطبخ، العزل أهم من شكل السماعة.",
+                "en": "If the room is near the kitchen, isolation matters more than how the headset looks."
+              }
+            },
+            {
+              "id": "items.button",
+              "type": "string",
+              "format": "text",
+              "label": "نص الزر",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "اطلبها للبيت",
+                "en": "Order it for home"
+              }
+            }
+          ],
+          "value": [
+            {
+              "items.label": {
+                "ar": "أعمل من البيت",
+                "en": "I work from home"
+              },
+              "items.message": {
+                "ar": "إن كانت الغرفة قريبة من المطبخ، العزل أهم من شكل السماعة.",
+                "en": "If the room is near the kitchen, isolation matters more than how the headset looks."
+              },
+              "items.button": {
+                "ar": "اطلبها للبيت",
+                "en": "Order it for home"
+              }
+            },
+            {
+              "items.label": {
+                "ar": "أسافر بالسماعة",
+                "en": "I travel with it"
+              },
+              "items.message": {
+                "ar": "الطي داخل الكيس يغني عن علبة صلبة في الحقيبة الصغيرة.",
+                "en": "Folding into the pouch replaces a hard case in a small bag."
+              },
+              "items.button": {
+                "ar": "اطلبها للسفر",
+                "en": "Order it for travel"
+              }
+            },
+            {
+              "items.label": {
+                "ar": "أذاكر ساعات",
+                "en": "I study for hours"
+              },
+              "items.message": {
+                "ar": "الوزن الخفيف هو الفرق بين ساعة تركيز وساعة تعدّل فيها السماعة.",
+                "en": "The light weight is the difference between an hour of focus and an hour of adjusting it."
+              },
+              "items.button": {
+                "ar": "اطلبها للمذاكرة",
+                "en": "Order it for study"
+              }
+            }
+          ]
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخلفية",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "color_scheme",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "وضع الألوان",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+          "options": [
+            {
+              "label": "حسب الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            },
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            },
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "selected": [
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "value": [
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
