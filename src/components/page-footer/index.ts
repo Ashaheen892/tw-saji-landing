@@ -6,7 +6,7 @@ import { baseCss, injectStyles, sectionStyle } from "../../utils/styles.js";
 
 const css = `
 .rw-foot.rw-section { padding-block: 1.6rem 1.15rem; }
-.rw-foot { border-top: 1px solid var(--rw-border); }
+.rw-foot { border-top: 1px solid var(--rw-border); background: var(--rw-surface-2); }
 .rw-foot__top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; }
 .rw-foot__brand { display: inline-flex; align-items: center; color: inherit; text-decoration: none; }
 .rw-foot__logo { display: block; height: 2.25rem; width: auto; max-width: 42vw; object-fit: contain; }
@@ -20,7 +20,7 @@ const css = `
 .rw-foot__links a:hover { text-decoration: underline; text-underline-offset: .16rem; }
 .rw-foot__links a:focus-visible, .rw-foot__brand:focus-visible, .rw-foot__badges a:focus-visible { outline: 2px solid var(--color-primary, #1a1d21); outline-offset: 3px; }
 .rw-foot__badges { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.05rem; align-items: center; }
-.rw-foot__badges a { display: inline-flex; align-items: center; justify-content: center; min-height: 3.2rem; padding: .35rem .55rem; border: 1px solid var(--rw-border); border-radius: .7rem; background: #fff; }
+.rw-foot__badges a { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 3.2rem; padding: .4rem .7rem; border: 1px solid var(--rw-border); border-radius: .7rem; background: #fff; color: #16324f; font-weight: 800; font-size: .84rem; text-decoration: none; }
 .rw-foot__badges img { display: block; height: 2.4rem; width: auto; max-width: 9.5rem; object-fit: contain; }
 .rw-foot__base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .35rem 1rem; margin-top: 1.05rem; padding-top: .85rem; border-top: 1px solid var(--rw-border); color: var(--rw-muted); font-size: .9rem; }
 `;
@@ -41,7 +41,7 @@ export default class PageFoot extends LitElement {
     super.connectedCallback();
     this.classList.add("rw-host");
     injectStyles("rw-base", baseCss);
-    injectStyles("rw-page-foot", css);
+    injectStyles("rw-page-footer", css);
     const onTone = () => {
       this.dark = currentTone() === "dark";
     };
@@ -92,7 +92,7 @@ export default class PageFoot extends LitElement {
       .filter((item) => item.label && item.url);
     const badges = getCollectionItems<Record<string, any>>(cfg.badges, "badges")
       .map((item) => ({ image: String(item.image || "").trim(), alt: localizedString(item.alt), url: linkHref(item.url) }))
-      .filter((item) => item.image && item.url && item.url !== "#");
+      .filter((item) => (item.image || item.alt) && item.url && item.url !== "#");
     if (flag(cfg.show_store) && this.store.url) {
       links.unshift({ label: localizedString(cfg.store_label) || t({ ar: "المتجر", en: "Store" }), url: this.store.url });
     }
@@ -114,7 +114,10 @@ export default class PageFoot extends LitElement {
           ${links.map((item) => html`<a href=${item.url}>${item.label}</a>`)}
         </nav>` : nothing}
         ${badges.length ? html`<div class="rw-foot__badges">
-          ${badges.map((item) => html`<a href=${item.url} target="_blank" rel="noopener noreferrer"><img src=${item.image} alt=${item.alt || ""} /></a>`)}
+          ${badges.map((item) => html`<a href=${item.url} target="_blank" rel="noopener noreferrer">
+            ${item.image ? html`<img src=${item.image} alt=${item.alt || ""} />` : nothing}
+            ${item.alt ? html`<span>${item.alt}</span>` : nothing}
+          </a>`)}
         </div>` : nothing}
         <div class="rw-foot__base">
           <span>© ${year} ${name}</span>

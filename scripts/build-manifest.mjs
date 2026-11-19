@@ -56,10 +56,6 @@ const sw = (id, label, value, desc = null) => ({
   id, type: "boolean", format: "switch", label, icon: "sicon-toggle-off", required: false, description: desc, value, selected: value,
 });
 const px = (id, width) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${width}`;
-const badge = (label, fill) => {
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="168" height="56" viewBox="0 0 168 56"><rect width="168" height="56" rx="10" fill="${fill}"/><text x="84" y="34" text-anchor="middle" fill="#ffffff" font-family="Tahoma,Arial,sans-serif" font-size="14">${label}</text></svg>`;
-  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
-};
 const SERUM = px(4735932, 1400);
 const AMBER = px(4041392, 1400);
 const DROP = px(3762879, 1400);
@@ -105,7 +101,7 @@ const products = (id, label, desc) => ({
   options: [], selected: [], value: [], searchable: true, multichoice: false,
 });
 const collection = (id, itemLabel, fields, value, min, max) => ({
-  id, type: "collection", format: "collection", required: true, minLength: min, maxLength: max,
+  id, type: "collection", format: "collection", required: min > 0, minLength: min, maxLength: max,
   item_label: itemLabel,
   fields: fields.map((field) => ({ ...field, id: String(field.id).includes(".") ? field.id : `${id}.${field.id}` })),
   value: value.map((row) => {
@@ -729,7 +725,7 @@ const components = [
   {
     title: "فوتر الصفحة",
     icon: "sicon-link",
-    name: "page-foot",
+    name: "page-footer",
     key: "b7e2c4a1-6f38-4d90-8b15-3a9c0e7d2f64",
     image: "",
     props: { "min-height": "160px" },
@@ -748,11 +744,11 @@ const components = [
       ], 0, 6),
       collection("badges", "شارة", [
         image("image", "الصورة", "المقاس المقترح 168×56 بكسل، شعار الجهة بخلفية شفافة."),
-        text("alt", "وصف الصورة", L("وثيقة العمل الحر", "Freelance certificate")),
+        text("alt", "وصف الصورة", L("وثيقة العمل الحر", "Freelance work document")),
         url("url", "الرابط", "", "صفحة التحقق، مثل وثيقة العمل الحر أو منصة الأعمال."),
       ], [
-        { image: badge("وثيقة العمل الحر", "#0b6b4f"), alt: L("وثيقة العمل الحر", "Freelance certificate"), url: "https://freelance.sa/" },
-        { image: badge("منصة الأعمال", "#123a63"), alt: L("منصة الأعمال", "Business platform"), url: "https://business.sa/" },
+        { image: "", alt: L("وثيقة العمل الحر", "Freelance work document"), url: "https://freelance.sa/" },
+        { image: "", alt: L("منصة الأعمال", "Business platform"), url: "https://business.sa/" },
       ], 0, 6),
       text("legal", "سطر نظامي", L("السجل التجاري يُكتب هنا إن لزم", "Add the commercial register here if needed")),
       color("bg_color", "لون الخلفية"),
@@ -785,7 +781,7 @@ const catalog = [
   "care-thread",
   "maker-letter",
   "shelf-tags",
-  "page-foot",
+  "page-footer",
 ];
 components.sort((a, b) => catalog.indexOf(a.name) - catalog.indexOf(b.name));
 
@@ -795,21 +791,21 @@ const templates = [
     id: "846b8092-8d09-493a-a59e-4485260dd34c",
     is_default: true,
     primary_color: "#2457c5",
-    order: [["page-bar", { sticky: true, show_mode_toggle: true }], "open-slider", "product-hero", "promise-row", "open-video", "detail-duo", "close-invite", "page-foot"],
+    order: [["page-bar", { sticky: true, show_mode_toggle: true }], "open-slider", "product-hero", "promise-row", "open-video", "detail-duo", "close-invite", "page-footer"],
   },
   {
     name: "zakham",
     id: "f4a1ec56-5f6a-4683-ab2d-9f25426104e6",
     is_default: false,
     primary_color: "#0f6e6a",
-    order: [["page-bar", { sticky: true, transparent: true, show_shadow: false, default_mode: "dark" }], "dock-hero", "count-band", "reason-rail", "versus-board", "offer-panel", "situation-pick", "page-foot"],
+    order: [["page-bar", { sticky: true, transparent: true, show_shadow: false, default_mode: "dark" }], "dock-hero", "count-band", "reason-rail", "versus-board", "offer-panel", "situation-pick", "page-footer"],
   },
   {
     name: "saji",
     id: "9d14165d-429f-4cbc-9254-ae64d434d1d7",
     is_default: false,
     primary_color: "#1c3d36",
-    order: ["page-bar", "origin-card", "receipt-note", "day-parts", "care-thread", "maker-letter", "shelf-tags", "page-foot"],
+    order: ["page-bar", "origin-card", "receipt-note", "day-parts", "care-thread", "maker-letter", "shelf-tags", "page-footer"],
   },
 ];
 
