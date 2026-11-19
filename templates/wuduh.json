@@ -1024,6 +1024,170 @@
           "value": ""
         },
         {
+          "id": "ov-view",
+          "type": "static",
+          "format": "line"
+        },
+        {
+          "id": "layout",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "مكان الفيديو",
+          "icon": "sicon-list",
+          "required": false,
+          "description": null,
+          "options": [
+            {
+              "label": "بجانب النص",
+              "value": "beside",
+              "key": "a7c3e1d4-2b58-4f90-8a16-5d9e0c3b7f21"
+            },
+            {
+              "label": "تحت النص بعرض الصفحة",
+              "value": "stack",
+              "key": "b8d4f2e5-3c69-4a01-9b27-6e0f1d4c8a32"
+            },
+            {
+              "label": "خلفية والنص فوقه",
+              "value": "cover",
+              "key": "c9e5a3f6-4d70-4b12-8c38-7f1a2e5d9b43"
+            }
+          ],
+          "selected": [
+            {
+              "label": "بجانب النص",
+              "value": "beside",
+              "key": "a7c3e1d4-2b58-4f90-8a16-5d9e0c3b7f21"
+            }
+          ],
+          "value": [
+            {
+              "label": "بجانب النص",
+              "value": "beside",
+              "key": "a7c3e1d4-2b58-4f90-8a16-5d9e0c3b7f21"
+            }
+          ]
+        },
+        {
+          "id": "frame",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "شكل الإطار",
+          "icon": "sicon-list",
+          "required": false,
+          "description": null,
+          "options": [
+            {
+              "label": "عريض ١٦:٩",
+              "value": "wide",
+              "key": "d0f6b4a7-5e81-4c23-9d49-8a2b3f6e0c54"
+            },
+            {
+              "label": "طولي ٩:١٦",
+              "value": "story",
+              "key": "e1a7c5b8-6f92-4d34-8e50-9b3c4a7f1d65"
+            },
+            {
+              "label": "مربع",
+              "value": "square",
+              "key": "f2b8d6c9-7a03-4e45-9f61-0c4d5b8a2e76"
+            },
+            {
+              "label": "بورتريه ٤:٥",
+              "value": "portrait",
+              "key": "a3c9e7d0-8b14-4f56-8a72-1d5e6c9b3f07"
+            }
+          ],
+          "selected": [
+            {
+              "label": "عريض ١٦:٩",
+              "value": "wide",
+              "key": "d0f6b4a7-5e81-4c23-9d49-8a2b3f6e0c54"
+            }
+          ],
+          "value": [
+            {
+              "label": "عريض ١٦:٩",
+              "value": "wide",
+              "key": "d0f6b4a7-5e81-4c23-9d49-8a2b3f6e0c54"
+            }
+          ]
+        },
+        {
+          "id": "fit",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "ملاءمة الفيديو",
+          "icon": "sicon-list",
+          "required": false,
+          "description": null,
+          "options": [
+            {
+              "label": "تغطية الإطار",
+              "value": "cover",
+              "key": "b4d0f8e1-9c25-4a67-9b83-2e6f7d0c4a18"
+            },
+            {
+              "label": "إظهار الفيديو كاملاً",
+              "value": "contain",
+              "key": "c5e1a9f2-0d36-4b78-8c94-3f7a8e1d5b29"
+            }
+          ],
+          "selected": [
+            {
+              "label": "تغطية الإطار",
+              "value": "cover",
+              "key": "b4d0f8e1-9c25-4a67-9b83-2e6f7d0c4a18"
+            }
+          ],
+          "value": [
+            {
+              "label": "تغطية الإطار",
+              "value": "cover",
+              "key": "b4d0f8e1-9c25-4a67-9b83-2e6f7d0c4a18"
+            }
+          ]
+        },
+        {
+          "id": "playback",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "التشغيل",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "التشغيل التلقائي يعمل مع ملف mp4 أو يوتيوب، ويبدأ صامتاً.",
+          "options": [
+            {
+              "label": "عند الضغط",
+              "value": "click",
+              "key": "d6f2b0a3-1e47-4c89-9d05-4a8b9f2e6c30"
+            },
+            {
+              "label": "تلقائي بدون صوت",
+              "value": "auto",
+              "key": "e7a3c1b4-2f58-4d90-8e16-5b9c0a3f7d41"
+            }
+          ],
+          "selected": [
+            {
+              "label": "عند الضغط",
+              "value": "click",
+              "key": "d6f2b0a3-1e47-4c89-9d05-4a8b9f2e6c30"
+            }
+          ],
+          "value": [
+            {
+              "label": "عند الضغط",
+              "value": "click",
+              "key": "d6f2b0a3-1e47-4c89-9d05-4a8b9f2e6c30"
+            }
+          ]
+        },
+        {
           "id": "bg_color",
           "type": "string",
           "format": "color",

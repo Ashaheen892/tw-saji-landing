@@ -19,6 +19,17 @@ const KEY = {
   modeLight: "1a9e4c72-5d30-4b88-9f21-6c3e8a0b7d45",
   modeDark: "6c2d8f14-9a70-4e35-81b6-3d5f0a9c2e78",
   modeSystem: "9b7e1a26-4c58-4f90-a2d3-8e6b1c0f5a34",
+  videoBeside: "a7c3e1d4-2b58-4f90-8a16-5d9e0c3b7f21",
+  videoStack: "b8d4f2e5-3c69-4a01-9b27-6e0f1d4c8a32",
+  videoCover: "c9e5a3f6-4d70-4b12-8c38-7f1a2e5d9b43",
+  frameWide: "d0f6b4a7-5e81-4c23-9d49-8a2b3f6e0c54",
+  frameStory: "e1a7c5b8-6f92-4d34-8e50-9b3c4a7f1d65",
+  frameSquare: "f2b8d6c9-7a03-4e45-9f61-0c4d5b8a2e76",
+  framePortrait: "a3c9e7d0-8b14-4f56-8a72-1d5e6c9b3f07",
+  fitCover: "b4d0f8e1-9c25-4a67-9b83-2e6f7d0c4a18",
+  fitContain: "c5e1a9f2-0d36-4b78-8c94-3f7a8e1d5b29",
+  playClick: "d6f2b0a3-1e47-4c89-9d05-4a8b9f2e6c30",
+  playAuto: "e7a3c1b4-2f58-4d90-8e16-5b9c0a3f7d41",
 };
 
 const text = (id, label, value, o = {}) => ({
@@ -625,6 +636,26 @@ const components = [
       area("text", "النص", L("فيديو قصير يشرح الاستخدام. الزائر يضغط التشغيل، ولا يبدأ الصوت وحده.", "A short video that shows how it is used. The visitor presses play, and the sound does not start on its own.")),
       image("poster", "صورة الغلاف", "المقاس المقترح 1600×900 بكسل، تظهر قبل التشغيل."),
       url("video_url", "رابط الفيديو", "", "رابط يوتيوب أو فيميو أو ملف mp4."),
+      line("ov-view"),
+      drop("layout", "مكان الفيديو", [
+        ["beside", "بجانب النص", KEY.videoBeside],
+        ["stack", "تحت النص بعرض الصفحة", KEY.videoStack],
+        ["cover", "خلفية والنص فوقه", KEY.videoCover],
+      ], "beside"),
+      drop("frame", "شكل الإطار", [
+        ["wide", "عريض ١٦:٩", KEY.frameWide],
+        ["story", "طولي ٩:١٦", KEY.frameStory],
+        ["square", "مربع", KEY.frameSquare],
+        ["portrait", "بورتريه ٤:٥", KEY.framePortrait],
+      ], "wide"),
+      drop("fit", "ملاءمة الفيديو", [
+        ["cover", "تغطية الإطار", KEY.fitCover],
+        ["contain", "إظهار الفيديو كاملاً", KEY.fitContain],
+      ], "cover"),
+      drop("playback", "التشغيل", [
+        ["click", "عند الضغط", KEY.playClick],
+        ["auto", "تلقائي بدون صوت", KEY.playAuto],
+      ], "click", "التشغيل التلقائي يعمل مع ملف mp4 أو يوتيوب، ويبدأ صامتاً."),
       color("bg_color", "لون الخلفية"),
       scheme("light"),
     ],

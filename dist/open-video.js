@@ -101,31 +101,46 @@ var __defProp2 = Object.defineProperty, __decorateClass = /* @__PURE__ */ __name
 }, "__decorateClass");
 const css = `
 .rw-film { display: grid; gap: 1.2rem; align-items: center; }
-@container (min-width: 860px) { .rw-film { grid-template-columns: minmax(0, 1.35fr) minmax(16rem, .65fr); } }
-.rw-film__stage { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 1rem; background: #121417; }
+@container (min-width: 860px) { .rw-film--beside { grid-template-columns: minmax(0, 1.35fr) minmax(16rem, .65fr); } }
+.rw-film--stack { grid-template-columns: 1fr; }
+.rw-film--stack .rw-film__copy { order: -1; max-width: 40rem; }
+.rw-film__stage { position: relative; width: 100%; overflow: hidden; border-radius: 1rem; background: #121417; }
+.rw-film--wide .rw-film__stage { aspect-ratio: 16 / 9; }
+.rw-film--story .rw-film__stage { aspect-ratio: 9 / 16; max-width: 24rem; justify-self: center; }
+.rw-film--square .rw-film__stage { aspect-ratio: 1; max-width: 36rem; justify-self: center; }
+.rw-film--portrait .rw-film__stage { aspect-ratio: 4 / 5; max-width: 32rem; justify-self: center; }
 .rw-film__stage img, .rw-film__stage video, .rw-film__stage iframe { width: 100%; height: 100%; object-fit: cover; border: 0; }
+.rw-film--contain .rw-film__stage img,
+.rw-film--contain .rw-film__stage video,
+.rw-film--contain .rw-film__stage iframe { object-fit: contain; }
 .rw-film__play { position: absolute; inset: 0; display: grid; place-items: center; border: 0; background: rgb(18 20 23 / 28%); color: #fff; cursor: pointer; }
 .rw-film__play b { position: absolute; display: grid; place-items: center; width: 4rem; height: 4rem; border-radius: 999px; background: var(--color-primary, #1a1d21); color: var(--color-primary-reverse, #fff); font-size: 1.1rem; }
 .rw-film__miss { position: absolute; inset-inline: 1rem; bottom: 1rem; margin: 0; padding: .55rem .8rem; border-radius: .7rem; background: rgb(18 20 23 / 78%); color: #fff; text-align: center; }
 .rw-film__copy h2 { font-size: clamp(1.5rem, 3vw, 2.2rem); line-height: 1.25; }
 .rw-film__copy p { margin-top: .7rem; color: var(--rw-muted); line-height: 1.8; }
+.rw-film--cover { display: block; position: relative; }
+.rw-film--cover .rw-film__stage { max-width: none; min-height: 22rem; }
+.rw-film--cover .rw-film__copy { position: absolute; z-index: 1; inset-inline-start: 1.4rem; bottom: 1.4rem; max-width: min(36rem, calc(100% - 2.8rem)); color: #fff; }
+.rw-film--cover .rw-film__copy p { color: rgb(255 255 255 / 84%); }
 `;
-function embed(url) {
+function embed(url, auto) {
+  let frame = url;
   try {
     const parsed = new URL(url), host = parsed.hostname.replace(/^www\./, "");
-    if (host === "youtu.be") return `https://www.youtube.com/embed/${parsed.pathname.slice(1)}`;
-    if (host.includes("youtube.com")) {
+    if (host === "youtu.be") frame = `https://www.youtube.com/embed/${parsed.pathname.slice(1)}`;
+    else if (host.includes("youtube.com")) {
       const id = parsed.searchParams.get("v") || parsed.pathname.split("/").pop();
-      return id ? `https://www.youtube.com/embed/${id}` : url;
-    }
-    if (host.includes("vimeo.com")) {
+      id && (frame = `https://www.youtube.com/embed/${id}`);
+    } else if (host.includes("vimeo.com")) {
       const id = parsed.pathname.split("/").filter(Boolean).pop();
-      return id ? `https://player.vimeo.com/video/${id}` : url;
+      id && (frame = `https://player.vimeo.com/video/${id}`);
     }
   } catch {
-    return url;
+    frame = url;
   }
-  return url;
+  if (!auto) return frame;
+  const joiner = frame.includes("?") ? "&" : "?";
+  return `${frame}${joiner}autoplay=1&mute=1`;
 }
 __name(embed, "embed");
 const _OpenVideo = class _OpenVideo extends LitElement {
@@ -143,16 +158,17 @@ const _OpenVideo = class _OpenVideo extends LitElement {
     this.stop(), super.disconnectedCallback();
   }
   render() {
-    const cfg = getConfig(this.config), title = localizedString(cfg.title), text = localizedString(cfg.text), poster = String(cfg.poster || ""), source = String(cfg.video_url || ""), file = /\.(mp4|webm)(\?|$)/i.test(source), frame = embed(source);
+    const cfg = getConfig(this.config), title = localizedString(cfg.title), text = localizedString(cfg.text), poster = String(cfg.poster || ""), source = String(cfg.video_url || ""), layout = String(unwrapValue(cfg.layout) || "beside"), frame = String(unwrapValue(cfg.frame) || "wide"), fit = String(unwrapValue(cfg.fit) || "cover"), auto = String(unwrapValue(cfg.playback) || "click") === "auto", file = /\.(mp4|webm)(\?|$)/i.test(source), embedded = embed(source, auto), classes = ["rw-container", "rw-film", `rw-film--${layout}`, `rw-film--${frame}`, fit === "contain" ? "rw-film--contain" : ""].filter(Boolean).join(" "), showPlayer = !!source && (auto || this.playing), player = file ? html`<video src=${source} poster=${poster} controls autoplay playsinline ?muted=${auto} ?loop=${auto}></video>` : html`<iframe src=${embedded} title=${title || "video"} allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
     return html`<section class="rw-block rw-section ${schemeOf(cfg)}" style=${sectionStyle(cfg)} aria-label=${title || "video"}>
-      <div class="rw-container rw-film">
+      <div class=${classes}>
         <div class="rw-film__stage">
-          ${this.playing && source ? file ? html`<video src=${source} poster=${poster} controls autoplay playsinline></video>` : html`<iframe src=${frame} title=${title || "video"} allow="autoplay; encrypted-media" allowfullscreen></iframe>` : html`<button type="button" class="rw-film__play" @click=${() => {
+          ${showPlayer ? player : html`<button type="button" class="rw-film__play" @click=${() => {
       source ? this.playing = !0 : this.missing = !0;
     }}>
                 ${media(poster, title)}
                 <b aria-hidden="true">▶</b>
-                ${this.missing ? html`<p class="rw-film__miss">${t({ ar: "أضف رابط الفيديو من إعدادات القسم.", en: "Add the video link in the section settings." })}</p>` : nothing}`}
+                ${this.missing || auto && !source ? html`<p class="rw-film__miss">${t({ ar: "أضف رابط الفيديو من إعدادات القسم.", en: "Add the video link in the section settings." })}</p>` : nothing}
+              </button>`}
         </div>
         <div class="rw-film__copy">
           ${title ? html`<h2>${title}</h2>` : nothing}
