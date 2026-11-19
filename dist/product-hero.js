@@ -193,9 +193,30 @@ const css = `
 .rw-stage__photo { aspect-ratio: 1; overflow: hidden; border-radius: 1.1rem; background: var(--rw-soft); }
 .rw-stage__photo img, .rw-stage__photo .rw-ph { width: 100%; height: 100%; object-fit: cover; }
 .rw-stage__views { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .7rem; }
-.rw-stage__views button { min-height: 2.5rem; padding: .3rem .75rem; border: 1px solid var(--rw-border); border-radius: .7rem; background: var(--rw-card); color: var(--rw-text); cursor: pointer; }
-.rw-stage__thumb { width: 4.4rem; height: 4.4rem; padding: 0; overflow: hidden; }
-.rw-stage__thumb img { width: 100%; height: 100%; object-fit: cover; }
+.rw-stage__views button { display: flex; flex-direction: column; align-items: center; gap: .25rem; min-height: 2.5rem; padding: .3rem .75rem; border: 1px solid var(--rw-border); border-radius: .7rem; background: var(--rw-card); color: var(--rw-text); cursor: pointer; }
+.rw-stage__thumb { padding: .25rem; overflow: hidden; }
+.rw-stage__thumb img { width: 4.4rem; height: 4.4rem; object-fit: cover; border-radius: .45rem; }
+.rw-stage__cap { font-size: .75rem; line-height: 1.2; }
+.rw-stage__options { margin-top: 1rem; }
+.rw-stage__options .s-product-options-option { margin-top: .85rem; }
+.rw-stage__options .s-product-options-colors-wrapper,
+.rw-stage__options .s-product-options-thumbnails-wrapper { display: flex; flex-wrap: wrap; gap: .55rem; margin: .35rem 0 0; padding: 0; border: 0; }
+.rw-stage__options .s-product-options-colors-item input,
+.rw-stage__options .s-product-options-thumbnails-wrapper input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.rw-stage__options .s-product-options-colors-item label { display: flex; flex-direction: column; align-items: center; gap: .25rem; cursor: pointer; font-size: .75rem; }
+.rw-stage__options .s-product-options-colors-item span { width: 1.7rem; height: 1.7rem; border-radius: 999px; display: block; border: 1px solid var(--rw-border); }
+.rw-stage__options .s-product-options-colors-item input:checked + label span,
+.rw-stage__options .s-product-options-thumbnails-wrapper input:checked + label img,
+.rw-stage__options .s-product-options-colors-item input:focus-visible + label span,
+.rw-stage__options .s-product-options-thumbnails-wrapper input:focus-visible + label img { outline: 2px solid var(--color-primary, #1a1d21); outline-offset: 2px; }
+.rw-stage__options .s-product-options-thumbnails-wrapper > div { font-size: .75rem; text-align: center; }
+.rw-stage__options .s-product-options-thumbnails-wrapper p { margin: .25rem 0 0; }
+.rw-stage__options .s-product-options-thumbnails-wrapper label { position: relative; display: inline-block; cursor: pointer; }
+.rw-stage__options .s-product-options-thumbnails-icon { display: none; position: absolute; inset-inline-end: .2rem; top: .2rem; width: 1.1rem; height: 1.1rem; border-radius: 999px; background: var(--color-primary, #1a1d21); color: #fff; align-items: center; justify-content: center; }
+.rw-stage__options .s-product-options-thumbnails-icon svg { width: .7rem; height: .7rem; fill: currentColor; }
+.rw-stage__options .s-product-options-thumbnails-wrapper input:checked + label .s-product-options-thumbnails-icon { display: flex; }
+.rw-block .rw-stage__options img { width: 4.2rem; height: 4.2rem; max-width: 4.2rem; object-fit: cover; border-radius: .55rem; }
+.rw-stage__options select { width: 100%; max-width: 18rem; min-height: 2.6rem; margin-top: .35rem; padding: 0 .7rem; border: 1px solid var(--rw-border); border-radius: .7rem; background: var(--rw-card); color: var(--rw-text); }
 .rw-stage__views button[aria-pressed="true"] { border-color: var(--color-primary, #1a1d21); outline: 2px solid var(--color-primary, #1a1d21); outline-offset: 1px; }
 .rw-stage__views button:focus-visible { outline: 2px solid var(--color-primary, #1a1d21); outline-offset: 2px; }
 .rw-stage__copy h2 { font-size: clamp(1.7rem, 3vw, 2.6rem); line-height: 1.2; }
@@ -204,7 +225,7 @@ const css = `
 .rw-stage__price s { color: var(--rw-muted); font-size: 1rem; font-weight: 500; }
 .rw-stage__stock { margin-top: .4rem; color: var(--rw-muted); }
 `;
-function liveViews(product) {
+function productPhotos(product) {
   var _a;
   if (!product) return [];
   const views = (Array.isArray(product.images) ? product.images : []).map((image, index) => {
@@ -217,7 +238,24 @@ function liveViews(product) {
   }).filter((item) => item.image), single = ((_a = product.image) == null ? void 0 : _a.url) || product.thumbnail;
   return !views.length && single && views.push({ image: String(single), alt: String(product.name || ""), label: "1" }), views;
 }
-__name(liveViews, "liveViews");
+__name(productPhotos, "productPhotos");
+function composeViews(product, merchant) {
+  const photos = productPhotos(product);
+  if (!merchant.length) return photos;
+  if (!photos.length) return merchant;
+  let photoIndex = 0;
+  const merged = merchant.map((view) => {
+    if (view.image) return view;
+    const photo = photos[photoIndex];
+    return photo ? (photoIndex += 1, { ...view, image: photo.image, alt: view.alt || photo.alt }) : view;
+  });
+  return photos.slice(photoIndex).forEach((photo) => merged.push(photo)), merged;
+}
+__name(composeViews, "composeViews");
+function caption(view) {
+  return view.label && !/^\d+$/.test(view.label) ? view.label : "";
+}
+__name(caption, "caption");
 const _ProductHero = class _ProductHero extends LitElement {
   constructor() {
     super(...arguments), this.index = 0, this.product = null, this.stop = () => {
@@ -239,23 +277,28 @@ const _ProductHero = class _ProductHero extends LitElement {
     }));
   }
   render() {
-    var _a, _b;
-    const cfg = getConfig(this.config), merchant = getCollectionItems(cfg.views, "views").map((item) => ({ image: String(item.image || ""), alt: localizedString(item.alt), label: localizedString(item.label) })).filter((item) => item.label || item.image), live = liveViews(this.product), views = live.length ? live : merchant, current = views[Math.min(this.index, Math.max(views.length - 1, 0))], title = ((_a = this.product) == null ? void 0 : _a.name) || localizedString(cfg.title), text = localizedString(cfg.text), sale = this.product ? Number(this.product.sale_price ?? this.product.price ?? 0) : 0, regular = this.product ? Number(this.product.regular_price ?? this.product.price ?? 0) : 0, price = this.product ? sale ? money(sale) : "" : localizedString(cfg.price_text), was = this.product ? sale && regular > sale ? money(regular) : "" : localizedString(cfg.compare_text), stock = this.product ? this.product.is_available === !1 || this.product.quantity === 0 ? t({ ar: "نفدت الكمية", en: "Out of stock" }) : t({ ar: "متوفر للطلب", en: "Available to order" }) : "", buyUrl = String(cfg.button_url || ((_b = this.product) == null ? void 0 : _b.url) || "");
+    var _a, _b, _c;
+    const cfg = getConfig(this.config), merchant = getCollectionItems(cfg.views, "views").map((item) => ({ image: String(item.image || ""), alt: localizedString(item.alt), label: localizedString(item.label) })).filter((item) => item.label || item.image), views = composeViews(this.product, merchant), current = views[Math.min(this.index, Math.max(views.length - 1, 0))], title = ((_a = this.product) == null ? void 0 : _a.name) || localizedString(cfg.title), text = localizedString(cfg.text), sale = this.product ? Number(this.product.sale_price ?? this.product.price ?? 0) : 0, regular = this.product ? Number(this.product.regular_price ?? this.product.price ?? 0) : 0, price = this.product ? sale ? money(sale) : "" : localizedString(cfg.price_text), was = this.product ? sale && regular > sale ? money(regular) : "" : localizedString(cfg.compare_text), stock = this.product ? this.product.is_available === !1 || this.product.quantity === 0 ? t({ ar: "نفدت الكمية", en: "Out of stock" }) : t({ ar: "متوفر للطلب", en: "Available to order" }) : "", buyUrl = String(cfg.button_url || ((_b = this.product) == null ? void 0 : _b.url) || "");
     return html`<section id="rw-product" class="rw-block rw-section ${schemeOf(cfg)}" style=${sectionStyle(cfg)} aria-label=${title || "product"}>
       <div class="rw-container rw-stage">
         <div>
           <div class="rw-stage__photo">${media((current == null ? void 0 : current.image) || "", (current == null ? void 0 : current.alt) || title)}</div>
-          ${views.length > 1 ? html`<div class="rw-stage__views">${views.map((view, index) => html`<button type="button" class=${view.image ? "rw-stage__thumb" : ""} aria-pressed=${index === this.index ? "true" : "false"} aria-label=${view.label || view.alt || String(index + 1)} @click=${() => {
-      this.index = index;
-    }}>
-                ${view.image ? html`<img src=${view.image} alt="" />` : view.label || index + 1}
-              </button>`)}</div>` : nothing}
+          ${views.length > 1 ? html`<div class="rw-stage__views">${views.map((view, index) => {
+      const name = caption(view);
+      return html`<button type="button" class=${view.image ? "rw-stage__thumb" : ""} aria-pressed=${index === this.index ? "true" : "false"} aria-label=${name || view.alt || String(index + 1)} @click=${() => {
+        this.index = index;
+      }}>
+                ${view.image ? html`<img src=${view.image} alt="" />` : name || index + 1}
+                ${view.image && name ? html`<span class="rw-stage__cap">${name}</span>` : nothing}
+              </button>`;
+    })}</div>` : nothing}
         </div>
         <div class="rw-stage__copy">
           ${title ? html`<h2>${title}</h2>` : nothing}
           ${text ? html`<p>${text}</p>` : nothing}
           ${price ? html`<div class="rw-stage__price"><span>${price}</span>${was ? html`<s>${was}</s>` : nothing}</div>` : nothing}
           ${stock ? html`<p class="rw-stage__stock">${stock}</p>` : nothing}
+          ${(_c = this.product) != null && _c.id ? html`<div class="rw-stage__options"><salla-product-options product-id=${String(this.product.id)}></salla-product-options></div>` : nothing}
           <div class="rw-actions">${renderCta(cfg.button_label, buyUrl)}</div>
         </div>
       </div>
