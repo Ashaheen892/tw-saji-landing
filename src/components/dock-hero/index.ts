@@ -1,7 +1,7 @@
 import { html, LitElement, nothing } from "lit";
-import { property, state } from "lit/decorators.js";
-import { flag, getConfig, localizedString, t, watchLocale } from "../../utils/config.js";
-import { applyTone, currentTone, renderCta, renderTone, rememberTone, schemeOf } from "../../utils/landing.js";
+import { property } from "lit/decorators.js";
+import { getConfig, localizedString, t, watchLocale } from "../../utils/config.js";
+import { renderCta, schemeOf } from "../../utils/landing.js";
 import { baseCss, injectStyles, sectionStyle } from "../../utils/styles.js";
 
 const css = `
@@ -23,7 +23,6 @@ const css = `
 
 export default class DockHero extends LitElement {
   @property({ type: Object }) config?: Record<string, any>;
-  @state() private dark = false;
   private stop = () => {};
 
   protected createRenderRoot() {
@@ -35,17 +34,7 @@ export default class DockHero extends LitElement {
     this.classList.add("rw-host");
     injectStyles("rw-base", baseCss);
     injectStyles("rw-dock-hero", css);
-    rememberTone();
-    this.dark = currentTone() === "dark";
-    const onTone = () => {
-      this.dark = currentTone() === "dark";
-    };
-    window.addEventListener("rw-tone", onTone);
-    const stopLocale = watchLocale(this);
-    this.stop = () => {
-      window.removeEventListener("rw-tone", onTone);
-      stopLocale();
-    };
+    this.stop = watchLocale(this);
   }
 
   disconnectedCallback() {
@@ -60,7 +49,6 @@ export default class DockHero extends LitElement {
       .map((n) => ({ value: localizedString(cfg[`fact_${n}_value`]), label: localizedString(cfg[`fact_${n}_label`]) }))
       .filter((fact) => fact.value || fact.label);
     return html`<section class="rw-block ${schemeOf(cfg)}" style=${sectionStyle(cfg)} aria-label=${title || t({ ar: "واجهة الرصيف", en: "Dock hero" })}>
-      ${renderTone(flag(cfg.show_tone), this.dark, () => applyTone(this.dark ? "light" : "dark"))}
       <div class="rw-dock">
         ${cfg.image
           ? html`<img class="rw-dock__media" src=${cfg.image} alt=${localizedString(cfg.image_alt)} />`

@@ -1,5 +1,5 @@
 import { html, nothing } from "lit";
-import { flag, localizedString, t, unwrapValue } from "./config.js";
+import { localizedString, unwrapValue } from "./config.js";
 
 type SallaGlobal = {
   config?: { get: (key: string, fallback?: unknown) => any };
@@ -78,8 +78,6 @@ export function renderCta(labelValue: unknown, fallbackUrl = "", ghost = false) 
   return html`<a class=${cls} href=${href}>${label}</a>`;
 }
 
-let toneReady = false;
-
 export function applyTone(mode: "light" | "dark"): void {
   document.documentElement.classList.remove("rw-mode-light", "rw-mode-dark");
   document.documentElement.classList.add(mode === "dark" ? "rw-mode-dark" : "rw-mode-light");
@@ -91,25 +89,8 @@ export function applyTone(mode: "light" | "dark"): void {
   window.dispatchEvent(new CustomEvent("rw-tone"));
 }
 
-export function rememberTone(): void {
-  if (toneReady) return;
-  toneReady = true;
-  try {
-    const saved = localStorage.getItem("rw-landing-tone");
-    if (saved === "dark" || saved === "light") applyTone(saved);
-  } catch {
-    /* ignore */
-  }
-}
-
 export function currentTone(): "light" | "dark" {
   return document.documentElement.classList.contains("rw-mode-dark") ? "dark" : "light";
-}
-
-export function renderTone(enabled: unknown, dark: boolean, onToggle: () => void) {
-  if (!flag(enabled)) return nothing;
-  const next = dark ? t({ ar: "الوضع الفاتح", en: "Light mode" }) : t({ ar: "الوضع الداكن", en: "Dark mode" });
-  return html`<button type="button" class="rw-tone" aria-pressed=${dark ? "true" : "false"} @click=${onToggle}>${next}</button>`;
 }
 
 export function schemeOf(cfg: Record<string, any>): string {

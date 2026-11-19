@@ -249,36 +249,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }
@@ -486,36 +486,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }
@@ -728,36 +728,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }
@@ -1008,36 +1008,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }
@@ -1219,36 +1219,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }
@@ -1457,36 +1457,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }
@@ -1611,36 +1611,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }
@@ -1824,17 +1824,6 @@
                     ]
                 },
                 {
-                    "id": "show_tone",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "زر التبديل بين الفاتح والداكن",
-                    "icon": "sicon-toggle-off",
-                    "required": false,
-                    "description": "يبدل الأقسام المضبوطة على حسب الصفحة ويتذكر اختيار الزائر",
-                    "value": true,
-                    "selected": true
-                },
-                {
                     "id": "bg_color",
                     "type": "string",
                     "format": "color",
@@ -1853,36 +1842,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }
@@ -2050,36 +2039,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }
@@ -2348,36 +2337,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }
@@ -2595,17 +2584,6 @@
                     }
                 },
                 {
-                    "id": "show_tone",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "زر التبديل بين الفاتح والداكن",
-                    "icon": "sicon-toggle-off",
-                    "required": false,
-                    "description": "يبدل بقية أقسام الصفحة المضبوطة على حسب الصفحة",
-                    "value": true,
-                    "selected": true
-                },
-                {
                     "id": "bg_color",
                     "type": "string",
                     "format": "color",
@@ -2624,36 +2602,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "داكن",
-                            "value": "dark",
-                            "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "داكن",
-                            "value": "dark",
-                            "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }
@@ -2791,36 +2769,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "داكن",
-                            "value": "dark",
-                            "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "داكن",
-                            "value": "dark",
-                            "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }
@@ -3024,36 +3002,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "داكن",
-                            "value": "dark",
-                            "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "داكن",
-                            "value": "dark",
-                            "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }
@@ -3253,36 +3231,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "داكن",
-                            "value": "dark",
-                            "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "داكن",
-                            "value": "dark",
-                            "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }
@@ -3476,36 +3454,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "داكن",
-                            "value": "dark",
-                            "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "داكن",
-                            "value": "dark",
-                            "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }
@@ -3717,36 +3695,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "داكن",
-                            "value": "dark",
-                            "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "داكن",
-                            "value": "dark",
-                            "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }
@@ -3976,36 +3954,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }
@@ -4219,36 +4197,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }
@@ -4464,36 +4442,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }
@@ -4681,36 +4659,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }
@@ -4897,36 +4875,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }
@@ -5124,36 +5102,36 @@
                     "label": "وضع الألوان",
                     "icon": "sicon-list",
                     "required": false,
-                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
                     "options": [
                         {
-                            "label": "حسب الصفحة",
+                            "label": "حسب رأس الصفحة",
                             "value": "auto",
                             "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         },
                         {
-                            "label": "فاتح",
+                            "label": "فاتح دائماً",
                             "value": "light",
                             "key": "911c3937-606d-4425-bd43-e060d2526fa7"
                         },
                         {
-                            "label": "داكن",
+                            "label": "داكن دائماً",
                             "value": "dark",
                             "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
                         }
                     ],
                     "selected": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ],
                     "value": [
                         {
-                            "label": "فاتح",
-                            "value": "light",
-                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                            "label": "حسب رأس الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
                         }
                     ]
                 }

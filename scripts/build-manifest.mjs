@@ -75,12 +75,12 @@ const num = (id, label, value, min, max, desc = null) => ({
   id, type: "number", format: "number", inputType: "number", label, icon: "sicon-calculator",
   required: false, description: desc, minimum: min, maximum: max, value,
 });
-const scheme = (selected = "light") => drop(
+const scheme = (selected = "auto") => drop(
   "color_scheme",
   "وضع الألوان",
-  [["auto", "حسب الصفحة", KEY.schemeAuto], ["light", "فاتح", KEY.schemeLight], ["dark", "داكن", KEY.schemeDark]],
+  [["auto", "حسب رأس الصفحة", KEY.schemeAuto], ["light", "فاتح دائماً", KEY.schemeLight], ["dark", "داكن دائماً", KEY.schemeDark]],
   selected,
-  "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+  "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
 );
 const collection = (id, itemLabel, fields, value, min, max) => ({
   id, type: "collection", format: "collection", required: true, minLength: min, maxLength: max,
@@ -131,7 +131,7 @@ const components = [
       text("link_label", "رابط بجانب الشعار", L("المتجر", "Store")),
       url("link_url", "عنوان الرابط", "", "اتركه فارغاً لإخفاء الرابط."),
       color("bg_color", "لون الخلفية"),
-      scheme("light"),
+      scheme(),
     ],
   },
   {
@@ -153,9 +153,8 @@ const components = [
       image("image", "صورة الجانب", "المقاس المقترح 900×1200 بكسل، صورة طولية للمنتج أو الطقس المحيط به."),
       text("image_alt", "وصف الصورة", L("المنتج بجانب استخدامه", "The product beside how it is used")),
       drop("media_side", "مكان الصورة", [["start", "بجانب بداية النص", KEY.sideStart], ["end", "بجانب نهاية النص", KEY.sideEnd]], "end"),
-      sw("show_tone", "زر التبديل بين الفاتح والداكن", true, "يبدل الأقسام المضبوطة على حسب الصفحة ويتذكر اختيار الزائر"),
       color("bg_color", "لون الخلفية"),
-      scheme("light"),
+      scheme(),
     ],
   },
   {
@@ -180,7 +179,7 @@ const components = [
         { icon: "sicon-time", title: L("رد سريع", "A quick reply"), note: L("سؤال المنتج يُجاب قبل الشراء", "A product question is answered before purchase") },
       ], 1, 4),
       color("bg_color", "لون الخلفية"),
-      scheme("light"),
+      scheme(),
     ],
   },
   {
@@ -204,7 +203,7 @@ const components = [
         { title: L("يصلك في الموعد", "It arrives on time"), text: L("مدة الشحن مكتوبة قبل إتمام الطلب.", "The shipping window is written before checkout.") },
       ], 1, 6),
       color("bg_color", "لون الخلفية"),
-      scheme("light"),
+      scheme(),
     ],
   },
   {
@@ -230,7 +229,7 @@ const components = [
         { quote: L("بدأت بقطعة واحدة قبل أن أكرر الطلب.", "I started with one piece before ordering again."), name: L("فيصل", "Faisal"), place: L("أبها", "Abha"), stars: picked("5", "٥", KEY.stars5) },
       ], 1, 6),
       color("bg_color", "لون الخلفية"),
-      scheme("light"),
+      scheme(),
     ],
   },
   {
@@ -255,7 +254,7 @@ const components = [
       text("title_b", "عنوان اللقطة الثانية", L("الاستخدام", "In use")),
       area("text_b", "نص اللقطة الثانية", L("اشرح خطوة واحدة يقوم بها المشتري بعد أن يصله المنتج.", "Explain one step the buyer takes after the product arrives.")),
       color("bg_color", "لون الخلفية"),
-      scheme("light"),
+      scheme(),
     ],
   },
   {
@@ -273,7 +272,7 @@ const components = [
       url("button_url", "رابط الزر", "", ctaHint),
       text("note", "سطر تحت الزر", L("الدفع يتم داخل صفحة الهبوط", "Payment happens on this landing page")),
       color("bg_color", "لون الخلفية"),
-      scheme("light"),
+      scheme(),
     ],
   },
   {
@@ -298,9 +297,8 @@ const components = [
       text("fact_2_label", "تسمية الرقم الثاني", L("تقييم", "Rating")),
       text("fact_3_value", "الرقم الثالث", L("١٤ يوم", "14 days")),
       text("fact_3_label", "تسمية الرقم الثالث", L("استبدال", "Exchange")),
-      sw("show_tone", "زر التبديل بين الفاتح والداكن", true, "يبدل بقية أقسام الصفحة المضبوطة على حسب الصفحة"),
       color("bg_color", "لون الخلفية"),
-      scheme("dark"),
+      scheme(),
     ],
   },
   {
@@ -321,7 +319,7 @@ const components = [
         { value: L("٤٨ س", "48 h"), label: L("تجهيز", "Dispatch"), hint: L("للطلبات داخل المدينة", "For in-city orders") },
       ], 1, 3),
       color("bg_color", "لون الخلفية"),
-      scheme("dark"),
+      scheme(),
     ],
   },
   {
@@ -348,7 +346,7 @@ const components = [
         { icon: "sicon-gift", title: L("هدية جاهزة", "Ready to gift"), text: L("هل يصلح هدية؟ اكتب ذلك هنا إن كان صحيحاً.", "Does it work as a gift? Write that here if it does.") },
       ], 1, 8),
       color("bg_color", "لون الخلفية"),
-      scheme("dark"),
+      scheme(),
     ],
   },
   {
@@ -374,7 +372,7 @@ const components = [
         { off: L("الاستبدال يحتاج مراسلات طويلة", "An exchange needs a long thread"), on: L("الشرط مكتوب قبل الطلب", "The rule is written before the order") },
       ], 1, 6),
       color("bg_color", "لون الخلفية"),
-      scheme("dark"),
+      scheme(),
     ],
   },
   {
@@ -401,7 +399,7 @@ const components = [
       text("button_label", "نص الزر", L("أضفها للطلب", "Add it to the order")),
       url("button_url", "رابط الزر", "", ctaHint),
       color("bg_color", "لون الخلفية"),
-      scheme("dark"),
+      scheme(),
     ],
   },
   {
@@ -427,7 +425,7 @@ const components = [
         { label: L("أجربه أولاً", "I want to try it"), message: L("اكتب شرط الاستبدال إن لم يناسب الاستخدام.", "Write the exchange rule if it does not fit the use."), button: L("ابدأ بالتجربة", "Start with a trial") },
       ], 1, 6),
       color("bg_color", "لون الخلفية"),
-      scheme("dark"),
+      scheme(),
     ],
   },
   {
@@ -452,7 +450,7 @@ const components = [
       ], 1, 8),
       text("foot", "سطر أسفل الإيصال", L("الأرقام تتغير من إعدادات القسم.", "The figures change from the section settings.")),
       color("bg_color", "لون الخلفية"),
-      scheme("light"),
+      scheme(),
     ],
   },
   {
@@ -476,7 +474,7 @@ const components = [
         { when: L("المساء", "Evening"), title: L("بعد العودة", "After coming home"), text: L("العناية سطر واحد، لا طقس طويل في آخر اليوم.", "Care is one line, not a long ritual at the end of the day.") },
       ], 1, 4),
       color("bg_color", "لون الخلفية"),
-      scheme("light"),
+      scheme(),
     ],
   },
   {
@@ -502,7 +500,7 @@ const components = [
         { label: L("الفحص", "Check"), text: L("ماذا يُراجع قبل الشحن", "What is checked before shipping") },
       ], 1, 4),
       color("bg_color", "لون الخلفية"),
-      scheme("light"),
+      scheme(),
     ],
   },
   {
@@ -525,7 +523,7 @@ const components = [
         { title: L("بعيداً عن الشمس المباشرة", "Away from direct sun"), text: L("الجفاف في الظل يحفظ اللون.", "Drying in the shade keeps the color.") },
       ], 1, 6),
       color("bg_color", "لون الخلفية"),
-      scheme("light"),
+      scheme(),
     ],
   },
   {
@@ -545,7 +543,7 @@ const components = [
       text("button_label", "نص الزر", L("اطلب القطعة", "Order the piece")),
       url("button_url", "رابط الزر", "", ctaHint),
       color("bg_color", "لون الخلفية"),
-      scheme("light"),
+      scheme(),
     ],
   },
   {
@@ -569,7 +567,7 @@ const components = [
         { word: L("قابل للاستبدال", "Exchangeable"), note: L("الشرط مكتوب هنا", "The rule is written here") },
       ], 1, 8),
       color("bg_color", "لون الخلفية"),
-      scheme("light"),
+      scheme(),
     ],
   },
   {
@@ -594,7 +592,7 @@ const components = [
         { image: "", alt: L("المنتج بعد الاستخدام", "The product after use"), title: L("أغلق بجملة قرار", "Close with a decision line"), text: L("الشريحة الأخيرة تجيب: لمن هذا المنتج، ومتى يصل.", "The last slide answers who it is for, and when it arrives."), button: L("أضف للطلب", "Add to the order"), url: "" },
       ], 1, 6),
       color("bg_color", "لون الخلفية"),
-      scheme("light"),
+      scheme(),
     ],
   },
   {
@@ -621,7 +619,7 @@ const components = [
         { image: "", label: L("التفاصيل", "Detail"), alt: L("تفصيل من المنتج", "A detail of the product") },
       ], 1, 6),
       color("bg_color", "لون الخلفية"),
-      scheme("light"),
+      scheme(),
     ],
   },
   {
@@ -657,7 +655,7 @@ const components = [
         ["auto", "تلقائي بدون صوت", KEY.playAuto],
       ], "click", "التشغيل التلقائي يعمل مع ملف mp4 أو يوتيوب، ويبدأ صامتاً."),
       color("bg_color", "لون الخلفية"),
-      scheme("light"),
+      scheme(),
     ],
   },
 ];
@@ -701,7 +699,7 @@ const templates = [
     id: "f4a1ec56-5f6a-4683-ab2d-9f25426104e6",
     is_default: false,
     primary_color: "#0f6e6a",
-    order: [["page-bar", { sticky: true, transparent: true, show_shadow: false, default_mode: "dark", color_scheme: "dark" }], "dock-hero", "count-band", "reason-rail", "versus-board", "offer-panel", "situation-pick"],
+    order: [["page-bar", { sticky: true, transparent: true, show_shadow: false, default_mode: "dark" }], "dock-hero", "count-band", "reason-rail", "versus-board", "offer-panel", "situation-pick"],
   },
   {
     name: "saji",

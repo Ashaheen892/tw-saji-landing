@@ -1,7 +1,7 @@
 var __defProp = Object.defineProperty;
 var __name = (target, value) => __defProp(target, "name", { value, configurable: !0 });
 import { nothing, html, LitElement } from "lit";
-import { property, state } from "lit/decorators.js";
+import { property } from "lit/decorators.js";
 function getConfig(raw) {
   return raw ? raw.component && typeof raw.component == "object" ? raw.component : raw : {};
 }
@@ -31,11 +31,6 @@ function unwrapValue(value) {
   return Array.isArray(value) ? unwrapValue(((_a = value[0]) == null ? void 0 : _a.value) ?? value[0] ?? "") : value && typeof value == "object" && "value" in value ? value.value : value ?? "";
 }
 __name(unwrapValue, "unwrapValue");
-function flag(value) {
-  const raw = unwrapValue(value);
-  return raw === !0 || raw === "true" || raw === 1 || raw === "1";
-}
-__name(flag, "flag");
 function watchLocale(host) {
   const update = /* @__PURE__ */ __name(() => host.requestUpdate(), "update");
   return window.addEventListener("language-changed", update), () => window.removeEventListener("language-changed", update);
@@ -92,37 +87,6 @@ function renderCta(labelValue, fallbackUrl = "", ghost = !1) {
   return href ? html`<a class=${cls} href=${href}>${label}</a>` : html`<button type="button" class=${cls} @click=${() => openCheckout()}>${label}</button>`;
 }
 __name(renderCta, "renderCta");
-let toneReady = !1;
-function applyTone(mode) {
-  document.documentElement.classList.remove("rw-mode-light", "rw-mode-dark"), document.documentElement.classList.add(mode === "dark" ? "rw-mode-dark" : "rw-mode-light");
-  try {
-    localStorage.setItem("rw-landing-tone", mode);
-  } catch {
-  }
-  window.dispatchEvent(new CustomEvent("rw-tone"));
-}
-__name(applyTone, "applyTone");
-function rememberTone() {
-  if (!toneReady) {
-    toneReady = !0;
-    try {
-      const saved = localStorage.getItem("rw-landing-tone");
-      (saved === "dark" || saved === "light") && applyTone(saved);
-    } catch {
-    }
-  }
-}
-__name(rememberTone, "rememberTone");
-function currentTone() {
-  return document.documentElement.classList.contains("rw-mode-dark") ? "dark" : "light";
-}
-__name(currentTone, "currentTone");
-function renderTone(enabled, dark, onToggle) {
-  if (!flag(enabled)) return nothing;
-  const next = t(dark ? { ar: "الوضع الفاتح", en: "Light mode" } : { ar: "الوضع الداكن", en: "Dark mode" });
-  return html`<button type="button" class="rw-tone" aria-pressed=${dark ? "true" : "false"} @click=${onToggle}>${next}</button>`;
-}
-__name(renderTone, "renderTone");
 function schemeOf(cfg) {
   const scheme = String(unwrapValue(cfg.color_scheme) || "auto");
   return scheme === "dark" ? "rw-dark" : scheme === "light" ? "rw-light" : "rw-auto";
@@ -163,7 +127,6 @@ const LIGHT = "--rw-surface:#f5f6f8; --rw-surface-2:#e8ebef; --rw-card:#ffffff; 
 .rw-btn { display: inline-flex; align-items: center; justify-content: center; min-height: 3rem; padding: .75rem 1.4rem; border: 1px solid transparent; border-radius: .7rem; background: var(--color-primary, #1a1d21); color: var(--color-primary-reverse, #fff); font-weight: 700; text-decoration: none; cursor: pointer; }
 .rw-btn:focus-visible { outline: 2px solid var(--color-primary, #1a1d21); outline-offset: 3px; }
 .rw-btn--ghost { background: transparent; color: var(--rw-text); border-color: var(--rw-border); }
-.rw-tone { position: absolute; z-index: 2; top: .85rem; inset-inline-end: .85rem; min-height: 2.4rem; padding: .35rem .8rem; border: 1px solid var(--rw-border); border-radius: 999px; background: color-mix(in srgb, var(--rw-card) 88%, transparent); color: var(--rw-text); cursor: pointer; }
 .rw-ph { display: grid; place-items: center; width: 100%; height: 100%; min-height: 16rem; padding: 1rem; text-align: center; color: var(--rw-muted); background:
   radial-gradient(circle at 18% 20%, color-mix(in srgb, var(--color-primary, #1a1d21) 22%, transparent), transparent 42%),
   linear-gradient(160deg, var(--rw-soft), var(--rw-surface-2)); }
@@ -197,22 +160,14 @@ const css = `
 .rw-split__media img, .rw-split__media .rw-ph { position: relative; width: 100%; height: 100%; min-height: 22rem; object-fit: cover; border-radius: 1.6rem; }
 `, _SplitIntro = class _SplitIntro extends LitElement {
   constructor() {
-    super(...arguments), this.dark = !1, this.stop = () => {
+    super(...arguments), this.stop = () => {
     };
   }
   createRenderRoot() {
     return this;
   }
   connectedCallback() {
-    super.connectedCallback(), this.classList.add("rw-host"), injectStyles("rw-base", baseCss), injectStyles("rw-split-intro", css), rememberTone(), this.dark = currentTone() === "dark";
-    const onTone = /* @__PURE__ */ __name(() => {
-      this.dark = currentTone() === "dark";
-    }, "onTone");
-    window.addEventListener("rw-tone", onTone);
-    const stopLocale = watchLocale(this);
-    this.stop = () => {
-      window.removeEventListener("rw-tone", onTone), stopLocale();
-    };
+    super.connectedCallback(), this.classList.add("rw-host"), injectStyles("rw-base", baseCss), injectStyles("rw-split-intro", css), this.stop = watchLocale(this);
   }
   disconnectedCallback() {
     this.stop(), super.disconnectedCallback();
@@ -220,7 +175,6 @@ const css = `
   render() {
     const cfg = getConfig(this.config), title = localizedString(cfg.title), text = localizedString(cfg.text), kicker = localizedString(cfg.kicker), end = String(unwrapValue(cfg.media_side) || "start") === "end", secondary = localizedString(cfg.secondary_label);
     return !title && !text && !cfg.image ? nothing : html`<section class="rw-block rw-section ${schemeOf(cfg)}" style=${sectionStyle(cfg)} aria-label=${title || t({ ar: "مقدمة الصفحة", en: "Page introduction" })}>
-      ${renderTone(flag(cfg.show_tone), this.dark, () => applyTone(this.dark ? "light" : "dark"))}
       <div class="rw-container">
         <div class="rw-split ${end ? "rw-split--end" : ""}">
           <div class="rw-split__copy">
@@ -246,9 +200,6 @@ let SplitIntro = _SplitIntro;
 __decorateClass([
   property({ type: Object })
 ], SplitIntro.prototype, "config");
-__decorateClass([
-  state()
-], SplitIntro.prototype, "dark");
 typeof SplitIntro < "u" && SplitIntro.registerSallaComponent("salla-split-intro");
 export {
   SplitIntro as default
