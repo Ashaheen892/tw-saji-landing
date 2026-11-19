@@ -309,8 +309,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "صورة كبيرة، وقرار واحد",
-            "en": "A large photo, and one decision"
+            "ar": "حقيبة جلد ليوم طويل",
+            "en": "A leather bag for a long day"
           }
         },
         {
@@ -325,8 +325,8 @@
           "minLength": 0,
           "maxLength": 500,
           "value": {
-            "ar": "جملة قصيرة عن الفائدة، ثم زر يفتح الشراء.",
-            "en": "A short line about the benefit, then a button that opens checkout."
+            "ar": "حزام يُفك، وجيب أمامي. الصورة كافية قبل أن تفتح التفاصيل.",
+            "en": "A strap that unclips, and a front pocket. The photo is enough before you open the details."
           }
         },
         {
@@ -363,7 +363,7 @@
           "icon": "sicon-image",
           "required": false,
           "description": "المقاس المقترح 1920×1080 بكسل. إن تركتها فارغة تظهر خلفية لونية.",
-          "value": ""
+          "value": "https://images.pexels.com/photos/27204288/pexels-photo-27204288.jpeg?auto=compress&cs=tinysrgb&w=1800"
         },
         {
           "id": "image_alt",
@@ -377,8 +377,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "المنتج في مكان استخدامه",
-            "en": "The product where it is used"
+            "ar": "حقيبة جلد بنية بحزام ذهبي",
+            "en": "A brown leather bag with a gold-tone strap"
           }
         },
         {
@@ -855,12 +855,12 @@
             {
               "items.icon": "sicon-shield-check",
               "items.title": {
-                "ar": "خامة واضحة",
-                "en": "A clear material"
+                "ar": "جلد يُرى في الصورة",
+                "en": "Leather you can see"
               },
               "items.text": {
-                "ar": "اكتب خامة واحدة يلمسها المشتري أو يراها في الصورة.",
-                "en": "Name one material the buyer can see in the photo."
+                "ar": "الحزام والمقبض من الجلد نفسه، بلا طبقة لامعة تخفي الخامة.",
+                "en": "The strap and the handle are the same leather, with no shiny coat hiding it."
               }
             },
             {

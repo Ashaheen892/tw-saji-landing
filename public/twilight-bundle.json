@@ -406,18 +406,18 @@
                     ],
                     "value": [
                         {
-                            "items.image": "",
+                            "items.image": "https://images.pexels.com/photos/4735932/pexels-photo-4735932.jpeg?auto=compress&cs=tinysrgb&w=1400",
                             "items.alt": {
-                                "ar": "المنتج من الأمام",
-                                "en": "The product from the front"
+                                "ar": "زجاجة سيروم على رخام أبيض",
+                                "en": "A serum bottle on white marble"
                             },
                             "items.title": {
-                                "ar": "ابدأ من الصورة التي تبيع",
-                                "en": "Start with the photo that sells"
+                                "ar": "سيروم صافٍ من أول نظرة",
+                                "en": "A clear serum at first glance"
                             },
                             "items.text": {
-                                "ar": "الشريحة الأولى هي أول ما يراه الزائر. ضع المنتج واضحاً، والسعر في القسم التالي.",
-                                "en": "The first slide is what the visitor sees first. Show the product clearly, and leave the price to the next section."
+                                "ar": "زجاجة زجاجية وقطارة بيضاء. السعر في القسم التالي.",
+                                "en": "A glass bottle and a white dropper. The price is in the next section."
                             },
                             "items.button": {
                                 "ar": "شاهد المنتج",
@@ -426,18 +426,18 @@
                             "items.url": "#rw-product"
                         },
                         {
-                            "items.image": "",
+                            "items.image": "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=1400",
                             "items.alt": {
-                                "ar": "تفاصيل المنتج",
-                                "en": "Product details"
+                                "ar": "زجاجة داكنة على طبق خشب",
+                                "en": "A dark bottle on a wooden dish"
                             },
                             "items.title": {
-                                "ar": "فصّل ما يميزه",
-                                "en": "Spell out what sets it apart"
+                                "ar": "الزجاج الداكن يحفظ الزيت",
+                                "en": "Dark glass keeps the oil"
                             },
                             "items.text": {
-                                "ar": "شريحة ثانية لفائدة واحدة: الخامة، المقاس، أو طريقة الاستخدام.",
-                                "en": "A second slide for one benefit: the material, the size, or how it is used."
+                                "ar": "اللون يُرى داخل الزجاجة، والقطارة تقيس الكمية.",
+                                "en": "The color shows inside the bottle, and the dropper measures the amount."
                             },
                             "items.button": {
                                 "ar": "اطلب الآن",
@@ -446,18 +446,18 @@
                             "items.url": ""
                         },
                         {
-                            "items.image": "",
+                            "items.image": "https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg?auto=compress&cs=tinysrgb&w=1400",
                             "items.alt": {
-                                "ar": "المنتج بعد الاستخدام",
-                                "en": "The product after use"
+                                "ar": "قطرة تنزل من القطارة",
+                                "en": "A drop falling from the dropper"
                             },
                             "items.title": {
-                                "ar": "أغلق بجملة قرار",
-                                "en": "Close with a decision line"
+                                "ar": "قطرة واحدة قبل الخروج",
+                                "en": "One drop before leaving"
                             },
                             "items.text": {
-                                "ar": "الشريحة الأخيرة تجيب: لمن هذا المنتج، ومتى يصل.",
-                                "en": "The last slide answers who it is for, and when it arrives."
+                                "ar": "على بشرة نظيفة، ثم يُفرد. لا خطوات أكثر من ذلك.",
+                                "en": "On clean skin, then spread. No more steps than that."
                             },
                             "items.button": {
                                 "ar": "أضف للطلب",
@@ -559,8 +559,8 @@
                     "minLength": 0,
                     "maxLength": 120,
                     "value": {
-                        "ar": "اسم المنتج",
-                        "en": "Product name"
+                        "ar": "سيروم صافٍ",
+                        "en": "Clear serum"
                     }
                 },
                 {
@@ -575,8 +575,8 @@
                     "minLength": 0,
                     "maxLength": 500,
                     "value": {
-                        "ar": "اكتب الفائدة الأولى في سطرين. عند اختيار منتج يظهر اسمه وسعره وصوره من المتجر.",
-                        "en": "Write the first benefit in two lines. When a product is chosen, its name, price, and photos come from the store."
+                        "ar": "زيت خفيف في زجاجة قطارة. عند اختيار منتج من المتجر يُستبدل الاسم والسعر والصور ببياناته.",
+                        "en": "A light oil in a dropper bottle. Choosing a store product replaces the name, price, and photos with its own."
                     }
                 },
                 {
@@ -591,8 +591,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "١٩٩ ر.س",
-                        "en": "SAR 199"
+                        "ar": "١٨٩ ر.س",
+                        "en": "SAR 189"
                     }
                 },
                 {
@@ -607,8 +607,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "٢٤٩ ر.س",
-                        "en": "SAR 249"
+                        "ar": "٢٤٠ ر.س",
+                        "en": "SAR 240"
                     }
                 },
                 {
@@ -691,36 +691,36 @@
                     ],
                     "value": [
                         {
-                            "views.image": "",
+                            "views.image": "https://images.pexels.com/photos/4735932/pexels-photo-4735932.jpeg?auto=compress&cs=tinysrgb&w=1400",
                             "views.label": {
-                                "ar": "الأمام",
-                                "en": "Front"
+                                "ar": "الزجاجة",
+                                "en": "Bottle"
                             },
                             "views.alt": {
-                                "ar": "المنتج من الأمام",
-                                "en": "The product from the front"
+                                "ar": "زجاجة السيروم على الرخام",
+                                "en": "The serum bottle on marble"
                             }
                         },
                         {
-                            "views.image": "",
+                            "views.image": "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=1400",
                             "views.label": {
-                                "ar": "الجانب",
-                                "en": "Side"
+                                "ar": "اللون",
+                                "en": "Color"
                             },
                             "views.alt": {
-                                "ar": "المنتج من الجانب",
-                                "en": "The product from the side"
+                                "ar": "الزجاجة الداكنة عن قرب",
+                                "en": "The dark bottle up close"
                             }
                         },
                         {
-                            "views.image": "",
+                            "views.image": "https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg?auto=compress&cs=tinysrgb&w=1400",
                             "views.label": {
-                                "ar": "التفاصيل",
-                                "en": "Detail"
+                                "ar": "القطرة",
+                                "en": "Drop"
                             },
                             "views.alt": {
-                                "ar": "تفصيل من المنتج",
-                                "en": "A detail of the product"
+                                "ar": "قطرة السيروم على اليد",
+                                "en": "A drop of serum on the hand"
                             }
                         }
                     ]
@@ -801,8 +801,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "شاهد المنتج قبل أن تطلبه",
-                        "en": "Watch the product before you order"
+                        "ar": "شاهد القطرة قبل أن تطلب",
+                        "en": "Watch the drop before you order"
                     }
                 },
                 {
@@ -817,8 +817,8 @@
                     "minLength": 0,
                     "maxLength": 500,
                     "value": {
-                        "ar": "فيديو قصير يشرح الاستخدام. الزائر يضغط التشغيل، ولا يبدأ الصوت وحده.",
-                        "en": "A short video that shows how it is used. The visitor presses play, and the sound does not start on its own."
+                        "ar": "فيديو قصير لفتح الزجاجة ووضع السيروم. يبدأ عند الضغط، والصوت لا يفتح وحده.",
+                        "en": "A short video of opening the bottle and applying the serum. It starts on tap, and the sound does not start on its own."
                     }
                 },
                 {
@@ -829,7 +829,7 @@
                     "icon": "sicon-image",
                     "required": false,
                     "description": "المقاس المقترح 1600×900 بكسل، تظهر قبل التشغيل.",
-                    "value": ""
+                    "value": "https://images.pexels.com/photos/4735932/pexels-photo-4735932.jpeg?auto=compress&cs=tinysrgb&w=1400"
                 },
                 {
                     "id": "video_url",
@@ -839,7 +839,7 @@
                     "icon": "sicon-link",
                     "required": false,
                     "description": "رابط يوتيوب أو فيميو أو ملف mp4.",
-                    "value": ""
+                    "value": "https://videos.pexels.com/video-files/9697876/9697876-hd_1920_1080_25fps.mp4"
                 },
                 {
                     "id": "ov-view",
@@ -1113,8 +1113,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "فيديوهات قصيرة من عملاء جرّبوا المنتج. الصوت يبدأ عند الضغط.",
-                        "en": "Short videos from customers who tried the product. Sound starts on tap."
+                        "ar": "فيديوهات قصيرة من عملاء جرّبوا المنتج. تعمل كلها بدون صوت، والصوت يُفتح من الزر.",
+                        "en": "Short videos from customers who tried the product. They all play muted, and sound opens from the button."
                     }
                 },
                 {
@@ -1275,8 +1275,8 @@
                     ],
                     "value": [
                         {
-                            "items.video_url": "",
-                            "items.poster": "",
+                            "items.video_url": "https://videos.pexels.com/video-files/8479098/8479098-sd_360_640_24fps.mp4",
+                            "items.poster": "https://images.pexels.com/photos/4735932/pexels-photo-4735932.jpeg?auto=compress&cs=tinysrgb&w=1400",
                             "items.name": {
                                 "ar": "نورة",
                                 "en": "Noura"
@@ -1286,8 +1286,8 @@
                                 "en": "Riyadh"
                             },
                             "items.quote": {
-                                "ar": "وصل كما في الصور، واستخدمته من اليوم الأول.",
-                                "en": "It arrived as shown, and I used it the same day."
+                                "ar": "القطرة واضحة، واستخدمت السيروم من أول صباح.",
+                                "en": "The drop was clear, and I used the serum the first morning."
                             },
                             "items.stars": [
                                 {
@@ -1303,8 +1303,8 @@
                             "items.link_url": ""
                         },
                         {
-                            "items.video_url": "",
-                            "items.poster": "",
+                            "items.video_url": "https://videos.pexels.com/video-files/6925815/6925815-sd_360_640_25fps.mp4",
+                            "items.poster": "https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg?auto=compress&cs=tinysrgb&w=1400",
                             "items.name": {
                                 "ar": "سلمان",
                                 "en": "Salman"
@@ -1314,8 +1314,8 @@
                                 "en": "Jeddah"
                             },
                             "items.quote": {
-                                "ar": "الخيار الذي طلبته جاء مطابقاً، والتغليف سليم.",
-                                "en": "The option I ordered matched, and the packing was intact."
+                                "ar": "الكمية قليلة، والزيت ما ثقل على البشرة.",
+                                "en": "The amount is small, and the oil did not feel heavy."
                             },
                             "items.stars": [
                                 {
@@ -1331,8 +1331,8 @@
                             "items.link_url": ""
                         },
                         {
-                            "items.video_url": "",
-                            "items.poster": "",
+                            "items.video_url": "https://videos.pexels.com/video-files/7118137/7118137-sd_640_360_25fps.mp4",
+                            "items.poster": "https://images.pexels.com/photos/894695/pexels-photo-894695.jpeg?auto=compress&cs=tinysrgb&w=1400",
                             "items.name": {
                                 "ar": "هند",
                                 "en": "Hind"
@@ -1342,8 +1342,8 @@
                                 "en": "Khobar"
                             },
                             "items.quote": {
-                                "ar": "واضح في الفيديو كيف يُستخدم قبل أن أطلبه.",
-                                "en": "The video made the use clear before I ordered."
+                                "ar": "حبيت أشوف الحبوب قبل ما أطلب الكيس.",
+                                "en": "I wanted to see the beans before I ordered the bag."
                             },
                             "items.stars": [
                                 {
@@ -1689,8 +1689,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "تفاصيل لا تظهر في الصورة الواحدة",
-                        "en": "Details one photo cannot show"
+                        "ar": "الزجاجة، ثم القطرة",
+                        "en": "The bottle, then the drop"
                     }
                 },
                 {
@@ -1705,8 +1705,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "لقطتان: شكل المنتج، وطريقة استخدامه.",
-                        "en": "Two frames: how the product looks, and how it is used."
+                        "ar": "لقطة للزجاج الداكن، ولقطة لقطرة واحدة على اليد.",
+                        "en": "One frame of the dark glass, and one of a single drop on the hand."
                     }
                 },
                 {
@@ -1722,7 +1722,7 @@
                     "icon": "sicon-image",
                     "required": false,
                     "description": "المقاس المقترح 1200×1500 بكسل.",
-                    "value": ""
+                    "value": "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=1400"
                 },
                 {
                     "id": "alt_a",
@@ -1736,8 +1736,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "المنتج من الأمام",
-                        "en": "The product from the front"
+                        "ar": "زجاجة سيروم داكنة على طبق خشب",
+                        "en": "A dark serum bottle on a wooden dish"
                     }
                 },
                 {
@@ -1752,8 +1752,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "الشكل",
-                        "en": "The form"
+                        "ar": "الزجاج",
+                        "en": "The glass"
                     }
                 },
                 {
@@ -1768,8 +1768,8 @@
                     "minLength": 0,
                     "maxLength": 500,
                     "value": {
-                        "ar": "اكتب المقاس أو الخامة أو ما يميز الشكل عن البدائل.",
-                        "en": "Write the size, the material, or what sets the form apart."
+                        "ar": "زجاجة داكنة تحفظ الزيت من الضوء، والقطارة تقيس الكمية.",
+                        "en": "Dark glass keeps the oil from the light, and the dropper measures the amount."
                     }
                 },
                 {
@@ -1785,7 +1785,7 @@
                     "icon": "sicon-image",
                     "required": false,
                     "description": "المقاس المقترح 1000×1300 بكسل.",
-                    "value": ""
+                    "value": "https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg?auto=compress&cs=tinysrgb&w=1400"
                 },
                 {
                     "id": "alt_b",
@@ -1799,8 +1799,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "المنتج أثناء الاستخدام",
-                        "en": "The product in use"
+                        "ar": "قطرة سيروم تنزل على راحة اليد",
+                        "en": "A drop of serum falling onto an open hand"
                     }
                 },
                 {
@@ -1831,8 +1831,8 @@
                     "minLength": 0,
                     "maxLength": 500,
                     "value": {
-                        "ar": "اشرح خطوة واحدة يقوم بها المشتري بعد أن يصله المنتج.",
-                        "en": "Explain one step the buyer takes after the product arrives."
+                        "ar": "قطرة واحدة على راحة اليد، ثم تُفرد على بشرة نظيفة.",
+                        "en": "One drop on the palm, then spread it over clean skin."
                     }
                 },
                 {
@@ -1927,8 +1927,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "اطلبه اليوم، ويصلك في الموعد المكتوب",
-                        "en": "Order it today, and it arrives on the stated date"
+                        "ar": "اطلب السيروم اليوم، ويصلك خلال يومين",
+                        "en": "Order the serum today, and it arrives within two days"
                     }
                 },
                 {
@@ -1943,8 +1943,8 @@
                     "minLength": 0,
                     "maxLength": 500,
                     "value": {
-                        "ar": "أزل الشك بسطر واحد: مدة الشحن، أو شرط الاستبدال، أو ما يشمله الطلب.",
-                        "en": "Remove the doubt in one line: shipping time, the exchange rule, or what the order includes."
+                        "ar": "التجهيز داخل المدينة خلال يومين. إن وصلت الزجاجة مفتوحة نستبدلها خلال ١٤ يوماً.",
+                        "en": "In-city dispatch is within two days. If the bottle arrives open, we replace it within 14 days."
                     }
                 },
                 {
@@ -2081,8 +2081,8 @@
                     "minLength": 0,
                     "maxLength": 120,
                     "value": {
-                        "ar": "اعرض المنتج بجملة واحدة واضحة",
-                        "en": "Show the product in one clear sentence"
+                        "ar": "سيروم خفيف في زجاجة تُرى",
+                        "en": "A light serum in a bottle you can see"
                     }
                 },
                 {
@@ -2097,8 +2097,8 @@
                     "minLength": 0,
                     "maxLength": 500,
                     "value": {
-                        "ar": "اكتب الفائدة التي يشتري لأجلها الزائر، ثم اترك السعر والصور للأقسام التالية.",
-                        "en": "Write the benefit the visitor is buying for, then leave the price and photos to the next sections."
+                        "ar": "قطرة واحدة على بشرة نظيفة. الصورة جانبية حتى يبقى النص قصيراً.",
+                        "en": "One drop on clean skin. The photo sits beside the text so the line stays short."
                     }
                 },
                 {
@@ -2166,7 +2166,7 @@
                     "icon": "sicon-image",
                     "required": false,
                     "description": "المقاس المقترح 900×1200 بكسل، صورة طولية للمنتج أو الطقس المحيط به.",
-                    "value": ""
+                    "value": "https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg?auto=compress&cs=tinysrgb&w=1400"
                 },
                 {
                     "id": "image_alt",
@@ -2180,8 +2180,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "المنتج بجانب استخدامه",
-                        "en": "The product beside how it is used"
+                        "ar": "قطرة السيروم على راحة اليد",
+                        "en": "A drop of serum on an open hand"
                     }
                 },
                 {
@@ -2807,8 +2807,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "صورة كبيرة، وقرار واحد",
-                        "en": "A large photo, and one decision"
+                        "ar": "حقيبة جلد ليوم طويل",
+                        "en": "A leather bag for a long day"
                     }
                 },
                 {
@@ -2823,8 +2823,8 @@
                     "minLength": 0,
                     "maxLength": 500,
                     "value": {
-                        "ar": "جملة قصيرة عن الفائدة، ثم زر يفتح الشراء.",
-                        "en": "A short line about the benefit, then a button that opens checkout."
+                        "ar": "حزام يُفك، وجيب أمامي. الصورة كافية قبل أن تفتح التفاصيل.",
+                        "en": "A strap that unclips, and a front pocket. The photo is enough before you open the details."
                     }
                 },
                 {
@@ -2861,7 +2861,7 @@
                     "icon": "sicon-image",
                     "required": false,
                     "description": "المقاس المقترح 1920×1080 بكسل. إن تركتها فارغة تظهر خلفية لونية.",
-                    "value": ""
+                    "value": "https://images.pexels.com/photos/27204288/pexels-photo-27204288.jpeg?auto=compress&cs=tinysrgb&w=1800"
                 },
                 {
                     "id": "image_alt",
@@ -2875,8 +2875,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "المنتج في مكان استخدامه",
-                        "en": "The product where it is used"
+                        "ar": "حقيبة جلد بنية بحزام ذهبي",
+                        "en": "A brown leather bag with a gold-tone strap"
                     }
                 },
                 {
@@ -3353,12 +3353,12 @@
                         {
                             "items.icon": "sicon-shield-check",
                             "items.title": {
-                                "ar": "خامة واضحة",
-                                "en": "A clear material"
+                                "ar": "جلد يُرى في الصورة",
+                                "en": "Leather you can see"
                             },
                             "items.text": {
-                                "ar": "اكتب خامة واحدة يلمسها المشتري أو يراها في الصورة.",
-                                "en": "Name one material the buyer can see in the photo."
+                                "ar": "الحزام والمقبض من الجلد نفسه، بلا طبقة لامعة تخفي الخامة.",
+                                "en": "The strap and the handle are the same leather, with no shiny coat hiding it."
                             }
                         },
                         {
@@ -4187,8 +4187,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "من أين تبدأ القطعة",
-                        "en": "Where the piece starts"
+                        "ar": "من المقلاة إلى الكيس",
+                        "en": "From the roaster to the bag"
                     }
                 },
                 {
@@ -4203,8 +4203,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "مكان واحد، وثلاث حقائق يكتبها التاجر.",
-                        "en": "One place, and three facts the merchant writes."
+                        "ar": "محمصة واحدة، وثلاث حقائق عن الدفعة.",
+                        "en": "One roaster, and three facts about the batch."
                     }
                 },
                 {
@@ -4265,8 +4265,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "منشأ يكتبه التاجر",
-                        "en": "An origin the merchant writes"
+                        "ar": "محمصة صغيرة",
+                        "en": "A small roastery"
                     }
                 },
                 {
@@ -4277,7 +4277,7 @@
                     "icon": "sicon-image",
                     "required": false,
                     "description": "المقاس المقترح 1200×900 بكسل، صورة أفقية للمكان أو الخامة.",
-                    "value": ""
+                    "value": "https://images.pexels.com/photos/894695/pexels-photo-894695.jpeg?auto=compress&cs=tinysrgb&w=1400"
                 },
                 {
                     "id": "image_alt",
@@ -4291,8 +4291,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "مكان تجهيز المنتج",
-                        "en": "Where the product is prepared"
+                        "ar": "حبوب تُحمّص داخل المقلاة",
+                        "en": "Beans roasting in the drum"
                     }
                 },
                 {
@@ -4344,8 +4344,8 @@
                                 "en": "Source"
                             },
                             "items.text": {
-                                "ar": "من أين تأتي الخامة أو القطعة",
-                                "en": "Where the material or the piece comes from"
+                                "ar": "حبوب تُحمّص على دفعات صغيرة",
+                                "en": "Beans roasted in small batches"
                             }
                         },
                         {
@@ -4354,8 +4354,8 @@
                                 "en": "Batch"
                             },
                             "items.text": {
-                                "ar": "كم قطعة تُجهَّز في المرة الواحدة",
-                                "en": "How many pieces are prepared at once"
+                                "ar": "كيس ٢٥٠ غراماً من التحميص نفسه",
+                                "en": "A 250 g bag from the same roast"
                             }
                         },
                         {
@@ -4364,8 +4364,8 @@
                                 "en": "Check"
                             },
                             "items.text": {
-                                "ar": "ماذا يُراجع قبل الشحن",
-                                "en": "What is checked before shipping"
+                                "ar": "يُراجع تاريخ التحميص قبل إغلاق الكيس",
+                                "en": "The roast date is checked before the bag is sealed"
                             }
                         }
                     ]
@@ -4446,8 +4446,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "ماذا داخل الطلب",
-                        "en": "What is in the order"
+                        "ar": "ماذا داخل الكيس",
+                        "en": "What is in the bag"
                     }
                 },
                 {
@@ -4462,8 +4462,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "سطر لكل شيء يصل مع المنتج.",
-                        "en": "One line for everything that arrives with the product."
+                        "ar": "سطر لكل شيء يصل مع القهوة.",
+                        "en": "One line for everything that arrives with the coffee."
                     }
                 },
                 {
@@ -4557,22 +4557,22 @@
                     "value": [
                         {
                             "items.label": {
-                                "ar": "المقاس",
-                                "en": "Size"
+                                "ar": "الوزن",
+                                "en": "Weight"
                             },
                             "items.value": {
-                                "ar": "يُكتب من التاجر",
-                                "en": "Written by the merchant"
+                                "ar": "٢٥٠ غراماً",
+                                "en": "250 g"
                             }
                         },
                         {
                             "items.label": {
-                                "ar": "الخامة",
-                                "en": "Material"
+                                "ar": "التحميص",
+                                "en": "Roast"
                             },
                             "items.value": {
-                                "ar": "خامة المنتج",
-                                "en": "The product material"
+                                "ar": "وسط، يميل للشوكولاتة",
+                                "en": "Medium, leaning toward chocolate"
                             }
                         },
                         {
@@ -4581,18 +4581,18 @@
                                 "en": "Packing"
                             },
                             "items.value": {
-                                "ar": "صندوق يحمي القطعة",
-                                "en": "A box that protects the piece"
+                                "ar": "كيس بصمام يحفظ الرائحة",
+                                "en": "A valve bag that keeps the aroma"
                             }
                         },
                         {
                             "items.label": {
-                                "ar": "البطاقة",
-                                "en": "Card"
+                                "ar": "التاريخ",
+                                "en": "Date"
                             },
                             "items.value": {
-                                "ar": "طريقة الاستخدام مطبوعة",
-                                "en": "A printed use note"
+                                "ar": "تاريخ التحميص مطبوع على الكيس",
+                                "en": "The roast date is printed on the bag"
                             }
                         }
                     ]
@@ -4609,8 +4609,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "الأرقام تتغير من إعدادات القسم.",
-                        "en": "The figures change from the section settings."
+                        "ar": "الوزن وتاريخ التحميص مكتوبان على الكيس.",
+                        "en": "The weight and roast date are printed on the bag."
                     }
                 },
                 {
@@ -4689,8 +4689,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "متى تستخدمه؟",
-                        "en": "When do you use it?"
+                        "ar": "متى يُشرب؟",
+                        "en": "When is it drunk?"
                     }
                 },
                 {
@@ -4705,8 +4705,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "اختر وقتاً لتقرأ الجملة المناسبة.",
-                        "en": "Pick a time to read the matching line."
+                        "ar": "اختر وقتاً لتقرأ طريقة الفنجان.",
+                        "en": "Pick a time to read how the cup is made."
                     }
                 },
                 {
@@ -4824,8 +4824,8 @@
                                 "en": "Before leaving"
                             },
                             "items.text": {
-                                "ar": "قطعة خفيفة لا تؤخر أول ساعة في اليوم.",
-                                "en": "A light piece that does not slow the first hour of the day."
+                                "ar": "فنجان بعد التحميص بيومين، حين تهدأ الحبوب.",
+                                "en": "A cup two days after roasting, once the beans have settled."
                             }
                         },
                         {
@@ -4838,8 +4838,8 @@
                                 "en": "Between two errands"
                             },
                             "items.text": {
-                                "ar": "استخدام سريع لا يحتاج تجهيزاً طويلاً.",
-                                "en": "A quick use that does not need a long setup."
+                                "ar": "جرعة قصيرة، من غير أدوات أكثر من المطحنة.",
+                                "en": "A short cup, with nothing more than a grinder."
                             }
                         },
                         {
@@ -4852,8 +4852,8 @@
                                 "en": "After coming home"
                             },
                             "items.text": {
-                                "ar": "العناية سطر واحد، لا طقس طويل في آخر اليوم.",
-                                "en": "Care is one line, not a long ritual at the end of the day."
+                                "ar": "آخر فنجان، ثم يُغلق الكيس حتى الصباح.",
+                                "en": "A last cup, then the bag is sealed until morning."
                             }
                         }
                     ]
@@ -4934,8 +4934,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "ثلاث حركات تكفي",
-                        "en": "Three motions are enough"
+                        "ar": "ثلاث عادات تحفظ الطعم",
+                        "en": "Three habits that keep the taste"
                     }
                 },
                 {
@@ -4950,8 +4950,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "خطوات قصيرة مرتبة على خيط واحد.",
-                        "en": "Short steps arranged on one thread."
+                        "ar": "الكيس يُغلق، ويبتعد عن الحرارة، ويُطحن عند الفنجان.",
+                        "en": "The bag is sealed, kept away from heat, and ground at the cup."
                     }
                 },
                 {
@@ -5045,32 +5045,32 @@
                     "value": [
                         {
                             "items.title": {
-                                "ar": "انفض الغبار",
-                                "en": "Shake off the dust"
+                                "ar": "أغلق الكيس",
+                                "en": "Seal the bag"
                             },
                             "items.text": {
-                                "ar": "قبل أي غسيل، حتى تبقى الخامة في شكلها.",
-                                "en": "Before any wash, so the material keeps its shape."
+                                "ar": "بعد كل فنجان، حتى لا تخرج الرائحة.",
+                                "en": "After every cup, so the aroma does not escape."
                             }
                         },
                         {
                             "items.title": {
-                                "ar": "ماء بارد",
-                                "en": "Cold water"
+                                "ar": "بعيداً عن الحرارة",
+                                "en": "Away from heat"
                             },
                             "items.text": {
-                                "ar": "بدون عصر قوي، ثم تُفرد على منشفة.",
-                                "en": "Without a hard wring, then lay it on a towel."
+                                "ar": "رف عادي، لا بجانب الفرن ولا في الشمس.",
+                                "en": "An ordinary shelf, not beside the oven or in the sun."
                             }
                         },
                         {
                             "items.title": {
-                                "ar": "بعيداً عن الشمس المباشرة",
-                                "en": "Away from direct sun"
+                                "ar": "اطحن عند الاستخدام",
+                                "en": "Grind when you brew"
                             },
                             "items.text": {
-                                "ar": "الجفاف في الظل يحفظ اللون.",
-                                "en": "Drying in the shade keeps the color."
+                                "ar": "الطحن المبكر يذهب بالطعم قبل الفنجان.",
+                                "en": "Grinding early loses the taste before the cup."
                             }
                         }
                     ]
@@ -5151,8 +5151,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "كلمة قبل أن تطلب",
-                        "en": "A word before you order"
+                        "ar": "كلمة من المحمصة",
+                        "en": "A word from the roastery"
                     }
                 },
                 {
@@ -5229,8 +5229,8 @@
                     "minLength": 0,
                     "maxLength": 500,
                     "value": {
-                        "ar": "نصنع عدداً نقدر نراجعه بأيدينا. إن وصلتك القطعة بغير ما كُتب هنا، نبدّلها دون جدال طويل.",
-                        "en": "We make a number we can still review by hand. If the piece arrives unlike what is written here, we replace it without a long argument."
+                        "ar": "نحمّص كمية نقدر نراجع تاريخها. إن وصل الكيس بغير التاريخ المكتوب عليه، نبدّله دون جدال طويل.",
+                        "en": "We roast an amount whose date we can still check. If the bag arrives with a different date, we replace it without a long argument."
                     }
                 },
                 {
@@ -5245,8 +5245,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "فريق المتجر",
-                        "en": "The store team"
+                        "ar": "فريق التحميص",
+                        "en": "The roasting team"
                     }
                 },
                 {
@@ -5261,8 +5261,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "المتجر",
-                        "en": "The store"
+                        "ar": "المحمصة",
+                        "en": "The roastery"
                     }
                 },
                 {
@@ -5277,8 +5277,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "اطلب القطعة",
-                        "en": "Order the piece"
+                        "ar": "اطلب الكيس",
+                        "en": "Order the bag"
                     }
                 },
                 {
@@ -5367,8 +5367,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "كلمات نعلّقها على الرف",
-                        "en": "Words we hang on the shelf"
+                        "ar": "كلمات على كيس القهوة",
+                        "en": "Words on the coffee bag"
                     }
                 },
                 {
@@ -5383,8 +5383,8 @@
                     "minLength": 0,
                     "maxLength": 180,
                     "value": {
-                        "ar": "بطاقات قصيرة، لا شبكة مزايا.",
-                        "en": "Short tickets, not a feature grid."
+                        "ar": "أربع بطاقات، لا جدول مواصفات.",
+                        "en": "Four tickets, not a spec table."
                     }
                 },
                 {
@@ -5478,32 +5478,32 @@
                     "value": [
                         {
                             "items.word": {
-                                "ar": "واضح",
-                                "en": "Clear"
+                                "ar": "محمّص",
+                                "en": "Roasted"
                             },
                             "items.note": {
-                                "ar": "المعلومة قبل الدفع",
-                                "en": "The fact before payment"
+                                "ar": "التاريخ على الكيس",
+                                "en": "The date is on the bag"
                             }
                         },
                         {
                             "items.word": {
-                                "ar": "جاهز",
-                                "en": "Ready"
+                                "ar": "طازج",
+                                "en": "Fresh"
                             },
                             "items.note": {
-                                "ar": "يُشحن بعد التجهيز",
-                                "en": "Ships after it is prepared"
+                                "ar": "دفعة صغيرة لا مخزون طويل",
+                                "en": "A small batch, not a long stock"
                             }
                         },
                         {
                             "items.word": {
-                                "ar": "محمي",
-                                "en": "Protected"
+                                "ar": "مغلق",
+                                "en": "Sealed"
                             },
                             "items.note": {
-                                "ar": "تغليف يناسب الشحن",
-                                "en": "Packing suited to shipping"
+                                "ar": "صمام يحفظ الرائحة",
+                                "en": "A valve keeps the aroma"
                             }
                         },
                         {
@@ -5512,8 +5512,8 @@
                                 "en": "Exchangeable"
                             },
                             "items.note": {
-                                "ar": "الشرط مكتوب هنا",
-                                "en": "The rule is written here"
+                                "ar": "إن اختلف التاريخ المكتوب",
+                                "en": "If the printed date differs"
                             }
                         }
                     ]

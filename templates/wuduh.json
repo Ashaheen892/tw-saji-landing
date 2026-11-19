@@ -393,18 +393,18 @@
           ],
           "value": [
             {
-              "items.image": "",
+              "items.image": "https://images.pexels.com/photos/4735932/pexels-photo-4735932.jpeg?auto=compress&cs=tinysrgb&w=1400",
               "items.alt": {
-                "ar": "المنتج من الأمام",
-                "en": "The product from the front"
+                "ar": "زجاجة سيروم على رخام أبيض",
+                "en": "A serum bottle on white marble"
               },
               "items.title": {
-                "ar": "ابدأ من الصورة التي تبيع",
-                "en": "Start with the photo that sells"
+                "ar": "سيروم صافٍ من أول نظرة",
+                "en": "A clear serum at first glance"
               },
               "items.text": {
-                "ar": "الشريحة الأولى هي أول ما يراه الزائر. ضع المنتج واضحاً، والسعر في القسم التالي.",
-                "en": "The first slide is what the visitor sees first. Show the product clearly, and leave the price to the next section."
+                "ar": "زجاجة زجاجية وقطارة بيضاء. السعر في القسم التالي.",
+                "en": "A glass bottle and a white dropper. The price is in the next section."
               },
               "items.button": {
                 "ar": "شاهد المنتج",
@@ -413,18 +413,18 @@
               "items.url": "#rw-product"
             },
             {
-              "items.image": "",
+              "items.image": "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=1400",
               "items.alt": {
-                "ar": "تفاصيل المنتج",
-                "en": "Product details"
+                "ar": "زجاجة داكنة على طبق خشب",
+                "en": "A dark bottle on a wooden dish"
               },
               "items.title": {
-                "ar": "فصّل ما يميزه",
-                "en": "Spell out what sets it apart"
+                "ar": "الزجاج الداكن يحفظ الزيت",
+                "en": "Dark glass keeps the oil"
               },
               "items.text": {
-                "ar": "شريحة ثانية لفائدة واحدة: الخامة، المقاس، أو طريقة الاستخدام.",
-                "en": "A second slide for one benefit: the material, the size, or how it is used."
+                "ar": "اللون يُرى داخل الزجاجة، والقطارة تقيس الكمية.",
+                "en": "The color shows inside the bottle, and the dropper measures the amount."
               },
               "items.button": {
                 "ar": "اطلب الآن",
@@ -433,18 +433,18 @@
               "items.url": ""
             },
             {
-              "items.image": "",
+              "items.image": "https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg?auto=compress&cs=tinysrgb&w=1400",
               "items.alt": {
-                "ar": "المنتج بعد الاستخدام",
-                "en": "The product after use"
+                "ar": "قطرة تنزل من القطارة",
+                "en": "A drop falling from the dropper"
               },
               "items.title": {
-                "ar": "أغلق بجملة قرار",
-                "en": "Close with a decision line"
+                "ar": "قطرة واحدة قبل الخروج",
+                "en": "One drop before leaving"
               },
               "items.text": {
-                "ar": "الشريحة الأخيرة تجيب: لمن هذا المنتج، ومتى يصل.",
-                "en": "The last slide answers who it is for, and when it arrives."
+                "ar": "على بشرة نظيفة، ثم يُفرد. لا خطوات أكثر من ذلك.",
+                "en": "On clean skin, then spread. No more steps than that."
               },
               "items.button": {
                 "ar": "أضف للطلب",
@@ -546,8 +546,8 @@
           "minLength": 0,
           "maxLength": 120,
           "value": {
-            "ar": "اسم المنتج",
-            "en": "Product name"
+            "ar": "سيروم صافٍ",
+            "en": "Clear serum"
           }
         },
         {
@@ -562,8 +562,8 @@
           "minLength": 0,
           "maxLength": 500,
           "value": {
-            "ar": "اكتب الفائدة الأولى في سطرين. عند اختيار منتج يظهر اسمه وسعره وصوره من المتجر.",
-            "en": "Write the first benefit in two lines. When a product is chosen, its name, price, and photos come from the store."
+            "ar": "زيت خفيف في زجاجة قطارة. عند اختيار منتج من المتجر يُستبدل الاسم والسعر والصور ببياناته.",
+            "en": "A light oil in a dropper bottle. Choosing a store product replaces the name, price, and photos with its own."
           }
         },
         {
@@ -578,8 +578,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "١٩٩ ر.س",
-            "en": "SAR 199"
+            "ar": "١٨٩ ر.س",
+            "en": "SAR 189"
           }
         },
         {
@@ -594,8 +594,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "٢٤٩ ر.س",
-            "en": "SAR 249"
+            "ar": "٢٤٠ ر.س",
+            "en": "SAR 240"
           }
         },
         {
@@ -678,36 +678,36 @@
           ],
           "value": [
             {
-              "views.image": "",
+              "views.image": "https://images.pexels.com/photos/4735932/pexels-photo-4735932.jpeg?auto=compress&cs=tinysrgb&w=1400",
               "views.label": {
-                "ar": "الأمام",
-                "en": "Front"
+                "ar": "الزجاجة",
+                "en": "Bottle"
               },
               "views.alt": {
-                "ar": "المنتج من الأمام",
-                "en": "The product from the front"
+                "ar": "زجاجة السيروم على الرخام",
+                "en": "The serum bottle on marble"
               }
             },
             {
-              "views.image": "",
+              "views.image": "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=1400",
               "views.label": {
-                "ar": "الجانب",
-                "en": "Side"
+                "ar": "اللون",
+                "en": "Color"
               },
               "views.alt": {
-                "ar": "المنتج من الجانب",
-                "en": "The product from the side"
+                "ar": "الزجاجة الداكنة عن قرب",
+                "en": "The dark bottle up close"
               }
             },
             {
-              "views.image": "",
+              "views.image": "https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg?auto=compress&cs=tinysrgb&w=1400",
               "views.label": {
-                "ar": "التفاصيل",
-                "en": "Detail"
+                "ar": "القطرة",
+                "en": "Drop"
               },
               "views.alt": {
-                "ar": "تفصيل من المنتج",
-                "en": "A detail of the product"
+                "ar": "قطرة السيروم على اليد",
+                "en": "A drop of serum on the hand"
               }
             }
           ]
@@ -999,8 +999,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "شاهد المنتج قبل أن تطلبه",
-            "en": "Watch the product before you order"
+            "ar": "شاهد القطرة قبل أن تطلب",
+            "en": "Watch the drop before you order"
           }
         },
         {
@@ -1015,8 +1015,8 @@
           "minLength": 0,
           "maxLength": 500,
           "value": {
-            "ar": "فيديو قصير يشرح الاستخدام. الزائر يضغط التشغيل، ولا يبدأ الصوت وحده.",
-            "en": "A short video that shows how it is used. The visitor presses play, and the sound does not start on its own."
+            "ar": "فيديو قصير لفتح الزجاجة ووضع السيروم. يبدأ عند الضغط، والصوت لا يفتح وحده.",
+            "en": "A short video of opening the bottle and applying the serum. It starts on tap, and the sound does not start on its own."
           }
         },
         {
@@ -1027,7 +1027,7 @@
           "icon": "sicon-image",
           "required": false,
           "description": "المقاس المقترح 1600×900 بكسل، تظهر قبل التشغيل.",
-          "value": ""
+          "value": "https://images.pexels.com/photos/4735932/pexels-photo-4735932.jpeg?auto=compress&cs=tinysrgb&w=1400"
         },
         {
           "id": "video_url",
@@ -1037,7 +1037,7 @@
           "icon": "sicon-link",
           "required": false,
           "description": "رابط يوتيوب أو فيميو أو ملف mp4.",
-          "value": ""
+          "value": "https://videos.pexels.com/video-files/9697876/9697876-hd_1920_1080_25fps.mp4"
         },
         {
           "id": "ov-view",
@@ -1295,8 +1295,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "تفاصيل لا تظهر في الصورة الواحدة",
-            "en": "Details one photo cannot show"
+            "ar": "الزجاجة، ثم القطرة",
+            "en": "The bottle, then the drop"
           }
         },
         {
@@ -1311,8 +1311,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "لقطتان: شكل المنتج، وطريقة استخدامه.",
-            "en": "Two frames: how the product looks, and how it is used."
+            "ar": "لقطة للزجاج الداكن، ولقطة لقطرة واحدة على اليد.",
+            "en": "One frame of the dark glass, and one of a single drop on the hand."
           }
         },
         {
@@ -1328,7 +1328,7 @@
           "icon": "sicon-image",
           "required": false,
           "description": "المقاس المقترح 1200×1500 بكسل.",
-          "value": ""
+          "value": "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=1400"
         },
         {
           "id": "alt_a",
@@ -1342,8 +1342,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "المنتج من الأمام",
-            "en": "The product from the front"
+            "ar": "زجاجة سيروم داكنة على طبق خشب",
+            "en": "A dark serum bottle on a wooden dish"
           }
         },
         {
@@ -1358,8 +1358,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "الشكل",
-            "en": "The form"
+            "ar": "الزجاج",
+            "en": "The glass"
           }
         },
         {
@@ -1374,8 +1374,8 @@
           "minLength": 0,
           "maxLength": 500,
           "value": {
-            "ar": "اكتب المقاس أو الخامة أو ما يميز الشكل عن البدائل.",
-            "en": "Write the size, the material, or what sets the form apart."
+            "ar": "زجاجة داكنة تحفظ الزيت من الضوء، والقطارة تقيس الكمية.",
+            "en": "Dark glass keeps the oil from the light, and the dropper measures the amount."
           }
         },
         {
@@ -1391,7 +1391,7 @@
           "icon": "sicon-image",
           "required": false,
           "description": "المقاس المقترح 1000×1300 بكسل.",
-          "value": ""
+          "value": "https://images.pexels.com/photos/3762879/pexels-photo-3762879.jpeg?auto=compress&cs=tinysrgb&w=1400"
         },
         {
           "id": "alt_b",
@@ -1405,8 +1405,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "المنتج أثناء الاستخدام",
-            "en": "The product in use"
+            "ar": "قطرة سيروم تنزل على راحة اليد",
+            "en": "A drop of serum falling onto an open hand"
           }
         },
         {
@@ -1437,8 +1437,8 @@
           "minLength": 0,
           "maxLength": 500,
           "value": {
-            "ar": "اشرح خطوة واحدة يقوم بها المشتري بعد أن يصله المنتج.",
-            "en": "Explain one step the buyer takes after the product arrives."
+            "ar": "قطرة واحدة على راحة اليد، ثم تُفرد على بشرة نظيفة.",
+            "en": "One drop on the palm, then spread it over clean skin."
           }
         },
         {
@@ -1533,8 +1533,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "اطلبه اليوم، ويصلك في الموعد المكتوب",
-            "en": "Order it today, and it arrives on the stated date"
+            "ar": "اطلب السيروم اليوم، ويصلك خلال يومين",
+            "en": "Order the serum today, and it arrives within two days"
           }
         },
         {
@@ -1549,8 +1549,8 @@
           "minLength": 0,
           "maxLength": 500,
           "value": {
-            "ar": "أزل الشك بسطر واحد: مدة الشحن، أو شرط الاستبدال، أو ما يشمله الطلب.",
-            "en": "Remove the doubt in one line: shipping time, the exchange rule, or what the order includes."
+            "ar": "التجهيز داخل المدينة خلال يومين. إن وصلت الزجاجة مفتوحة نستبدلها خلال ١٤ يوماً.",
+            "en": "In-city dispatch is within two days. If the bottle arrives open, we replace it within 14 days."
           }
         },
         {
