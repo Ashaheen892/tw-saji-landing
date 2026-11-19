@@ -519,10 +519,26 @@
       },
       "fields": [
         {
+          "id": "product",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "products",
+          "label": "المنتج",
+          "icon": "sicon-box",
+          "placeholder": "ابحث عن منتج",
+          "required": false,
+          "description": "في صفحة منتج يظهر منتج الصفحة نفسه. في صفحة العروض يظهر المنتج الذي تختاره هنا: اسمه وصوره وسعره.",
+          "options": [],
+          "selected": [],
+          "value": [],
+          "searchable": true,
+          "multichoice": false
+        },
+        {
           "id": "title",
           "type": "string",
           "format": "text",
-          "label": "اسم المنتج إن لم تكن الصفحة مربوطة بمنتج",
+          "label": "اسم المنتج إن لم يُختر منتج",
           "icon": "sicon-format-text-alt",
           "multilanguage": true,
           "required": false,
@@ -546,8 +562,8 @@
           "minLength": 0,
           "maxLength": 500,
           "value": {
-            "ar": "اكتب الفائدة الأولى في سطرين. في صفحة منتج يظهر اسم المنتج وسعره من بيانات المتجر.",
-            "en": "Write the first benefit in two lines. On a product page, the name and price come from the store."
+            "ar": "اكتب الفائدة الأولى في سطرين. عند اختيار منتج يظهر اسمه وسعره وصوره من المتجر.",
+            "en": "Write the first benefit in two lines. When a product is chosen, its name, price, and photos come from the store."
           }
         },
         {

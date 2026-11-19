@@ -135,13 +135,10 @@ var __defProp2 = Object.defineProperty, __decorateClass = /* @__PURE__ */ __name
   return result && __defProp2(target, key, result), result;
 }, "__decorateClass");
 const css = `
-.rw-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; }
-.rw-tag { width: min(11rem, 46%); min-height: 6.2rem; padding: .8rem .7rem; background: var(--rw-card); border: 1px solid var(--rw-border); box-shadow: 0 10px 24px -18px rgb(0 0 0 / 50%); }
-.rw-tag:nth-child(odd) { transform: rotate(-1.5deg); }
-.rw-tag:nth-child(even) { transform: rotate(1.4deg); }
-.rw-tag b { display: block; font-size: 1.15rem; }
-.rw-tag span { display: block; margin-top: .35rem; color: var(--rw-muted); line-height: 1.5; }
-@media (prefers-reduced-motion: reduce) { .rw-tag { transform: none; } }
+.rw-shelf { display: grid; grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr)); gap: .75rem; padding-top: 1rem; border-top: 2px solid var(--rw-text); }
+.rw-tag { display: flex; flex-direction: column; justify-content: space-between; min-height: 8.5rem; padding: 1rem .9rem .95rem; background: var(--rw-card); border: 1px solid var(--rw-border); border-top: 4px solid var(--color-primary, #1a1d21); }
+.rw-tag b { font-size: 1.25rem; line-height: 1.3; }
+.rw-tag span { display: block; margin-top: .7rem; color: var(--rw-muted); line-height: 1.55; }
 `, _ShelfTags = class _ShelfTags extends LitElement {
   constructor() {
     super(...arguments), this.stop = () => {
@@ -161,7 +158,7 @@ const css = `
     return html`<section class="rw-block rw-section ${schemeOf(cfg)}" style=${sectionStyle(cfg)} aria-label=${localizedString(cfg.title) || "tags"}>
       <div class="rw-container">
         ${sectionTitle(cfg)}
-        ${tags.length ? html`<div class="rw-tags">${tags.map((tag) => html`<article class="rw-tag"><b>${tag.word}</b>${tag.note ? html`<span>${tag.note}</span>` : ""}</article>`)}</div>` : emptyCopy()}
+        ${tags.length ? html`<div class="rw-shelf">${tags.map((tag) => html`<article class="rw-tag"><b>${tag.word}</b>${tag.note ? html`<span>${tag.note}</span>` : ""}</article>`)}</div>` : emptyCopy()}
       </div>
     </section>`;
   }

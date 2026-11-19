@@ -85,6 +85,11 @@ const scheme = (selected = "auto") => drop(
   selected,
   "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
 );
+const products = (id, label, desc) => ({
+  id, type: "items", format: "dropdown-list", source: "products", label, icon: "sicon-box",
+  placeholder: "ابحث عن منتج", required: false, description: desc,
+  options: [], selected: [], value: [], searchable: true, multichoice: false,
+});
 const collection = (id, itemLabel, fields, value, min, max) => ({
   id, type: "collection", format: "collection", required: true, minLength: min, maxLength: max,
   item_label: itemLabel,
@@ -606,8 +611,9 @@ const components = [
     image: "",
     props: { "min-height": "640px" },
     fields: [
-      text("title", "اسم المنتج إن لم تكن الصفحة مربوطة بمنتج", L("اسم المنتج", "Product name"), { max: 120 }),
-      area("text", "وصف قصير", L("اكتب الفائدة الأولى في سطرين. في صفحة منتج يظهر اسم المنتج وسعره من بيانات المتجر.", "Write the first benefit in two lines. On a product page, the name and price come from the store.")),
+      products("product", "المنتج", "في صفحة منتج يظهر منتج الصفحة نفسه. في صفحة العروض يظهر المنتج الذي تختاره هنا: اسمه وصوره وسعره."),
+      text("title", "اسم المنتج إن لم يُختر منتج", L("اسم المنتج", "Product name"), { max: 120 }),
+      area("text", "وصف قصير", L("اكتب الفائدة الأولى في سطرين. عند اختيار منتج يظهر اسمه وسعره وصوره من المتجر.", "Write the first benefit in two lines. When a product is chosen, its name, price, and photos come from the store.")),
       text("price_text", "السعر عند المعاينة", L("١٩٩ ر.س", "SAR 199")),
       text("compare_text", "السعر قبل الخصم عند المعاينة", L("٢٤٩ ر.س", "SAR 249")),
       text("button_label", "نص زر الشراء", L("اشتر الآن", "Buy now")),

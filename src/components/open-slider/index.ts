@@ -1,23 +1,29 @@
 import { html, LitElement, nothing } from "lit";
 import { property, state } from "lit/decorators.js";
-import { getCollectionItems, getConfig, localizedString, watchLocale } from "../../utils/config.js";
+import { getCollectionItems, getConfig, localizedString, t, watchLocale } from "../../utils/config.js";
 import { renderCta, schemeOf } from "../../utils/landing.js";
 import { baseCss, injectStyles, sectionStyle } from "../../utils/styles.js";
 import { emptyCopy, media } from "../../utils/ui.js";
 
 const css = `
-.rw-opener { display: grid; overflow: hidden; background: var(--rw-card); }
-@container (min-width: 860px) { .rw-opener { grid-template-columns: minmax(0, .86fr) minmax(0, 1.14fr); min-height: 34rem; } }
-.rw-opener__copy { display: flex; flex-direction: column; justify-content: flex-end; gap: .75rem; padding: 1.6rem 1.3rem 1.4rem; }
-@container (min-width: 860px) { .rw-opener__copy { padding: 2.4rem; } }
-.rw-opener__copy h2 { font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1.15; font-weight: 700; }
-.rw-opener__copy p { max-width: 34rem; color: var(--rw-muted); line-height: 1.8; }
-.rw-opener__media { min-height: 16rem; background: var(--rw-soft); }
+.rw-opener { display: grid; background: var(--rw-card); }
+.rw-opener__media { order: -1; min-height: 16rem; background: var(--rw-soft); }
 .rw-opener__media img, .rw-opener__media .rw-ph { width: 100%; height: 100%; min-height: 16rem; object-fit: cover; }
-.rw-opener__nav { display: flex; align-items: center; gap: .5rem; margin-top: .4rem; }
-.rw-opener__nav button { width: 2.6rem; height: 2.6rem; border: 1px solid var(--rw-border); border-radius: .6rem; background: var(--rw-surface); color: var(--rw-text); cursor: pointer; }
-.rw-opener__nav button:focus-visible { outline: 2px solid var(--color-primary, #1a1d21); outline-offset: 2px; }
-.rw-opener__nav span { margin-inline-start: .3rem; color: var(--rw-muted); }
+@container (min-width: 860px) {
+  .rw-opener { grid-template-columns: minmax(18rem, .78fr) minmax(0, 1.22fr); min-height: 36rem; }
+  .rw-opener__media { order: 0; min-height: 0; }
+  .rw-opener__media img, .rw-opener__media .rw-ph { min-height: 100%; }
+}
+.rw-opener__copy { display: flex; flex-direction: column; justify-content: space-between; gap: 1.4rem; padding: 1.4rem 1.25rem 1.2rem; }
+@container (min-width: 860px) { .rw-opener__copy { padding: 2.2rem 2rem; } }
+.rw-opener__copy h2 { font-size: clamp(1.7rem, 3.4vw, 2.8rem); line-height: 1.2; font-weight: 700; }
+.rw-opener__copy p { max-width: 36rem; color: var(--rw-muted); line-height: 1.8; }
+.rw-opener__jumps { display: grid; }
+.rw-opener__jumps button { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .7rem; align-items: baseline; width: 100%; padding: .7rem 0; border: 0; border-top: 1px solid var(--rw-border); background: transparent; color: var(--rw-muted); text-align: start; cursor: pointer; }
+.rw-opener__jumps button:last-child { border-bottom: 1px solid var(--rw-border); }
+.rw-opener__jumps button[aria-current="true"] { color: var(--rw-text); font-weight: 700; }
+.rw-opener__jumps b { color: var(--color-primary, #1a1d21); font-size: .85rem; font-weight: 700; }
+.rw-opener__jumps button:focus-visible { outline: 2px solid var(--color-primary, #1a1d21); outline-offset: 2px; }
 `;
 
 export default class OpenSlider extends LitElement {
@@ -26,6 +32,8 @@ export default class OpenSlider extends LitElement {
   private stop = () => {};
   private timer = 0;
   private count = 1;
+  private paused = false;
+  private reduced = false;
 
   protected createRenderRoot() {
     return this;
@@ -37,15 +45,26 @@ export default class OpenSlider extends LitElement {
     injectStyles("rw-base", baseCss);
     injectStyles("rw-open-slider", css);
     this.stop = watchLocale(this);
-    const motion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!motion) this.timer = window.setInterval(() => this.step(1), 7000);
+    this.reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!this.reduced) this.timer = window.setInterval(() => { if (!this.paused) this.step(1); }, 7000);
+    this.addEventListener("pointerenter", this.hold);
+    this.addEventListener("pointerleave", this.release);
+    this.addEventListener("focusin", this.hold);
+    this.addEventListener("focusout", this.release);
   }
 
   disconnectedCallback() {
     window.clearInterval(this.timer);
+    this.removeEventListener("pointerenter", this.hold);
+    this.removeEventListener("pointerleave", this.release);
+    this.removeEventListener("focusin", this.hold);
+    this.removeEventListener("focusout", this.release);
     this.stop();
     super.disconnectedCallback();
   }
+
+  private hold = () => { this.paused = true; };
+  private release = () => { this.paused = false; };
 
   private step(dir: number) {
     if (this.count < 2) return;
@@ -66,19 +85,21 @@ export default class OpenSlider extends LitElement {
       .filter((item) => item.title);
     this.count = slides.length;
     const slide = slides[this.index] || slides[0];
-    return html`<section class="rw-block ${schemeOf(cfg)}" style=${sectionStyle(cfg)} aria-roledescription="carousel" aria-label=${localizedString(cfg.title) || "slider"}>
+    const label = localizedString(cfg.title) || t({ ar: "سلايدر", en: "Slider" });
+    return html`<section class="rw-block ${schemeOf(cfg)}" style=${sectionStyle(cfg)} aria-roledescription="carousel" aria-label=${label}>
       ${slide
         ? html`<div class="rw-opener">
             <div class="rw-opener__copy">
-              <h2>${slide.title}</h2>
-              ${slide.text ? html`<p>${slide.text}</p>` : nothing}
-              ${renderCta(slide.button, slide.url)}
+              <div>
+                <h2>${slide.title}</h2>
+                ${slide.text ? html`<p>${slide.text}</p>` : nothing}
+                <div class="rw-actions">${renderCta(slide.button, slide.url)}</div>
+              </div>
               ${slides.length > 1
-                ? html`<div class="rw-opener__nav">
-                    <button type="button" aria-label="السابق" @click=${() => this.step(-1)}>‹</button>
-                    <button type="button" aria-label="التالي" @click=${() => this.step(1)}>›</button>
-                    <span dir="ltr">${this.index + 1} / ${slides.length}</span>
-                  </div>`
+                ? html`<div class="rw-opener__jumps">${slides.map((item, index) => html`<button type="button" aria-current=${index === this.index ? "true" : nothing} @click=${() => { this.index = index; }}>
+                    <b>${String(index + 1).padStart(2, "0")}</b>
+                    <span>${item.title}</span>
+                  </button>`)}</div>`
                 : nothing}
             </div>
             <div class="rw-opener__media">${media(slide.image, slide.alt || slide.title)}</div>

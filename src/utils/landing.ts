@@ -30,8 +30,18 @@ export function landingProductId(): string | null {
   return id ? String(id) : null;
 }
 
-export async function fetchLandingProduct(): Promise<Record<string, any> | null> {
-  const id = landingProductId();
+/** Id saved by the product picker: a value, or `{ value }` / `{ id }`. */
+export function pickedId(value: unknown): string | null {
+  const first = Array.isArray(value) ? value[0] : value;
+  if (first == null || first === "") return null;
+  if (typeof first === "object") {
+    const id = (first as { value?: unknown; id?: unknown }).value ?? (first as { id?: unknown }).id;
+    return id ? String(id) : null;
+  }
+  return String(first);
+}
+
+export async function fetchProduct(id: string | number | null | undefined): Promise<Record<string, any> | null> {
   const api = (window as any).Salla;
   if (!id || !api?.product?.api?.getDetails) return null;
   try {
@@ -41,6 +51,10 @@ export async function fetchLandingProduct(): Promise<Record<string, any> | null>
   } catch {
     return null;
   }
+}
+
+export async function fetchLandingProduct(): Promise<Record<string, any> | null> {
+  return fetchProduct(landingProductId());
 }
 
 export function money(amount: number): string {

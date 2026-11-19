@@ -168,11 +168,11 @@ var __defProp2 = Object.defineProperty, __decorateClass = /* @__PURE__ */ __name
   return result && __defProp2(target, key, result), result;
 }, "__decorateClass");
 const css = `
-.rw-letter { width: min(42rem, 100%); margin-inline: auto; padding: 1.6rem 1.4rem 1.4rem; background: var(--rw-card); border-radius: 1.2rem; border: 1px solid var(--rw-border); }
-.rw-letter p { color: var(--rw-muted); line-height: 1.9; font-size: 1.05rem; }
-.rw-letter__sign { display: flex; justify-content: space-between; gap: 1rem; align-items: flex-end; margin-top: 1.3rem; padding-top: 1rem; border-top: 1px solid var(--rw-border); }
-.rw-letter__sign b { display: block; }
-.rw-letter__sign span { display: block; color: var(--rw-muted); }
+.rw-letter { width: min(40rem, 100%); margin-inline: auto; padding: 1.7rem 1.45rem 1.35rem; background: var(--rw-card); border: 1px solid var(--rw-border); border-inline-start: 4px solid var(--color-primary, #1a1d21); }
+.rw-letter p { color: var(--rw-text); font-size: 1.12rem; line-height: 2; white-space: pre-line; }
+.rw-letter__sign { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem; margin-top: 1.6rem; padding-top: 1rem; border-top: 1px solid var(--rw-border); }
+.rw-letter__sign b { display: block; font-size: 1.2rem; }
+.rw-letter__sign span { display: block; margin-top: .15rem; color: var(--rw-muted); }
 `, _MakerLetter = class _MakerLetter extends LitElement {
   constructor() {
     super(...arguments), this.stop = () => {
