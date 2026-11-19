@@ -126,20 +126,20 @@
               "minLength": 0,
               "maxLength": 180,
               "value": {
-                "ar": "250 غرام",
-                "en": "250 grams"
+                "ar": "يُكتب من التاجر",
+                "en": "Written by the merchant"
               }
             }
           ],
           "value": [
             {
               "items.label": {
-                "ar": "الوزن",
-                "en": "Weight"
+                "ar": "المقاس",
+                "en": "Size"
               },
               "items.value": {
-                "ar": "250 غرام",
-                "en": "250 grams"
+                "ar": "يُكتب من التاجر",
+                "en": "Written by the merchant"
               }
             },
             {
@@ -148,8 +148,8 @@
                 "en": "Material"
               },
               "items.value": {
-                "ar": "قماش مغسول",
-                "en": "Washed cloth"
+                "ar": "خامة المنتج",
+                "en": "The product material"
               }
             },
             {
@@ -158,8 +158,8 @@
                 "en": "Packing"
               },
               "items.value": {
-                "ar": "كيس قماشي قابل للطي",
-                "en": "A foldable cloth bag"
+                "ar": "صندوق يحمي القطعة",
+                "en": "A box that protects the piece"
               }
             },
             {
@@ -168,8 +168,8 @@
                 "en": "Card"
               },
               "items.value": {
-                "ar": "طريقة العناية مطبوعة",
-                "en": "A printed care note"
+                "ar": "طريقة الاستخدام مطبوعة",
+                "en": "A printed use note"
               }
             }
           ]
@@ -415,8 +415,8 @@
                 "en": "Between two errands"
               },
               "items.text": {
-                "ar": "تُطوى في الكيس وتعود للشكل نفسه عند الفتح.",
-                "en": "It folds into the bag and returns to the same shape when opened."
+                "ar": "استخدام سريع لا يحتاج تجهيزاً طويلاً.",
+                "en": "A quick use that does not need a long setup."
               }
             },
             {
@@ -589,8 +589,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "ورشة صغيرة في جدة",
-            "en": "A small workshop in Jeddah"
+            "ar": "منشأ يكتبه التاجر",
+            "en": "An origin the merchant writes"
           }
         },
         {
@@ -615,8 +615,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "طاولة عمل في الورشة",
-            "en": "A work table in the workshop"
+            "ar": "مكان تجهيز المنتج",
+            "en": "Where the product is prepared"
           }
         },
         {
@@ -640,8 +640,8 @@
               "minLength": 0,
               "maxLength": 180,
               "value": {
-                "ar": "الأيدي",
-                "en": "Hands"
+                "ar": "المصدر",
+                "en": "Source"
               }
             },
             {
@@ -656,20 +656,20 @@
               "minLength": 0,
               "maxLength": 180,
               "value": {
-                "ar": "نفس الفريق من القص حتى الخياطة",
-                "en": "The same team from cutting to stitching"
+                "ar": "من أين تأتي الخامة أو القطعة",
+                "en": "Where the material or the piece comes from"
               }
             }
           ],
           "value": [
             {
               "items.label": {
-                "ar": "الأيدي",
-                "en": "Hands"
+                "ar": "المصدر",
+                "en": "Source"
               },
               "items.text": {
-                "ar": "نفس الفريق من القص حتى الخياطة",
-                "en": "The same team from cutting to stitching"
+                "ar": "من أين تأتي الخامة أو القطعة",
+                "en": "Where the material or the piece comes from"
               }
             },
             {
@@ -678,18 +678,18 @@
                 "en": "Batch"
               },
               "items.text": {
-                "ar": "عدد محدود كل أسبوعين",
-                "en": "A limited number every two weeks"
+                "ar": "كم قطعة تُجهَّز في المرة الواحدة",
+                "en": "How many pieces are prepared at once"
               }
             },
             {
               "items.label": {
-                "ar": "الخامة",
-                "en": "Material"
+                "ar": "الفحص",
+                "en": "Check"
               },
               "items.text": {
-                "ar": "تُشترى كاملة قبل القص",
-                "en": "Bought in full before it is cut"
+                "ar": "ماذا يُراجع قبل الشحن",
+                "en": "What is checked before shipping"
               }
             }
           ]
@@ -1081,8 +1081,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "فريق ساجي",
-            "en": "Saji team"
+            "ar": "فريق المتجر",
+            "en": "The store team"
           }
         },
         {
@@ -1097,8 +1097,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "الورشة",
-            "en": "The workshop"
+            "ar": "المتجر",
+            "en": "The store"
           }
         },
         {
@@ -1290,8 +1290,8 @@
               "minLength": 0,
               "maxLength": 180,
               "value": {
-                "ar": "محدود",
-                "en": "Limited"
+                "ar": "واضح",
+                "en": "Clear"
               }
             },
             {
@@ -1306,50 +1306,50 @@
               "minLength": 0,
               "maxLength": 180,
               "value": {
-                "ar": "دفعة كل أسبوعين",
-                "en": "A batch every two weeks"
+                "ar": "المعلومة قبل الدفع",
+                "en": "The fact before payment"
               }
             }
           ],
           "value": [
             {
               "items.word": {
-                "ar": "محدود",
-                "en": "Limited"
+                "ar": "واضح",
+                "en": "Clear"
               },
               "items.note": {
-                "ar": "دفعة كل أسبوعين",
-                "en": "A batch every two weeks"
+                "ar": "المعلومة قبل الدفع",
+                "en": "The fact before payment"
               }
             },
             {
               "items.word": {
-                "ar": "مخيط",
-                "en": "Stitched"
+                "ar": "جاهز",
+                "en": "Ready"
               },
               "items.note": {
-                "ar": "في الورشة نفسها",
-                "en": "In the same workshop"
+                "ar": "يُشحن بعد التجهيز",
+                "en": "Ships after it is prepared"
               }
             },
             {
               "items.word": {
-                "ar": "يُطوى",
-                "en": "Folds"
+                "ar": "محمي",
+                "en": "Protected"
               },
               "items.note": {
-                "ar": "بلا علبة صلبة",
-                "en": "Without a hard box"
+                "ar": "تغليف يناسب الشحن",
+                "en": "Packing suited to shipping"
               }
             },
             {
               "items.word": {
-                "ar": "يُغسل",
-                "en": "Washable"
+                "ar": "قابل للاستبدال",
+                "en": "Exchangeable"
               },
               "items.note": {
-                "ar": "ماء بارد فقط",
-                "en": "Cold water only"
+                "ar": "الشرط مكتوب هنا",
+                "en": "The rule is written here"
               }
             }
           ]

@@ -10,8 +10,8 @@ const css = `
 .rw-days { display: grid; gap: .7rem; }
 @container (min-width: 760px) { .rw-days { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .rw-day { min-height: 8.5rem; padding: 1.1rem; border: 1px solid var(--rw-border); border-radius: 1.1rem; background: var(--rw-card); color: var(--rw-text); text-align: start; cursor: pointer; }
-.rw-day[aria-pressed="true"] { border-color: var(--color-primary, #1c3d36); background: color-mix(in srgb, var(--color-primary, #1c3d36) 10%, var(--rw-card)); }
-.rw-day small { display: block; color: var(--color-primary, #1c3d36); font-weight: 700; }
+.rw-day[aria-pressed="true"] { border-color: var(--color-primary, #1a1d21); background: color-mix(in srgb, var(--color-primary, #1a1d21) 10%, var(--rw-card)); }
+.rw-day small { display: block; color: var(--color-primary, #1a1d21); font-weight: 700; }
 .rw-day strong { display: block; margin-top: .35rem; font-size: 1.2rem; }
 .rw-day p { margin-top: .55rem; color: var(--rw-muted); line-height: 1.7; }
 `;

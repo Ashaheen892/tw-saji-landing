@@ -10,7 +10,7 @@ const css = `
 .rw-thread { width: min(40rem, 100%); margin-inline: auto; display: grid; gap: 0; }
 .rw-thread__step { display: grid; grid-template-columns: 2.4rem 1fr; gap: .8rem; }
 .rw-thread__rail { display: flex; flex-direction: column; align-items: center; }
-.rw-thread__rail i { width: .7rem; height: .7rem; margin-top: .35rem; border-radius: 99px; background: var(--color-primary, #1c3d36); }
+.rw-thread__rail i { width: .7rem; height: .7rem; margin-top: .35rem; border-radius: 99px; background: var(--color-primary, #1a1d21); }
 .rw-thread__rail b { flex: 1; width: 1px; background: var(--rw-border); }
 .rw-thread__step:last-child .rw-thread__rail b { display: none; }
 .rw-thread__body { padding-bottom: 1.2rem; }

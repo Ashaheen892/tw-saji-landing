@@ -6,7 +6,7 @@ import { baseCss, injectStyles, sectionStyle } from "../../utils/styles.js";
 
 const css = `
 .rw-invite { position: relative; max-width: 42rem; margin-inline: auto; padding: 2.6rem 1.4rem 2.2rem; text-align: center; border: 1px solid var(--rw-border); border-radius: 1.8rem; background: var(--rw-card); }
-.rw-invite::before, .rw-invite::after { content: ""; position: absolute; width: .7rem; height: .7rem; border: 2px solid var(--color-primary, #8a5a32); }
+.rw-invite::before, .rw-invite::after { content: ""; position: absolute; width: .7rem; height: .7rem; border: 2px solid var(--color-primary, #1a1d21); }
 .rw-invite::before { top: .8rem; inset-inline-start: .8rem; border-inline-end: 0; border-block-end: 0; }
 .rw-invite::after { bottom: .8rem; inset-inline-end: .8rem; border-inline-start: 0; border-block-start: 0; }
 .rw-invite .rw-lead, .rw-invite .rw-actions, .rw-invite .rw-rule { margin-inline: auto; }

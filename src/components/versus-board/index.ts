@@ -10,7 +10,7 @@ const css = `
 .rw-vrow { display: grid; grid-template-columns: 1fr 1fr; gap: .55rem; }
 .rw-vcell { padding: 1rem; border-radius: .95rem; line-height: 1.65; }
 .rw-vcell--off { background: var(--rw-soft); color: var(--rw-muted); }
-.rw-vcell--on { background: color-mix(in srgb, var(--color-primary, #0f6e6a) 14%, var(--rw-card)); }
+.rw-vcell--on { background: color-mix(in srgb, var(--color-primary, #1a1d21) 14%, var(--rw-card)); }
 .rw-vhead { font-size: .82rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 `;
 

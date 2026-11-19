@@ -9,11 +9,11 @@ const css = `
 .rw-offer { display: grid; gap: 1rem; }
 @container (min-width: 860px) { .rw-offer { grid-template-columns: 1.2fr .8fr; } }
 .rw-sheet, .rw-aside { padding: 1.4rem; border: 1px solid var(--rw-border); border-radius: 1.3rem; background: var(--rw-card); }
-.rw-aside { background: color-mix(in srgb, var(--color-primary, #0f6e6a) 12%, var(--rw-card)); }
+.rw-aside { background: color-mix(in srgb, var(--color-primary, #1a1d21) 12%, var(--rw-card)); }
 .rw-price { margin-top: .4rem; font-size: 1.35rem; font-weight: 700; }
 .rw-lines { display: grid; gap: .7rem; margin-top: 1.1rem; }
 .rw-lines li { display: flex; gap: .6rem; align-items: flex-start; line-height: 1.6; }
-.rw-lines i { color: var(--color-primary, #0f6e6a); margin-top: .15rem; }
+.rw-lines i { color: var(--color-primary, #1a1d21); margin-top: .15rem; }
 .rw-aside p { margin-top: .6rem; color: var(--rw-muted); line-height: 1.75; }
 `;
 

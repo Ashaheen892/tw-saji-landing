@@ -23,8 +23,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "للعمل العميق",
-            "en": "For deep work"
+            "ar": "المنتج أولاً",
+            "en": "The product first"
           }
         },
         {
@@ -39,8 +39,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "ركّز ساعتين. العالم ينتظر.",
-            "en": "Focus for two hours. The world can wait."
+            "ar": "صورة كبيرة، وقرار واحد",
+            "en": "A large photo, and one decision"
           }
         },
         {
@@ -55,8 +55,8 @@
           "minLength": 0,
           "maxLength": 500,
           "value": {
-            "ar": "عزل هادئ، ووزن لا يُشعر به بعد الدقيقة العاشرة.",
-            "en": "Quiet isolation, and a weight you stop noticing after the tenth minute."
+            "ar": "جملة قصيرة عن الفائدة، ثم زر يفتح الشراء.",
+            "en": "A short line about the benefit, then a button that opens checkout."
           }
         },
         {
@@ -71,8 +71,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "اطلب السماعة",
-            "en": "Order the headset"
+            "ar": "اشتر الآن",
+            "en": "Buy now"
           }
         },
         {
@@ -107,8 +107,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "سماعة عمل على مكتب",
-            "en": "A work headset on a desk"
+            "ar": "المنتج في مكان استخدامه",
+            "en": "The product where it is used"
           }
         },
         {
@@ -128,8 +128,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "١٨ ساعة",
-            "en": "18 hours"
+            "ar": "٢٤ س",
+            "en": "24 h"
           }
         },
         {
@@ -144,8 +144,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "بطارية",
-            "en": "Battery"
+            "ar": "تجهيز",
+            "en": "Dispatch"
           }
         },
         {
@@ -160,8 +160,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "٢٤٠ غ",
-            "en": "240 g"
+            "ar": "٤.٨",
+            "en": "4.8"
           }
         },
         {
@@ -176,8 +176,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "الوزن",
-            "en": "Weight"
+            "ar": "تقييم",
+            "en": "Rating"
           }
         },
         {
@@ -192,8 +192,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "سنة",
-            "en": "1 year"
+            "ar": "١٤ يوم",
+            "en": "14 days"
           }
         },
         {
@@ -208,8 +208,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "ضمان",
-            "en": "Warranty"
+            "ar": "استبدال",
+            "en": "Exchange"
           }
         },
         {
@@ -340,8 +340,8 @@
               "minLength": 0,
               "maxLength": 180,
               "value": {
-                "ar": "منذ إطلاق السماعة",
-                "en": "Since the headset launched"
+                "ar": "منذ إطلاق المنتج",
+                "en": "Since the product launched"
               }
             }
           ],
@@ -356,8 +356,8 @@
                 "en": "Orders"
               },
               "items.hint": {
-                "ar": "منذ إطلاق السماعة",
-                "en": "Since the headset launched"
+                "ar": "منذ إطلاق المنتج",
+                "en": "Since the product launched"
               }
             },
             {
@@ -533,8 +533,8 @@
               "minLength": 0,
               "maxLength": 180,
               "value": {
-                "ar": "عزل بلا ضغط",
-                "en": "Isolation without pressure"
+                "ar": "خامة واضحة",
+                "en": "A clear material"
               }
             },
             {
@@ -549,8 +549,8 @@
               "minLength": 0,
               "maxLength": 500,
               "value": {
-                "ar": "الوسادة تحيط بالأذن دون أن تضغط على الذراع.",
-                "en": "The cushion surrounds the ear without pressing the arm."
+                "ar": "اكتب خامة واحدة يلمسها المشتري أو يراها في الصورة.",
+                "en": "Name one material the buyer can touch or see in the photo."
               }
             }
           ],
@@ -558,67 +558,67 @@
             {
               "items.icon": "sicon-shield-check",
               "items.title": {
-                "ar": "عزل بلا ضغط",
-                "en": "Isolation without pressure"
+                "ar": "خامة واضحة",
+                "en": "A clear material"
               },
               "items.text": {
-                "ar": "الوسادة تحيط بالأذن دون أن تضغط على الذراع.",
-                "en": "The cushion surrounds the ear without pressing the arm."
+                "ar": "اكتب خامة واحدة يلمسها المشتري أو يراها في الصورة.",
+                "en": "Name one material the buyer can see in the photo."
               }
             },
             {
               "items.icon": "sicon-time",
               "items.title": {
-                "ar": "يوم عمل كامل",
-                "en": "A full workday"
+                "ar": "يصل في موعده",
+                "en": "It arrives on time"
               },
               "items.text": {
-                "ar": "البطارية تغطي اجتماعات اليوم دون شحن منتصف الظهر.",
-                "en": "The battery covers the day's meetings without a midday charge."
+                "ar": "مدة الشحن مكتوبة قبل الدفع، لا بعدها.",
+                "en": "The shipping window is written before payment, not after."
               }
             },
             {
               "items.icon": "sicon-star2",
               "items.title": {
-                "ar": "صوت الاجتماع واضح",
-                "en": "A clear meeting voice"
+                "ar": "استخدام يومي",
+                "en": "Daily use"
               },
               "items.text": {
-                "ar": "الميكروفون يقترب من الفم، لا من ضجيج الغرفة.",
-                "en": "The microphone sits near the mouth, not the room noise."
+                "ar": "جملة واحدة عن اللحظة التي يُستخدم فيها المنتج.",
+                "en": "One sentence about the moment the product is used."
               }
             },
             {
               "items.icon": "sicon-box",
               "items.title": {
-                "ar": "طيّ داخل الحقيبة",
-                "en": "Folds into a bag"
+                "ar": "تغليف مرتب",
+                "en": "Tidy packing"
               },
               "items.text": {
-                "ar": "المفصل يطوي الكأسين إلى داخل الطوق.",
-                "en": "The hinge folds both cups into the band."
+                "ar": "ما يصل في الصندوق، بلا قطع زائدة.",
+                "en": "What arrives in the box, with nothing extra."
               }
             },
             {
               "items.icon": "sicon-rotate",
               "items.title": {
-                "ar": "قماش قابل للتبديل",
-                "en": "A pad you can swap"
+                "ar": "استبدال سهل",
+                "en": "An easy exchange"
               },
               "items.text": {
-                "ar": "الوسادة تُفك بزر واحد حين تبلى.",
-                "en": "The pad comes off with one snap when it wears out."
+                "ar": "شرط الاستبدال في سطر، إن وصل المنتج بغير حالته.",
+                "en": "The exchange rule in one line, if it arrives damaged."
               }
             },
             {
               "items.icon": "sicon-gift",
               "items.title": {
-                "ar": "صندوق مرتب",
-                "en": "A tidy box"
+                "ar": "هدية جاهزة",
+                "en": "Ready to gift"
               },
               "items.text": {
-                "ar": "السماعة، الكيس، وسلك قصير. لا ورق زائد.",
-                "en": "Headset, pouch, and a short cable. No extra paper."
+                "ar": "هل يصلح هدية؟ اكتب ذلك هنا إن كان صحيحاً.",
+                "en": "Does it work as a gift? Write that here if it does."
               }
             }
           ]
@@ -715,8 +715,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "يوم العمل نفسه، بضوضاء أقل",
-            "en": "The same workday, with less noise"
+            "ar": "الفرق في سطرين متقابلين",
+            "en": "The difference in two facing lines"
           }
         },
         {
@@ -747,8 +747,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "بدونها",
-            "en": "Without it"
+            "ar": "قبل",
+            "en": "Before"
           }
         },
         {
@@ -763,8 +763,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "معها",
-            "en": "With it"
+            "ar": "بعد",
+            "en": "After"
           }
         },
         {
@@ -788,8 +788,8 @@
               "minLength": 0,
               "maxLength": 180,
               "value": {
-                "ar": "صوت المقهى يدخل الاجتماع",
-                "en": "Cafe noise joins the meeting"
+                "ar": "البحث عن البديل يستغرق وقتاً",
+                "en": "Looking for a substitute takes time"
               }
             },
             {
@@ -804,50 +804,50 @@
               "minLength": 0,
               "maxLength": 180,
               "value": {
-                "ar": "صوتك يبقى في المقدمة",
-                "en": "Your voice stays in front"
+                "ar": "الخيار جاهز في صفحة واحدة",
+                "en": "The choice is ready on one page"
               }
             }
           ],
           "value": [
             {
               "items.off": {
-                "ar": "صوت المقهى يدخل الاجتماع",
-                "en": "Cafe noise joins the meeting"
+                "ar": "البحث عن البديل يستغرق وقتاً",
+                "en": "Looking for a substitute takes time"
               },
               "items.on": {
-                "ar": "صوتك يبقى في المقدمة",
-                "en": "Your voice stays in front"
+                "ar": "الخيار جاهز في صفحة واحدة",
+                "en": "The choice is ready on one page"
               }
             },
             {
               "items.off": {
-                "ar": "تعيد الشحن قبل العصر",
-                "en": "You recharge before the afternoon"
+                "ar": "المواصفات موزعة على أكثر من شاشة",
+                "en": "Specs are split across screens"
               },
               "items.on": {
-                "ar": "اليوم ينتهي وفيها شحن",
-                "en": "The day ends with charge left"
+                "ar": "المعلومة المهمة في سطر واحد",
+                "en": "The important fact is one line"
               }
             },
             {
               "items.off": {
-                "ar": "السماعة تضغط بعد ساعة",
-                "en": "The headset presses after an hour"
+                "ar": "الشحن غير واضح قبل الدفع",
+                "en": "Shipping is unclear before payment"
               },
               "items.on": {
-                "ar": "الذراع يبقى خفيفاً",
-                "en": "The arm stays light"
+                "ar": "الموعد مكتوب بجانب السعر",
+                "en": "The date is written beside the price"
               }
             },
             {
               "items.off": {
-                "ar": "الكيس منفصل وتبحث عنه",
-                "en": "The pouch is separate and you hunt for it"
+                "ar": "الاستبدال يحتاج مراسلات طويلة",
+                "en": "An exchange needs a long thread"
               },
               "items.on": {
-                "ar": "تُطوى وتدخل الكيس نفسه",
-                "en": "It folds into its own pouch"
+                "ar": "الشرط مكتوب قبل الطلب",
+                "en": "The rule is written before the order"
               }
             }
           ]
@@ -944,8 +944,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "صندوق واحد، ثلاث قطع",
-            "en": "One box, three pieces"
+            "ar": "ماذا يصل مع الطلب",
+            "en": "What arrives with the order"
           }
         },
         {
@@ -985,34 +985,34 @@
               "minLength": 0,
               "maxLength": 180,
               "value": {
-                "ar": "السماعة مع وسادتين",
-                "en": "The headset with two pads"
+                "ar": "المنتج الأساسي",
+                "en": "The main product"
               }
             }
           ],
           "value": [
             {
               "items.text": {
-                "ar": "السماعة مع وسادتين",
-                "en": "The headset with two pads"
+                "ar": "المنتج الأساسي",
+                "en": "The main product"
               }
             },
             {
               "items.text": {
-                "ar": "كيس قماشي للطي",
-                "en": "A cloth pouch for folding"
+                "ar": "تغليف يحمي القطعة",
+                "en": "Packing that protects the piece"
               }
             },
             {
               "items.text": {
-                "ar": "سلك شحن قصير",
-                "en": "A short charging cable"
+                "ar": "بطاقة استخدام قصيرة",
+                "en": "A short use card"
               }
             },
             {
               "items.text": {
-                "ar": "بطاقة الضمان لسنة",
-                "en": "A one-year warranty card"
+                "ar": "شرط الاستبدال مكتوب",
+                "en": "The exchange rule, written down"
               }
             }
           ]
@@ -1029,8 +1029,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "ابدأ بالقطعة لا بالاشتراك",
-            "en": "Start with the piece, not a subscription"
+            "ar": "ابدأ بطلب واحد",
+            "en": "Start with one order"
           }
         },
         {
@@ -1199,8 +1199,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "اطلبها الآن",
-            "en": "Order it now"
+            "ar": "اشتر الآن",
+            "en": "Buy now"
           }
         },
         {
@@ -1234,8 +1234,8 @@
               "minLength": 0,
               "maxLength": 180,
               "value": {
-                "ar": "أعمل من البيت",
-                "en": "I work from home"
+                "ar": "أحتاجه اليوم",
+                "en": "I need it today"
               }
             },
             {
@@ -1250,8 +1250,8 @@
               "minLength": 0,
               "maxLength": 500,
               "value": {
-                "ar": "إن كانت الغرفة قريبة من المطبخ، العزل أهم من شكل السماعة.",
-                "en": "If the room is near the kitchen, isolation matters more than how the headset looks."
+                "ar": "اكتب لمن يناسب هذا الخيار، ومتى يصله.",
+                "en": "Write who this option is for, and when it arrives."
               }
             },
             {
@@ -1266,52 +1266,52 @@
               "minLength": 0,
               "maxLength": 180,
               "value": {
-                "ar": "اطلبها للبيت",
-                "en": "Order it for home"
+                "ar": "اطلبه الآن",
+                "en": "Order it now"
               }
             }
           ],
           "value": [
             {
               "items.label": {
-                "ar": "أعمل من البيت",
-                "en": "I work from home"
+                "ar": "أحتاجه اليوم",
+                "en": "I need it today"
               },
               "items.message": {
-                "ar": "إن كانت الغرفة قريبة من المطبخ، العزل أهم من شكل السماعة.",
-                "en": "If the room is near the kitchen, isolation matters more than how the headset looks."
+                "ar": "اكتب مدة التجهيز للشحن داخل المدينة.",
+                "en": "Write the dispatch time for in-city shipping."
               },
               "items.button": {
-                "ar": "اطلبها للبيت",
-                "en": "Order it for home"
+                "ar": "اطلبه الآن",
+                "en": "Order it now"
               }
             },
             {
               "items.label": {
-                "ar": "أسافر بالسماعة",
-                "en": "I travel with it"
+                "ar": "أهداه لغيري",
+                "en": "I am gifting it"
               },
               "items.message": {
-                "ar": "الطي داخل الكيس يغني عن علبة صلبة في الحقيبة الصغيرة.",
-                "en": "Folding into the pouch replaces a hard case in a small bag."
+                "ar": "اكتب إن كان التغليف يصلح هدية دون شراء إضافي.",
+                "en": "Write whether the packing works as a gift with nothing extra."
               },
               "items.button": {
-                "ar": "اطلبها للسفر",
-                "en": "Order it for travel"
+                "ar": "اطلبه هدية",
+                "en": "Order it as a gift"
               }
             },
             {
               "items.label": {
-                "ar": "أذاكر ساعات",
-                "en": "I study for hours"
+                "ar": "أجربه أولاً",
+                "en": "I want to try it"
               },
               "items.message": {
-                "ar": "الوزن الخفيف هو الفرق بين ساعة تركيز وساعة تعدّل فيها السماعة.",
-                "en": "The light weight is the difference between an hour of focus and an hour of adjusting it."
+                "ar": "اكتب شرط الاستبدال إن لم يناسب الاستخدام.",
+                "en": "Write the exchange rule if it does not fit the use."
               },
               "items.button": {
-                "ar": "اطلبها للمذاكرة",
-                "en": "Order it for study"
+                "ar": "ابدأ بالتجربة",
+                "en": "Start with a trial"
               }
             }
           ]

@@ -12,7 +12,7 @@ const css = `
 .rw-rail { display: flex; gap: .85rem; margin-top: 1.2rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
 .rw-rail::-webkit-scrollbar { display: none; }
 .rw-reason { flex: 0 0 min(78%, 270px); scroll-snap-align: start; min-height: 11rem; padding: 1.15rem; border: 1px solid var(--rw-border); border-radius: 1.15rem; background: var(--rw-card); }
-.rw-reason i { color: var(--color-primary, #0f6e6a); font-size: 1.3rem; }
+.rw-reason i { color: var(--color-primary, #1a1d21); font-size: 1.3rem; }
 .rw-reason h3 { margin-top: .7rem; font-size: 1.05rem; }
 .rw-reason p { margin-top: .4rem; color: var(--rw-muted); line-height: 1.7; font-size: .92rem; }
 `;

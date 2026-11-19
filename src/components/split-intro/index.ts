@@ -12,7 +12,7 @@ const css = `
   .rw-split--end .rw-split__copy { order: 2; }
 }
 .rw-split__media { position: relative; min-height: 22rem; }
-.rw-split__frame { position: absolute; inset: 14% -7% -8% 10%; border-radius: 1.8rem; background: color-mix(in srgb, var(--color-primary, #8a5a32) 22%, var(--rw-surface-2)); }
+.rw-split__frame { position: absolute; inset: 14% -7% -8% 10%; border-radius: 1.8rem; background: color-mix(in srgb, var(--color-primary, #1a1d21) 22%, var(--rw-surface-2)); }
 .rw-split__media img, .rw-split__media .rw-ph { position: relative; width: 100%; height: 100%; min-height: 22rem; object-fit: cover; border-radius: 1.6rem; }
 `;
 

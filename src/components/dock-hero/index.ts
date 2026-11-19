@@ -5,11 +5,11 @@ import { applyTone, currentTone, renderCta, renderTone, rememberTone, schemeOf }
 import { baseCss, injectStyles, sectionStyle } from "../../utils/styles.js";
 
 const css = `
-.rw-dock { position: relative; display: flex; align-items: flex-end; min-height: 78vh; overflow: hidden; color: #f7f3ec; }
+.rw-dock { position: relative; display: flex; align-items: flex-end; min-height: 78vh; overflow: hidden; color: #f4f6f8; }
 .rw-dock__media, .rw-dock__shade, .rw-dock__fallback { position: absolute; inset: 0; width: 100%; height: 100%; }
 .rw-dock__media { object-fit: cover; }
 .rw-dock__fallback { background:
-  radial-gradient(circle at 80% 10%, color-mix(in srgb, var(--color-primary, #0f6e6a) 55%, transparent), transparent 36%),
+  radial-gradient(circle at 80% 10%, color-mix(in srgb, var(--color-primary, #1a1d21) 55%, transparent), transparent 36%),
   linear-gradient(165deg, #10211f, #1b1410 70%); }
 .rw-dock__shade { background: linear-gradient(180deg, rgb(0 0 0 / 10%) 10%, rgb(0 0 0 / 74%)); }
 .rw-dock__body { position: relative; z-index: 1; width: min(1120px, calc(100% - 2rem)); margin: 0 auto 1.4rem; }

@@ -30,6 +30,24 @@ export function landingProductId(): string | null {
   return id ? String(id) : null;
 }
 
+export async function fetchLandingProduct(): Promise<Record<string, any> | null> {
+  const id = landingProductId();
+  const api = (window as any).Salla;
+  if (!id || !api?.product?.api?.getDetails) return null;
+  try {
+    await api.onReady?.();
+    const res = await api.product.api.getDetails(id, ["images", "rating"]);
+    return res?.data?.id ? res.data : null;
+  } catch {
+    return null;
+  }
+}
+
+export function money(amount: number): string {
+  const api = (window as any).Salla;
+  return api?.money ? api.money(amount) : String(amount);
+}
+
 export function mainButton(): { text: string; url: string } {
   const settings = landingSettings();
   return { text: String(settings.main_btn_text || ""), url: String(settings.main_btn_url || "") };

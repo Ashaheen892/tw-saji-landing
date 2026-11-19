@@ -9,7 +9,7 @@ const css = `
 .rw-path { display: grid; }
 .rw-step { display: grid; grid-template-columns: 4.2rem 1fr; gap: .4rem 1rem; position: relative; padding-bottom: 1.4rem; }
 .rw-step:not(:last-child)::before { content: ""; position: absolute; inset-inline-start: 1.35rem; top: 2.7rem; bottom: .2rem; width: 1px; background: var(--rw-border); }
-.rw-step__no { font-size: 1.45rem; font-weight: 700; letter-spacing: -.04em; color: var(--color-primary, #8a5a32); }
+.rw-step__no { font-size: 1.45rem; font-weight: 700; letter-spacing: -.04em; color: var(--color-primary, #1a1d21); }
 .rw-step h3 { font-size: 1.15rem; }
 .rw-step p { margin-top: .3rem; color: var(--rw-muted); line-height: 1.75; }
 `;

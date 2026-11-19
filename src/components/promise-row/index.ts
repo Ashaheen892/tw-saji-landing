@@ -13,7 +13,7 @@ const css = `
   .rw-promise { border-block-end: 0; border-inline-start: 1px solid var(--rw-border); }
   .rw-promise:first-child { border-inline-start: 0; }
 }
-.rw-promise i { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; flex: none; border-radius: .7rem; background: color-mix(in srgb, var(--color-primary, #8a5a32) 14%, var(--rw-soft)); color: var(--color-primary, #8a5a32); }
+.rw-promise i { display: grid; place-items: center; width: 2.5rem; height: 2.5rem; flex: none; border-radius: .7rem; background: color-mix(in srgb, var(--color-primary, #1a1d21) 14%, var(--rw-soft)); color: var(--color-primary, #1a1d21); }
 .rw-promise strong { display: block; font-size: 1rem; }
 .rw-promise span { display: block; margin-top: .25rem; color: var(--rw-muted); font-size: .88rem; line-height: 1.6; }
 `;

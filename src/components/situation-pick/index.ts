@@ -8,7 +8,7 @@ import { emptyCopy, heading } from "../../utils/ui.js";
 const css = `
 .rw-chips { display: flex; flex-wrap: wrap; gap: .55rem; }
 .rw-chip { min-height: 2.8rem; padding: .55rem 1rem; border: 1px solid var(--rw-border); border-radius: 999px; background: var(--rw-card); color: var(--rw-text); cursor: pointer; }
-.rw-chip[aria-pressed="true"] { border-color: var(--color-primary, #0f6e6a); background: var(--color-primary, #0f6e6a); color: var(--color-primary-reverse, #fff); }
+.rw-chip[aria-pressed="true"] { border-color: var(--color-primary, #1a1d21); background: var(--color-primary, #1a1d21); color: var(--color-primary-reverse, #fff); }
 .rw-fit { margin-top: 1rem; padding: 1.3rem; border-radius: 1.2rem; background: var(--rw-card); border: 1px solid var(--rw-border); }
 .rw-fit p { margin-top: .35rem; color: var(--rw-muted); line-height: 1.8; font-size: 1.05rem; }
 `;

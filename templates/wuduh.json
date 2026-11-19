@@ -2,20 +2,20 @@
   "id": "846b8092-8d09-493a-a59e-4485260dd34c",
   "components": [
     {
-      "title": "مقدمة مقسومة",
-      "icon": "sicon-format-text-alt",
-      "name": "split-intro",
-      "key": "b8c74ba0-a1c0-4d10-874e-25c41e0163af",
+      "title": "سلايدر افتتاحي",
+      "icon": "sicon-image",
+      "name": "open-slider",
+      "key": "a3d2aa90-eaf2-408b-921d-26f1d961aca3",
       "image": "",
       "props": {
-        "min-height": "520px"
+        "min-height": "560px"
       },
       "fields": [
         {
-          "id": "kicker",
+          "id": "title",
           "type": "string",
           "format": "text",
-          "label": "سطر صغير فوق العنوان",
+          "label": "اسم القسم",
           "icon": "sicon-format-text-alt",
           "multilanguage": true,
           "required": false,
@@ -23,10 +23,473 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "تحميص أسبوعي",
-            "en": "Roasted every week"
+            "ar": "افتتاح الصفحة",
+            "en": "Page opening"
           }
         },
+        {
+          "id": "items",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 6,
+          "item_label": "شريحة",
+          "fields": [
+            {
+              "id": "items.image",
+              "type": "string",
+              "format": "image",
+              "label": "صورة الشريحة",
+              "icon": "sicon-image",
+              "required": false,
+              "description": "المقاس المقترح 1400×900 بكسل، صورة أفقية للمنتج أو الاستخدام.",
+              "value": ""
+            },
+            {
+              "id": "items.alt",
+              "type": "string",
+              "format": "text",
+              "label": "وصف الصورة",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "المنتج في الاستخدام",
+                "en": "The product in use"
+              }
+            },
+            {
+              "id": "items.title",
+              "type": "string",
+              "format": "text",
+              "label": "العنوان",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "المنتج الذي يبيع نفسه من أول نظرة",
+                "en": "The product that explains itself at first glance"
+              }
+            },
+            {
+              "id": "items.text",
+              "type": "string",
+              "format": "textarea",
+              "label": "النص",
+              "icon": "sicon-paragraph",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 500,
+              "value": {
+                "ar": "اكتب جملة واحدة عن الفائدة، ثم ادعُ الزائر للطلب.",
+                "en": "Write one sentence about the benefit, then invite the visitor to order."
+              }
+            },
+            {
+              "id": "items.button",
+              "type": "string",
+              "format": "text",
+              "label": "نص الزر",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "اطلب الآن",
+                "en": "Order now"
+              }
+            },
+            {
+              "id": "items.url",
+              "type": "string",
+              "format": "url",
+              "label": "رابط الزر",
+              "icon": "sicon-link",
+              "required": false,
+              "description": "في صفحة منتج يفتح الشراء السريع. في صفحة العروض يتبع رابط زر الصفحة، أو هذا الرابط إن وضعته.",
+              "value": ""
+            }
+          ],
+          "value": [
+            {
+              "items.image": "",
+              "items.alt": {
+                "ar": "المنتج من الأمام",
+                "en": "The product from the front"
+              },
+              "items.title": {
+                "ar": "ابدأ من الصورة التي تبيع",
+                "en": "Start with the photo that sells"
+              },
+              "items.text": {
+                "ar": "الشريحة الأولى هي أول ما يراه الزائر. ضع المنتج واضحاً، والسعر في القسم التالي.",
+                "en": "The first slide is what the visitor sees first. Show the product clearly, and leave the price to the next section."
+              },
+              "items.button": {
+                "ar": "شاهد المنتج",
+                "en": "See the product"
+              },
+              "items.url": "#rw-product"
+            },
+            {
+              "items.image": "",
+              "items.alt": {
+                "ar": "تفاصيل المنتج",
+                "en": "Product details"
+              },
+              "items.title": {
+                "ar": "فصّل ما يميزه",
+                "en": "Spell out what sets it apart"
+              },
+              "items.text": {
+                "ar": "شريحة ثانية لفائدة واحدة: الخامة، المقاس، أو طريقة الاستخدام.",
+                "en": "A second slide for one benefit: the material, the size, or how it is used."
+              },
+              "items.button": {
+                "ar": "اطلب الآن",
+                "en": "Order now"
+              },
+              "items.url": ""
+            },
+            {
+              "items.image": "",
+              "items.alt": {
+                "ar": "المنتج بعد الاستخدام",
+                "en": "The product after use"
+              },
+              "items.title": {
+                "ar": "أغلق بجملة قرار",
+                "en": "Close with a decision line"
+              },
+              "items.text": {
+                "ar": "الشريحة الأخيرة تجيب: لمن هذا المنتج، ومتى يصل.",
+                "en": "The last slide answers who it is for, and when it arrives."
+              },
+              "items.button": {
+                "ar": "أضف للطلب",
+                "en": "Add to the order"
+              },
+              "items.url": ""
+            }
+          ]
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخلفية",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "color_scheme",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "وضع الألوان",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+          "options": [
+            {
+              "label": "حسب الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            },
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            },
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "selected": [
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            }
+          ],
+          "value": [
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "هيرو المنتج",
+      "icon": "sicon-box",
+      "name": "product-hero",
+      "key": "bf08848d-81bc-4145-88b7-4c08e8d2253b",
+      "image": "",
+      "props": {
+        "min-height": "640px"
+      },
+      "fields": [
+        {
+          "id": "title",
+          "type": "string",
+          "format": "text",
+          "label": "اسم المنتج إن لم تكن الصفحة مربوطة بمنتج",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 120,
+          "value": {
+            "ar": "اسم المنتج",
+            "en": "Product name"
+          }
+        },
+        {
+          "id": "text",
+          "type": "string",
+          "format": "textarea",
+          "label": "وصف قصير",
+          "icon": "sicon-paragraph",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 500,
+          "value": {
+            "ar": "اكتب الفائدة الأولى في سطرين. في صفحة منتج يظهر اسم المنتج وسعره من بيانات المتجر.",
+            "en": "Write the first benefit in two lines. On a product page, the name and price come from the store."
+          }
+        },
+        {
+          "id": "price_text",
+          "type": "string",
+          "format": "text",
+          "label": "السعر عند المعاينة",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "١٩٩ ر.س",
+            "en": "SAR 199"
+          }
+        },
+        {
+          "id": "compare_text",
+          "type": "string",
+          "format": "text",
+          "label": "السعر قبل الخصم عند المعاينة",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "٢٤٩ ر.س",
+            "en": "SAR 249"
+          }
+        },
+        {
+          "id": "button_label",
+          "type": "string",
+          "format": "text",
+          "label": "نص زر الشراء",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "اشتر الآن",
+            "en": "Buy now"
+          }
+        },
+        {
+          "id": "button_url",
+          "type": "string",
+          "format": "url",
+          "label": "رابط الزر",
+          "icon": "sicon-link",
+          "required": false,
+          "description": "في صفحة منتج يفتح الشراء السريع. في صفحة العروض يتبع رابط زر الصفحة، أو هذا الرابط إن وضعته.",
+          "value": ""
+        },
+        {
+          "id": "views",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 6,
+          "item_label": "زاوية",
+          "fields": [
+            {
+              "id": "views.image",
+              "type": "string",
+              "format": "image",
+              "label": "صورة الزاوية",
+              "icon": "sicon-image",
+              "required": false,
+              "description": "المقاس المقترح 1000×1000 بكسل. في صفحة منتج تُستبدل بصور المنتج.",
+              "value": ""
+            },
+            {
+              "id": "views.label",
+              "type": "string",
+              "format": "text",
+              "label": "اسم الزاوية",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "الأمام",
+                "en": "Front"
+              }
+            },
+            {
+              "id": "views.alt",
+              "type": "string",
+              "format": "text",
+              "label": "وصف الصورة",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "المنتج من الأمام",
+                "en": "The product from the front"
+              }
+            }
+          ],
+          "value": [
+            {
+              "views.image": "",
+              "views.label": {
+                "ar": "الأمام",
+                "en": "Front"
+              },
+              "views.alt": {
+                "ar": "المنتج من الأمام",
+                "en": "The product from the front"
+              }
+            },
+            {
+              "views.image": "",
+              "views.label": {
+                "ar": "الجانب",
+                "en": "Side"
+              },
+              "views.alt": {
+                "ar": "المنتج من الجانب",
+                "en": "The product from the side"
+              }
+            },
+            {
+              "views.image": "",
+              "views.label": {
+                "ar": "التفاصيل",
+                "en": "Detail"
+              },
+              "views.alt": {
+                "ar": "تفصيل من المنتج",
+                "en": "A detail of the product"
+              }
+            }
+          ]
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخلفية",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "color_scheme",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "وضع الألوان",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+          "options": [
+            {
+              "label": "حسب الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            },
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            },
+            {
+              "label": "داكن",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "selected": [
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            }
+          ],
+          "value": [
+            {
+              "label": "فاتح",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "فيديو افتتاحي",
+      "icon": "sicon-image",
+      "name": "open-video",
+      "key": "979146a6-6e45-4011-ac04-77a4b5aa3cc8",
+      "image": "",
+      "props": {
+        "min-height": "480px"
+      },
+      "fields": [
         {
           "id": "title",
           "type": "string",
@@ -37,10 +500,10 @@
           "required": false,
           "description": null,
           "minLength": 0,
-          "maxLength": 120,
+          "maxLength": 180,
           "value": {
-            "ar": "قهوة تُروى بهدوء، من المحمصة إلى فنجانك",
-            "en": "Coffee told slowly, from the roaster to your cup"
+            "ar": "شاهد المنتج قبل أن تطلبه",
+            "en": "Watch the product before you order"
           }
         },
         {
@@ -55,139 +518,29 @@
           "minLength": 0,
           "maxLength": 500,
           "value": {
-            "ar": "نختار محاصيل صغيرة، نحمّصها على دفعات قصيرة، ونشحن الكيس بعد التحميص حتى تصل النكهة كما قُصد لها.",
-            "en": "We choose small crops, roast them in short batches, and ship the bag after roasting so the flavor arrives as intended."
+            "ar": "فيديو قصير يشرح الاستخدام. الزائر يضغط التشغيل، ولا يبدأ الصوت وحده.",
+            "en": "A short video that shows how it is used. The visitor presses play, and the sound does not start on its own."
           }
         },
         {
-          "id": "primary_label",
-          "type": "string",
-          "format": "text",
-          "label": "نص الزر الأساسي",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 180,
-          "value": {
-            "ar": "اطلب الكيس",
-            "en": "Order the bag"
-          }
-        },
-        {
-          "id": "primary_url",
-          "type": "string",
-          "format": "url",
-          "label": "رابط الزر الأساسي",
-          "icon": "sicon-link",
-          "required": false,
-          "description": "في صفحة منتج يفتح الشراء السريع. في صفحة العروض يتبع رابط زر الصفحة، أو هذا الرابط إن وضعته.",
-          "value": ""
-        },
-        {
-          "id": "secondary_label",
-          "type": "string",
-          "format": "text",
-          "label": "نص الزر الثاني",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 180,
-          "value": {
-            "ar": "اقرأ الفصول",
-            "en": "Read the chapters"
-          }
-        },
-        {
-          "id": "secondary_url",
-          "type": "string",
-          "format": "url",
-          "label": "رابط الزر الثاني",
-          "icon": "sicon-link",
-          "required": false,
-          "description": "رابط حر داخل الصفحة أو خارجها. اتركه فارغاً لإخفاء الزر.",
-          "value": "#rw-chapters"
-        },
-        {
-          "id": "si-line",
-          "type": "static",
-          "format": "line"
-        },
-        {
-          "id": "image",
+          "id": "poster",
           "type": "string",
           "format": "image",
-          "label": "صورة الجانب",
+          "label": "صورة الغلاف",
           "icon": "sicon-image",
           "required": false,
-          "description": "المقاس المقترح 900×1200 بكسل، صورة طولية للمنتج أو الطقس المحيط به.",
+          "description": "المقاس المقترح 1600×900 بكسل، تظهر قبل التشغيل.",
           "value": ""
         },
         {
-          "id": "image_alt",
+          "id": "video_url",
           "type": "string",
-          "format": "text",
-          "label": "وصف الصورة",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
+          "format": "url",
+          "label": "رابط الفيديو",
+          "icon": "sicon-link",
           "required": false,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 180,
-          "value": {
-            "ar": "كيس قهوة على طاولة خشبية",
-            "en": "A coffee bag on a wooden table"
-          }
-        },
-        {
-          "id": "media_side",
-          "type": "items",
-          "format": "dropdown-list",
-          "source": "Manual",
-          "label": "مكان الصورة",
-          "icon": "sicon-list",
-          "required": false,
-          "description": null,
-          "options": [
-            {
-              "label": "بجانب بداية النص",
-              "value": "start",
-              "key": "df37e944-3141-483b-9f38-13faff32b7b4"
-            },
-            {
-              "label": "بجانب نهاية النص",
-              "value": "end",
-              "key": "6463848d-17b1-4185-8b61-efcd8ecaa027"
-            }
-          ],
-          "selected": [
-            {
-              "label": "بجانب نهاية النص",
-              "value": "end",
-              "key": "6463848d-17b1-4185-8b61-efcd8ecaa027"
-            }
-          ],
-          "value": [
-            {
-              "label": "بجانب نهاية النص",
-              "value": "end",
-              "key": "6463848d-17b1-4185-8b61-efcd8ecaa027"
-            }
-          ]
-        },
-        {
-          "id": "show_tone",
-          "type": "boolean",
-          "format": "switch",
-          "label": "زر التبديل بين الفاتح والداكن",
-          "icon": "sicon-toggle-off",
-          "required": false,
-          "description": "يبدل الأقسام المضبوطة على حسب الصفحة ويتذكر اختيار الزائر",
-          "value": true,
-          "selected": true
+          "description": "رابط يوتيوب أو فيميو أو ملف mp4.",
+          "value": ""
         },
         {
           "id": "bg_color",
@@ -332,8 +685,8 @@
               "minLength": 0,
               "maxLength": 180,
               "value": {
-                "ar": "تحميص صغير",
-                "en": "Small roast"
+                "ar": "شحن واضح",
+                "en": "Clear shipping"
               }
             },
             {
@@ -348,550 +701,55 @@
               "minLength": 0,
               "maxLength": 180,
               "value": {
-                "ar": "دفعات محدودة كل أسبوع",
-                "en": "Limited batches each week"
+                "ar": "مدة الوصول مكتوبة قبل الدفع",
+                "en": "The arrival window is written before checkout"
               }
             }
           ],
           "value": [
             {
-              "items.icon": "sicon-time",
-              "items.title": {
-                "ar": "تحميص صغير",
-                "en": "Small roast"
-              },
-              "items.note": {
-                "ar": "دفعات محدودة كل أسبوع",
-                "en": "Limited batches each week"
-              }
-            },
-            {
               "items.icon": "sicon-shipping-fast",
               "items.title": {
-                "ar": "شحن بعد التحميص",
-                "en": "Ships after roasting"
+                "ar": "شحن واضح",
+                "en": "Clear shipping"
               },
               "items.note": {
-                "ar": "يغادر الكيس خلال يومين",
-                "en": "The bag leaves within two days"
+                "ar": "مدة الوصول مكتوبة قبل الدفع",
+                "en": "The arrival window is written before checkout"
               }
             },
             {
-              "items.icon": "sicon-star2",
+              "items.icon": "sicon-shield-check",
               "items.title": {
-                "ar": "طحن حسب أداتك",
-                "en": "Ground for your tool"
+                "ar": "دفع آمن",
+                "en": "Secure payment"
               },
               "items.note": {
-                "ar": "اختر الطحنة مع الطلب",
-                "en": "Choose the grind with the order"
+                "ar": "خيارات الدفع المعتمدة في المتجر",
+                "en": "The store's own payment options"
               }
             },
             {
               "items.icon": "sicon-rotate",
               "items.title": {
                 "ar": "استبدال واضح",
-                "en": "A clear replacement"
+                "en": "A clear exchange"
               },
               "items.note": {
-                "ar": "إن وصل الكيس بحالة غير سليمة",
-                "en": "If the bag arrives damaged"
-              }
-            }
-          ]
-        },
-        {
-          "id": "bg_color",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون الخلفية",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "color_scheme",
-          "type": "items",
-          "format": "dropdown-list",
-          "source": "Manual",
-          "label": "وضع الألوان",
-          "icon": "sicon-list",
-          "required": false,
-          "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
-          "options": [
-            {
-              "label": "حسب الصفحة",
-              "value": "auto",
-              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
-            },
-            {
-              "label": "فاتح",
-              "value": "light",
-              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
-            },
-            {
-              "label": "داكن",
-              "value": "dark",
-              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
-            }
-          ],
-          "selected": [
-            {
-              "label": "فاتح",
-              "value": "light",
-              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
-            }
-          ],
-          "value": [
-            {
-              "label": "فاتح",
-              "value": "light",
-              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "مسار الفصول",
-      "icon": "sicon-list",
-      "name": "chapter-path",
-      "key": "c1f85c4b-f89c-48f3-8817-8b28274358b0",
-      "image": "",
-      "props": {
-        "min-height": "420px"
-      },
-      "fields": [
-        {
-          "id": "kicker",
-          "type": "string",
-          "format": "text",
-          "label": "سطر صغير",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 180,
-          "value": {
-            "ar": "أربعة فصول",
-            "en": "Four chapters"
-          }
-        },
-        {
-          "id": "title",
-          "type": "string",
-          "format": "text",
-          "label": "العنوان",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 180,
-          "value": {
-            "ar": "من الكيس إلى الفنجان",
-            "en": "From the bag to the cup"
-          }
-        },
-        {
-          "id": "subtitle",
-          "type": "string",
-          "format": "text",
-          "label": "وصف قصير",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 180,
-          "value": {
-            "ar": "طريق قصير، بلا مفاجآت بعد الدفع.",
-            "en": "A short path, with no surprises after checkout."
-          }
-        },
-        {
-          "id": "items",
-          "type": "collection",
-          "format": "collection",
-          "required": true,
-          "minLength": 1,
-          "maxLength": 6,
-          "item_label": "فصل",
-          "fields": [
-            {
-              "id": "items.title",
-              "type": "string",
-              "format": "text",
-              "label": "عنوان الفصل",
-              "icon": "sicon-format-text-alt",
-              "multilanguage": true,
-              "required": false,
-              "description": null,
-              "minLength": 0,
-              "maxLength": 180,
-              "value": {
-                "ar": "اختر المحصول",
-                "en": "Choose the crop"
+                "ar": "إن وصل المنتج بحالة غير سليمة",
+                "en": "If the product arrives damaged"
               }
             },
             {
-              "id": "items.text",
-              "type": "string",
-              "format": "textarea",
-              "label": "الشرح",
-              "icon": "sicon-paragraph",
-              "multilanguage": true,
-              "required": false,
-              "description": null,
-              "minLength": 0,
-              "maxLength": 500,
-              "value": {
-                "ar": "ثلاثة محاصيل في القائمة، وكل واحد بسطر يصف مذاقه.",
-                "en": "Three crops on the list, each with a line that describes its taste."
-              }
-            }
-          ],
-          "value": [
-            {
+              "items.icon": "sicon-time",
               "items.title": {
-                "ar": "اختر المحصول",
-                "en": "Choose the crop"
+                "ar": "رد سريع",
+                "en": "A quick reply"
               },
-              "items.text": {
-                "ar": "ثلاثة محاصيل في القائمة، وكل واحد بسطر يصف مذاقه.",
-                "en": "Three crops on the list, each with a line about its taste."
+              "items.note": {
+                "ar": "سؤال المنتج يُجاب قبل الشراء",
+                "en": "A product question is answered before purchase"
               }
-            },
-            {
-              "items.title": {
-                "ar": "حدد الطحنة",
-                "en": "Set the grind"
-              },
-              "items.text": {
-                "ar": "حب أو طحن يناسب أداة التحضير التي تستخدمها.",
-                "en": "Whole bean, or a grind that matches the brewer you use."
-              }
-            },
-            {
-              "items.title": {
-                "ar": "يُحمّص طلبك",
-                "en": "Your order is roasted"
-              },
-              "items.text": {
-                "ar": "لا نحمّص الكمية قبل أن تطلبها.",
-                "en": "We do not roast the batch before you order it."
-              }
-            },
-            {
-              "items.title": {
-                "ar": "يصل طازجاً",
-                "en": "It arrives fresh"
-              },
-              "items.text": {
-                "ar": "تاريخ التحميص مكتوب على الكيس.",
-                "en": "The roast date is written on the bag."
-              }
-            }
-          ]
-        },
-        {
-          "id": "bg_color",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون الخلفية",
-          "icon": "sicon-format-fill",
-          "required": false,
-          "description": null,
-          "value": ""
-        },
-        {
-          "id": "color_scheme",
-          "type": "items",
-          "format": "dropdown-list",
-          "source": "Manual",
-          "label": "وضع الألوان",
-          "icon": "sicon-list",
-          "required": false,
-          "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
-          "options": [
-            {
-              "label": "حسب الصفحة",
-              "value": "auto",
-              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
-            },
-            {
-              "label": "فاتح",
-              "value": "light",
-              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
-            },
-            {
-              "label": "داكن",
-              "value": "dark",
-              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
-            }
-          ],
-          "selected": [
-            {
-              "label": "فاتح",
-              "value": "light",
-              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
-            }
-          ],
-          "value": [
-            {
-              "label": "فاتح",
-              "value": "light",
-              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "رصيد الأصوات",
-      "icon": "sicon-star",
-      "name": "voice-stack",
-      "key": "21d29498-6a4f-48c6-aade-fc00c5cf79b2",
-      "image": "",
-      "props": {
-        "min-height": "360px"
-      },
-      "fields": [
-        {
-          "id": "kicker",
-          "type": "string",
-          "format": "text",
-          "label": "سطر صغير",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 180,
-          "value": {
-            "ar": "من وصلهم الكيس",
-            "en": "From people who received the bag"
-          }
-        },
-        {
-          "id": "title",
-          "type": "string",
-          "format": "text",
-          "label": "العنوان",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 180,
-          "value": {
-            "ar": "جمل قصيرة، بلا مبالغة",
-            "en": "Short lines, without exaggeration"
-          }
-        },
-        {
-          "id": "subtitle",
-          "type": "string",
-          "format": "text",
-          "label": "وصف قصير",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
-          "required": false,
-          "description": null,
-          "minLength": 0,
-          "maxLength": 180,
-          "value": {
-            "ar": "",
-            "en": ""
-          }
-        },
-        {
-          "id": "items",
-          "type": "collection",
-          "format": "collection",
-          "required": true,
-          "minLength": 1,
-          "maxLength": 6,
-          "item_label": "صوت",
-          "fields": [
-            {
-              "id": "items.quote",
-              "type": "string",
-              "format": "text",
-              "label": "الجملة",
-              "icon": "sicon-format-text-alt",
-              "multilanguage": true,
-              "required": false,
-              "description": null,
-              "minLength": 0,
-              "maxLength": 180,
-              "value": {
-                "ar": "النكهة وصلت هادئة، والفنجان الثاني أوضح من الأول.",
-                "en": "The flavor arrived calm, and the second cup was clearer than the first."
-              }
-            },
-            {
-              "id": "items.name",
-              "type": "string",
-              "format": "text",
-              "label": "الاسم",
-              "icon": "sicon-format-text-alt",
-              "multilanguage": true,
-              "required": false,
-              "description": null,
-              "minLength": 0,
-              "maxLength": 180,
-              "value": {
-                "ar": "نورة",
-                "en": "Noura"
-              }
-            },
-            {
-              "id": "items.place",
-              "type": "string",
-              "format": "text",
-              "label": "المدينة",
-              "icon": "sicon-format-text-alt",
-              "multilanguage": true,
-              "required": false,
-              "description": null,
-              "minLength": 0,
-              "maxLength": 180,
-              "value": {
-                "ar": "الرياض",
-                "en": "Riyadh"
-              }
-            },
-            {
-              "id": "items.stars",
-              "type": "items",
-              "format": "dropdown-list",
-              "source": "Manual",
-              "label": "الدرجة من ٥",
-              "icon": "sicon-list",
-              "required": false,
-              "description": null,
-              "options": [
-                {
-                  "label": "٥",
-                  "value": "5",
-                  "key": "8ad0649e-c61a-4dcd-bba7-f7217399d9b8"
-                },
-                {
-                  "label": "٤",
-                  "value": "4",
-                  "key": "6da1be6c-7063-4574-8fa1-04ffcf20a08f"
-                },
-                {
-                  "label": "٣",
-                  "value": "3",
-                  "key": "141f6e35-d6ae-41f8-a388-f3152885195b"
-                }
-              ],
-              "selected": [
-                {
-                  "label": "٥",
-                  "value": "5",
-                  "key": "8ad0649e-c61a-4dcd-bba7-f7217399d9b8"
-                }
-              ],
-              "value": [
-                {
-                  "label": "٥",
-                  "value": "5",
-                  "key": "8ad0649e-c61a-4dcd-bba7-f7217399d9b8"
-                }
-              ]
-            }
-          ],
-          "value": [
-            {
-              "items.quote": {
-                "ar": "النكهة وصلت هادئة، والفنجان الثاني أوضح من الأول.",
-                "en": "The flavor arrived calm, and the second cup was clearer than the first."
-              },
-              "items.name": {
-                "ar": "نورة",
-                "en": "Noura"
-              },
-              "items.place": {
-                "ar": "الرياض",
-                "en": "Riyadh"
-              },
-              "items.stars": [
-                {
-                  "label": "٥",
-                  "value": "5",
-                  "key": "8ad0649e-c61a-4dcd-bba7-f7217399d9b8"
-                }
-              ]
-            },
-            {
-              "items.quote": {
-                "ar": "اخترت طحن الإسبريسو، وجاء مطابقاً لما كتبتُه في الطلب.",
-                "en": "I chose an espresso grind, and it matched what I wrote in the order."
-              },
-              "items.name": {
-                "ar": "سلمان",
-                "en": "Salman"
-              },
-              "items.place": {
-                "ar": "جدة",
-                "en": "Jeddah"
-              },
-              "items.stars": [
-                {
-                  "label": "٥",
-                  "value": "5",
-                  "key": "8ad0649e-c61a-4dcd-bba7-f7217399d9b8"
-                }
-              ]
-            },
-            {
-              "items.quote": {
-                "ar": "تاريخ التحميص كان قبل يومين من الوصول. هذا ما أبحث عنه.",
-                "en": "The roast date was two days before it arrived. That is what I look for."
-              },
-              "items.name": {
-                "ar": "هند",
-                "en": "Hind"
-              },
-              "items.place": {
-                "ar": "الخبر",
-                "en": "Khobar"
-              },
-              "items.stars": [
-                {
-                  "label": "٤",
-                  "value": "4",
-                  "key": "6da1be6c-7063-4574-8fa1-04ffcf20a08f"
-                }
-              ]
-            },
-            {
-              "items.quote": {
-                "ar": "الكيس مناسب للتجربة قبل الاشتراك. بدأت بكيس واحد.",
-                "en": "The bag is a good trial before a subscription. I started with one."
-              },
-              "items.name": {
-                "ar": "فيصل",
-                "en": "Faisal"
-              },
-              "items.place": {
-                "ar": "أبها",
-                "en": "Abha"
-              },
-              "items.stars": [
-                {
-                  "label": "٥",
-                  "value": "5",
-                  "key": "8ad0649e-c61a-4dcd-bba7-f7217399d9b8"
-                }
-              ]
             }
           ]
         },
@@ -987,8 +845,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "المحصول والطحنة",
-            "en": "The crop and the grind"
+            "ar": "تفاصيل لا تظهر في الصورة الواحدة",
+            "en": "Details one photo cannot show"
           }
         },
         {
@@ -1003,8 +861,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "صورتان تكفيان لشرح ما لا يشرحه السطر.",
-            "en": "Two photos are enough to explain what a line cannot."
+            "ar": "لقطتان: شكل المنتج، وطريقة استخدامه.",
+            "en": "Two frames: how the product looks, and how it is used."
           }
         },
         {
@@ -1034,8 +892,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "حبّات القهوة قبل الطحن",
-            "en": "Coffee beans before grinding"
+            "ar": "المنتج من الأمام",
+            "en": "The product from the front"
           }
         },
         {
@@ -1050,8 +908,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "المحصول",
-            "en": "The crop"
+            "ar": "الشكل",
+            "en": "The form"
           }
         },
         {
@@ -1066,8 +924,8 @@
           "minLength": 0,
           "maxLength": 500,
           "value": {
-            "ar": "محصول مرتفع، حموضة واضحة، وحلاوة تقترب من الفاكهة المجففة.",
-            "en": "A high-grown crop, clear acidity, and a sweetness close to dried fruit."
+            "ar": "اكتب المقاس أو الخامة أو ما يميز الشكل عن البدائل.",
+            "en": "Write the size, the material, or what sets the form apart."
           }
         },
         {
@@ -1097,8 +955,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "طحنة تناسب التحضير المنزلي",
-            "en": "A grind suited to home brewing"
+            "ar": "المنتج أثناء الاستخدام",
+            "en": "The product in use"
           }
         },
         {
@@ -1113,8 +971,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "الطحنة",
-            "en": "The grind"
+            "ar": "الاستخدام",
+            "en": "In use"
           }
         },
         {
@@ -1129,8 +987,8 @@
           "minLength": 0,
           "maxLength": 500,
           "value": {
-            "ar": "نكتب اسم الأداة على الكيس حتى لا تخمّن عند التحضير.",
-            "en": "We write the brewer's name on the bag so you are not guessing at brew time."
+            "ar": "اشرح خطوة واحدة يقوم بها المشتري بعد أن يصله المنتج.",
+            "en": "Explain one step the buyer takes after the product arrives."
           }
         },
         {
@@ -1209,8 +1067,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "كيس واحد يكفي للبداية",
-            "en": "One bag is enough to start"
+            "ar": "القرار الأخير",
+            "en": "The last decision"
           }
         },
         {
@@ -1225,8 +1083,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "جرّبه لأسبوع الصباح",
-            "en": "Try it for a week of mornings"
+            "ar": "اطلبه اليوم، ويصلك في الموعد المكتوب",
+            "en": "Order it today, and it arrives on the stated date"
           }
         },
         {
@@ -1241,8 +1099,8 @@
           "minLength": 0,
           "maxLength": 500,
           "value": {
-            "ar": "إن ناسب طقوسك أعد الطلب. وإن لم يناسبك، لن نطلب منك اشتراكاً مسبقاً.",
-            "en": "If it suits your ritual, order again. If it does not, we will not ask you for a subscription first."
+            "ar": "أزل الشك بسطر واحد: مدة الشحن، أو شرط الاستبدال، أو ما يشمله الطلب.",
+            "en": "Remove the doubt in one line: shipping time, the exchange rule, or what the order includes."
           }
         },
         {
@@ -1257,8 +1115,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "اطلب الآن",
-            "en": "Order now"
+            "ar": "اشتر الآن",
+            "en": "Buy now"
           }
         },
         {
@@ -1283,8 +1141,8 @@
           "minLength": 0,
           "maxLength": 180,
           "value": {
-            "ar": "التحميص يبدأ بعد تأكيد الطلب",
-            "en": "Roasting starts after the order is confirmed"
+            "ar": "الدفع يتم داخل صفحة الهبوط",
+            "en": "Payment happens on this landing page"
           }
         },
         {
