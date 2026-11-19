@@ -1,7 +1,7 @@
 {
-  "name": "tw-ataba",
+  "name": "tw-saji-landing",
   "version": "1.0.0",
-  "description": "Ataba landing pages for Salla: a calm clarity page and a conversion momentum page",
+  "description": "Saji landing pages for Salla",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -22,7 +22,7 @@
   "author": "sajispprt@gmail.com",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Ashaheen892/tw-ataba"
+    "url": "https://github.com/Ashaheen892/tw-saji-landing"
   },
   "private": true
 }

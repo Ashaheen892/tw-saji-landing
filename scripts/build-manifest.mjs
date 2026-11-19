@@ -10,6 +10,10 @@ const KEY = {
   stars5: "8ad0649e-c61a-4dcd-bba7-f7217399d9b8",
   stars4: "6da1be6c-7063-4574-8fa1-04ffcf20a08f",
   stars3: "141f6e35-d6ae-41f8-a388-f3152885195b",
+  titlePlain: "e27e11eb-74df-43ef-be56-5f0256f91854",
+  titleHairline: "370ff065-d7d7-4d34-8861-5389d26c81dc",
+  titleBrackets: "348927b7-2ae0-49e5-a21d-95a01188fe38",
+  titleTicket: "81d5c9e1-a6c3-4f3d-adbb-5dc35c00d167",
 };
 
 const text = (id, label, value, o = {}) => ({
@@ -68,6 +72,17 @@ const collection = (id, itemLabel, fields, value, min, max) => ({
     return out;
   }),
 });
+const titleStyle = (selected = "hairline") => drop(
+  "title_style",
+  "شكل العنوان",
+  [
+    ["plain", "عنوان فقط", KEY.titlePlain],
+    ["hairline", "خط قصير", KEY.titleHairline],
+    ["brackets", "قوسان", KEY.titleBrackets],
+    ["ticket", "بطاقة", KEY.titleTicket],
+  ],
+  selected,
+);
 const picked = (value, label, key) => [opt(value, label, key)];
 const ctaHint = "في صفحة منتج يفتح الشراء السريع. في صفحة العروض يتبع رابط زر الصفحة، أو هذا الرابط إن وضعته.";
 
@@ -368,6 +383,148 @@ const components = [
       scheme("dark"),
     ],
   },
+  {
+    title: "إيصال المحتوى",
+    icon: "sicon-list",
+    name: "receipt-note",
+    key: "1d9eccb2-f1e7-40fc-a4d2-9f98715b80df",
+    image: "",
+    props: { "min-height": "420px" },
+    fields: [
+      text("title", "العنوان", L("ماذا داخل الطلب", "What is in the order")),
+      text("subtitle", "وصف قصير", L("سطر لكل شيء يصل مع المنتج.", "One line for everything that arrives with the product.")),
+      titleStyle("hairline"),
+      collection("items", "سطر", [
+        text("label", "البند", L("الوزن", "Weight")),
+        text("value", "القيمة", L("250 غرام", "250 grams")),
+      ], [
+        { label: L("الوزن", "Weight"), value: L("250 غرام", "250 grams") },
+        { label: L("الخامة", "Material"), value: L("قماش مغسول", "Washed cloth") },
+        { label: L("التغليف", "Packing"), value: L("كيس قماشي قابل للطي", "A foldable cloth bag") },
+        { label: L("البطاقة", "Card"), value: L("طريقة العناية مطبوعة", "A printed care note") },
+      ], 1, 8),
+      text("foot", "سطر أسفل الإيصال", L("الأرقام تتغير من إعدادات القسم.", "The figures change from the section settings.")),
+      color("bg_color", "لون الخلفية"),
+      scheme("light"),
+    ],
+  },
+  {
+    title: "أوقات اليوم",
+    icon: "sicon-time",
+    name: "day-parts",
+    key: "3999f570-826e-4b4a-a735-187b35eb405b",
+    image: "",
+    props: { "min-height": "380px" },
+    fields: [
+      text("title", "العنوان", L("متى تستخدمه؟", "When do you use it?")),
+      text("subtitle", "وصف قصير", L("اختر وقتاً لتقرأ الجملة المناسبة.", "Pick a time to read the matching line.")),
+      titleStyle("brackets"),
+      collection("items", "وقت", [
+        text("when", "التوقيت", L("الصباح", "Morning")),
+        text("title", "العنوان", L("قبل الخروج", "Before leaving")),
+        area("text", "الجملة", L("قطعة خفيفة لا تؤخر أول ساعة في اليوم.", "A light piece that does not slow the first hour of the day.")),
+      ], [
+        { when: L("الصباح", "Morning"), title: L("قبل الخروج", "Before leaving"), text: L("قطعة خفيفة لا تؤخر أول ساعة في اليوم.", "A light piece that does not slow the first hour of the day.") },
+        { when: L("الظهر", "Noon"), title: L("بين مشوارين", "Between two errands"), text: L("تُطوى في الكيس وتعود للشكل نفسه عند الفتح.", "It folds into the bag and returns to the same shape when opened.") },
+        { when: L("المساء", "Evening"), title: L("بعد العودة", "After coming home"), text: L("العناية سطر واحد، لا طقس طويل في آخر اليوم.", "Care is one line, not a long ritual at the end of the day.") },
+      ], 1, 4),
+      color("bg_color", "لون الخلفية"),
+      scheme("light"),
+    ],
+  },
+  {
+    title: "بطاقة المنشأ",
+    icon: "sicon-image",
+    name: "origin-card",
+    key: "0ced9085-6757-4e47-8bd3-76d95b071e6d",
+    image: "",
+    props: { "min-height": "520px" },
+    fields: [
+      text("title", "العنوان", L("من أين تبدأ القطعة", "Where the piece starts")),
+      text("subtitle", "وصف قصير", L("مكان واحد، وثلاث حقائق يكتبها التاجر.", "One place, and three facts the merchant writes.")),
+      titleStyle("ticket"),
+      text("place", "اسم المكان", L("ورشة صغيرة في جدة", "A small workshop in Jeddah")),
+      image("image", "صورة المكان", "المقاس المقترح 1200×900 بكسل، صورة أفقية للمكان أو الخامة."),
+      text("image_alt", "وصف الصورة", L("طاولة عمل في الورشة", "A work table in the workshop")),
+      collection("items", "حقيقة", [
+        text("label", "العنوان", L("الأيدي", "Hands")),
+        text("text", "التفصيل", L("نفس الفريق من القص حتى الخياطة", "The same team from cutting to stitching")),
+      ], [
+        { label: L("الأيدي", "Hands"), text: L("نفس الفريق من القص حتى الخياطة", "The same team from cutting to stitching") },
+        { label: L("الدفعة", "Batch"), text: L("عدد محدود كل أسبوعين", "A limited number every two weeks") },
+        { label: L("الخامة", "Material"), text: L("تُشترى كاملة قبل القص", "Bought in full before it is cut") },
+      ], 1, 4),
+      color("bg_color", "لون الخلفية"),
+      scheme("light"),
+    ],
+  },
+  {
+    title: "خيط العناية",
+    icon: "sicon-format-text-alt",
+    name: "care-thread",
+    key: "78ac3381-8df8-4f18-aa14-3f42cd0790dc",
+    image: "",
+    props: { "min-height": "460px" },
+    fields: [
+      text("title", "العنوان", L("ثلاث حركات تكفي", "Three motions are enough")),
+      text("subtitle", "وصف قصير", L("خطوات قصيرة مرتبة على خيط واحد.", "Short steps arranged on one thread.")),
+      titleStyle("hairline"),
+      collection("items", "خطوة", [
+        text("title", "الخطوة", L("انفض الغبار", "Shake off the dust")),
+        area("text", "التفصيل", L("قبل أي غسيل، حتى تبقى الخامة في شكلها.", "Before any wash, so the material keeps its shape.")),
+      ], [
+        { title: L("انفض الغبار", "Shake off the dust"), text: L("قبل أي غسيل، حتى تبقى الخامة في شكلها.", "Before any wash, so the material keeps its shape.") },
+        { title: L("ماء بارد", "Cold water"), text: L("بدون عصر قوي، ثم تُفرد على منشفة.", "Without a hard wring, then lay it on a towel.") },
+        { title: L("بعيداً عن الشمس المباشرة", "Away from direct sun"), text: L("الجفاف في الظل يحفظ اللون.", "Drying in the shade keeps the color.") },
+      ], 1, 6),
+      color("bg_color", "لون الخلفية"),
+      scheme("light"),
+    ],
+  },
+  {
+    title: "رسالة الصانع",
+    icon: "sicon-paragraph",
+    name: "maker-letter",
+    key: "628de14f-6ded-4b21-aab4-5b476d3ce975",
+    image: "",
+    props: { "min-height": "420px" },
+    fields: [
+      text("title", "العنوان", L("كلمة قبل أن تطلب", "A word before you order")),
+      text("subtitle", "وصف قصير", L("", "")),
+      titleStyle("plain"),
+      area("text", "نص الرسالة", L("نصنع عدداً نقدر نراجعه بأيدينا. إن وصلتك القطعة بغير ما كُتب هنا، نبدّلها دون جدال طويل.", "We make a number we can still review by hand. If the piece arrives unlike what is written here, we replace it without a long argument.")),
+      text("signer", "التوقيع", L("فريق ساجي", "Saji team")),
+      text("role", "الصفة", L("الورشة", "The workshop")),
+      text("button_label", "نص الزر", L("اطلب القطعة", "Order the piece")),
+      url("button_url", "رابط الزر", "", ctaHint),
+      color("bg_color", "لون الخلفية"),
+      scheme("light"),
+    ],
+  },
+  {
+    title: "بطاقات الرف",
+    icon: "sicon-star2",
+    name: "shelf-tags",
+    key: "308978a7-1563-4de3-ac34-dfcb649d29aa",
+    image: "",
+    props: { "min-height": "340px" },
+    fields: [
+      text("title", "العنوان", L("كلمات نعلّقها على الرف", "Words we hang on the shelf")),
+      text("subtitle", "وصف قصير", L("بطاقات قصيرة، لا شبكة مزايا.", "Short tickets, not a feature grid.")),
+      titleStyle("ticket"),
+      collection("items", "بطاقة", [
+        text("word", "الكلمة", L("محدود", "Limited")),
+        text("note", "سطر صغير", L("دفعة كل أسبوعين", "A batch every two weeks")),
+      ], [
+        { word: L("محدود", "Limited"), note: L("دفعة كل أسبوعين", "A batch every two weeks") },
+        { word: L("مخيط", "Stitched"), note: L("في الورشة نفسها", "In the same workshop") },
+        { word: L("يُطوى", "Folds"), note: L("بلا علبة صلبة", "Without a hard box") },
+        { word: L("يُغسل", "Washable"), note: L("ماء بارد فقط", "Cold water only") },
+      ], 1, 8),
+      color("bg_color", "لون الخلفية"),
+      scheme("light"),
+    ],
+  },
 ];
 
 const templates = [
@@ -385,6 +542,13 @@ const templates = [
     primary_color: "#0f6e6a",
     order: ["dock-hero", "count-band", "reason-rail", "versus-board", "offer-panel", "situation-pick"],
   },
+  {
+    name: "saji",
+    id: "9d14165d-429f-4cbc-9254-ae64d434d1d7",
+    is_default: false,
+    primary_color: "#1c3d36",
+    order: ["receipt-note", "day-parts", "origin-card", "care-thread", "maker-letter", "shelf-tags"],
+  },
 ];
 
 const bundlePath = new URL("../twilight-bundle.json", import.meta.url);
@@ -393,14 +557,14 @@ if (fs.existsSync(bundlePath)) previous = JSON.parse(fs.readFileSync(bundlePath,
 const previousTemplates = new Map((previous.templates || []).map((item) => [item.path, item]));
 
 const bundle = {
-  name: { ar: "عتبة", en: "Ataba" },
+  name: { ar: "مجموعة ساجي", en: "Saji Collection" },
   description: {
-    ar: "صفحتا هبوط بعناصر مختلفة: وضوح هادئة للقهوة، وزخم للتحويل على منتج تقني.",
-    en: "Two landing pages with different sections: a calm coffee page, and a conversion page for a tech product.",
+    ar: "ثلاث صفحات هبوط. الصفحة الثالثة ساجي بستة عناصر: إيصال، أوقات، منشأ، عناية، رسالة، وبطاقات رف.",
+    en: "Three landing pages. The third is Saji, with six sections: a receipt, day parts, an origin card, a care thread, a letter, and shelf tags.",
   },
   author_email: "sajispprt@gmail.com",
-  support_url: "https://github.com/Ashaheen892/tw-ataba",
-  repository: "https://github.com/Ashaheen892/tw-ataba",
+  support_url: "https://github.com/Ashaheen892/tw-saji-landing",
+  repository: "https://github.com/Ashaheen892/tw-saji-landing",
   features: ["landing-page-templates"],
   components,
   templates: templates.map((template) => {

@@ -7,7 +7,7 @@ const bundle = JSON.parse(fs.readFileSync(new URL("../twilight-bundle.json", imp
 const errors = [];
 const names = bundle.components.map((item) => item.name);
 if (!bundle.features?.includes("landing-page-templates")) errors.push("missing landing-page-templates");
-if (names.length !== 12) errors.push(`expected 12 sections, found ${names.length}`);
+if (names.length !== 18) errors.push(`expected 18 sections, found ${names.length}`);
 for (const template of bundle.templates || []) {
   const file = template.path.replace("templates.", "");
   const page = JSON.parse(fs.readFileSync(new URL(`../templates/${file}.json`, import.meta.url), "utf8"));
@@ -40,7 +40,7 @@ const scan = (dir) => {
   }
 };
 scan(root);
-if (new Set(pages).size !== 2) errors.push("expected two templates");
+if (new Set(pages).size !== 3) errors.push("expected three templates");
 if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);

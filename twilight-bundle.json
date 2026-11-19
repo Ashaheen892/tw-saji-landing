@@ -1,15 +1,15 @@
 {
     "name": {
-        "ar": "عتبة",
-        "en": "Ataba"
+        "ar": "مجموعة ساجي",
+        "en": "Saji Collection"
     },
     "description": {
-        "ar": "صفحتا هبوط بعناصر مختلفة: وضوح هادئة للقهوة، وزخم للتحويل على منتج تقني.",
-        "en": "Two landing pages with different sections: a calm coffee page, and a conversion page for a tech product."
+        "ar": "ثلاث صفحات هبوط. الصفحة الثالثة ساجي بستة عناصر: إيصال، أوقات، منشأ، عناية، رسالة، وبطاقات رف.",
+        "en": "Three landing pages. The third is Saji, with six sections: a receipt, day parts, an origin card, a care thread, a letter, and shelf tags."
     },
     "author_email": "sajispprt@gmail.com",
-    "support_url": "https://github.com/Ashaheen892/tw-ataba",
-    "repository": "https://github.com/Ashaheen892/tw-ataba",
+    "support_url": "https://github.com/Ashaheen892/tw-saji-landing",
+    "repository": "https://github.com/Ashaheen892/tw-saji-landing",
     "features": [
         "landing-page-templates"
     ],
@@ -2722,6 +2722,1413 @@
                     ]
                 }
             ]
+        },
+        {
+            "title": "إيصال المحتوى",
+            "icon": "sicon-list",
+            "name": "receipt-note",
+            "key": "1d9eccb2-f1e7-40fc-a4d2-9f98715b80df",
+            "image": "",
+            "props": {
+                "min-height": "420px"
+            },
+            "fields": [
+                {
+                    "id": "title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "ماذا داخل الطلب",
+                        "en": "What is in the order"
+                    }
+                },
+                {
+                    "id": "subtitle",
+                    "type": "string",
+                    "format": "text",
+                    "label": "وصف قصير",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "سطر لكل شيء يصل مع المنتج.",
+                        "en": "One line for everything that arrives with the product."
+                    }
+                },
+                {
+                    "id": "title_style",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "source": "Manual",
+                    "label": "شكل العنوان",
+                    "icon": "sicon-list",
+                    "required": false,
+                    "description": null,
+                    "options": [
+                        {
+                            "label": "عنوان فقط",
+                            "value": "plain",
+                            "key": "e27e11eb-74df-43ef-be56-5f0256f91854"
+                        },
+                        {
+                            "label": "خط قصير",
+                            "value": "hairline",
+                            "key": "370ff065-d7d7-4d34-8861-5389d26c81dc"
+                        },
+                        {
+                            "label": "قوسان",
+                            "value": "brackets",
+                            "key": "348927b7-2ae0-49e5-a21d-95a01188fe38"
+                        },
+                        {
+                            "label": "بطاقة",
+                            "value": "ticket",
+                            "key": "81d5c9e1-a6c3-4f3d-adbb-5dc35c00d167"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "خط قصير",
+                            "value": "hairline",
+                            "key": "370ff065-d7d7-4d34-8861-5389d26c81dc"
+                        }
+                    ],
+                    "value": [
+                        {
+                            "label": "خط قصير",
+                            "value": "hairline",
+                            "key": "370ff065-d7d7-4d34-8861-5389d26c81dc"
+                        }
+                    ]
+                },
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 8,
+                    "item_label": "سطر",
+                    "fields": [
+                        {
+                            "id": "items.label",
+                            "type": "string",
+                            "format": "text",
+                            "label": "البند",
+                            "icon": "sicon-format-text-alt",
+                            "multilanguage": true,
+                            "required": false,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 180,
+                            "value": {
+                                "ar": "الوزن",
+                                "en": "Weight"
+                            }
+                        },
+                        {
+                            "id": "items.value",
+                            "type": "string",
+                            "format": "text",
+                            "label": "القيمة",
+                            "icon": "sicon-format-text-alt",
+                            "multilanguage": true,
+                            "required": false,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 180,
+                            "value": {
+                                "ar": "250 غرام",
+                                "en": "250 grams"
+                            }
+                        }
+                    ],
+                    "value": [
+                        {
+                            "items.label": {
+                                "ar": "الوزن",
+                                "en": "Weight"
+                            },
+                            "items.value": {
+                                "ar": "250 غرام",
+                                "en": "250 grams"
+                            }
+                        },
+                        {
+                            "items.label": {
+                                "ar": "الخامة",
+                                "en": "Material"
+                            },
+                            "items.value": {
+                                "ar": "قماش مغسول",
+                                "en": "Washed cloth"
+                            }
+                        },
+                        {
+                            "items.label": {
+                                "ar": "التغليف",
+                                "en": "Packing"
+                            },
+                            "items.value": {
+                                "ar": "كيس قماشي قابل للطي",
+                                "en": "A foldable cloth bag"
+                            }
+                        },
+                        {
+                            "items.label": {
+                                "ar": "البطاقة",
+                                "en": "Card"
+                            },
+                            "items.value": {
+                                "ar": "طريقة العناية مطبوعة",
+                                "en": "A printed care note"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "foot",
+                    "type": "string",
+                    "format": "text",
+                    "label": "سطر أسفل الإيصال",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "الأرقام تتغير من إعدادات القسم.",
+                        "en": "The figures change from the section settings."
+                    }
+                },
+                {
+                    "id": "bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الخلفية",
+                    "icon": "sicon-format-fill",
+                    "required": false,
+                    "description": null,
+                    "value": ""
+                },
+                {
+                    "id": "color_scheme",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "source": "Manual",
+                    "label": "وضع الألوان",
+                    "icon": "sicon-list",
+                    "required": false,
+                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "options": [
+                        {
+                            "label": "حسب الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+                        },
+                        {
+                            "label": "فاتح",
+                            "value": "light",
+                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                        },
+                        {
+                            "label": "داكن",
+                            "value": "dark",
+                            "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "فاتح",
+                            "value": "light",
+                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                        }
+                    ],
+                    "value": [
+                        {
+                            "label": "فاتح",
+                            "value": "light",
+                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "أوقات اليوم",
+            "icon": "sicon-time",
+            "name": "day-parts",
+            "key": "3999f570-826e-4b4a-a735-187b35eb405b",
+            "image": "",
+            "props": {
+                "min-height": "380px"
+            },
+            "fields": [
+                {
+                    "id": "title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "متى تستخدمه؟",
+                        "en": "When do you use it?"
+                    }
+                },
+                {
+                    "id": "subtitle",
+                    "type": "string",
+                    "format": "text",
+                    "label": "وصف قصير",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "اختر وقتاً لتقرأ الجملة المناسبة.",
+                        "en": "Pick a time to read the matching line."
+                    }
+                },
+                {
+                    "id": "title_style",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "source": "Manual",
+                    "label": "شكل العنوان",
+                    "icon": "sicon-list",
+                    "required": false,
+                    "description": null,
+                    "options": [
+                        {
+                            "label": "عنوان فقط",
+                            "value": "plain",
+                            "key": "e27e11eb-74df-43ef-be56-5f0256f91854"
+                        },
+                        {
+                            "label": "خط قصير",
+                            "value": "hairline",
+                            "key": "370ff065-d7d7-4d34-8861-5389d26c81dc"
+                        },
+                        {
+                            "label": "قوسان",
+                            "value": "brackets",
+                            "key": "348927b7-2ae0-49e5-a21d-95a01188fe38"
+                        },
+                        {
+                            "label": "بطاقة",
+                            "value": "ticket",
+                            "key": "81d5c9e1-a6c3-4f3d-adbb-5dc35c00d167"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "قوسان",
+                            "value": "brackets",
+                            "key": "348927b7-2ae0-49e5-a21d-95a01188fe38"
+                        }
+                    ],
+                    "value": [
+                        {
+                            "label": "قوسان",
+                            "value": "brackets",
+                            "key": "348927b7-2ae0-49e5-a21d-95a01188fe38"
+                        }
+                    ]
+                },
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 4,
+                    "item_label": "وقت",
+                    "fields": [
+                        {
+                            "id": "items.when",
+                            "type": "string",
+                            "format": "text",
+                            "label": "التوقيت",
+                            "icon": "sicon-format-text-alt",
+                            "multilanguage": true,
+                            "required": false,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 180,
+                            "value": {
+                                "ar": "الصباح",
+                                "en": "Morning"
+                            }
+                        },
+                        {
+                            "id": "items.title",
+                            "type": "string",
+                            "format": "text",
+                            "label": "العنوان",
+                            "icon": "sicon-format-text-alt",
+                            "multilanguage": true,
+                            "required": false,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 180,
+                            "value": {
+                                "ar": "قبل الخروج",
+                                "en": "Before leaving"
+                            }
+                        },
+                        {
+                            "id": "items.text",
+                            "type": "string",
+                            "format": "textarea",
+                            "label": "الجملة",
+                            "icon": "sicon-paragraph",
+                            "multilanguage": true,
+                            "required": false,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 500,
+                            "value": {
+                                "ar": "قطعة خفيفة لا تؤخر أول ساعة في اليوم.",
+                                "en": "A light piece that does not slow the first hour of the day."
+                            }
+                        }
+                    ],
+                    "value": [
+                        {
+                            "items.when": {
+                                "ar": "الصباح",
+                                "en": "Morning"
+                            },
+                            "items.title": {
+                                "ar": "قبل الخروج",
+                                "en": "Before leaving"
+                            },
+                            "items.text": {
+                                "ar": "قطعة خفيفة لا تؤخر أول ساعة في اليوم.",
+                                "en": "A light piece that does not slow the first hour of the day."
+                            }
+                        },
+                        {
+                            "items.when": {
+                                "ar": "الظهر",
+                                "en": "Noon"
+                            },
+                            "items.title": {
+                                "ar": "بين مشوارين",
+                                "en": "Between two errands"
+                            },
+                            "items.text": {
+                                "ar": "تُطوى في الكيس وتعود للشكل نفسه عند الفتح.",
+                                "en": "It folds into the bag and returns to the same shape when opened."
+                            }
+                        },
+                        {
+                            "items.when": {
+                                "ar": "المساء",
+                                "en": "Evening"
+                            },
+                            "items.title": {
+                                "ar": "بعد العودة",
+                                "en": "After coming home"
+                            },
+                            "items.text": {
+                                "ar": "العناية سطر واحد، لا طقس طويل في آخر اليوم.",
+                                "en": "Care is one line, not a long ritual at the end of the day."
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الخلفية",
+                    "icon": "sicon-format-fill",
+                    "required": false,
+                    "description": null,
+                    "value": ""
+                },
+                {
+                    "id": "color_scheme",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "source": "Manual",
+                    "label": "وضع الألوان",
+                    "icon": "sicon-list",
+                    "required": false,
+                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "options": [
+                        {
+                            "label": "حسب الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+                        },
+                        {
+                            "label": "فاتح",
+                            "value": "light",
+                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                        },
+                        {
+                            "label": "داكن",
+                            "value": "dark",
+                            "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "فاتح",
+                            "value": "light",
+                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                        }
+                    ],
+                    "value": [
+                        {
+                            "label": "فاتح",
+                            "value": "light",
+                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "بطاقة المنشأ",
+            "icon": "sicon-image",
+            "name": "origin-card",
+            "key": "0ced9085-6757-4e47-8bd3-76d95b071e6d",
+            "image": "",
+            "props": {
+                "min-height": "520px"
+            },
+            "fields": [
+                {
+                    "id": "title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "من أين تبدأ القطعة",
+                        "en": "Where the piece starts"
+                    }
+                },
+                {
+                    "id": "subtitle",
+                    "type": "string",
+                    "format": "text",
+                    "label": "وصف قصير",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "مكان واحد، وثلاث حقائق يكتبها التاجر.",
+                        "en": "One place, and three facts the merchant writes."
+                    }
+                },
+                {
+                    "id": "title_style",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "source": "Manual",
+                    "label": "شكل العنوان",
+                    "icon": "sicon-list",
+                    "required": false,
+                    "description": null,
+                    "options": [
+                        {
+                            "label": "عنوان فقط",
+                            "value": "plain",
+                            "key": "e27e11eb-74df-43ef-be56-5f0256f91854"
+                        },
+                        {
+                            "label": "خط قصير",
+                            "value": "hairline",
+                            "key": "370ff065-d7d7-4d34-8861-5389d26c81dc"
+                        },
+                        {
+                            "label": "قوسان",
+                            "value": "brackets",
+                            "key": "348927b7-2ae0-49e5-a21d-95a01188fe38"
+                        },
+                        {
+                            "label": "بطاقة",
+                            "value": "ticket",
+                            "key": "81d5c9e1-a6c3-4f3d-adbb-5dc35c00d167"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "بطاقة",
+                            "value": "ticket",
+                            "key": "81d5c9e1-a6c3-4f3d-adbb-5dc35c00d167"
+                        }
+                    ],
+                    "value": [
+                        {
+                            "label": "بطاقة",
+                            "value": "ticket",
+                            "key": "81d5c9e1-a6c3-4f3d-adbb-5dc35c00d167"
+                        }
+                    ]
+                },
+                {
+                    "id": "place",
+                    "type": "string",
+                    "format": "text",
+                    "label": "اسم المكان",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "ورشة صغيرة في جدة",
+                        "en": "A small workshop in Jeddah"
+                    }
+                },
+                {
+                    "id": "image",
+                    "type": "string",
+                    "format": "image",
+                    "label": "صورة المكان",
+                    "icon": "sicon-image",
+                    "required": false,
+                    "description": "المقاس المقترح 1200×900 بكسل، صورة أفقية للمكان أو الخامة.",
+                    "value": ""
+                },
+                {
+                    "id": "image_alt",
+                    "type": "string",
+                    "format": "text",
+                    "label": "وصف الصورة",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "طاولة عمل في الورشة",
+                        "en": "A work table in the workshop"
+                    }
+                },
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 4,
+                    "item_label": "حقيقة",
+                    "fields": [
+                        {
+                            "id": "items.label",
+                            "type": "string",
+                            "format": "text",
+                            "label": "العنوان",
+                            "icon": "sicon-format-text-alt",
+                            "multilanguage": true,
+                            "required": false,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 180,
+                            "value": {
+                                "ar": "الأيدي",
+                                "en": "Hands"
+                            }
+                        },
+                        {
+                            "id": "items.text",
+                            "type": "string",
+                            "format": "text",
+                            "label": "التفصيل",
+                            "icon": "sicon-format-text-alt",
+                            "multilanguage": true,
+                            "required": false,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 180,
+                            "value": {
+                                "ar": "نفس الفريق من القص حتى الخياطة",
+                                "en": "The same team from cutting to stitching"
+                            }
+                        }
+                    ],
+                    "value": [
+                        {
+                            "items.label": {
+                                "ar": "الأيدي",
+                                "en": "Hands"
+                            },
+                            "items.text": {
+                                "ar": "نفس الفريق من القص حتى الخياطة",
+                                "en": "The same team from cutting to stitching"
+                            }
+                        },
+                        {
+                            "items.label": {
+                                "ar": "الدفعة",
+                                "en": "Batch"
+                            },
+                            "items.text": {
+                                "ar": "عدد محدود كل أسبوعين",
+                                "en": "A limited number every two weeks"
+                            }
+                        },
+                        {
+                            "items.label": {
+                                "ar": "الخامة",
+                                "en": "Material"
+                            },
+                            "items.text": {
+                                "ar": "تُشترى كاملة قبل القص",
+                                "en": "Bought in full before it is cut"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الخلفية",
+                    "icon": "sicon-format-fill",
+                    "required": false,
+                    "description": null,
+                    "value": ""
+                },
+                {
+                    "id": "color_scheme",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "source": "Manual",
+                    "label": "وضع الألوان",
+                    "icon": "sicon-list",
+                    "required": false,
+                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "options": [
+                        {
+                            "label": "حسب الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+                        },
+                        {
+                            "label": "فاتح",
+                            "value": "light",
+                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                        },
+                        {
+                            "label": "داكن",
+                            "value": "dark",
+                            "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "فاتح",
+                            "value": "light",
+                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                        }
+                    ],
+                    "value": [
+                        {
+                            "label": "فاتح",
+                            "value": "light",
+                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "خيط العناية",
+            "icon": "sicon-format-text-alt",
+            "name": "care-thread",
+            "key": "78ac3381-8df8-4f18-aa14-3f42cd0790dc",
+            "image": "",
+            "props": {
+                "min-height": "460px"
+            },
+            "fields": [
+                {
+                    "id": "title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "ثلاث حركات تكفي",
+                        "en": "Three motions are enough"
+                    }
+                },
+                {
+                    "id": "subtitle",
+                    "type": "string",
+                    "format": "text",
+                    "label": "وصف قصير",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "خطوات قصيرة مرتبة على خيط واحد.",
+                        "en": "Short steps arranged on one thread."
+                    }
+                },
+                {
+                    "id": "title_style",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "source": "Manual",
+                    "label": "شكل العنوان",
+                    "icon": "sicon-list",
+                    "required": false,
+                    "description": null,
+                    "options": [
+                        {
+                            "label": "عنوان فقط",
+                            "value": "plain",
+                            "key": "e27e11eb-74df-43ef-be56-5f0256f91854"
+                        },
+                        {
+                            "label": "خط قصير",
+                            "value": "hairline",
+                            "key": "370ff065-d7d7-4d34-8861-5389d26c81dc"
+                        },
+                        {
+                            "label": "قوسان",
+                            "value": "brackets",
+                            "key": "348927b7-2ae0-49e5-a21d-95a01188fe38"
+                        },
+                        {
+                            "label": "بطاقة",
+                            "value": "ticket",
+                            "key": "81d5c9e1-a6c3-4f3d-adbb-5dc35c00d167"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "خط قصير",
+                            "value": "hairline",
+                            "key": "370ff065-d7d7-4d34-8861-5389d26c81dc"
+                        }
+                    ],
+                    "value": [
+                        {
+                            "label": "خط قصير",
+                            "value": "hairline",
+                            "key": "370ff065-d7d7-4d34-8861-5389d26c81dc"
+                        }
+                    ]
+                },
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 6,
+                    "item_label": "خطوة",
+                    "fields": [
+                        {
+                            "id": "items.title",
+                            "type": "string",
+                            "format": "text",
+                            "label": "الخطوة",
+                            "icon": "sicon-format-text-alt",
+                            "multilanguage": true,
+                            "required": false,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 180,
+                            "value": {
+                                "ar": "انفض الغبار",
+                                "en": "Shake off the dust"
+                            }
+                        },
+                        {
+                            "id": "items.text",
+                            "type": "string",
+                            "format": "textarea",
+                            "label": "التفصيل",
+                            "icon": "sicon-paragraph",
+                            "multilanguage": true,
+                            "required": false,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 500,
+                            "value": {
+                                "ar": "قبل أي غسيل، حتى تبقى الخامة في شكلها.",
+                                "en": "Before any wash, so the material keeps its shape."
+                            }
+                        }
+                    ],
+                    "value": [
+                        {
+                            "items.title": {
+                                "ar": "انفض الغبار",
+                                "en": "Shake off the dust"
+                            },
+                            "items.text": {
+                                "ar": "قبل أي غسيل، حتى تبقى الخامة في شكلها.",
+                                "en": "Before any wash, so the material keeps its shape."
+                            }
+                        },
+                        {
+                            "items.title": {
+                                "ar": "ماء بارد",
+                                "en": "Cold water"
+                            },
+                            "items.text": {
+                                "ar": "بدون عصر قوي، ثم تُفرد على منشفة.",
+                                "en": "Without a hard wring, then lay it on a towel."
+                            }
+                        },
+                        {
+                            "items.title": {
+                                "ar": "بعيداً عن الشمس المباشرة",
+                                "en": "Away from direct sun"
+                            },
+                            "items.text": {
+                                "ar": "الجفاف في الظل يحفظ اللون.",
+                                "en": "Drying in the shade keeps the color."
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الخلفية",
+                    "icon": "sicon-format-fill",
+                    "required": false,
+                    "description": null,
+                    "value": ""
+                },
+                {
+                    "id": "color_scheme",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "source": "Manual",
+                    "label": "وضع الألوان",
+                    "icon": "sicon-list",
+                    "required": false,
+                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "options": [
+                        {
+                            "label": "حسب الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+                        },
+                        {
+                            "label": "فاتح",
+                            "value": "light",
+                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                        },
+                        {
+                            "label": "داكن",
+                            "value": "dark",
+                            "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "فاتح",
+                            "value": "light",
+                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                        }
+                    ],
+                    "value": [
+                        {
+                            "label": "فاتح",
+                            "value": "light",
+                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "رسالة الصانع",
+            "icon": "sicon-paragraph",
+            "name": "maker-letter",
+            "key": "628de14f-6ded-4b21-aab4-5b476d3ce975",
+            "image": "",
+            "props": {
+                "min-height": "420px"
+            },
+            "fields": [
+                {
+                    "id": "title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "كلمة قبل أن تطلب",
+                        "en": "A word before you order"
+                    }
+                },
+                {
+                    "id": "subtitle",
+                    "type": "string",
+                    "format": "text",
+                    "label": "وصف قصير",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "",
+                        "en": ""
+                    }
+                },
+                {
+                    "id": "title_style",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "source": "Manual",
+                    "label": "شكل العنوان",
+                    "icon": "sicon-list",
+                    "required": false,
+                    "description": null,
+                    "options": [
+                        {
+                            "label": "عنوان فقط",
+                            "value": "plain",
+                            "key": "e27e11eb-74df-43ef-be56-5f0256f91854"
+                        },
+                        {
+                            "label": "خط قصير",
+                            "value": "hairline",
+                            "key": "370ff065-d7d7-4d34-8861-5389d26c81dc"
+                        },
+                        {
+                            "label": "قوسان",
+                            "value": "brackets",
+                            "key": "348927b7-2ae0-49e5-a21d-95a01188fe38"
+                        },
+                        {
+                            "label": "بطاقة",
+                            "value": "ticket",
+                            "key": "81d5c9e1-a6c3-4f3d-adbb-5dc35c00d167"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "عنوان فقط",
+                            "value": "plain",
+                            "key": "e27e11eb-74df-43ef-be56-5f0256f91854"
+                        }
+                    ],
+                    "value": [
+                        {
+                            "label": "عنوان فقط",
+                            "value": "plain",
+                            "key": "e27e11eb-74df-43ef-be56-5f0256f91854"
+                        }
+                    ]
+                },
+                {
+                    "id": "text",
+                    "type": "string",
+                    "format": "textarea",
+                    "label": "نص الرسالة",
+                    "icon": "sicon-paragraph",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 500,
+                    "value": {
+                        "ar": "نصنع عدداً نقدر نراجعه بأيدينا. إن وصلتك القطعة بغير ما كُتب هنا، نبدّلها دون جدال طويل.",
+                        "en": "We make a number we can still review by hand. If the piece arrives unlike what is written here, we replace it without a long argument."
+                    }
+                },
+                {
+                    "id": "signer",
+                    "type": "string",
+                    "format": "text",
+                    "label": "التوقيع",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "فريق ساجي",
+                        "en": "Saji team"
+                    }
+                },
+                {
+                    "id": "role",
+                    "type": "string",
+                    "format": "text",
+                    "label": "الصفة",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "الورشة",
+                        "en": "The workshop"
+                    }
+                },
+                {
+                    "id": "button_label",
+                    "type": "string",
+                    "format": "text",
+                    "label": "نص الزر",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "اطلب القطعة",
+                        "en": "Order the piece"
+                    }
+                },
+                {
+                    "id": "button_url",
+                    "type": "string",
+                    "format": "url",
+                    "label": "رابط الزر",
+                    "icon": "sicon-link",
+                    "required": false,
+                    "description": "في صفحة منتج يفتح الشراء السريع. في صفحة العروض يتبع رابط زر الصفحة، أو هذا الرابط إن وضعته.",
+                    "value": ""
+                },
+                {
+                    "id": "bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الخلفية",
+                    "icon": "sicon-format-fill",
+                    "required": false,
+                    "description": null,
+                    "value": ""
+                },
+                {
+                    "id": "color_scheme",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "source": "Manual",
+                    "label": "وضع الألوان",
+                    "icon": "sicon-list",
+                    "required": false,
+                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "options": [
+                        {
+                            "label": "حسب الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+                        },
+                        {
+                            "label": "فاتح",
+                            "value": "light",
+                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                        },
+                        {
+                            "label": "داكن",
+                            "value": "dark",
+                            "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "فاتح",
+                            "value": "light",
+                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                        }
+                    ],
+                    "value": [
+                        {
+                            "label": "فاتح",
+                            "value": "light",
+                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "بطاقات الرف",
+            "icon": "sicon-star2",
+            "name": "shelf-tags",
+            "key": "308978a7-1563-4de3-ac34-dfcb649d29aa",
+            "image": "",
+            "props": {
+                "min-height": "340px"
+            },
+            "fields": [
+                {
+                    "id": "title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "كلمات نعلّقها على الرف",
+                        "en": "Words we hang on the shelf"
+                    }
+                },
+                {
+                    "id": "subtitle",
+                    "type": "string",
+                    "format": "text",
+                    "label": "وصف قصير",
+                    "icon": "sicon-format-text-alt",
+                    "multilanguage": true,
+                    "required": false,
+                    "description": null,
+                    "minLength": 0,
+                    "maxLength": 180,
+                    "value": {
+                        "ar": "بطاقات قصيرة، لا شبكة مزايا.",
+                        "en": "Short tickets, not a feature grid."
+                    }
+                },
+                {
+                    "id": "title_style",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "source": "Manual",
+                    "label": "شكل العنوان",
+                    "icon": "sicon-list",
+                    "required": false,
+                    "description": null,
+                    "options": [
+                        {
+                            "label": "عنوان فقط",
+                            "value": "plain",
+                            "key": "e27e11eb-74df-43ef-be56-5f0256f91854"
+                        },
+                        {
+                            "label": "خط قصير",
+                            "value": "hairline",
+                            "key": "370ff065-d7d7-4d34-8861-5389d26c81dc"
+                        },
+                        {
+                            "label": "قوسان",
+                            "value": "brackets",
+                            "key": "348927b7-2ae0-49e5-a21d-95a01188fe38"
+                        },
+                        {
+                            "label": "بطاقة",
+                            "value": "ticket",
+                            "key": "81d5c9e1-a6c3-4f3d-adbb-5dc35c00d167"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "بطاقة",
+                            "value": "ticket",
+                            "key": "81d5c9e1-a6c3-4f3d-adbb-5dc35c00d167"
+                        }
+                    ],
+                    "value": [
+                        {
+                            "label": "بطاقة",
+                            "value": "ticket",
+                            "key": "81d5c9e1-a6c3-4f3d-adbb-5dc35c00d167"
+                        }
+                    ]
+                },
+                {
+                    "id": "items",
+                    "type": "collection",
+                    "format": "collection",
+                    "required": true,
+                    "minLength": 1,
+                    "maxLength": 8,
+                    "item_label": "بطاقة",
+                    "fields": [
+                        {
+                            "id": "items.word",
+                            "type": "string",
+                            "format": "text",
+                            "label": "الكلمة",
+                            "icon": "sicon-format-text-alt",
+                            "multilanguage": true,
+                            "required": false,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 180,
+                            "value": {
+                                "ar": "محدود",
+                                "en": "Limited"
+                            }
+                        },
+                        {
+                            "id": "items.note",
+                            "type": "string",
+                            "format": "text",
+                            "label": "سطر صغير",
+                            "icon": "sicon-format-text-alt",
+                            "multilanguage": true,
+                            "required": false,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 180,
+                            "value": {
+                                "ar": "دفعة كل أسبوعين",
+                                "en": "A batch every two weeks"
+                            }
+                        }
+                    ],
+                    "value": [
+                        {
+                            "items.word": {
+                                "ar": "محدود",
+                                "en": "Limited"
+                            },
+                            "items.note": {
+                                "ar": "دفعة كل أسبوعين",
+                                "en": "A batch every two weeks"
+                            }
+                        },
+                        {
+                            "items.word": {
+                                "ar": "مخيط",
+                                "en": "Stitched"
+                            },
+                            "items.note": {
+                                "ar": "في الورشة نفسها",
+                                "en": "In the same workshop"
+                            }
+                        },
+                        {
+                            "items.word": {
+                                "ar": "يُطوى",
+                                "en": "Folds"
+                            },
+                            "items.note": {
+                                "ar": "بلا علبة صلبة",
+                                "en": "Without a hard box"
+                            }
+                        },
+                        {
+                            "items.word": {
+                                "ar": "يُغسل",
+                                "en": "Washable"
+                            },
+                            "items.note": {
+                                "ar": "ماء بارد فقط",
+                                "en": "Cold water only"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": "bg_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون الخلفية",
+                    "icon": "sicon-format-fill",
+                    "required": false,
+                    "description": null,
+                    "value": ""
+                },
+                {
+                    "id": "color_scheme",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "source": "Manual",
+                    "label": "وضع الألوان",
+                    "icon": "sicon-list",
+                    "required": false,
+                    "description": "الوضع التلقائي يتبع زر المزاج إن وُجد، وإلا يتبع جهاز الزائر",
+                    "options": [
+                        {
+                            "label": "حسب الصفحة",
+                            "value": "auto",
+                            "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+                        },
+                        {
+                            "label": "فاتح",
+                            "value": "light",
+                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                        },
+                        {
+                            "label": "داكن",
+                            "value": "dark",
+                            "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "فاتح",
+                            "value": "light",
+                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                        }
+                    ],
+                    "value": [
+                        {
+                            "label": "فاتح",
+                            "value": "light",
+                            "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "templates": [
@@ -2738,6 +4145,14 @@
             "path": "templates.zakham",
             "category_id": "",
             "primary_color": "#0f6e6a",
+            "thumbnail": "",
+            "is_default": false
+        },
+        {
+            "id": "9d14165d-429f-4cbc-9254-ae64d434d1d7",
+            "path": "templates.saji",
+            "category_id": "",
+            "primary_color": "#1c3d36",
             "thumbnail": "",
             "is_default": false
         }
