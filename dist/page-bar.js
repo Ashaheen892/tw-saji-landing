@@ -132,7 +132,7 @@ const css = `
 `, _PageBar = class _PageBar extends LitElement {
   constructor() {
     super(...arguments), this.dark = !1, this.solid = !1, this.store = { logo: "", name: "", url: "" }, this.stop = () => {
-    }, this.modeKey = "", this.onScroll = () => {
+    }, this.modeKey = "", this.pinned = null, this.opened = [], this.onScroll = () => {
       const cfg = getConfig(this.config), solid = flag(cfg.sticky) && (window.scrollY || document.documentElement.scrollTop || 0) > 8;
       solid !== this.solid && (this.solid = solid);
     };
@@ -181,13 +181,32 @@ const css = `
       }
     return base === "system" ? window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light" : base === "dark" ? "dark" : "light";
   }
+  /** The box that sits among the other sections, not the inner card that is only as tall as the bar. */
+  outerBox() {
+    let node = this;
+    for (; node.parentElement && node.parentElement !== document.body && node.parentElement !== document.documentElement; ) {
+      const parent = node.parentElement;
+      if ([...parent.children].filter((el) => el.tagName !== "SCRIPT" && el.tagName !== "STYLE").length > 1) return node;
+      node = parent;
+    }
+    return node;
+  }
   pin() {
-    const cfg = getConfig(this.config), sticky = flag(cfg.sticky), clear = flag(cfg.transparent), card = this.closest(".component-card") || this;
-    card.style.position = sticky ? "sticky" : "", card.style.top = sticky ? "0" : "", card.style.zIndex = sticky || clear ? "30" : "", card.style.marginBottom = clear ? `-${this.offsetHeight}px` : "";
+    const cfg = getConfig(this.config), sticky = flag(cfg.sticky), clear = flag(cfg.transparent), outer = this.outerBox();
+    if (this.pinned && this.pinned !== outer && this.release(), this.pinned = outer, outer.style.position = sticky ? "sticky" : clear ? "relative" : "", outer.style.top = sticky ? "0" : "", outer.style.zIndex = sticky || clear ? "40" : "", outer.style.marginBottom = clear ? `-${this.offsetHeight}px` : "", this.opened.forEach((el) => {
+      el.style.overflow = "";
+    }), this.opened = [], !sticky) return;
+    let node = outer.parentElement;
+    for (; node && node !== document.body && node !== document.documentElement; ) {
+      const flow = getComputedStyle(node);
+      if (flow.overflowY === "auto" || flow.overflowY === "scroll") break;
+      (flow.overflowY === "hidden" || flow.overflowX === "hidden") && (node.style.overflow = "clip", this.opened.push(node)), node = node.parentElement;
+    }
   }
   release() {
-    const card = this.closest(".component-card");
-    card && (card.style.position = card.style.top = card.style.zIndex = card.style.marginBottom = "");
+    this.pinned && (this.pinned.style.position = this.pinned.style.top = this.pinned.style.zIndex = this.pinned.style.marginBottom = "", this.pinned = null), this.opened.forEach((el) => {
+      el.style.overflow = "";
+    }), this.opened = [];
   }
   render() {
     const cfg = getConfig(this.config), height = Math.min(Math.max(Number(cfg.logo_height) || 52, 28), 120), start = String(unwrapValue(cfg.align) || "center") === "start", clear = flag(cfg.transparent) && !this.solid, invert = clear || this.dark || schemeOf(cfg) === "rw-dark", logo = String(cfg.logo || this.store.logo || ""), darkLogo = String(cfg.logo_dark || ""), name = this.store.name || t({ ar: "المتجر", en: "Store" }), linkLabel = localizedString(cfg.link_label), classes = [

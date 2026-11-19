@@ -32,6 +32,8 @@ export default class PageBar extends LitElement {
   @state() private store: StoreMark = { logo: "", name: "", url: "" };
   private stop = () => {};
   private modeKey = "";
+  private pinned: HTMLElement | null = null;
+  private opened: HTMLElement[] = [];
 
   protected createRenderRoot() {
     return this;
@@ -97,21 +99,51 @@ export default class PageBar extends LitElement {
     return base === "dark" ? "dark" : "light";
   }
 
+  /** The box that sits among the other sections, not the inner card that is only as tall as the bar. */
+  private outerBox(): HTMLElement {
+    let node: HTMLElement = this;
+    while (node.parentElement && node.parentElement !== document.body && node.parentElement !== document.documentElement) {
+      const parent = node.parentElement;
+      const sections = [...parent.children].filter((el) => el.tagName !== "SCRIPT" && el.tagName !== "STYLE");
+      if (sections.length > 1) return node;
+      node = parent;
+    }
+    return node;
+  }
+
   private pin() {
     const cfg = getConfig(this.config);
     const sticky = flag(cfg.sticky);
     const clear = flag(cfg.transparent);
-    const card = (this.closest(".component-card") as HTMLElement | null) || this;
-    card.style.position = sticky ? "sticky" : "";
-    card.style.top = sticky ? "0" : "";
-    card.style.zIndex = sticky || clear ? "30" : "";
-    card.style.marginBottom = clear ? `-${this.offsetHeight}px` : "";
+    const outer = this.outerBox();
+    if (this.pinned && this.pinned !== outer) this.release();
+    this.pinned = outer;
+    outer.style.position = sticky ? "sticky" : clear ? "relative" : "";
+    outer.style.top = sticky ? "0" : "";
+    outer.style.zIndex = sticky || clear ? "40" : "";
+    outer.style.marginBottom = clear ? `-${this.offsetHeight}px` : "";
+    this.opened.forEach((el) => { el.style.overflow = ""; });
+    this.opened = [];
+    if (!sticky) return;
+    let node = outer.parentElement;
+    while (node && node !== document.body && node !== document.documentElement) {
+      const flow = getComputedStyle(node);
+      if (flow.overflowY === "auto" || flow.overflowY === "scroll") break;
+      if (flow.overflowY === "hidden" || flow.overflowX === "hidden") {
+        node.style.overflow = "clip";
+        this.opened.push(node);
+      }
+      node = node.parentElement;
+    }
   }
 
   private release() {
-    const card = this.closest(".component-card") as HTMLElement | null;
-    if (!card) return;
-    card.style.position = card.style.top = card.style.zIndex = card.style.marginBottom = "";
+    if (this.pinned) {
+      this.pinned.style.position = this.pinned.style.top = this.pinned.style.zIndex = this.pinned.style.marginBottom = "";
+      this.pinned = null;
+    }
+    this.opened.forEach((el) => { el.style.overflow = ""; });
+    this.opened = [];
   }
 
   private onScroll = () => {
