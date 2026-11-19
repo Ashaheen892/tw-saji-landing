@@ -35,6 +35,9 @@ export default class PageBar extends LitElement {
   private modeKey = "";
   private pinned: HTMLElement | null = null;
   private opened: HTMLElement[] = [];
+  private held: HTMLElement | null = null;
+  private heldSticky = false;
+  private heldClear = false;
 
   protected createRenderRoot() {
     return this;
@@ -112,12 +115,49 @@ export default class PageBar extends LitElement {
     return node;
   }
 
+  /** A click inside the sticky bar focuses a control whose document position is the top of the page. */
+  private place(run: () => void) {
+    const doc = this.ownerDocument;
+    const view = doc.defaultView;
+    if (!view) {
+      run();
+      return;
+    }
+    const nodes = new Set<Element>();
+    if (doc.scrollingElement) nodes.add(doc.scrollingElement);
+    nodes.add(doc.documentElement);
+    nodes.add(doc.body);
+    let node: HTMLElement | null = this;
+    while (node) {
+      nodes.add(node);
+      node = node.parentElement;
+    }
+    const marks = [...nodes].map((el) => [el, el.scrollTop] as const);
+    const x = view.scrollX;
+    const y = view.scrollY;
+    const put = () => {
+      for (const [el, top] of marks) if (el.scrollTop !== top) el.scrollTop = top;
+      if (Math.abs(view.scrollY - y) > 1 || Math.abs(view.scrollX - x) > 1) view.scrollTo(x, y);
+    };
+    run();
+    put();
+    view.requestAnimationFrame(() => {
+      put();
+      view.requestAnimationFrame(put);
+    });
+  }
+
   private pin() {
     const cfg = getConfig(this.config);
     const sticky = flag(cfg.sticky);
     const clear = flag(cfg.transparent);
     const outer = this.outerBox();
+    if (clear && this.pinned === outer) outer.style.marginBottom = `-${this.offsetHeight}px`;
+    if (this.held === outer && this.heldSticky === sticky && this.heldClear === clear) return;
     if (this.pinned && this.pinned !== outer) this.release();
+    this.held = outer;
+    this.heldSticky = sticky;
+    this.heldClear = clear;
     this.pinned = outer;
     outer.style.position = sticky ? "sticky" : clear ? "relative" : "";
     outer.style.top = sticky ? "0" : "";
@@ -145,6 +185,9 @@ export default class PageBar extends LitElement {
     }
     this.opened.forEach((el) => { el.style.overflow = ""; });
     this.opened = [];
+    this.held = null;
+    this.heldSticky = false;
+    this.heldClear = false;
   }
 
   private onScroll = () => {
@@ -183,7 +226,7 @@ export default class PageBar extends LitElement {
         ${brand}
         ${linkLabel && cfg.link_url ? html`<a class="rw-bar__link" href=${cfg.link_url}>${linkLabel}</a>` : nothing}
         ${flag(cfg.show_mode_toggle)
-          ? html`<button type="button" class="rw-bar__tone" aria-pressed=${this.dark ? "true" : "false"} aria-label=${this.dark ? t({ ar: "التبديل إلى الوضع الفاتح", en: "Switch to light mode" }) : t({ ar: "التبديل إلى الوضع الداكن", en: "Switch to dark mode" })} @click=${() => applyTone(this.dark ? "light" : "dark")}>
+          ? html`<button type="button" class="rw-bar__tone" aria-pressed=${this.dark ? "true" : "false"} aria-label=${this.dark ? t({ ar: "التبديل إلى الوضع الفاتح", en: "Switch to light mode" }) : t({ ar: "التبديل إلى الوضع الداكن", en: "Switch to dark mode" })} @mousedown=${(event: Event) => event.preventDefault()} @click=${() => this.place(() => applyTone(this.dark ? "light" : "dark"))}>
               ${this.dark
                 ? html`<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="currentColor" /><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.1 5.1l1.6 1.6M17.3 17.3l1.6 1.6M18.9 5.1l-1.6 1.6M6.7 17.3l-1.6 1.6" /></g></svg>`
                 : html`<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14.5 2.4a9 9 0 1 0 7.1 13.6A8 8 0 0 1 14.5 2.4z" /></svg>`}

@@ -133,7 +133,7 @@ const css = `
 `, _PageBar = class _PageBar extends LitElement {
   constructor() {
     super(...arguments), this.dark = !1, this.solid = !1, this.store = { logo: "", name: "", url: "" }, this.stop = () => {
-    }, this.modeKey = "", this.pinned = null, this.opened = [], this.onScroll = () => {
+    }, this.modeKey = "", this.pinned = null, this.opened = [], this.held = null, this.heldSticky = !1, this.heldClear = !1, this.onScroll = () => {
       const cfg = getConfig(this.config), solid = flag(cfg.sticky) && (window.scrollY || document.documentElement.scrollTop || 0) > 8;
       solid !== this.solid && (this.solid = solid);
     };
@@ -192,11 +192,31 @@ const css = `
     }
     return node;
   }
+  /** A click inside the sticky bar focuses a control whose document position is the top of the page. */
+  place(run) {
+    const doc = this.ownerDocument, view = doc.defaultView;
+    if (!view) {
+      run();
+      return;
+    }
+    const nodes = /* @__PURE__ */ new Set();
+    doc.scrollingElement && nodes.add(doc.scrollingElement), nodes.add(doc.documentElement), nodes.add(doc.body);
+    let node = this;
+    for (; node; )
+      nodes.add(node), node = node.parentElement;
+    const marks = [...nodes].map((el) => [el, el.scrollTop]), x = view.scrollX, y = view.scrollY, put = /* @__PURE__ */ __name(() => {
+      for (const [el, top] of marks) el.scrollTop !== top && (el.scrollTop = top);
+      (Math.abs(view.scrollY - y) > 1 || Math.abs(view.scrollX - x) > 1) && view.scrollTo(x, y);
+    }, "put");
+    run(), put(), view.requestAnimationFrame(() => {
+      put(), view.requestAnimationFrame(put);
+    });
+  }
   pin() {
     const cfg = getConfig(this.config), sticky = flag(cfg.sticky), clear = flag(cfg.transparent), outer = this.outerBox();
-    if (this.pinned && this.pinned !== outer && this.release(), this.pinned = outer, outer.style.position = sticky ? "sticky" : clear ? "relative" : "", outer.style.top = sticky ? "0" : "", outer.style.zIndex = sticky || clear ? "40" : "", outer.style.marginBottom = clear ? `-${this.offsetHeight}px` : "", this.opened.forEach((el) => {
+    if (clear && this.pinned === outer && (outer.style.marginBottom = `-${this.offsetHeight}px`), this.held === outer && this.heldSticky === sticky && this.heldClear === clear || (this.pinned && this.pinned !== outer && this.release(), this.held = outer, this.heldSticky = sticky, this.heldClear = clear, this.pinned = outer, outer.style.position = sticky ? "sticky" : clear ? "relative" : "", outer.style.top = sticky ? "0" : "", outer.style.zIndex = sticky || clear ? "40" : "", outer.style.marginBottom = clear ? `-${this.offsetHeight}px` : "", this.opened.forEach((el) => {
       el.style.overflow = "";
-    }), this.opened = [], !sticky) return;
+    }), this.opened = [], !sticky)) return;
     let node = outer.parentElement;
     for (; node && node !== document.body && node !== document.documentElement; ) {
       const flow = getComputedStyle(node);
@@ -207,7 +227,7 @@ const css = `
   release() {
     this.pinned && (this.pinned.style.position = this.pinned.style.top = this.pinned.style.zIndex = this.pinned.style.marginBottom = "", this.pinned = null), this.opened.forEach((el) => {
       el.style.overflow = "";
-    }), this.opened = [];
+    }), this.opened = [], this.held = null, this.heldSticky = !1, this.heldClear = !1;
   }
   render() {
     const cfg = getConfig(this.config), height = Math.min(Math.max(Number(cfg.logo_height) || 52, 28), 120), start = String(unwrapValue(cfg.align) || "center") === "start", clear = flag(cfg.transparent) && !this.solid, invert = clear || this.dark || schemeOf(cfg) === "rw-dark", logo = String(cfg.logo || this.store.logo || ""), darkLogo = String(cfg.logo_dark || ""), name = this.store.name || t({ ar: "المتجر", en: "Store" }), linkLabel = localizedString(cfg.link_label), classes = [
@@ -223,7 +243,7 @@ const css = `
       <div class="rw-bar__row">
         ${brand}
         ${linkLabel && cfg.link_url ? html`<a class="rw-bar__link" href=${cfg.link_url}>${linkLabel}</a>` : nothing}
-        ${flag(cfg.show_mode_toggle) ? html`<button type="button" class="rw-bar__tone" aria-pressed=${this.dark ? "true" : "false"} aria-label=${this.dark ? t({ ar: "التبديل إلى الوضع الفاتح", en: "Switch to light mode" }) : t({ ar: "التبديل إلى الوضع الداكن", en: "Switch to dark mode" })} @click=${() => applyTone(this.dark ? "light" : "dark")}>
+        ${flag(cfg.show_mode_toggle) ? html`<button type="button" class="rw-bar__tone" aria-pressed=${this.dark ? "true" : "false"} aria-label=${this.dark ? t({ ar: "التبديل إلى الوضع الفاتح", en: "Switch to light mode" }) : t({ ar: "التبديل إلى الوضع الداكن", en: "Switch to dark mode" })} @mousedown=${(event) => event.preventDefault()} @click=${() => this.place(() => applyTone(this.dark ? "light" : "dark"))}>
               ${this.dark ? html`<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="currentColor" /><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.1 5.1l1.6 1.6M17.3 17.3l1.6 1.6M18.9 5.1l-1.6 1.6M6.7 17.3l-1.6 1.6" /></g></svg>` : html`<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14.5 2.4a9 9 0 1 0 7.1 13.6A8 8 0 0 1 14.5 2.4z" /></svg>`}
             </button>` : nothing}
       </div>
