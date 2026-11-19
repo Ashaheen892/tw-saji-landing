@@ -4,11 +4,11 @@
         "en": "Saji Collection"
     },
     "description": {
-        "ar": "ثلاث صفحات هبوط. الصفحة الثالثة ساجي بستة عناصر: إيصال، أوقات، منشأ، عناية، رسالة، وبطاقات رف.",
-        "en": "Three landing pages. The third is Saji, with six sections: a receipt, day parts, an origin card, a care thread, a letter, and shelf tags."
+        "ar": null,
+        "en": null
     },
     "author_email": "sajispprt@gmail.com",
-    "support_url": "https://github.com/Ashaheen892/tw-saji-landing",
+    "support_url": null,
     "repository": "https://github.com/Ashaheen892/tw-saji-landing",
     "features": [
         "landing-page-templates"
