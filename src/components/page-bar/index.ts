@@ -1,6 +1,7 @@
 import { html, LitElement, nothing } from "lit";
 import { property, state } from "lit/decorators.js";
 import { flag, getConfig, localizedString, t, unwrapValue, watchLocale } from "../../utils/config.js";
+import { announceBar, announceCss } from "../../utils/announce.js";
 import { applyTone, currentTone, schemeOf } from "../../utils/landing.js";
 import { baseCss, injectStyles, sectionStyle } from "../../utils/styles.js";
 
@@ -47,6 +48,7 @@ export default class PageBar extends LitElement {
     super.connectedCallback();
     this.classList.add("rw-host");
     injectStyles("rw-base", baseCss);
+    injectStyles("rw-announce", announceCss("rw"));
     injectStyles("rw-page-bar", css);
     document.addEventListener("scroll", this.onScroll, { capture: true, passive: true });
     const onTone = () => {
@@ -221,7 +223,8 @@ export default class PageBar extends LitElement {
     const brand = flag(cfg.link_to_store) && this.store.url
       ? html`<a class="rw-bar__brand" href=${this.store.url}>${mark}</a>`
       : html`<span class="rw-bar__brand">${mark}</span>`;
-    return html`<header class=${classes} style=${`${sectionStyle(cfg)};--rw-logo:${height}px`}>
+    return html`${announceBar(cfg, "rw", "rw-block")}
+    <header class=${classes} style=${`${sectionStyle(cfg)};--rw-logo:${height}px`}>
       <div class="rw-bar__row">
         ${brand}
         ${linkLabel && cfg.link_url ? html`<a class="rw-bar__link" href=${cfg.link_url}>${linkLabel}</a>` : nothing}

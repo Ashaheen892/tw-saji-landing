@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import { applyLandingExtras } from "./landing-extras.mjs";
 
 const L = (ar, en) => ({ ar, en });
 const KEY = {
@@ -19,6 +20,8 @@ const KEY = {
   modeLight: "1a9e4c72-5d30-4b88-9f21-6c3e8a0b7d45",
   modeDark: "6c2d8f14-9a70-4e35-81b6-3d5f0a9c2e78",
   modeSystem: "9b7e1a26-4c58-4f90-a2d3-8e6b1c0f5a34",
+  annMove: "c3a91e70-4b28-4f6a-9d15-2e8b7c0a4f61",
+  annStill: "d4b02f81-5c39-4a7b-8e26-3f9c8d1b5a72",
   videoBeside: "a7c3e1d4-2b58-4f90-8a16-5d9e0c3b7f21",
   videoStack: "b8d4f2e5-3c69-4a01-9b27-6e0f1d4c8a32",
   videoCover: "c9e5a3f6-4d70-4b12-8c38-7f1a2e5d9b43",
@@ -33,6 +36,8 @@ const KEY = {
   reelStar5: "7c1e9a20-4b63-4d85-8f17-2a6c0d9e5b41",
   reelStar4: "8d2f0b31-5c74-4e96-9a28-3b7d1e0f6c52",
   reelStar3: "9e3a1c42-6d85-4fa7-8b39-4c8e2f1a7d63",
+  dockStart: "a4c8e1b2-3d56-4f78-9a01-2b3c4d5e6f70",
+  dockEnd: "b5d9f2c3-4e67-4a89-8b12-3c4d5e6f7081",
 };
 
 const text = (id, label, value, o = {}) => ({
@@ -135,6 +140,9 @@ const components = [
     image: "",
     props: { "min-height": "88px" },
     fields: [
+      text("announce", "الشريط الإعلاني", L("شحن مجاني فوق ٢٥٠ ر.س · تبديل المقاس خلال ١٤ يوم", "Free shipping over SAR 250 · size exchange within 14 days"), { desc: "يظهر فوق الشعار. اتركه فارغاً لإخفاء الشريط." }),
+      drop("announce_mode", "حركة الشريط", [["move", "متحرك", KEY.annMove], ["still", "ثابت", KEY.annStill]], "move", "المتحرك يمرّ الجملة باستمرار. الثابت يُبقيها في الوسط."),
+      line("pb-announce"),
       image("logo", "شعار مخصص", "اتركه فارغاً ليظهر شعار المتجر."),
       image("logo_dark", "شعار للخلفية الداكنة", "يظهر فوق السلايدر الشفاف وفي الوضع الداكن. بدونه يُستخدم الشعار الأساسي."),
       num("logo_height", "ارتفاع الشعار", 52, 28, 120, "بالبكسل."),
@@ -732,6 +740,9 @@ const components = [
     image: "",
     props: { "min-height": "160px" },
     fields: [
+      text("announce", "الشريط الإعلاني", L("الطلب يُكمَل من المتجر · القماش والمقاس في هذه الصفحة", "The order is completed in the store · fabric and size are on this page"), { desc: "يظهر فوق الفوتر. اتركه فارغاً لإخفاء الشريط." }),
+      drop("announce_mode", "حركة الشريط", [["move", "متحرك", KEY.annMove], ["still", "ثابت", KEY.annStill]], "move", "المتحرك يمرّ الجملة باستمرار. الثابت يُبقيها في الوسط."),
+      line("ft-announce"),
       image("logo", "شعار مخصص", "اتركه فارغاً ليظهر شعار المتجر."),
       image("logo_dark", "شعار للخلفية الداكنة", "يظهر في الوضع الداكن. بدونه يُستخدم الشعار الأساسي."),
       area("note", "سطر التعريف", L("المقاس والقماش في هذه الصفحة، والطلب يُكمَل من المتجر.", "The size and the fabric are on this page, and the order is completed in the store.")),
@@ -811,6 +822,8 @@ const templates = [
   },
 ];
 
+applyLandingExtras({ components, catalog, templates, L, text, color, sw, drop, line, collection, image, url, scheme, KEY });
+
 const bundlePath = new URL("../twilight-bundle.json", import.meta.url);
 let previous = { templates: [] };
 if (fs.existsSync(bundlePath)) previous = JSON.parse(fs.readFileSync(bundlePath, "utf8"));
@@ -821,6 +834,11 @@ const bundle = {
   description: {
     ar: "ثلاث صفحات هبوط لأي متجر. كل صفحة تبدأ برأس فيه الشعار ووضع الألوان، ثم الأقسام بترتيب الشراء، وتنتهي بفوتر.",
     en: "Three landing pages for any store. Each page starts with a header for the logo and the color mode, then the sections in purchase order, and ends with a footer.",
+  },
+  author: {
+    name: "Saji",
+    email: "sajispprt@gmail.com",
+    url: "https://saji-tech.com/",
   },
   author_email: "sajispprt@gmail.com",
   support_url: "https://github.com/Ashaheen892/tw-saji-landing",

@@ -12,6 +12,63 @@
       },
       "fields": [
         {
+          "id": "announce",
+          "type": "string",
+          "format": "text",
+          "label": "الشريط الإعلاني",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": "يظهر فوق الشعار. اتركه فارغاً لإخفاء الشريط.",
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "شحن مجاني فوق ٢٥٠ ر.س · تبديل المقاس خلال ١٤ يوم",
+            "en": "Free shipping over SAR 250 · size exchange within 14 days"
+          }
+        },
+        {
+          "id": "announce_mode",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "حركة الشريط",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "المتحرك يمرّ الجملة باستمرار. الثابت يُبقيها في الوسط.",
+          "options": [
+            {
+              "label": "متحرك",
+              "value": "move",
+              "key": "c3a91e70-4b28-4f6a-9d15-2e8b7c0a4f61"
+            },
+            {
+              "label": "ثابت",
+              "value": "still",
+              "key": "d4b02f81-5c39-4a7b-8e26-3f9c8d1b5a72"
+            }
+          ],
+          "selected": [
+            {
+              "label": "متحرك",
+              "value": "move",
+              "key": "c3a91e70-4b28-4f6a-9d15-2e8b7c0a4f61"
+            }
+          ],
+          "value": [
+            {
+              "label": "متحرك",
+              "value": "move",
+              "key": "c3a91e70-4b28-4f6a-9d15-2e8b7c0a4f61"
+            }
+          ]
+        },
+        {
+          "id": "pb-announce",
+          "type": "static",
+          "format": "line"
+        },
+        {
           "id": "logo",
           "type": "string",
           "format": "image",
@@ -1679,6 +1736,868 @@
       ]
     },
     {
+      "title": "إحصائيات",
+      "icon": "sicon-calculator",
+      "name": "stat-strip",
+      "key": "1f6a2c84-7b15-4e30-8d41-a9c3e5b70f12",
+      "image": "",
+      "props": {
+        "min-height": "180px"
+      },
+      "fields": [
+        {
+          "id": "kicker",
+          "type": "string",
+          "format": "text",
+          "label": "السطر الصغير",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "من المشغل",
+            "en": "From the workshop"
+          }
+        },
+        {
+          "id": "title",
+          "type": "string",
+          "format": "text",
+          "label": "العنوان",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "أرقام الصفحة",
+            "en": "Page numbers"
+          }
+        },
+        {
+          "id": "subtitle",
+          "type": "string",
+          "format": "text",
+          "label": "السطر تحت العنوان",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "",
+            "en": ""
+          }
+        },
+        {
+          "id": "items",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 4,
+          "item_label": "رقم",
+          "fields": [
+            {
+              "id": "items.value",
+              "type": "string",
+              "format": "text",
+              "label": "الرقم",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "١٢",
+                "en": "12"
+              }
+            },
+            {
+              "id": "items.label",
+              "type": "string",
+              "format": "text",
+              "label": "الوصف",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "وصف الرقم",
+                "en": "What the number means"
+              }
+            }
+          ],
+          "value": [
+            {
+              "items.value": {
+                "ar": "١٢ ألف",
+                "en": "12 thousand"
+              },
+              "items.label": {
+                "ar": "قطعة خرجت هذا الموسم",
+                "en": "Pieces finished this season"
+              }
+            },
+            {
+              "items.value": {
+                "ar": "٤٨ ساعة",
+                "en": "48 hours"
+              },
+              "items.label": {
+                "ar": "تجهيز الطلب",
+                "en": "Order preparation"
+              }
+            },
+            {
+              "items.value": {
+                "ar": "١٤ يوم",
+                "en": "14 days"
+              },
+              "items.label": {
+                "ar": "تبديل المقاس",
+                "en": "Size exchange"
+              }
+            }
+          ]
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخلفية",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "color_scheme",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "وضع الألوان",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
+          "options": [
+            {
+              "label": "حسب رأس الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            },
+            {
+              "label": "فاتح دائماً",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            },
+            {
+              "label": "داكن دائماً",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "selected": [
+            {
+              "label": "حسب رأس الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            }
+          ],
+          "value": [
+            {
+              "label": "حسب رأس الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "الماركات التجارية",
+      "icon": "sicon-star2",
+      "name": "brand-row",
+      "key": "2a7b3d95-8c26-4f41-9e52-b0d4f6c81a23",
+      "image": "",
+      "props": {
+        "min-height": "160px"
+      },
+      "fields": [
+        {
+          "id": "kicker",
+          "type": "string",
+          "format": "text",
+          "label": "السطر الصغير",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "الخامات",
+            "en": "Cloth"
+          }
+        },
+        {
+          "id": "title",
+          "type": "string",
+          "format": "text",
+          "label": "العنوان",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "ماركات القماش",
+            "en": "Fabric houses"
+          }
+        },
+        {
+          "id": "subtitle",
+          "type": "string",
+          "format": "text",
+          "label": "السطر تحت العنوان",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "",
+            "en": ""
+          }
+        },
+        {
+          "id": "items",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 8,
+          "item_label": "ماركة",
+          "fields": [
+            {
+              "id": "items.image",
+              "type": "string",
+              "format": "image",
+              "label": "الشعار",
+              "icon": "sicon-image",
+              "required": false,
+              "description": "اختياري. المقاس المقترح 240×80 بكسل بخلفية شفافة.",
+              "value": ""
+            },
+            {
+              "id": "items.name",
+              "type": "string",
+              "format": "text",
+              "label": "الاسم",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "الماركة",
+                "en": "Brand"
+              }
+            },
+            {
+              "id": "items.note",
+              "type": "string",
+              "format": "text",
+              "label": "السطر",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "الخامة",
+                "en": "Material"
+              }
+            },
+            {
+              "id": "items.url",
+              "type": "string",
+              "format": "url",
+              "label": "الرابط",
+              "icon": "sicon-link",
+              "required": false,
+              "description": null,
+              "value": ""
+            }
+          ],
+          "value": [
+            {
+              "items.image": "",
+              "items.name": {
+                "ar": "كتان مصري",
+                "en": "Egyptian linen"
+              },
+              "items.note": {
+                "ar": "نسيج صيفي",
+                "en": "Summer cloth"
+              },
+              "items.url": ""
+            },
+            {
+              "items.image": "",
+              "items.name": {
+                "ar": "صوف ميرينو",
+                "en": "Merino wool"
+              },
+              "items.note": {
+                "ar": "طبقة الشتاء",
+                "en": "Winter layer"
+              },
+              "items.url": ""
+            },
+            {
+              "items.image": "",
+              "items.name": {
+                "ar": "قطن طويل التيلة",
+                "en": "Long-staple cotton"
+              },
+              "items.note": {
+                "ar": "قميص يومي",
+                "en": "Daily shirt"
+              },
+              "items.url": ""
+            },
+            {
+              "items.image": "",
+              "items.name": {
+                "ar": "قماش ياباني",
+                "en": "Japanese cloth"
+              },
+              "items.note": {
+                "ar": "لمسة ناعمة",
+                "en": "A soft hand"
+              },
+              "items.url": ""
+            }
+          ]
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخلفية",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "color_scheme",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "وضع الألوان",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
+          "options": [
+            {
+              "label": "حسب رأس الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            },
+            {
+              "label": "فاتح دائماً",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            },
+            {
+              "label": "داكن دائماً",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "selected": [
+            {
+              "label": "حسب رأس الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            }
+          ],
+          "value": [
+            {
+              "label": "حسب رأس الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "شركاء النجاح",
+      "icon": "sicon-store",
+      "name": "partner-row",
+      "key": "3b8c4ea6-9d37-4a52-8f63-c1e5a7d92b34",
+      "image": "",
+      "props": {
+        "min-height": "180px"
+      },
+      "fields": [
+        {
+          "id": "kicker",
+          "type": "string",
+          "format": "text",
+          "label": "السطر الصغير",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "الخياطة",
+            "en": "Sewing"
+          }
+        },
+        {
+          "id": "title",
+          "type": "string",
+          "format": "text",
+          "label": "العنوان",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "شركاء النجاح",
+            "en": "Partners"
+          }
+        },
+        {
+          "id": "subtitle",
+          "type": "string",
+          "format": "text",
+          "label": "السطر تحت العنوان",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "",
+            "en": ""
+          }
+        },
+        {
+          "id": "items",
+          "type": "collection",
+          "format": "collection",
+          "required": true,
+          "minLength": 1,
+          "maxLength": 8,
+          "item_label": "شريك",
+          "fields": [
+            {
+              "id": "items.name",
+              "type": "string",
+              "format": "text",
+              "label": "الاسم",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "الشريك",
+                "en": "Partner"
+              }
+            },
+            {
+              "id": "items.note",
+              "type": "string",
+              "format": "text",
+              "label": "السطر",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 180,
+              "value": {
+                "ar": "الدور",
+                "en": "Role"
+              }
+            }
+          ],
+          "value": [
+            {
+              "items.name": {
+                "ar": "مشغل الرياض",
+                "en": "Riyadh workshop"
+              },
+              "items.note": {
+                "ar": "القص والتفصيل",
+                "en": "Cutting and sewing"
+              }
+            },
+            {
+              "items.name": {
+                "ar": "مشغل جدة",
+                "en": "Jeddah workshop"
+              },
+              "items.note": {
+                "ar": "التجميع والتشطيب",
+                "en": "Assembly and finish"
+              }
+            },
+            {
+              "items.name": {
+                "ar": "دار التطريز",
+                "en": "Embroidery house"
+              },
+              "items.note": {
+                "ar": "الخبر",
+                "en": "Khobar"
+              }
+            }
+          ]
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخلفية",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "color_scheme",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "وضع الألوان",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
+          "options": [
+            {
+              "label": "حسب رأس الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            },
+            {
+              "label": "فاتح دائماً",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            },
+            {
+              "label": "داكن دائماً",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "selected": [
+            {
+              "label": "حسب رأس الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            }
+          ],
+          "value": [
+            {
+              "label": "حسب رأس الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "التواصل السريع",
+      "icon": "sicon-link",
+      "name": "quick-contact",
+      "key": "4c9d5fb7-ae48-4b63-9a74-d2f6b8ea3c45",
+      "image": "",
+      "props": {
+        "min-height": "160px"
+      },
+      "fields": [
+        {
+          "id": "kicker",
+          "type": "string",
+          "format": "text",
+          "label": "السطر الصغير",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "قبل الطلب",
+            "en": "Before the order"
+          }
+        },
+        {
+          "id": "title",
+          "type": "string",
+          "format": "text",
+          "label": "العنوان",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "تواصل سريع",
+            "en": "Quick contact"
+          }
+        },
+        {
+          "id": "subtitle",
+          "type": "string",
+          "format": "text",
+          "label": "السطر تحت العنوان",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "المقاس والقماش يُجاب عنهما من هنا، والطلب يُكمَل من المتجر.",
+            "en": "Size and fabric are answered here, and the order is completed in the store."
+          }
+        },
+        {
+          "id": "text",
+          "type": "string",
+          "format": "text",
+          "label": "جملة القسم",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "المقاس والقماش يُجاب عنهما من هنا، والطلب يُكمَل من المتجر.",
+            "en": "Size and fabric are answered here, and the order is completed in the store."
+          }
+        },
+        {
+          "id": "phone_label",
+          "type": "string",
+          "format": "text",
+          "label": "عنوان الاتصال",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "اتصال",
+            "en": "Call"
+          }
+        },
+        {
+          "id": "phone",
+          "type": "string",
+          "format": "text",
+          "label": "رقم الاتصال",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": false,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": "01153958512"
+        },
+        {
+          "id": "phone_text",
+          "type": "string",
+          "format": "text",
+          "label": "نص الاتصال",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "اتصال بالمشغل",
+            "en": "Call the workshop"
+          }
+        },
+        {
+          "id": "whatsapp_label",
+          "type": "string",
+          "format": "text",
+          "label": "عنوان واتساب",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "واتساب",
+            "en": "WhatsApp"
+          }
+        },
+        {
+          "id": "whatsapp",
+          "type": "string",
+          "format": "text",
+          "label": "رقم واتساب",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": false,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": "201153958512"
+        },
+        {
+          "id": "whatsapp_text",
+          "type": "string",
+          "format": "text",
+          "label": "نص واتساب",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "راسل المشغل",
+            "en": "Message the workshop"
+          }
+        },
+        {
+          "id": "whatsapp_message",
+          "type": "string",
+          "format": "text",
+          "label": "الرسالة الجاهزة",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "أبي أسأل عن المقاس والقماش",
+            "en": "I want to ask about the size and the fabric"
+          }
+        },
+        {
+          "id": "email_label",
+          "type": "string",
+          "format": "text",
+          "label": "عنوان البريد",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "البريد",
+            "en": "Email"
+          }
+        },
+        {
+          "id": "email",
+          "type": "string",
+          "format": "text",
+          "label": "البريد",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": false,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": "hello@saji-tech.com"
+        },
+        {
+          "id": "bg_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون الخلفية",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": ""
+        },
+        {
+          "id": "color_scheme",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "وضع الألوان",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "حسب رأس الصفحة يتبع زر الفاتح والداكن في رأس الصفحة. الفاتح أو الداكن يثبت القسم ولا يتأثر بالزر.",
+          "options": [
+            {
+              "label": "حسب رأس الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            },
+            {
+              "label": "فاتح دائماً",
+              "value": "light",
+              "key": "911c3937-606d-4425-bd43-e060d2526fa7"
+            },
+            {
+              "label": "داكن دائماً",
+              "value": "dark",
+              "key": "0bf6eb3e-35f6-4339-83a8-ea5b2a22f320"
+            }
+          ],
+          "selected": [
+            {
+              "label": "حسب رأس الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            }
+          ],
+          "value": [
+            {
+              "label": "حسب رأس الصفحة",
+              "value": "auto",
+              "key": "91b2ba13-1402-43d1-b502-154406fa0a72"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "title": "فوتر الصفحة",
       "icon": "sicon-link",
       "name": "page-footer",
@@ -1688,6 +2607,63 @@
         "min-height": "160px"
       },
       "fields": [
+        {
+          "id": "announce",
+          "type": "string",
+          "format": "text",
+          "label": "الشريط الإعلاني",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": "يظهر فوق الفوتر. اتركه فارغاً لإخفاء الشريط.",
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "الطلب يُكمَل من المتجر · القماش والمقاس في هذه الصفحة",
+            "en": "The order is completed in the store · fabric and size are on this page"
+          }
+        },
+        {
+          "id": "announce_mode",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "حركة الشريط",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "المتحرك يمرّ الجملة باستمرار. الثابت يُبقيها في الوسط.",
+          "options": [
+            {
+              "label": "متحرك",
+              "value": "move",
+              "key": "c3a91e70-4b28-4f6a-9d15-2e8b7c0a4f61"
+            },
+            {
+              "label": "ثابت",
+              "value": "still",
+              "key": "d4b02f81-5c39-4a7b-8e26-3f9c8d1b5a72"
+            }
+          ],
+          "selected": [
+            {
+              "label": "متحرك",
+              "value": "move",
+              "key": "c3a91e70-4b28-4f6a-9d15-2e8b7c0a4f61"
+            }
+          ],
+          "value": [
+            {
+              "label": "متحرك",
+              "value": "move",
+              "key": "c3a91e70-4b28-4f6a-9d15-2e8b7c0a4f61"
+            }
+          ]
+        },
+        {
+          "id": "ft-announce",
+          "type": "static",
+          "format": "line"
+        },
         {
           "id": "logo",
           "type": "string",
@@ -1884,6 +2860,194 @@
             "ar": "السجل التجاري يُكتب هنا إن لزم",
             "en": "Add the commercial register here if needed"
           }
+        },
+        {
+          "id": "dock-line",
+          "type": "static",
+          "format": "line"
+        },
+        {
+          "id": "show_whatsapp",
+          "type": "boolean",
+          "format": "switch",
+          "label": "زر واتساب ثابت",
+          "icon": "sicon-toggle-off",
+          "required": false,
+          "description": "يبقى ظاهراً أثناء تمرير الصفحة.",
+          "value": true,
+          "selected": true
+        },
+        {
+          "id": "whatsapp_number",
+          "type": "string",
+          "format": "text",
+          "label": "رقم واتساب",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": false,
+          "required": false,
+          "description": "بالصيغة الدولية بدون + أو مسافات.",
+          "minLength": 0,
+          "maxLength": 180,
+          "value": "201153958512"
+        },
+        {
+          "id": "whatsapp_message",
+          "type": "string",
+          "format": "text",
+          "label": "رسالة واتساب الجاهزة",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 180,
+          "value": {
+            "ar": "أبي أسأل عن المقاس والقماش",
+            "en": "I want to ask about the size and the fabric"
+          }
+        },
+        {
+          "id": "whatsapp_bg",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "خلفية زر واتساب",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": "#128C7E"
+        },
+        {
+          "id": "whatsapp_ink",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون أيقونة واتساب",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": "#ffffff"
+        },
+        {
+          "id": "whatsapp_side",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "جهة زر واتساب",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "إذا اخترت الجهة نفسها لزر الرجوع، يُرفع واتساب فوقه حتى لا يتداخلا.",
+          "options": [
+            {
+              "label": "بداية السطر",
+              "value": "start",
+              "key": "a4c8e1b2-3d56-4f78-9a01-2b3c4d5e6f70"
+            },
+            {
+              "label": "نهاية السطر",
+              "value": "end",
+              "key": "b5d9f2c3-4e67-4a89-8b12-3c4d5e6f7081"
+            }
+          ],
+          "selected": [
+            {
+              "label": "بداية السطر",
+              "value": "start",
+              "key": "a4c8e1b2-3d56-4f78-9a01-2b3c4d5e6f70"
+            }
+          ],
+          "value": [
+            {
+              "label": "بداية السطر",
+              "value": "start",
+              "key": "a4c8e1b2-3d56-4f78-9a01-2b3c4d5e6f70"
+            }
+          ]
+        },
+        {
+          "id": "show_top",
+          "type": "boolean",
+          "format": "switch",
+          "label": "زر العودة للأعلى",
+          "icon": "sicon-toggle-off",
+          "required": false,
+          "description": "يبقى ثابتاً أثناء التمرير، في الجهة المقابلة لواتساب.",
+          "value": true,
+          "selected": true
+        },
+        {
+          "id": "top_label",
+          "type": "string",
+          "format": "text",
+          "label": "نص زر العودة",
+          "icon": "sicon-format-text-alt",
+          "multilanguage": true,
+          "required": false,
+          "description": null,
+          "minLength": 0,
+          "maxLength": 24,
+          "value": {
+            "ar": "أعلى",
+            "en": "Top"
+          }
+        },
+        {
+          "id": "top_bg",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "خلفية زر العودة",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": "#1a1d21"
+        },
+        {
+          "id": "top_ink",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون زر العودة",
+          "icon": "sicon-format-fill",
+          "required": false,
+          "description": null,
+          "value": "#ffffff"
+        },
+        {
+          "id": "top_side",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "جهة زر العودة",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "الافتراضي نهاية السطر، مقابل زر واتساب.",
+          "options": [
+            {
+              "label": "بداية السطر",
+              "value": "start",
+              "key": "a4c8e1b2-3d56-4f78-9a01-2b3c4d5e6f70"
+            },
+            {
+              "label": "نهاية السطر",
+              "value": "end",
+              "key": "b5d9f2c3-4e67-4a89-8b12-3c4d5e6f7081"
+            }
+          ],
+          "selected": [
+            {
+              "label": "نهاية السطر",
+              "value": "end",
+              "key": "b5d9f2c3-4e67-4a89-8b12-3c4d5e6f7081"
+            }
+          ],
+          "value": [
+            {
+              "label": "نهاية السطر",
+              "value": "end",
+              "key": "b5d9f2c3-4e67-4a89-8b12-3c4d5e6f7081"
+            }
+          ]
         },
         {
           "id": "bg_color",

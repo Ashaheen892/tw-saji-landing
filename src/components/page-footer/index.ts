@@ -1,6 +1,8 @@
 import { html, LitElement, nothing } from "lit";
 import { property, state } from "lit/decorators.js";
 import { flag, getCollectionItems, getConfig, linkHref, localizedString, t, watchLocale } from "../../utils/config.js";
+import { announceBar, announceCss } from "../../utils/announce.js";
+import { clearDocks, scrollPageTop, syncDocks, type DockNodes } from "../../utils/dock.js";
 import { currentTone, schemeOf } from "../../utils/landing.js";
 import { baseCss, injectStyles, sectionStyle } from "../../utils/styles.js";
 
@@ -23,6 +25,11 @@ const css = `
 .rw-foot__badges a { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 3.2rem; padding: .4rem .7rem; border: 1px solid var(--rw-border); border-radius: .7rem; background: #fff; color: #16324f; font-weight: 800; font-size: .84rem; text-decoration: none; }
 .rw-foot__badges img { display: block; height: 2.4rem; width: auto; max-width: 9.5rem; object-fit: contain; }
 .rw-foot__base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .35rem 1rem; margin-top: 1.05rem; padding-top: .85rem; border-top: 1px solid var(--rw-border); color: var(--rw-muted); font-size: .9rem; }
+.rw-dock { position: fixed; z-index: 80; display: inline-grid; place-items: center; width: 3.45rem; height: 3.45rem; padding: 0; border: 0; border-radius: 999px; font-family: var(--font-main, inherit); cursor: pointer; text-decoration: none; box-shadow: 0 14px 30px rgb(0 0 0 / 18%); }
+.rw-dock[hidden] { display: none; }
+.rw-dock svg { width: 1.45rem; height: 1.45rem; display: block; }
+.rw-dock--wa { background: #128C7E; color: #fff; }
+.rw-dock--top { background: #1a1d21; color: #fff; }
 `;
 
 type StoreMark = { logo: string; name: string; url: string };
@@ -32,6 +39,7 @@ export default class PageFoot extends LitElement {
   @state() private store: StoreMark = { logo: "", name: "", url: "" };
   @state() private dark = false;
   private stop = () => {};
+  private docks: DockNodes = { wa: null, top: null };
 
   protected createRenderRoot() {
     return this;
@@ -41,6 +49,7 @@ export default class PageFoot extends LitElement {
     super.connectedCallback();
     this.classList.add("rw-host");
     injectStyles("rw-base", baseCss);
+    injectStyles("rw-announce", announceCss("rw"));
     injectStyles("rw-page-footer", css);
     const onTone = () => {
       this.dark = currentTone() === "dark";
@@ -72,7 +81,12 @@ export default class PageFoot extends LitElement {
 
   disconnectedCallback() {
     this.stop();
+    clearDocks(this.docks);
     super.disconnectedCallback();
+  }
+
+  protected updated() {
+    this.docks = syncDocks(getConfig(this.config), "rw", this.docks, (event) => scrollPageTop(event, this));
   }
 
   render() {
@@ -104,7 +118,8 @@ export default class PageFoot extends LitElement {
       ? html`<a class="rw-foot__brand" href=${this.store.url}>${mark}</a>`
       : html`<span class="rw-foot__brand">${mark}</span>`;
     const year = new Date().getFullYear();
-    return html`<footer class="rw-block rw-section rw-foot ${schemeOf(cfg)} ${invert ? "is-invert" : ""}" style=${sectionStyle(cfg)} aria-label=${t({ ar: "ذيل الصفحة", en: "Page footer" })}>
+    return html`${announceBar(cfg, "rw", "rw-block")}
+    <footer class="rw-block rw-section rw-foot ${schemeOf(cfg)} ${invert ? "is-invert" : ""}" style=${sectionStyle(cfg)} aria-label=${t({ ar: "ذيل الصفحة", en: "Page footer" })}>
       <div class="rw-container">
         <div class="rw-foot__top">
           ${brand}
