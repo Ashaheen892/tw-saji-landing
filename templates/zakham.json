@@ -443,16 +443,16 @@
           ],
           "selected": [
             {
-              "label": "داكن",
-              "value": "dark",
-              "key": "6c2d8f14-9a70-4e35-81b6-3d5f0a9c2e78"
+              "label": "فاتح",
+              "value": "light",
+              "key": "1a9e4c72-5d30-4b88-9f21-6c3e8a0b7d45"
             }
           ],
           "value": [
             {
-              "label": "داكن",
-              "value": "dark",
-              "key": "6c2d8f14-9a70-4e35-81b6-3d5f0a9c2e78"
+              "label": "فاتح",
+              "value": "light",
+              "key": "1a9e4c72-5d30-4b88-9f21-6c3e8a0b7d45"
             }
           ]
         },
@@ -1105,7 +1105,6 @@
               "label": "الأيقونة",
               "icon": "sicon-star2",
               "required": false,
-              "class": "form--inline",
               "value": "sicon-star2"
             },
             {

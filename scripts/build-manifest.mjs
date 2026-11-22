@@ -82,7 +82,7 @@ const url = (id, label, value = "", desc = null) => ({
   minLength: 0, maxLength: 500, value,
 });
 const icon = (id, label, value) => ({
-  id, type: "string", format: "icon", label, icon: "sicon-star2", required: false, class: "form--inline", value,
+  id, type: "string", format: "icon", label, icon: "sicon-star2", required: false, value,
 });
 const opt = (value, label, key) => ({ label, value, key });
 const drop = (id, label, options, selected, desc = null) => {
@@ -146,7 +146,7 @@ const components = [
       collection("bars", "شريط", [
         text("text", "نص الشريط", L("", ""), { max: 140 }),
         drop("media", "بجانب النص", [["none", "بدون", "ebf61642-2e54-47ae-9018-bfaf1857177c"], ["icon", "أيقونة", "fb70e3e4-c43f-45b1-a75e-7c043d6e36dc"], ["image", "صورة مصغرة", "39dea639-0118-4a0d-a29b-f48851a0e796"]], "icon", "اختر أيقونة من مكتبة سلة أو صورة صغيرة لمنتج أو شعار."),
-        { ...icon("icon", "الأيقونة", "sicon-megaphone"), class: undefined },
+        icon("icon", "الأيقونة", "sicon-megaphone"),
         image("image", "الصورة المصغرة", "المقاس المقترح 112×112 بكسل، مربعة بزوايا مدورة، PNG أو WebP بخلفية شفافة أو صورة منتج. تظهر بحجم ٢٨×٢٨ بكسل بزوايا مدورة. تُستخدم عند اختيار «صورة مصغرة» في «بجانب النص»."),
         drop("motion", "حركة الشريط", [["right", "متحرك لليمين →", "e1df8893-de2d-4647-8eff-5ff7838911e9"], ["left", "متحرك لليسار ←", "bbef0116-486e-4a1d-9864-d4ea4da97729"], ["still", "ثابت", "216c574a-63b0-49e2-b720-b0934addcaf0"]], "right", "المتحرك يمرّ الجملة باستمرار في الاتجاه المختار ويتوقف عند مرور المؤشر. الثابت يُبقيها في الوسط."),
         url("link", "رابط الشريط", "", "اختياري. يفتح عند الضغط على الشريط."),
@@ -839,7 +839,7 @@ const templates = [
     id: "f4a1ec56-5f6a-4683-ab2d-9f25426104e6",
     is_default: false,
     primary_color: "#0f6e6a",
-    order: [["edit-bar", { sticky: true, transparent: true, show_shadow: false, default_mode: "dark" }], "dock-hero", "count-band", "reason-rail", "versus-board", "offer-panel", "situation-pick", "edit-footer"],
+    order: [["edit-bar", { sticky: true, transparent: true, show_shadow: false, default_mode: "light" }], "dock-hero", "count-band", "reason-rail", "versus-board", "offer-panel", "situation-pick", "edit-footer"],
   },
   {
     name: "saji",

@@ -1352,7 +1352,6 @@
               "label": "الأيقونة",
               "icon": "sicon-star2",
               "required": false,
-              "class": "form--inline",
               "value": "sicon-shield-check"
             },
             {
