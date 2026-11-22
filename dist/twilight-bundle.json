@@ -158,11 +158,14 @@
                         {
                             "id": "bars.link",
                             "type": "string",
-                            "format": "url",
+                            "format": "text",
                             "label": "رابط الشريط",
                             "icon": "sicon-link",
+                            "multilanguage": false,
                             "required": false,
                             "description": "اختياري. يفتح عند الضغط على الشريط.",
+                            "minLength": 0,
+                            "maxLength": 500,
                             "value": ""
                         },
                         {
@@ -506,11 +509,14 @@
                 {
                     "id": "link_url",
                     "type": "string",
-                    "format": "url",
+                    "format": "text",
                     "label": "عنوان الرابط",
                     "icon": "sicon-link",
+                    "multilanguage": false,
                     "required": false,
                     "description": "اتركه فارغاً لإخفاء الرابط.",
+                    "minLength": 0,
+                    "maxLength": 500,
                     "value": ""
                 },
                 {
@@ -594,6 +600,170 @@
                     }
                 },
                 {
+                    "id": "fit",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "source": "Manual",
+                    "label": "طريقة عرض الصورة",
+                    "icon": "sicon-list",
+                    "required": false,
+                    "description": "تملأ الخلفية: الصورة على كامل العرض والنص فوقها. خلفية ممتدة: نسخة ضبابية تملأ العرض والصورة كاملة في بطاقة بجانب النص، تناسب الصور الطولية.",
+                    "options": [
+                        {
+                            "label": "الصورة تملأ الخلفية",
+                            "value": "cover",
+                            "key": "47a343db-6df1-45a2-bcf4-6fc6123a8e15"
+                        },
+                        {
+                            "label": "خلفية ممتدة وصورة في بطاقة",
+                            "value": "framed",
+                            "key": "e837ccc4-abe6-4e8a-a7da-e90c366b877d"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "الصورة تملأ الخلفية",
+                            "value": "cover",
+                            "key": "47a343db-6df1-45a2-bcf4-6fc6123a8e15"
+                        }
+                    ],
+                    "value": [
+                        {
+                            "label": "الصورة تملأ الخلفية",
+                            "value": "cover",
+                            "key": "47a343db-6df1-45a2-bcf4-6fc6123a8e15"
+                        }
+                    ]
+                },
+                {
+                    "id": "height",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "source": "Manual",
+                    "label": "ارتفاع السلايدر",
+                    "icon": "sicon-list",
+                    "required": false,
+                    "description": null,
+                    "options": [
+                        {
+                            "label": "ملء الشاشة",
+                            "value": "screen",
+                            "key": "6ab15660-3408-40ec-8742-12df48e1bfca"
+                        },
+                        {
+                            "label": "طويل",
+                            "value": "tall",
+                            "key": "a637cd3e-e752-422b-a57a-b82fedd55b5b"
+                        },
+                        {
+                            "label": "متوسط",
+                            "value": "medium",
+                            "key": "76c5c5ed-b74b-4141-bb70-61c64418385b"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "ملء الشاشة",
+                            "value": "screen",
+                            "key": "6ab15660-3408-40ec-8742-12df48e1bfca"
+                        }
+                    ],
+                    "value": [
+                        {
+                            "label": "ملء الشاشة",
+                            "value": "screen",
+                            "key": "6ab15660-3408-40ec-8742-12df48e1bfca"
+                        }
+                    ]
+                },
+                {
+                    "id": "shade",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "source": "Manual",
+                    "label": "تعتيم الصورة خلف النص",
+                    "icon": "sicon-list",
+                    "required": false,
+                    "description": "يزيد وضوح النص الأبيض فوق الصور الفاتحة.",
+                    "options": [
+                        {
+                            "label": "خفيف",
+                            "value": "soft",
+                            "key": "f726c734-1286-4738-bf7c-05378838e25c"
+                        },
+                        {
+                            "label": "متوسط",
+                            "value": "medium",
+                            "key": "7f6ddedd-63ea-440e-b4c3-44212392f1d8"
+                        },
+                        {
+                            "label": "قوي",
+                            "value": "strong",
+                            "key": "8e660f15-b260-45de-9cc5-114141ba634d"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "متوسط",
+                            "value": "medium",
+                            "key": "7f6ddedd-63ea-440e-b4c3-44212392f1d8"
+                        }
+                    ],
+                    "value": [
+                        {
+                            "label": "متوسط",
+                            "value": "medium",
+                            "key": "7f6ddedd-63ea-440e-b4c3-44212392f1d8"
+                        }
+                    ]
+                },
+                {
+                    "id": "focus",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "source": "Manual",
+                    "label": "الجزء الظاهر من الصورة عند القص",
+                    "icon": "sicon-list",
+                    "required": false,
+                    "description": null,
+                    "options": [
+                        {
+                            "label": "الوسط",
+                            "value": "center",
+                            "key": "50187958-e704-41c6-af7d-9d53dec21fa2"
+                        },
+                        {
+                            "label": "الأعلى",
+                            "value": "top",
+                            "key": "a5a42db4-3f2a-4b2c-9d73-4ea34fde42f2"
+                        },
+                        {
+                            "label": "الأسفل",
+                            "value": "bottom",
+                            "key": "35b746fd-55b4-4ab4-aa9a-a9f50f1bd7e5"
+                        }
+                    ],
+                    "selected": [
+                        {
+                            "label": "الوسط",
+                            "value": "center",
+                            "key": "50187958-e704-41c6-af7d-9d53dec21fa2"
+                        }
+                    ],
+                    "value": [
+                        {
+                            "label": "الوسط",
+                            "value": "center",
+                            "key": "50187958-e704-41c6-af7d-9d53dec21fa2"
+                        }
+                    ]
+                },
+                {
+                    "id": "os-look",
+                    "type": "static",
+                    "format": "line"
+                },
+                {
                     "id": "items",
                     "type": "collection",
                     "format": "collection",
@@ -609,17 +779,30 @@
                             "label": "صورة الشريحة",
                             "icon": "sicon-image",
                             "required": false,
-                            "description": "المقاس المقترح 1400×900 بكسل، صورة أفقية للمنتج أو الاستخدام.",
+                            "description": "المقاس المقترح 1920×1080 بكسل (أفقية). في وضع البطاقة تناسبها 1200×1500 بكسل (طولية).",
+                            "value": ""
+                        },
+                        {
+                            "id": "items.image_mobile",
+                            "type": "string",
+                            "format": "image",
+                            "label": "صورة الجوال (اختياري)",
+                            "icon": "sicon-image",
+                            "required": false,
+                            "description": "المقاس المقترح 1080×1600 بكسل (طولية). اتركها فارغة لتُستخدم صورة الشريحة.",
                             "value": ""
                         },
                         {
                             "id": "items.video",
                             "type": "string",
-                            "format": "url",
+                            "format": "text",
                             "label": "فيديو الشريحة (اختياري)",
                             "icon": "sicon-link",
+                            "multilanguage": false,
                             "required": false,
                             "description": "رابط ملف MP4 أو يوتيوب أو فيميو. يعمل بلا صوت ويتكرر، والصورة تظهر قبل تحميله. الشريحة تنتقل عند انتهاء الملف.",
+                            "minLength": 0,
+                            "maxLength": 500,
                             "value": ""
                         },
                         {
@@ -689,73 +872,110 @@
                         {
                             "id": "items.url",
                             "type": "string",
-                            "format": "url",
+                            "format": "text",
                             "label": "رابط الزر",
                             "icon": "sicon-link",
+                            "multilanguage": false,
                             "required": false,
                             "description": "في صفحة منتج يفتح الشراء السريع. في صفحة العروض يتبع رابط زر الصفحة، أو هذا الرابط إن وضعته.",
+                            "minLength": 0,
+                            "maxLength": 500,
+                            "value": ""
+                        },
+                        {
+                            "id": "items.second_button",
+                            "type": "string",
+                            "format": "text",
+                            "label": "نص الزر الثاني",
+                            "icon": "sicon-format-text-alt",
+                            "multilanguage": true,
+                            "required": false,
+                            "description": null,
+                            "minLength": 0,
+                            "maxLength": 180,
+                            "value": {
+                                "ar": "",
+                                "en": ""
+                            }
+                        },
+                        {
+                            "id": "items.second_url",
+                            "type": "string",
+                            "format": "text",
+                            "label": "رابط الزر الثاني",
+                            "icon": "sicon-link",
+                            "multilanguage": false,
+                            "required": false,
+                            "description": "يظهر الزر الثاني عند كتابة نصه ورابطه.",
+                            "minLength": 0,
+                            "maxLength": 500,
                             "value": ""
                         }
                     ],
                     "value": [
                         {
-                            "items.image": "https://images.pexels.com/photos/22441297/pexels-photo-22441297.jpeg?auto=compress&cs=tinysrgb&w=1400",
+                            "items.image": "https://images.pexels.com/photos/7679784/pexels-photo-7679784.jpeg?auto=compress&cs=tinysrgb&w=1920",
                             "items.alt": {
-                                "ar": "قميص كتان فاتح على علاقة",
-                                "en": "A light linen shirt on a hanger"
+                                "ar": "موظفة تساعد عميلاً في اختيار قميص داخل المتجر",
+                                "en": "A staff member helping a customer choose a shirt in store"
                             },
                             "items.title": {
-                                "ar": "قميص كتان من أول نظرة",
-                                "en": "A linen shirt at first glance"
+                                "ar": "قمصان كتان لصيف الرياض",
+                                "en": "Linen shirts for a Riyadh summer"
                             },
                             "items.text": {
-                                "ar": "أزرار ظاهرة وجيب صدر. المقاس في القسم التالي.",
-                                "en": "Visible buttons and a chest pocket. The size is in the next section."
+                                "ar": "كتان أوروبي ١٠٠٪ يتنفس في الحر، بقصة مريحة تناسب الدوام والطلعات. المقاسات من S إلى 3XL.",
+                                "en": "100% European linen that breathes in the heat, in a relaxed cut for work and evenings out. Sizes S to 3XL."
                             },
                             "items.button": {
-                                "ar": "شاهد القطعة",
-                                "en": "See the piece"
+                                "ar": "تسوّق القمصان",
+                                "en": "Shop the shirts"
                             },
-                            "items.url": "#rw-product"
+                            "items.url": "#rw-product",
+                            "items.second_button": {
+                                "ar": "دليل المقاسات",
+                                "en": "Size guide"
+                            },
+                            "items.second_url": "#rw-chapters"
                         },
                         {
-                            "items.image": "https://images.pexels.com/photos/17281873/pexels-photo-17281873.jpeg?auto=compress&cs=tinysrgb&w=1400",
+                            "items.image": "https://images.pexels.com/photos/17281873/pexels-photo-17281873.jpeg?auto=compress&cs=tinysrgb&w=1920",
                             "items.video": "https://videos.pexels.com/video-files/8322527/8322527-hd_2048_1080_25fps.mp4",
                             "items.alt": {
-                                "ar": "قمصان بيضاء على علاقات خشبية",
-                                "en": "White shirts on wooden hangers"
+                                "ar": "قمصان بيضاء مصفوفة على علاقات خشبية",
+                                "en": "White shirts lined up on wooden hangers"
                             },
                             "items.title": {
-                                "ar": "التشكيلة على العلاقة",
-                                "en": "The collection on the rail"
+                                "ar": "الأبيض الذي لا يشف",
+                                "en": "A white that is not see-through"
                             },
                             "items.text": {
-                                "ar": "أكثر من قطعة، واللون يُرى قبل الاختيار.",
-                                "en": "More than one piece, and the color shows before you choose."
+                                "ar": "نسيج مزدوج الخيط يبقى أبيض بعد الغسيل، ويُكوى بسهولة قبل الدوام.",
+                                "en": "A two-ply weave that stays white after washing and irons quickly before work."
                             },
                             "items.button": {
-                                "ar": "اطلب الآن",
-                                "en": "Order now"
+                                "ar": "اطلب القميص الأبيض",
+                                "en": "Order the white shirt"
                             },
                             "items.url": ""
                         },
                         {
-                            "items.image": "https://images.pexels.com/photos/7679720/pexels-photo-7679720.jpeg?auto=compress&cs=tinysrgb&w=1800",
+                            "items.image": "https://images.pexels.com/photos/17293347/pexels-photo-17293347.jpeg?auto=compress&cs=tinysrgb&w=1920",
                             "items.alt": {
-                                "ar": "اختيار قطعة من علاقة الملابس",
-                                "en": "Choosing a piece from a clothing rail"
+                                "ar": "ملابس بألوان هادئة على رفوف متجر",
+                                "en": "Clothes in calm tones on store rails"
                             },
                             "items.title": {
-                                "ar": "الاختيار قبل الخروج",
-                                "en": "The choice before leaving"
+                                "ar": "ألوان هادئة تُلبس كل يوم",
+                                "en": "Calm colors to wear every day"
                             },
                             "items.text": {
-                                "ar": "من العلاقة إلى المقاس. لا خطوات أكثر من ذلك.",
-                                "en": "From the rail to the size. No more steps than that."
+                                "ar": "بيج وزيتي وكحلي. شحن مجاني فوق ٢٥٠ ر.س، وتبديل المقاس خلال ١٤ يوماً.",
+                                "en": "Beige, olive, and navy. Free shipping over SAR 250, and size exchanges within 14 days."
                             },
                             "items.button": {
-                                "ar": "أضف للطلب",
-                                "en": "Add to the order"
+                                "ar": "أضف للسلة",
+                                "en": "Add to cart"
                             },
                             "items.url": ""
                         }
@@ -924,11 +1144,14 @@
                 {
                     "id": "button_url",
                     "type": "string",
-                    "format": "url",
+                    "format": "text",
                     "label": "رابط الزر",
                     "icon": "sicon-link",
+                    "multilanguage": false,
                     "required": false,
                     "description": "في صفحة منتج يفتح الشراء السريع. في صفحة العروض يتبع رابط زر الصفحة، أو هذا الرابط إن وضعته.",
+                    "minLength": 0,
+                    "maxLength": 500,
                     "value": ""
                 },
                 {
@@ -1007,14 +1230,14 @@
                             }
                         },
                         {
-                            "views.image": "https://images.pexels.com/photos/3755706/pexels-photo-3755706.jpeg?auto=compress&cs=tinysrgb&w=1400",
+                            "views.image": "https://images.pexels.com/photos/17293343/pexels-photo-17293343.jpeg?auto=compress&cs=tinysrgb&w=1400",
                             "views.label": {
-                                "ar": "الطبقة",
-                                "en": "Layer"
+                                "ar": "الألوان",
+                                "en": "Colors"
                             },
                             "views.alt": {
-                                "ar": "جاكيت فوق قميص",
-                                "en": "A jacket over a shirt"
+                                "ar": "قمصان بيضاء على علاقات خشبية",
+                                "en": "White shirts on wooden hangers"
                             }
                         }
                     ]
@@ -1123,16 +1346,19 @@
                     "icon": "sicon-image",
                     "required": false,
                     "description": "المقاس المقترح 1600×900 بكسل، تظهر قبل التشغيل.",
-                    "value": "https://images.pexels.com/photos/7679720/pexels-photo-7679720.jpeg?auto=compress&cs=tinysrgb&w=1800"
+                    "value": "https://images.pexels.com/photos/37080685/pexels-photo-37080685.jpeg?auto=compress&cs=tinysrgb&w=1800"
                 },
                 {
                     "id": "video_url",
                     "type": "string",
-                    "format": "url",
+                    "format": "text",
                     "label": "رابط الفيديو",
                     "icon": "sicon-link",
+                    "multilanguage": false,
                     "required": false,
                     "description": "رابط يوتيوب أو فيميو أو ملف mp4.",
+                    "minLength": 0,
+                    "maxLength": 500,
                     "value": "https://videos.pexels.com/video-files/8322527/8322527-hd_2048_1080_25fps.mp4"
                 },
                 {
@@ -1434,11 +1660,14 @@
                         {
                             "id": "items.video_url",
                             "type": "string",
-                            "format": "url",
+                            "format": "text",
                             "label": "رابط الفيديو",
                             "icon": "sicon-link",
+                            "multilanguage": false,
                             "required": false,
                             "description": "رابط يوتيوب أو فيميو أو ملف mp4 طولي.",
+                            "minLength": 0,
+                            "maxLength": 500,
                             "value": ""
                         },
                         {
@@ -1559,29 +1788,32 @@
                         {
                             "id": "items.link_url",
                             "type": "string",
-                            "format": "url",
+                            "format": "text",
                             "label": "رابط المنتج",
                             "icon": "sicon-link",
+                            "multilanguage": false,
                             "required": false,
                             "description": "اتركه فارغاً إذا كانت التجربة عن منتج الصفحة.",
+                            "minLength": 0,
+                            "maxLength": 500,
                             "value": ""
                         }
                     ],
                     "value": [
                         {
                             "items.video_url": "https://videos.pexels.com/video-files/5585950/5585950-sd_360_640_30fps.mp4",
-                            "items.poster": "https://images.pexels.com/photos/37166936/pexels-photo-37166936.jpeg?auto=compress&cs=tinysrgb&w=1400",
+                            "items.poster": "https://images.pexels.com/photos/17492498/pexels-photo-17492498.jpeg?auto=compress&cs=tinysrgb&w=1400",
                             "items.name": {
-                                "ar": "نورة",
-                                "en": "Noura"
+                                "ar": "فهد",
+                                "en": "Fahad"
                             },
                             "items.place": {
                                 "ar": "الرياض",
                                 "en": "Riyadh"
                             },
                             "items.quote": {
-                                "ar": "المقاس طابق الجدول، ولبست القطعة من أول يوم.",
-                                "en": "The size matched the chart, and I wore the piece the first day."
+                                "ar": "المقاس طابق الجدول، ولبست القميص في الدوام من أول يوم.",
+                                "en": "The size matched the chart, and I wore the shirt to work the first day."
                             },
                             "items.stars": [
                                 {
@@ -1626,18 +1858,18 @@
                         },
                         {
                             "items.video_url": "https://videos.pexels.com/video-files/5586005/5586005-sd_360_640_30fps.mp4",
-                            "items.poster": "https://images.pexels.com/photos/3755706/pexels-photo-3755706.jpeg?auto=compress&cs=tinysrgb&w=1400",
+                            "items.poster": "https://images.pexels.com/photos/17293343/pexels-photo-17293343.jpeg?auto=compress&cs=tinysrgb&w=1400",
                             "items.name": {
-                                "ar": "هند",
-                                "en": "Hind"
+                                "ar": "سلطان",
+                                "en": "Sultan"
                             },
                             "items.place": {
                                 "ar": "الخبر",
                                 "en": "Khobar"
                             },
                             "items.quote": {
-                                "ar": "حبيت أشوف الطبقة قبل ما أطلب المقاس.",
-                                "en": "I wanted to see the layer before I ordered the size."
+                                "ar": "الأبيض ما يشف، وبقي أبيض بعد أكثر من غسلة.",
+                                "en": "The white is not see-through, and it stayed white after several washes."
                             },
                             "items.stars": [
                                 {
@@ -1673,11 +1905,14 @@
                 {
                     "id": "button_url",
                     "type": "string",
-                    "format": "url",
+                    "format": "text",
                     "label": "رابط الزر",
                     "icon": "sicon-link",
+                    "multilanguage": false,
                     "required": false,
                     "description": "في صفحة منتج يفتح الشراء السريع. في صفحة العروض يتبع رابط زر الصفحة، أو هذا الرابط إن وضعته.",
+                    "minLength": 0,
+                    "maxLength": 500,
                     "value": ""
                 },
                 {
@@ -2079,7 +2314,7 @@
                     "icon": "sicon-image",
                     "required": false,
                     "description": "المقاس المقترح 1000×1300 بكسل.",
-                    "value": "https://images.pexels.com/photos/3755706/pexels-photo-3755706.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                    "value": "https://images.pexels.com/photos/17293343/pexels-photo-17293343.jpeg?auto=compress&cs=tinysrgb&w=1400"
                 },
                 {
                     "id": "alt_b",
@@ -2260,11 +2495,14 @@
                 {
                     "id": "button_url",
                     "type": "string",
-                    "format": "url",
+                    "format": "text",
                     "label": "رابط الزر",
                     "icon": "sicon-link",
+                    "multilanguage": false,
                     "required": false,
                     "description": "في صفحة منتج يفتح الشراء السريع. في صفحة العروض يتبع رابط زر الصفحة، أو هذا الرابط إن وضعته.",
+                    "minLength": 0,
+                    "maxLength": 500,
                     "value": ""
                 },
                 {
@@ -2414,11 +2652,14 @@
                 {
                     "id": "primary_url",
                     "type": "string",
-                    "format": "url",
+                    "format": "text",
                     "label": "رابط الزر الأساسي",
                     "icon": "sicon-link",
+                    "multilanguage": false,
                     "required": false,
                     "description": "في صفحة منتج يفتح الشراء السريع. في صفحة العروض يتبع رابط زر الصفحة، أو هذا الرابط إن وضعته.",
+                    "minLength": 0,
+                    "maxLength": 500,
                     "value": ""
                 },
                 {
@@ -2440,11 +2681,14 @@
                 {
                     "id": "secondary_url",
                     "type": "string",
-                    "format": "url",
+                    "format": "text",
                     "label": "رابط الزر الثاني",
                     "icon": "sicon-link",
+                    "multilanguage": false,
                     "required": false,
                     "description": "رابط حر داخل الصفحة أو خارجها. اتركه فارغاً لإخفاء الزر.",
+                    "minLength": 0,
+                    "maxLength": 500,
                     "value": "#rw-chapters"
                 },
                 {
@@ -3140,11 +3384,14 @@
                 {
                     "id": "button_url",
                     "type": "string",
-                    "format": "url",
+                    "format": "text",
                     "label": "رابط الزر",
                     "icon": "sicon-link",
+                    "multilanguage": false,
                     "required": false,
                     "description": "في صفحة منتج يفتح الشراء السريع. في صفحة العروض يتبع رابط زر الصفحة، أو هذا الرابط إن وضعته.",
+                    "minLength": 0,
+                    "maxLength": 500,
                     "value": ""
                 },
                 {
@@ -3155,7 +3402,7 @@
                     "icon": "sicon-image",
                     "required": false,
                     "description": "المقاس المقترح 1920×1080 بكسل. إن تركتها فارغة تظهر خلفية لونية.",
-                    "value": "https://images.pexels.com/photos/7679720/pexels-photo-7679720.jpeg?auto=compress&cs=tinysrgb&w=1800"
+                    "value": "https://images.pexels.com/photos/37080685/pexels-photo-37080685.jpeg?auto=compress&cs=tinysrgb&w=1800"
                 },
                 {
                     "id": "image_alt",
@@ -3352,14 +3599,13 @@
                 {
                     "id": "ends_at",
                     "type": "string",
-                    "format": "datetime",
-                    "inputType": "datetime-local",
+                    "format": "text",
                     "label": "تاريخ انتهاء العرض",
                     "icon": "sicon-calendar-time",
                     "multilanguage": false,
                     "required": false,
-                    "description": "اختر التاريخ والوقت من الحقل. اتركه فارغاً ليبدأ العد من ٧٢ ساعة عند أول زيارة.",
-                    "placeholder": "2026-12-05T23:59",
+                    "description": "اكتب التاريخ والوقت بهذا الشكل: 2026-12-05 23:59 (سنة-شهر-يوم ساعة:دقيقة بتوقيت الزائر). اتركه فارغاً ليبدأ العد من ٧٢ ساعة عند أول زيارة.",
+                    "placeholder": "2026-12-05 23:59",
                     "minLength": 0,
                     "maxLength": 40,
                     "value": ""
@@ -4161,11 +4407,14 @@
                 {
                     "id": "button_url",
                     "type": "string",
-                    "format": "url",
+                    "format": "text",
                     "label": "رابط الزر",
                     "icon": "sicon-link",
+                    "multilanguage": false,
                     "required": false,
                     "description": "في صفحة منتج يفتح الشراء السريع. في صفحة العروض يتبع رابط زر الصفحة، أو هذا الرابط إن وضعته.",
+                    "minLength": 0,
+                    "maxLength": 500,
                     "value": ""
                 },
                 {
@@ -4299,11 +4548,14 @@
                 {
                     "id": "button_url",
                     "type": "string",
-                    "format": "url",
+                    "format": "text",
                     "label": "رابط الزر",
                     "icon": "sicon-link",
+                    "multilanguage": false,
                     "required": false,
                     "description": "في صفحة منتج يفتح الشراء السريع. في صفحة العروض يتبع رابط زر الصفحة، أو هذا الرابط إن وضعته.",
+                    "minLength": 0,
+                    "maxLength": 500,
                     "value": ""
                 },
                 {
@@ -5582,11 +5834,14 @@
                 {
                     "id": "button_url",
                     "type": "string",
-                    "format": "url",
+                    "format": "text",
                     "label": "رابط الزر",
                     "icon": "sicon-link",
+                    "multilanguage": false,
                     "required": false,
                     "description": "في صفحة منتج يفتح الشراء السريع. في صفحة العروض يتبع رابط زر الصفحة، أو هذا الرابط إن وضعته.",
+                    "minLength": 0,
+                    "maxLength": 500,
                     "value": ""
                 },
                 {
@@ -6180,11 +6435,14 @@
                         {
                             "id": "items.url",
                             "type": "string",
-                            "format": "url",
+                            "format": "text",
                             "label": "الرابط",
                             "icon": "sicon-link",
+                            "multilanguage": false,
                             "required": false,
-                            "description": null,
+                            "description": "رابط داخل الصفحة مثل #rw-chapters، أو رابط كامل يبدأ بـ https.",
+                            "minLength": 0,
+                            "maxLength": 500,
                             "value": ""
                         }
                     ],
@@ -6901,11 +7159,14 @@
                         {
                             "id": "links.url",
                             "type": "string",
-                            "format": "url",
+                            "format": "text",
                             "label": "الرابط",
                             "icon": "sicon-link",
+                            "multilanguage": false,
                             "required": false,
                             "description": "صفحة السياسة أو التواصل. اتركه فارغاً ليذهب الرابط إلى المتجر.",
+                            "minLength": 0,
+                            "maxLength": 500,
                             "value": ""
                         }
                     ],
@@ -6964,11 +7225,14 @@
                         {
                             "id": "badges.url",
                             "type": "string",
-                            "format": "url",
+                            "format": "text",
                             "label": "الرابط",
                             "icon": "sicon-link",
+                            "multilanguage": false,
                             "required": false,
                             "description": "صفحة التحقق، مثل وثيقة العمل الحر أو منصة الأعمال.",
+                            "minLength": 0,
+                            "maxLength": 500,
                             "value": ""
                         }
                     ],

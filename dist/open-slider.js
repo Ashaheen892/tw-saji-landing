@@ -182,7 +182,7 @@ function emptyCopy() {
 }
 __name(emptyCopy, "emptyCopy");
 function media(src, alt, className = "") {
-  return src ? html`<img class=${className} src=${src} alt=${alt} loading="lazy" />` : html`<div class="rw-ph ${className}"><span class="rw-hint">${t({ ar: "أضف الصورة من إعدادات القسم. المقاس المقترح مذكور بجانب الحقل.", en: "Add an image in the section settings. The suggested size is next to the field." })}</span></div>`;
+  return html`<div class="rw-ph ${className}"><span class="rw-hint">${t({ ar: "أضف الصورة من إعدادات القسم. المقاس المقترح مذكور بجانب الحقل.", en: "Add an image in the section settings. The suggested size is next to the field." })}</span></div>`;
 }
 __name(media, "media");
 function clipUrl(value) {
@@ -238,41 +238,72 @@ var __defProp2 = Object.defineProperty, __decorateClass = /* @__PURE__ */ __name
   return result && __defProp2(target, key, result), result;
 }, "__decorateClass");
 const css = `
-.rw-opener { display: grid; background: var(--rw-card); }
-.rw-opener__media { position: relative; order: -1; min-height: 18rem; aspect-ratio: 4 / 3; overflow: hidden; background: var(--rw-soft); touch-action: pan-y; }
-.rw-opener__media img, .rw-opener__media video, .rw-opener__media iframe, .rw-opener__media .rw-ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: rw-opener-in .4s ease; }
-@container (min-width: 860px) {
-  .rw-opener { grid-template-columns: minmax(17rem, .72fr) minmax(0, 1.28fr); min-height: 34rem; }
-  .rw-opener__media { order: 0; min-height: 0; aspect-ratio: auto; }
+.rw-opener { position: relative; isolation: isolate; overflow: hidden; display: grid; grid-template-rows: 1fr auto; min-height: var(--op-h); color: #fff; background: #111315; --op-h: min(90svh, 820px); touch-action: pan-y; }
+.rw-opener.is-tall { --op-h: min(76svh, 700px); }
+.rw-opener.is-medium { --op-h: 540px; }
+.rw-opener__bg { position: absolute; inset: 0; z-index: -2; }
+.rw-opener__bg img, .rw-opener__bg video, .rw-opener__bg iframe, .rw-opener__bg .rw-ph, .rw-opener__card img, .rw-opener__card video, .rw-opener__card iframe, .rw-opener__card .rw-ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: var(--op-focus, center); border: 0; animation: rw-opener-in .7s ease; }
+.rw-opener__bg iframe, .rw-opener__card iframe { pointer-events: none; transform: scale(1.35); }
+.rw-opener__bg picture, .rw-opener__card picture { display: contents; }
+.rw-opener__shade { position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background:
+    linear-gradient(to top, rgb(12 13 15 / calc(var(--op-a, .7) + .1)) 0%, rgb(12 13 15 / calc(var(--op-a, .7) * .5)) 38%, rgb(12 13 15 / 0) 70%),
+    linear-gradient(to var(--op-to, left), rgb(12 13 15 / calc(var(--op-a, .7) * .7)) 0%, rgb(12 13 15 / 0) 60%); }
+.rw-opener.is-ltr { --op-to: right; }
+.rw-opener.is-soft { --op-a: .45; }
+.rw-opener.is-strong { --op-a: .88; }
+.rw-opener__top { position: relative; display: flex; justify-content: flex-end; align-items: center; gap: .5rem; width: min(1180px, calc(100% - 2rem)); margin-inline: auto; padding-top: 1rem; }
+.rw-opener__body { position: relative; display: grid; align-items: end; gap: 2rem; width: min(1180px, calc(100% - 2rem)); margin-inline: auto; padding-block: clamp(5rem, 14vh, 9rem) 1.6rem; }
+.rw-opener__copy { max-width: 40rem; }
+.rw-opener__copy h2 { margin: 0; font-size: clamp(2.1rem, 5.2vw, 4.2rem); line-height: 1.08; font-weight: 800; letter-spacing: -.035em; color: #fff; text-wrap: balance; animation: rw-opener-up .6s ease; }
+.rw-opener__copy p { max-width: 34rem; margin-top: 1rem; color: rgb(255 255 255 / 84%); font-size: 1.05rem; line-height: 1.8; animation: rw-opener-up .8s ease; }
+.rw-opener__copy .rw-actions { margin-top: 1.6rem; }
+.rw-opener__copy .rw-actions>.rw-btn { min-height: 3.2rem; padding-inline: 1.7rem; }
+.rw-opener__copy .rw-actions>.rw-btn--ghost { color: #fff; border-color: rgb(255 255 255 / 55%); background: rgb(255 255 255 / 8%); backdrop-filter: blur(6px); }
+.rw-opener__card { display: none; position: relative; overflow: hidden; width: clamp(15rem, 26vw, 22rem); aspect-ratio: 4 / 5; border-radius: 1.4rem; box-shadow: 0 24px 70px rgb(0 0 0 / 45%); outline: 1px solid rgb(255 255 255 / 30%); outline-offset: -1px; }
+@container (min-width: 900px) {
+  .rw-opener.is-framed .rw-opener__body { grid-template-columns: minmax(0, 1fr) auto; }
+  .rw-opener.is-framed .rw-opener__card { display: block; }
+  .rw-opener.is-framed .rw-opener__bg img, .rw-opener.is-framed .rw-opener__bg video { filter: blur(24px) saturate(.9) brightness(.7); transform: scale(1.15); }
+  .rw-opener.is-framed .rw-opener__bg iframe { display: none; }
 }
-.rw-opener__copy { display: flex; flex-direction: column; justify-content: center; gap: 1.35rem; padding: 1.35rem 1.2rem 1.15rem; }
-@container (min-width: 860px) { .rw-opener__copy { padding: 2.1rem 1.8rem 1.5rem; } }
-.rw-opener__copy h2 { max-width: 16ch; font-size: clamp(1.75rem, 3.2vw, 2.7rem); line-height: 1.18; font-weight: 700; letter-spacing: -.03em; }
-.rw-opener__copy p { max-width: 36rem; margin-top: .8rem; color: var(--rw-muted); line-height: 1.8; }
-.rw-opener__nav { position: absolute; z-index: 1; inset-inline: .75rem; bottom: .75rem; display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
-.rw-opener__nav button, .rw-opener__count { border: 0; border-radius: .7rem; background: rgb(18 20 23 / 74%); color: #fff; }
-.rw-opener__nav button { direction: ltr; display: grid; place-items: center; width: 2.75rem; height: 2.75rem; padding: 0; cursor: pointer; }
-.rw-opener__nav svg { width: 1.2rem; height: 1.2rem; display: block; }
-.rw-opener__count { direction: ltr; min-width: 4.2rem; padding: .4rem .7rem; border-radius: 999px; font-variant-numeric: tabular-nums; font-weight: 700; text-align: center; }
-.rw-opener__jumps { display: grid; }
-.rw-opener__jumps button { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: .7rem; align-items: center; width: 100%; min-height: 2.9rem; padding: .55rem .35rem; border: 0; border-top: 1px solid var(--rw-border); background: transparent; color: var(--rw-muted); text-align: start; cursor: pointer; }
-.rw-opener__jumps button:last-child { border-bottom: 1px solid var(--rw-border); }
-.rw-opener__jumps button[aria-current="true"] { color: var(--rw-text); font-weight: 700; background: color-mix(in srgb, var(--color-primary, #1a1d21) 10%, transparent); }
-.rw-opener__jumps b { color: var(--color-primary, #1a1d21); font-size: .85rem; font-weight: 700; }
-.rw-opener__jumps span { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.rw-opener__nav button:focus-visible, .rw-opener__jumps button:focus-visible { outline: 2px solid var(--color-primary, #1a1d21); outline-offset: 2px; }
-.rw-opener__media iframe { border: 0; pointer-events: none; }
-.rw-opener__sound { position: absolute; z-index: 2; top: .75rem; inset-inline-end: .75rem; min-height: 2.3rem; padding: 0 .9rem; border: 0; border-radius: 999px; background: rgb(18 20 23 / 74%); color: #fff; font: inherit; font-size: .85rem; font-weight: 700; cursor: pointer; }
-.rw-opener__tag { position: absolute; z-index: 1; top: .75rem; inset-inline-start: .75rem; padding: .25rem .7rem; border-radius: 999px; background: var(--color-primary, #1a1d21); color: var(--color-primary-reverse, #fff); font-size: .78rem; font-weight: 700; }
-@keyframes rw-opener-in { from { opacity: .45; } to { opacity: 1; } }
-@media (prefers-reduced-motion: reduce) { .rw-opener__media img { animation: none; } }
-`, _OpenSlider = class _OpenSlider extends LitElement {
+.rw-opener__foot { position: relative; display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; width: min(1180px, calc(100% - 2rem)); margin-inline: auto; padding-bottom: 1.4rem; }
+.rw-opener__tabs { display: flex; gap: .6rem; margin-inline-start: auto; }
+.rw-opener__tabs button { position: relative; display: grid; gap: .45rem; width: 4.6rem; padding: 0; border: 0; background: transparent; color: rgb(255 255 255 / 70%); font: inherit; font-size: .75rem; font-weight: 700; text-align: start; cursor: pointer; }
+.rw-opener__tabs .rw-opener__thumb { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: .6rem; background: rgb(255 255 255 / 12%); opacity: .62; transition: opacity .25s, transform .25s; }
+.rw-opener__tabs .rw-opener__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.rw-opener__tabs button[aria-current="true"] { color: #fff; }
+.rw-opener__tabs button[aria-current="true"] .rw-opener__thumb { opacity: 1; transform: translateY(-3px); outline: 2px solid #fff; outline-offset: 2px; }
+.rw-opener__fill { position: relative; display: block; height: 3px; border-radius: 3px; background: rgb(255 255 255 / 25%); overflow: hidden; }
+.rw-opener__fill i { position: absolute; inset: 0; background: #fff; transform: scaleX(0); transform-origin: var(--op-origin, right); }
+.rw-opener.is-ltr { --op-origin: left; }
+.rw-opener__tabs button[aria-current="true"] .rw-opener__fill i { animation: var(--op-run, none) 7s linear forwards; }
+.rw-opener.is-held .rw-opener__fill i { animation-play-state: paused; }
+.rw-opener__tabs button[aria-current="true"] .rw-opener__fill.is-still i { animation: none; transform: scaleX(1); }
+@keyframes rw-opener-fill-a { to { transform: scaleX(1); } }
+@keyframes rw-opener-fill-b { to { transform: scaleX(1); } }
+@container (max-width: 559px) { .rw-opener__tabs button { width: 3.4rem; } .rw-opener__tabs .rw-opener__thumb { display: none; } .rw-opener__tabs button > b { display: none; } }
+.rw-opener__arrows { display: flex; align-items: center; gap: .45rem; }
+.rw-opener__arrows button, .rw-opener__count, .rw-opener__sound { border: 1px solid rgb(255 255 255 / 35%); background: rgb(12 13 15 / 40%); color: #fff; backdrop-filter: blur(8px); }
+.rw-opener__arrows button { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; padding: 0; border-radius: 50%; cursor: pointer; }
+.rw-opener__arrows svg { width: 1.15rem; height: 1.15rem; display: block; }
+.rw-opener__count { white-space: nowrap; min-width: 4.4rem; padding: .45rem .8rem; border-radius: 999px; font-variant-numeric: tabular-nums; font-weight: 700; text-align: center; }
+.rw-opener__sound { min-height: 2.5rem; padding: 0 1rem; border-radius: 999px; font: inherit; font-size: .85rem; font-weight: 700; cursor: pointer; }
+.rw-opener__tag { padding: .3rem .8rem; border-radius: 999px; background: var(--color-primary, #1a1d21); color: var(--color-primary-reverse, #fff); font-size: .78rem; font-weight: 700; }
+.rw-opener :focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+@keyframes rw-opener-in { from { opacity: .35; } to { opacity: 1; } }
+@keyframes rw-opener-up { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .rw-opener * { animation: none !important; } }
+`, pick = /* @__PURE__ */ __name((value, allowed, fallback) => {
+  const raw = String(unwrapValue(value) || fallback);
+  return allowed.includes(raw) ? raw : fallback;
+}, "pick"), _OpenSlider = class _OpenSlider extends LitElement {
   constructor() {
     super(...arguments), this.index = 0, this.sound = !1, this.waited = 0, this.kinds = [], this.failed = /* @__PURE__ */ new Set(), this.stop = () => {
     }, this.timer = 0, this.count = 1, this.paused = !1, this.reduced = !1, this.point = 0, this.pointing = !1, this.hold = () => {
-      this.paused = !0;
+      this.paused || (this.paused = !0, this.requestUpdate());
     }, this.release = () => {
-      this.paused = !1;
+      this.paused && (this.paused = !1, this.requestUpdate());
     }, this.down = (event) => {
       var _a, _b;
       event.target.closest("button") || (this.point = event.clientX, this.pointing = !0, this.hold(), (_b = (_a = event.currentTarget).setPointerCapture) == null || _b.call(_a, event.pointerId));
@@ -314,52 +345,66 @@ const css = `
   move(dir) {
     this.waited = 0, this.step(dir), this.arm();
   }
-  slideMedia(slide, total) {
-    if (!slide.video) return media(slide.image, slide.alt || slide.title);
-    const tag = html`<span class="rw-opener__tag">${t({ ar: "فيديو", en: "Video" })}</span>`;
-    return isFileClip(slide.video) ? html`${tag}<video src=${slide.video} poster=${slide.image || nothing} .muted=${!this.sound} autoplay playsinline preload="metadata"
+  picture(slide) {
+    if (!slide.image) return media("", slide.alt || slide.title);
+    const alt = slide.alt || slide.title;
+    return slide.mobile ? html`<picture><source media="(max-width: 699px)" srcset=${slide.mobile} /><img src=${slide.image} alt=${alt} /></picture>` : html`<img src=${slide.image} alt=${alt} />`;
+  }
+  moving(slide, total) {
+    return isFileClip(slide.video) ? html`<video src=${slide.video} poster=${slide.image || nothing} .muted=${!this.sound} autoplay playsinline preload="metadata"
           ?loop=${total < 2 || this.reduced} aria-label=${slide.alt || slide.title}
           @ended=${() => this.move(1)} @error=${() => {
       this.failed.add(slide.video), this.requestUpdate();
-    }}></video>
-        <button type="button" class="rw-opener__sound" @click=${() => {
-      this.sound = !this.sound, this.hold();
-    }}>${this.sound ? t({ ar: "كتم الصوت", en: "Mute" }) : t({ ar: "تشغيل الصوت", en: "Sound on" })}</button>` : html`${tag}<iframe src=${frameSrc(slide.video, !0, !0)} title=${slide.alt || slide.title} allow="autoplay; encrypted-media; picture-in-picture" loading="lazy"></iframe>`;
+    }}></video>` : html`<iframe src=${frameSrc(slide.video, !0, !0)} title=${slide.alt || slide.title} allow="autoplay; encrypted-media; picture-in-picture" loading="lazy"></iframe>`;
   }
   render() {
     const cfg = getConfig(this.config), slides = getCollectionItems(cfg.items, "items").map((item) => ({
-      image: String(item.image || ""),
+      image: String(item.image || "").trim(),
+      mobile: String(item.image_mobile || "").trim(),
       alt: localizedString(item.alt),
       title: localizedString(item.title),
       text: localizedString(item.text),
       button: localizedString(item.button),
-      url: String(item.url || ""),
+      url: String(item.url || "").trim(),
+      second: localizedString(item.second_button),
+      secondUrl: String(item.second_url || "").trim(),
       video: clipUrl(item.video)
     })).filter((item) => item.title);
-    this.count = slides.length, this.kinds = slides.map((item) => item.video && !this.failed.has(item.video) ? isFileClip(item.video) ? "file" : "frame" : "image");
-    const slide = slides[this.index] || slides[0], label = localizedString(cfg.title) || t({ ar: "سلايدر", en: "Slider" }), rtl = isRtl(), pointLeft = html`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>`, pointRight = html`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>`, prevIcon = rtl ? pointRight : pointLeft, nextIcon = rtl ? pointLeft : pointRight;
-    return html`<section class="rw-block ${schemeOf(cfg)}" style=${sectionStyle(cfg)} aria-roledescription="carousel" aria-label=${label}>
-      ${slide ? html`<div class="rw-opener">
-            <div class="rw-opener__copy">
-              <div>
-                <h2>${slide.title}</h2>
-                ${slide.text ? html`<p>${slide.text}</p>` : nothing}
-                <div class="rw-actions">${renderCta(slide.button, slide.url)}</div>
-              </div>
-              ${slides.length > 1 ? html`<div class="rw-opener__jumps" @keydown=${(event) => this.onKey(event)}>${slides.map((item, index) => html`<button type="button" aria-current=${index === this.index ? "true" : nothing} @click=${() => this.choose(index)}>
-                    <b>${String(index + 1).padStart(2, "0")}</b>
-                    <span>${item.title}</span>
-                  </button>`)}</div>` : nothing}
-            </div>
-            <div class="rw-opener__media" @pointerdown=${this.down} @pointerup=${this.up} @pointercancel=${this.up}>
-              ${this.slideMedia(slide, slides.length)}
-              ${slides.length > 1 ? html`<div class="rw-opener__nav">
-                    <button type="button" dir="ltr" aria-label=${t({ ar: "الشريحة السابقة", en: "Previous slide" })} @click=${() => this.move(-1)}>${prevIcon}</button>
-                    <span class="rw-opener__count" dir="ltr">${`${String(this.index + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`}</span>
-                    <button type="button" dir="ltr" aria-label=${t({ ar: "الشريحة التالية", en: "Next slide" })} @click=${() => this.move(1)}>${nextIcon}</button>
-                  </div>` : nothing}
-            </div>
-          </div>` : html`<div class="rw-section"><div class="rw-container">${emptyCopy()}</div></div>`}
+    this.count = slides.length, this.kinds = slides.map((item) => item.video && !this.failed.has(item.video) ? isFileClip(item.video) ? "file" : "frame" : "image"), this.index >= slides.length && (this.index = 0);
+    const slide = slides[this.index], label = localizedString(cfg.title) || t({ ar: "سلايدر", en: "Slider" });
+    if (!slide) return html`<section class="rw-block ${schemeOf(cfg)}" style=${sectionStyle(cfg)}><div class="rw-section"><div class="rw-container">${emptyCopy()}</div></div></section>`;
+    const rtl = isRtl(), framed = pick(cfg.fit, ["framed", "cover"], "cover") === "framed", height = pick(cfg.height, ["screen", "tall", "medium"], "screen"), shade = pick(cfg.shade, ["soft", "medium", "strong"], "medium"), focus = pick(cfg.focus, ["top", "center", "bottom"], "center"), kind = this.kinds[this.index], playing = kind === "file" || kind === "frame", pointLeft = html`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>`, pointRight = html`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>`, classes = ["rw-opener", framed ? "is-framed" : "", `is-${height}`, `is-${shade}`, rtl ? "" : "is-ltr", this.paused ? "is-held" : ""].filter(Boolean).join(" "), color = String(cfg.bg_color || "").trim(), bg = playing && !framed ? this.moving(slide, slides.length) : this.picture(slide), card = playing ? this.moving(slide, slides.length) : this.picture(slide), run = this.reduced || playing ? "none" : this.index % 2 ? "rw-opener-fill-b" : "rw-opener-fill-a";
+    return html`<section class="rw-block ${schemeOf(cfg)}" aria-roledescription="carousel" aria-label=${label} @keydown=${(event) => this.onKey(event)}>
+      <div class=${classes} style=${`--op-focus:center ${focus};--op-run:${run};${color ? `background:${color};` : ""}`} @pointerdown=${this.down} @pointerup=${this.up} @pointercancel=${this.up}>
+        <div class="rw-opener__bg" aria-hidden=${framed ? "true" : "false"}>${bg}</div>
+        <div class="rw-opener__shade"></div>
+        <div class="rw-opener__top">
+          ${slide.video ? html`<span class="rw-opener__tag">${t({ ar: "فيديو", en: "Video" })}</span>` : nothing}
+          ${kind === "file" ? html`<button type="button" class="rw-opener__sound" @click=${() => {
+      this.sound = !this.sound, this.hold();
+    }}>${this.sound ? t({ ar: "كتم الصوت", en: "Mute" }) : t({ ar: "تشغيل الصوت", en: "Sound on" })}</button>` : nothing}
+        </div>
+        <div class="rw-opener__body">
+          <div class="rw-opener__copy" aria-live="polite">
+            <h2>${slide.title}</h2>
+            ${slide.text ? html`<p>${slide.text}</p>` : nothing}
+            <div class="rw-actions">${renderCta(slide.button, slide.url)}${slide.second && slide.secondUrl ? html`<a class="rw-btn rw-btn--ghost" href=${slide.secondUrl}>${slide.second}</a>` : nothing}</div>
+          </div>
+          ${framed ? html`<div class="rw-opener__card">${card}</div>` : nothing}
+        </div>
+        ${slides.length > 1 ? html`<div class="rw-opener__foot">
+          <div class="rw-opener__arrows">
+            <button type="button" aria-label=${t({ ar: "الشريحة السابقة", en: "Previous slide" })} @click=${() => this.move(-1)}>${rtl ? pointRight : pointLeft}</button>
+            <span class="rw-opener__count" dir="ltr">${`${String(this.index + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`}</span>
+            <button type="button" aria-label=${t({ ar: "الشريحة التالية", en: "Next slide" })} @click=${() => this.move(1)}>${rtl ? pointLeft : pointRight}</button>
+          </div>
+          <div class="rw-opener__tabs">${slides.map((item, index) => html`<button type="button" aria-current=${index === this.index ? "true" : "false"} aria-label=${item.title} @click=${() => this.choose(index)}>
+            <span class="rw-opener__thumb">${item.image ? html`<img src=${item.image} alt="" loading="lazy" />` : nothing}</span>
+            <b>${String(index + 1).padStart(2, "0")}</b>
+            <span class="rw-opener__fill ${index === this.index && (playing || this.reduced) ? "is-still" : ""}"><i></i></span>
+          </button>`)}</div>
+        </div>` : nothing}
+      </div>
     </section>`;
   }
 };

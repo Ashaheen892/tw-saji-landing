@@ -140,11 +140,14 @@
             {
               "id": "bars.link",
               "type": "string",
-              "format": "url",
+              "format": "text",
               "label": "رابط الشريط",
               "icon": "sicon-link",
+              "multilanguage": false,
               "required": false,
               "description": "اختياري. يفتح عند الضغط على الشريط.",
+              "minLength": 0,
+              "maxLength": 500,
               "value": ""
             },
             {
@@ -488,11 +491,14 @@
         {
           "id": "link_url",
           "type": "string",
-          "format": "url",
+          "format": "text",
           "label": "عنوان الرابط",
           "icon": "sicon-link",
+          "multilanguage": false,
           "required": false,
           "description": "اتركه فارغاً لإخفاء الرابط.",
+          "minLength": 0,
+          "maxLength": 500,
           "value": ""
         },
         {
@@ -1668,11 +1674,14 @@
         {
           "id": "button_url",
           "type": "string",
-          "format": "url",
+          "format": "text",
           "label": "رابط الزر",
           "icon": "sicon-link",
+          "multilanguage": false,
           "required": false,
           "description": "في صفحة منتج يفتح الشراء السريع. في صفحة العروض يتبع رابط زر الصفحة، أو هذا الرابط إن وضعته.",
+          "minLength": 0,
+          "maxLength": 500,
           "value": ""
         },
         {
@@ -2266,11 +2275,14 @@
             {
               "id": "items.url",
               "type": "string",
-              "format": "url",
+              "format": "text",
               "label": "الرابط",
               "icon": "sicon-link",
+              "multilanguage": false,
               "required": false,
-              "description": null,
+              "description": "رابط داخل الصفحة مثل #rw-chapters، أو رابط كامل يبدأ بـ https.",
+              "minLength": 0,
+              "maxLength": 500,
               "value": ""
             }
           ],
@@ -2987,11 +2999,14 @@
             {
               "id": "links.url",
               "type": "string",
-              "format": "url",
+              "format": "text",
               "label": "الرابط",
               "icon": "sicon-link",
+              "multilanguage": false,
               "required": false,
               "description": "صفحة السياسة أو التواصل. اتركه فارغاً ليذهب الرابط إلى المتجر.",
+              "minLength": 0,
+              "maxLength": 500,
               "value": ""
             }
           ],
@@ -3050,11 +3065,14 @@
             {
               "id": "badges.url",
               "type": "string",
-              "format": "url",
+              "format": "text",
               "label": "الرابط",
               "icon": "sicon-link",
+              "multilanguage": false,
               "required": false,
               "description": "صفحة التحقق، مثل وثيقة العمل الحر أو منصة الأعمال.",
+              "minLength": 0,
+              "maxLength": 500,
               "value": ""
             }
           ],

@@ -65,6 +65,8 @@ function parseEnd(raw: unknown): number {
   }
   const day = text.match(/^(\d{4})-(\d{2})-(\d{2})$/);
   if (day) return new Date(Number(day[1]), Number(day[2]) - 1, Number(day[3]), 23, 59, 59).getTime();
+  const local = text.match(/^(\d{4})-(\d{2})-(\d{2})[T ](\d{1,2}):(\d{2})/);
+  if (local) return new Date(Number(local[1]), Number(local[2]) - 1, Number(local[3]), Number(local[4]), Number(local[5]), 0).getTime();
   const parsed = Date.parse(text);
   return Number.isNaN(parsed) ? NaN : parsed;
 }

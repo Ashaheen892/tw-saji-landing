@@ -63,10 +63,10 @@ const sw = (id, label, value, desc = null) => ({
 const px = (id, width) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${width}`;
 const SHIRT = px(22441297, 1400);
 const RACK = px(17281873, 1400);
-const LAYERS = px(3755706, 1400);
-const SHOP = px(7679720, 1800);
+const LAYERS = px(17293343, 1400);
+const SHOP = px(37080685, 1800);
 const SEW = px(3738088, 1400);
-const TEE = px(37166936, 1400);
+const TEE = px(17492498, 1400);
 const DRESS = px(5191435, 1400);
 const LOOK = "https://videos.pexels.com/video-files/8322527/8322527-hd_2048_1080_25fps.mp4";
 const REEL_MIRROR = "https://videos.pexels.com/video-files/5585950/5585950-sd_360_640_30fps.mp4";
@@ -75,8 +75,11 @@ const REEL_SUIT = "https://videos.pexels.com/video-files/5586005/5586005-sd_360_
 const image = (id, label, desc, value = "") => ({
   id, type: "string", format: "image", label, icon: "sicon-image", required: false, description: desc, value,
 });
+/** A plain text field: Salla's url format rejects in-page links such as #rw-chapters and blocks saving. */
 const url = (id, label, value = "", desc = null) => ({
-  id, type: "string", format: "url", label, icon: "sicon-link", required: false, description: desc, value,
+  id, type: "string", format: "text", label, icon: "sicon-link", multilanguage: false, required: false,
+  description: desc || "رابط داخل الصفحة مثل #rw-chapters، أو رابط كامل يبدأ بـ https.",
+  minLength: 0, maxLength: 500, value,
 });
 const icon = (id, label, value) => ({
   id, type: "string", format: "icon", label, icon: "sicon-star2", required: false, class: "form--inline", value,
@@ -354,14 +357,13 @@ const components = [
       {
         id: "ends_at",
         type: "string",
-        format: "datetime",
-        inputType: "datetime-local",
+        format: "text",
         label: "تاريخ انتهاء العرض",
         icon: "sicon-calendar-time",
         multilanguage: false,
         required: false,
-        description: "اختر التاريخ والوقت من الحقل. اتركه فارغاً ليبدأ العد من ٧٢ ساعة عند أول زيارة.",
-        placeholder: "2026-12-05T23:59",
+        description: "اكتب التاريخ والوقت بهذا الشكل: 2026-12-05 23:59 (سنة-شهر-يوم ساعة:دقيقة بتوقيت الزائر). اتركه فارغاً ليبدأ العد من ٧٢ ساعة عند أول زيارة.",
+        placeholder: "2026-12-05 23:59",
         minLength: 0,
         maxLength: 40,
         value: "",
@@ -637,18 +639,26 @@ const components = [
     props: { "min-height": "560px" },
     fields: [
       text("title", "اسم القسم", L("افتتاح الصفحة", "Page opening")),
+      drop("fit", "طريقة عرض الصورة", [["cover", "الصورة تملأ الخلفية", "47a343db-6df1-45a2-bcf4-6fc6123a8e15"], ["framed", "خلفية ممتدة وصورة في بطاقة", "e837ccc4-abe6-4e8a-a7da-e90c366b877d"]], "cover", "تملأ الخلفية: الصورة على كامل العرض والنص فوقها. خلفية ممتدة: نسخة ضبابية تملأ العرض والصورة كاملة في بطاقة بجانب النص، تناسب الصور الطولية."),
+      drop("height", "ارتفاع السلايدر", [["screen", "ملء الشاشة", "6ab15660-3408-40ec-8742-12df48e1bfca"], ["tall", "طويل", "a637cd3e-e752-422b-a57a-b82fedd55b5b"], ["medium", "متوسط", "76c5c5ed-b74b-4141-bb70-61c64418385b"]], "screen"),
+      drop("shade", "تعتيم الصورة خلف النص", [["soft", "خفيف", "f726c734-1286-4738-bf7c-05378838e25c"], ["medium", "متوسط", "7f6ddedd-63ea-440e-b4c3-44212392f1d8"], ["strong", "قوي", "8e660f15-b260-45de-9cc5-114141ba634d"]], "medium", "يزيد وضوح النص الأبيض فوق الصور الفاتحة."),
+      drop("focus", "الجزء الظاهر من الصورة عند القص", [["center", "الوسط", "50187958-e704-41c6-af7d-9d53dec21fa2"], ["top", "الأعلى", "a5a42db4-3f2a-4b2c-9d73-4ea34fde42f2"], ["bottom", "الأسفل", "35b746fd-55b4-4ab4-aa9a-a9f50f1bd7e5"]], "center"),
+      line("os-look"),
       collection("items", "شريحة", [
-        image("image", "صورة الشريحة", "المقاس المقترح 1400×900 بكسل، صورة أفقية للمنتج أو الاستخدام."),
+        image("image", "صورة الشريحة", "المقاس المقترح 1920×1080 بكسل (أفقية). في وضع البطاقة تناسبها 1200×1500 بكسل (طولية)."),
+        image("image_mobile", "صورة الجوال (اختياري)", "المقاس المقترح 1080×1600 بكسل (طولية). اتركها فارغة لتُستخدم صورة الشريحة."),
         url("video", "فيديو الشريحة (اختياري)", "", "رابط ملف MP4 أو يوتيوب أو فيميو. يعمل بلا صوت ويتكرر، والصورة تظهر قبل تحميله. الشريحة تنتقل عند انتهاء الملف."),
         text("alt", "وصف الصورة", L("المنتج في الاستخدام", "The product in use")),
         text("title", "العنوان", L("القطعة التي تبيع نفسها من أول نظرة", "The piece that explains itself at first glance")),
         area("text", "النص", L("اكتب جملة واحدة عن القماش أو القصة، ثم ادعُ الزائر للطلب.", "Write one sentence about the fabric or the cut, then invite the visitor to order.")),
         text("button", "نص الزر", L("اطلب الآن", "Order now")),
         url("url", "رابط الزر", "", ctaHint),
+        text("second_button", "نص الزر الثاني", L("", "")),
+        url("second_url", "رابط الزر الثاني", "", "يظهر الزر الثاني عند كتابة نصه ورابطه."),
       ], [
-        { image: SHIRT, alt: L("قميص كتان فاتح على علاقة", "A light linen shirt on a hanger"), title: L("قميص كتان من أول نظرة", "A linen shirt at first glance"), text: L("أزرار ظاهرة وجيب صدر. المقاس في القسم التالي.", "Visible buttons and a chest pocket. The size is in the next section."), button: L("شاهد القطعة", "See the piece"), url: "#rw-product" },
-        { image: RACK, video: LOOK, alt: L("قمصان بيضاء على علاقات خشبية", "White shirts on wooden hangers"), title: L("التشكيلة على العلاقة", "The collection on the rail"), text: L("أكثر من قطعة، واللون يُرى قبل الاختيار.", "More than one piece, and the color shows before you choose."), button: L("اطلب الآن", "Order now"), url: "" },
-        { image: SHOP, alt: L("اختيار قطعة من علاقة الملابس", "Choosing a piece from a clothing rail"), title: L("الاختيار قبل الخروج", "The choice before leaving"), text: L("من العلاقة إلى المقاس. لا خطوات أكثر من ذلك.", "From the rail to the size. No more steps than that."), button: L("أضف للطلب", "Add to the order"), url: "" },
+        { image: px(7679784, 1920), alt: L("موظفة تساعد عميلاً في اختيار قميص داخل المتجر", "A staff member helping a customer choose a shirt in store"), title: L("قمصان كتان لصيف الرياض", "Linen shirts for a Riyadh summer"), text: L("كتان أوروبي ١٠٠٪ يتنفس في الحر، بقصة مريحة تناسب الدوام والطلعات. المقاسات من S إلى 3XL.", "100% European linen that breathes in the heat, in a relaxed cut for work and evenings out. Sizes S to 3XL."), button: L("تسوّق القمصان", "Shop the shirts"), url: "#rw-product", second_button: L("دليل المقاسات", "Size guide"), second_url: "#rw-chapters" },
+        { image: px(17281873, 1920), video: LOOK, alt: L("قمصان بيضاء مصفوفة على علاقات خشبية", "White shirts lined up on wooden hangers"), title: L("الأبيض الذي لا يشف", "A white that is not see-through"), text: L("نسيج مزدوج الخيط يبقى أبيض بعد الغسيل، ويُكوى بسهولة قبل الدوام.", "A two-ply weave that stays white after washing and irons quickly before work."), button: L("اطلب القميص الأبيض", "Order the white shirt"), url: "" },
+        { image: px(17293347, 1920), alt: L("ملابس بألوان هادئة على رفوف متجر", "Clothes in calm tones on store rails"), title: L("ألوان هادئة تُلبس كل يوم", "Calm colors to wear every day"), text: L("بيج وزيتي وكحلي. شحن مجاني فوق ٢٥٠ ر.س، وتبديل المقاس خلال ١٤ يوماً.", "Beige, olive, and navy. Free shipping over SAR 250, and size exchanges within 14 days."), button: L("أضف للسلة", "Add to cart"), url: "" },
       ], 1, 6),
       color("bg_color", "لون الخلفية"),
       scheme(),
@@ -676,7 +686,7 @@ const components = [
       ], [
         { image: SHIRT, label: L("القميص", "Shirt"), alt: L("قميص الكتان من الأمام", "The linen shirt from the front") },
         { image: RACK, label: L("العلاقة", "Rail"), alt: L("قمصان على علاقات خشبية", "Shirts on wooden hangers") },
-        { image: LAYERS, label: L("الطبقة", "Layer"), alt: L("جاكيت فوق قميص", "A jacket over a shirt") },
+        { image: LAYERS, label: L("الألوان", "Colors"), alt: L("قمصان بيضاء على علاقات خشبية", "White shirts on wooden hangers") },
       ], 1, 6),
       color("bg_color", "لون الخلفية"),
       scheme(),
@@ -740,9 +750,9 @@ const components = [
         text("link_label", "نص رابط المنتج", L("", "")),
         url("link_url", "رابط المنتج", "", "اتركه فارغاً إذا كانت التجربة عن منتج الصفحة."),
       ], [
-        { video_url: REEL_MIRROR, poster: TEE, name: L("نورة", "Noura"), place: L("الرياض", "Riyadh"), quote: L("المقاس طابق الجدول، ولبست القطعة من أول يوم.", "The size matched the chart, and I wore the piece the first day."), stars: picked("5", "٥", KEY.reelStar5), link_label: L("", ""), link_url: "" },
+        { video_url: REEL_MIRROR, poster: TEE, name: L("فهد", "Fahad"), place: L("الرياض", "Riyadh"), quote: L("المقاس طابق الجدول، ولبست القميص في الدوام من أول يوم.", "The size matched the chart, and I wore the shirt to work the first day."), stars: picked("5", "٥", KEY.reelStar5), link_label: L("", ""), link_url: "" },
         { video_url: REEL_ADJUST, poster: DRESS, name: L("سلمان", "Salman"), place: L("جدة", "Jeddah"), quote: L("القصة مريحة، والقماش ما ثقل خلال الدوام.", "The cut is easy, and the fabric did not feel heavy through the workday."), stars: picked("5", "٥", KEY.reelStar5), link_label: L("", ""), link_url: "" },
-        { video_url: REEL_SUIT, poster: LAYERS, name: L("هند", "Hind"), place: L("الخبر", "Khobar"), quote: L("حبيت أشوف الطبقة قبل ما أطلب المقاس.", "I wanted to see the layer before I ordered the size."), stars: picked("4", "٤", KEY.reelStar4), link_label: L("", ""), link_url: "" },
+        { video_url: REEL_SUIT, poster: LAYERS, name: L("سلطان", "Sultan"), place: L("الخبر", "Khobar"), quote: L("الأبيض ما يشف، وبقي أبيض بعد أكثر من غسلة.", "The white is not see-through, and it stayed white after several washes."), stars: picked("4", "٤", KEY.reelStar4), link_label: L("", ""), link_url: "" },
       ], 1, 8),
       text("button_label", "نص زر الشراء", L("اطلب الآن", "Order now")),
       url("button_url", "رابط الزر", "", ctaHint),
