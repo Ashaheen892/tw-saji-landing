@@ -83,7 +83,7 @@ export default class OpenVideo extends LitElement {
             : html`<button type="button" class="rw-film__play" @click=${() => { if (source) this.playing = true; else this.missing = true; }}>
                 ${media(poster, title)}
                 <b aria-hidden="true">▶</b>
-                ${this.missing || (auto && !source) ? html`<p class="rw-film__miss">${t({ ar: "أضف رابط الفيديو من إعدادات القسم.", en: "Add the video link in the section settings." })}</p>` : nothing}
+                ${this.missing || (auto && !source) ? html`<p class="rw-film__miss rw-hint">${t({ ar: "أضف رابط الفيديو من إعدادات القسم.", en: "Add the video link in the section settings." })}</p>` : nothing}
               </button>`}
         </div>
         <div class="rw-film__copy">

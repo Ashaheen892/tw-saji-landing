@@ -92,13 +92,36 @@ function schemeOf(cfg) {
   return scheme === "dark" ? "rw-dark" : scheme === "light" ? "rw-light" : "rw-auto";
 }
 __name(schemeOf, "schemeOf");
+function markEditing() {
+  var _a, _b;
+  const root = document.documentElement, read = /* @__PURE__ */ __name(() => {
+    var _a2, _b2;
+    let on = !0;
+    try {
+      const salla2 = window.Salla;
+      on = window.self !== window.top || ((_b2 = (_a2 = salla2 == null ? void 0 : salla2.config) == null ? void 0 : _a2.get) == null ? void 0 : _b2.call(_a2, "page.is_landing_page")) !== !0;
+    } catch {
+      on = !0;
+    }
+    root.dataset.lpEditing = on ? "1" : "0";
+  }, "read");
+  if (!root.dataset.lpEditing) {
+    read();
+    try {
+      (_b = (_a = window.Salla) == null ? void 0 : _a.onReady) == null || _b.call(_a, read);
+    } catch {
+    }
+  }
+}
+__name(markEditing, "markEditing");
 function injectStyles(id, css2) {
-  if (document.getElementById(id)) return;
+  if (markEditing(), document.getElementById(id)) return;
   const style = document.createElement("style");
   style.id = id, style.textContent = css2, document.head.appendChild(style);
 }
 __name(injectStyles, "injectStyles");
 const LIGHT = "--rw-surface:#f5f6f8; --rw-surface-2:#e8ebef; --rw-card:#ffffff; --rw-soft:#eef1f4; --rw-text:var(--color-text, #1a1d21); --rw-muted:#5c6570; --rw-border:#e1e5ea;", DARK = "--rw-surface:#121417; --rw-surface-2:#1c2026; --rw-card:#1e2329; --rw-soft:#262c33; --rw-text:#f4f6f8; --rw-muted:#b7c0c9; --rw-border:rgb(255 255 255 / 14%);", baseCss = `
+html[data-lp-editing="0"] .rw-empty, html[data-lp-editing="0"] .rw-hint { display: none !important; }
 .rw-host { display: block; width: 100%; min-width: 0; container-type: inline-size; color: inherit; }
 .component-card:has(> .rw-host:not(:empty)) { min-height: 0; }
 .rw-block { ${LIGHT}
@@ -146,7 +169,7 @@ var __defProp2 = Object.defineProperty, __decorateClass = /* @__PURE__ */ __name
   return result && __defProp2(target, key, result), result;
 }, "__decorateClass");
 const css = `
-.rw-stage { position: relative; display: flex; align-items: flex-end; min-height: 78vh; overflow: hidden; color: #f4f6f8; }
+.rw-dockhero { position: relative; display: flex; align-items: flex-end; min-height: 78vh; overflow: hidden; color: #f4f6f8; }
 .rw-stage__media, .rw-stage__shade, .rw-stage__fallback { position: absolute; inset: 0; width: 100%; height: 100%; }
 .rw-stage__media { object-fit: cover; }
 .rw-stage__fallback { background:
@@ -154,7 +177,7 @@ const css = `
   linear-gradient(165deg, #10211f, #1b1410 70%); }
 .rw-stage__shade { background: linear-gradient(180deg, rgb(0 0 0 / 10%) 10%, rgb(0 0 0 / 74%)); }
 .rw-stage__body { position: relative; z-index: 1; width: min(1120px, calc(100% - 2rem)); margin: 0 auto 1.4rem; }
-.rw-stage .rw-lead { color: rgb(247 243 236 / 84%); }
+.rw-dockhero .rw-lead { color: rgb(247 243 236 / 84%); }
 .rw-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 1.4rem; border: 1px solid rgb(255 255 255 / 18%); border-radius: 1.1rem; background: rgb(255 255 255 / 10%); backdrop-filter: blur(12px); }
 .rw-fact { padding: .95rem .8rem; }
 .rw-fact + .rw-fact { border-inline-start: 1px solid rgb(255 255 255 / 16%); }
@@ -177,7 +200,7 @@ const css = `
   render() {
     const cfg = getConfig(this.config), title = localizedString(cfg.title), facts = [1, 2, 3].map((n) => ({ value: localizedString(cfg[`fact_${n}_value`]), label: localizedString(cfg[`fact_${n}_label`]) })).filter((fact) => fact.value || fact.label);
     return html`<section class="rw-block ${schemeOf(cfg)}" style=${sectionStyle(cfg)} aria-label=${title || t({ ar: "واجهة الرصيف", en: "Dock hero" })}>
-      <div class="rw-stage">
+      <div class="rw-dockhero">
         ${cfg.image ? html`<img class="rw-stage__media" src=${cfg.image} alt=${localizedString(cfg.image_alt)} />` : html`<div class="rw-stage__fallback"></div>`}
         <div class="rw-stage__shade"></div>
         <div class="rw-stage__body">

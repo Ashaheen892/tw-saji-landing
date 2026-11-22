@@ -1,4 +1,4 @@
-import { html, LitElement } from "lit";
+import { html, LitElement, nothing } from "lit";
 import { property } from "lit/decorators.js";
 import { getCollectionItems, getConfig, isRtl, localizedString, t, watchLocale } from "../../utils/config.js";
 import { schemeOf } from "../../utils/landing.js";

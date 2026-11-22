@@ -5,7 +5,7 @@ import { renderCta, schemeOf } from "../../utils/landing.js";
 import { baseCss, injectStyles, sectionStyle } from "../../utils/styles.js";
 
 const css = `
-.rw-stage { position: relative; display: flex; align-items: flex-end; min-height: 78vh; overflow: hidden; color: #f4f6f8; }
+.rw-dockhero { position: relative; display: flex; align-items: flex-end; min-height: 78vh; overflow: hidden; color: #f4f6f8; }
 .rw-stage__media, .rw-stage__shade, .rw-stage__fallback { position: absolute; inset: 0; width: 100%; height: 100%; }
 .rw-stage__media { object-fit: cover; }
 .rw-stage__fallback { background:
@@ -13,7 +13,7 @@ const css = `
   linear-gradient(165deg, #10211f, #1b1410 70%); }
 .rw-stage__shade { background: linear-gradient(180deg, rgb(0 0 0 / 10%) 10%, rgb(0 0 0 / 74%)); }
 .rw-stage__body { position: relative; z-index: 1; width: min(1120px, calc(100% - 2rem)); margin: 0 auto 1.4rem; }
-.rw-stage .rw-lead { color: rgb(247 243 236 / 84%); }
+.rw-dockhero .rw-lead { color: rgb(247 243 236 / 84%); }
 .rw-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 1.4rem; border: 1px solid rgb(255 255 255 / 18%); border-radius: 1.1rem; background: rgb(255 255 255 / 10%); backdrop-filter: blur(12px); }
 .rw-fact { padding: .95rem .8rem; }
 .rw-fact + .rw-fact { border-inline-start: 1px solid rgb(255 255 255 / 16%); }
@@ -49,7 +49,7 @@ export default class DockHero extends LitElement {
       .map((n) => ({ value: localizedString(cfg[`fact_${n}_value`]), label: localizedString(cfg[`fact_${n}_label`]) }))
       .filter((fact) => fact.value || fact.label);
     return html`<section class="rw-block ${schemeOf(cfg)}" style=${sectionStyle(cfg)} aria-label=${title || t({ ar: "واجهة الرصيف", en: "Dock hero" })}>
-      <div class="rw-stage">
+      <div class="rw-dockhero">
         ${cfg.image
           ? html`<img class="rw-stage__media" src=${cfg.image} alt=${localizedString(cfg.image_alt)} />`
           : html`<div class="rw-stage__fallback"></div>`}

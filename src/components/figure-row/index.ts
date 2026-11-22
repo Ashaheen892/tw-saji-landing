@@ -1,7 +1,8 @@
 import { html, LitElement } from "lit";
 import { property } from "lit/decorators.js";
-import { getCollectionItems, getConfig, localizedString, watchLocale } from "../../utils/config.js";
+import { flag, getCollectionItems, getConfig, localizedString, watchLocale } from "../../utils/config.js";
 import { schemeOf } from "../../utils/landing.js";
+import { countUp } from "../../utils/count.js";
 import { baseCss, injectStyles, sectionStyle } from "../../utils/styles.js";
 import { emptyCopy, heading } from "../../utils/ui.js";
 
@@ -20,6 +21,7 @@ const css = `
 export default class StatStrip extends LitElement {
   @property({ type: Object }) config?: Record<string, any>;
   private stop = () => {};
+  private stopCount = () => {};
 
   protected createRenderRoot() {
     return this;
@@ -35,7 +37,16 @@ export default class StatStrip extends LitElement {
 
   disconnectedCallback() {
     this.stop();
+    this.stopCount();
     super.disconnectedCallback();
+  }
+
+  protected updated() {
+    const cfg = getConfig(this.config);
+    const on = cfg.count_up === undefined || cfg.count_up === "" || flag(cfg.count_up);
+    if (!on) return;
+    this.stopCount();
+    this.stopCount = countUp(this, ".rw-stat b");
   }
 
   render() {
@@ -47,7 +58,7 @@ export default class StatStrip extends LitElement {
       <div class="rw-container">
         ${heading(cfg)}
         ${items.length
-          ? html`<div class="rw-stats">${items.map((item) => html`<article class="rw-stat"><b>${item.value}</b>${item.label ? html`<span>${item.label}</span>` : ""}</article>`)}</div>`
+          ? html`<div class="rw-stats">${items.map((item) => html`<article class="rw-stat"><b .textContent=${item.value}></b>${item.label ? html`<span>${item.label}</span>` : ""}</article>`)}</div>`
           : emptyCopy()}
       </div>
     </section>`;

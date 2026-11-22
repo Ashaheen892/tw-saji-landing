@@ -2,9 +2,9 @@
   "id": "846b8092-8d09-493a-a59e-4485260dd34c",
   "components": [
     {
-      "title": "رأس الصفحة",
+      "title": "رأس المجلة",
       "icon": "sicon-store",
-      "name": "page-bar",
+      "name": "edit-bar",
       "key": "c4e8a1b2-7f30-4a6e-9c15-2d8b6f0e4a71",
       "image": "",
       "props": {
@@ -12,54 +12,271 @@
       },
       "fields": [
         {
-          "id": "announce",
-          "type": "string",
-          "format": "text",
-          "label": "الشريط الإعلاني",
-          "icon": "sicon-format-text-alt",
-          "multilanguage": true,
+          "id": "bars",
+          "type": "collection",
+          "format": "collection",
           "required": false,
-          "description": "يظهر فوق الشعار. اتركه فارغاً لإخفاء الشريط.",
           "minLength": 0,
-          "maxLength": 180,
-          "value": {
-            "ar": "شحن مجاني فوق ٢٥٠ ر.س · تبديل المقاس خلال ١٤ يوم",
-            "en": "Free shipping over SAR 250 · size exchange within 14 days"
-          }
-        },
-        {
-          "id": "announce_mode",
-          "type": "items",
-          "format": "dropdown-list",
-          "source": "Manual",
-          "label": "حركة الشريط",
-          "icon": "sicon-list",
-          "required": false,
-          "description": "المتحرك يمرّ الجملة باستمرار. الثابت يُبقيها في الوسط.",
-          "options": [
+          "maxLength": 5,
+          "item_label": "شريط",
+          "fields": [
             {
-              "label": "متحرك",
-              "value": "move",
-              "key": "c3a91e70-4b28-4f6a-9d15-2e8b7c0a4f61"
+              "id": "bars.text",
+              "type": "string",
+              "format": "text",
+              "label": "نص الشريط",
+              "icon": "sicon-format-text-alt",
+              "multilanguage": true,
+              "required": false,
+              "description": null,
+              "minLength": 0,
+              "maxLength": 140,
+              "value": {
+                "ar": "",
+                "en": ""
+              }
             },
             {
-              "label": "ثابت",
-              "value": "still",
-              "key": "d4b02f81-5c39-4a7b-8e26-3f9c8d1b5a72"
-            }
-          ],
-          "selected": [
+              "id": "bars.media",
+              "type": "items",
+              "format": "dropdown-list",
+              "source": "Manual",
+              "label": "بجانب النص",
+              "icon": "sicon-list",
+              "required": false,
+              "description": "اختر أيقونة من مكتبة سلة أو صورة صغيرة لمنتج أو شعار.",
+              "options": [
+                {
+                  "label": "بدون",
+                  "value": "none",
+                  "key": "ebf61642-2e54-47ae-9018-bfaf1857177c"
+                },
+                {
+                  "label": "أيقونة",
+                  "value": "icon",
+                  "key": "fb70e3e4-c43f-45b1-a75e-7c043d6e36dc"
+                },
+                {
+                  "label": "صورة مصغرة",
+                  "value": "image",
+                  "key": "39dea639-0118-4a0d-a29b-f48851a0e796"
+                }
+              ],
+              "selected": [
+                {
+                  "label": "أيقونة",
+                  "value": "icon",
+                  "key": "fb70e3e4-c43f-45b1-a75e-7c043d6e36dc"
+                }
+              ],
+              "value": [
+                {
+                  "label": "أيقونة",
+                  "value": "icon",
+                  "key": "fb70e3e4-c43f-45b1-a75e-7c043d6e36dc"
+                }
+              ]
+            },
             {
-              "label": "متحرك",
-              "value": "move",
-              "key": "c3a91e70-4b28-4f6a-9d15-2e8b7c0a4f61"
+              "id": "bars.icon",
+              "type": "string",
+              "format": "icon",
+              "label": "الأيقونة",
+              "icon": "sicon-star2",
+              "required": false,
+              "class": "form--inline",
+              "value": "sicon-megaphone"
+            },
+            {
+              "id": "bars.image",
+              "type": "string",
+              "format": "image",
+              "label": "الصورة المصغرة",
+              "icon": "sicon-image",
+              "required": false,
+              "description": "المقاس المقترح 112×112 بكسل، مربعة بزوايا مدورة، PNG أو WebP بخلفية شفافة أو صورة منتج. تظهر بحجم ٢٨×٢٨ بكسل بزوايا مدورة. تُستخدم عند اختيار «صورة مصغرة» في «بجانب النص».",
+              "value": ""
+            },
+            {
+              "id": "bars.motion",
+              "type": "items",
+              "format": "dropdown-list",
+              "source": "Manual",
+              "label": "حركة الشريط",
+              "icon": "sicon-list",
+              "required": false,
+              "description": "المتحرك يمرّ الجملة باستمرار. الثابت يُبقيها في الوسط.",
+              "options": [
+                {
+                  "label": "متحرك",
+                  "value": "move",
+                  "key": "3750fc54-ea15-44bb-8e54-a1931e8558e4"
+                },
+                {
+                  "label": "ثابت",
+                  "value": "still",
+                  "key": "216c574a-63b0-49e2-b720-b0934addcaf0"
+                }
+              ],
+              "selected": [
+                {
+                  "label": "متحرك",
+                  "value": "move",
+                  "key": "3750fc54-ea15-44bb-8e54-a1931e8558e4"
+                }
+              ],
+              "value": [
+                {
+                  "label": "متحرك",
+                  "value": "move",
+                  "key": "3750fc54-ea15-44bb-8e54-a1931e8558e4"
+                }
+              ]
+            },
+            {
+              "id": "bars.link",
+              "type": "string",
+              "format": "url",
+              "label": "رابط الشريط",
+              "icon": "sicon-link",
+              "required": false,
+              "description": "اختياري. يفتح عند الضغط على الشريط.",
+              "value": ""
+            },
+            {
+              "id": "bars.bg",
+              "type": "string",
+              "format": "color",
+              "inputType": "color",
+              "label": "خلفية هذا الشريط",
+              "icon": "sicon-format-fill",
+              "required": false,
+              "description": "اتركه فارغاً ليأخذ لون الشريط العام.",
+              "value": ""
+            },
+            {
+              "id": "bars.ink",
+              "type": "string",
+              "format": "color",
+              "inputType": "color",
+              "label": "كتابة هذا الشريط",
+              "icon": "sicon-format-fill",
+              "required": false,
+              "description": "اتركه فارغاً ليأخذ لون الكتابة العام.",
+              "value": ""
             }
           ],
           "value": [
             {
-              "label": "متحرك",
-              "value": "move",
-              "key": "c3a91e70-4b28-4f6a-9d15-2e8b7c0a4f61"
+              "bars.text": {
+                "ar": "شحن مجاني فوق ٢٥٠ ر.س",
+                "en": "Free shipping over SAR 250"
+              },
+              "bars.media": [
+                {
+                  "label": "أيقونة",
+                  "value": "icon",
+                  "key": "fb70e3e4-c43f-45b1-a75e-7c043d6e36dc"
+                }
+              ],
+              "bars.icon": "sicon-shipping-fast",
+              "bars.image": "",
+              "bars.motion": [
+                {
+                  "label": "متحرك",
+                  "value": "move",
+                  "key": "3750fc54-ea15-44bb-8e54-a1931e8558e4"
+                }
+              ],
+              "bars.link": "",
+              "bars.bg": "",
+              "bars.ink": ""
+            },
+            {
+              "bars.text": {
+                "ar": "قميص الكتان متوفر بكل المقاسات",
+                "en": "The linen shirt is back in every size"
+              },
+              "bars.media": [
+                {
+                  "label": "صورة مصغرة",
+                  "value": "image",
+                  "key": "39dea639-0118-4a0d-a29b-f48851a0e796"
+                }
+              ],
+              "bars.icon": "sicon-megaphone",
+              "bars.image": "https://images.pexels.com/photos/22441297/pexels-photo-22441297.jpeg?auto=compress&cs=tinysrgb&w=200",
+              "bars.motion": [
+                {
+                  "label": "ثابت",
+                  "value": "still",
+                  "key": "216c574a-63b0-49e2-b720-b0934addcaf0"
+                }
+              ],
+              "bars.link": "",
+              "bars.bg": "",
+              "bars.ink": ""
+            },
+            {
+              "bars.text": {
+                "ar": "تبديل المقاس خلال ١٤ يوم",
+                "en": "Size exchange within 14 days"
+              },
+              "bars.media": [
+                {
+                  "label": "أيقونة",
+                  "value": "icon",
+                  "key": "fb70e3e4-c43f-45b1-a75e-7c043d6e36dc"
+                }
+              ],
+              "bars.icon": "sicon-rotate",
+              "bars.image": "",
+              "bars.motion": [
+                {
+                  "label": "متحرك",
+                  "value": "move",
+                  "key": "3750fc54-ea15-44bb-8e54-a1931e8558e4"
+                }
+              ],
+              "bars.link": "",
+              "bars.bg": "",
+              "bars.ink": ""
+            }
+          ]
+        },
+        {
+          "id": "bars_layout",
+          "type": "items",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "label": "عرض الأشرطة",
+          "icon": "sicon-list",
+          "required": false,
+          "description": "كل شريط في سطر يعرض الأشرطة فوق بعضها. شريط واحد يتبدل يعرض شريطاً كل ٤ ثوانٍ ويتوقف عند مرور المؤشر.",
+          "options": [
+            {
+              "label": "كل شريط في سطر",
+              "value": "stack",
+              "key": "9e5cba9e-6c76-44b6-87e1-98233ac5e0d3"
+            },
+            {
+              "label": "شريط واحد يتبدل",
+              "value": "rotate",
+              "key": "fa0cb8d3-ce22-4c2c-8b88-05e28058b3f4"
+            }
+          ],
+          "selected": [
+            {
+              "label": "شريط واحد يتبدل",
+              "value": "rotate",
+              "key": "fa0cb8d3-ce22-4c2c-8b88-05e28058b3f4"
+            }
+          ],
+          "value": [
+            {
+              "label": "شريط واحد يتبدل",
+              "value": "rotate",
+              "key": "fa0cb8d3-ce22-4c2c-8b88-05e28058b3f4"
             }
           ]
         },
@@ -374,6 +591,16 @@
               "value": ""
             },
             {
+              "id": "items.video",
+              "type": "string",
+              "format": "url",
+              "label": "فيديو الشريحة (اختياري)",
+              "icon": "sicon-link",
+              "required": false,
+              "description": "رابط ملف MP4 أو يوتيوب أو فيميو. يعمل بلا صوت ويتكرر، والصورة تظهر قبل تحميله. الشريحة تنتقل عند انتهاء الملف.",
+              "value": ""
+            },
+            {
               "id": "items.alt",
               "type": "string",
               "format": "text",
@@ -450,7 +677,7 @@
           ],
           "value": [
             {
-              "items.image": "https://images.pexels.com/photos/5709665/pexels-photo-5709665.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "items.image": "https://images.pexels.com/photos/22441297/pexels-photo-22441297.jpeg?auto=compress&cs=tinysrgb&w=1400",
               "items.alt": {
                 "ar": "قميص كتان فاتح على علاقة",
                 "en": "A light linen shirt on a hanger"
@@ -470,10 +697,11 @@
               "items.url": "#rw-product"
             },
             {
-              "items.image": "https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "items.image": "https://images.pexels.com/photos/17281873/pexels-photo-17281873.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "items.video": "https://videos.pexels.com/video-files/8322527/8322527-hd_2048_1080_25fps.mp4",
               "items.alt": {
-                "ar": "ملابس على علاقات خشبية",
-                "en": "Clothes on wooden hangers"
+                "ar": "قمصان بيضاء على علاقات خشبية",
+                "en": "White shirts on wooden hangers"
               },
               "items.title": {
                 "ar": "التشكيلة على العلاقة",
@@ -735,7 +963,7 @@
           ],
           "value": [
             {
-              "views.image": "https://images.pexels.com/photos/5709665/pexels-photo-5709665.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "views.image": "https://images.pexels.com/photos/22441297/pexels-photo-22441297.jpeg?auto=compress&cs=tinysrgb&w=1400",
               "views.label": {
                 "ar": "القميص",
                 "en": "Shirt"
@@ -746,14 +974,14 @@
               }
             },
             {
-              "views.image": "https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=1400",
+              "views.image": "https://images.pexels.com/photos/17281873/pexels-photo-17281873.jpeg?auto=compress&cs=tinysrgb&w=1400",
               "views.label": {
                 "ar": "العلاقة",
                 "en": "Rail"
               },
               "views.alt": {
-                "ar": "قطع على علاقات خشبية",
-                "en": "Pieces on wooden hangers"
+                "ar": "قمصان على علاقات خشبية",
+                "en": "Shirts on wooden hangers"
               }
             },
             {
@@ -1385,7 +1613,7 @@
           "icon": "sicon-image",
           "required": false,
           "description": "المقاس المقترح 1200×1500 بكسل.",
-          "value": "https://images.pexels.com/photos/5709665/pexels-photo-5709665.jpeg?auto=compress&cs=tinysrgb&w=1400"
+          "value": "https://images.pexels.com/photos/22441297/pexels-photo-22441297.jpeg?auto=compress&cs=tinysrgb&w=1400"
         },
         {
           "id": "alt_a",
@@ -1553,9 +1781,9 @@
       ]
     },
     {
-      "title": "دعوة الختام",
+      "title": "الصفحة الأخيرة (دعوة الختام)",
       "icon": "sicon-megaphone",
-      "name": "close-invite",
+      "name": "closing-page",
       "key": "df171afb-b40e-4933-93ae-38e480e6bf60",
       "image": "",
       "props": {
@@ -1707,9 +1935,9 @@
       ]
     },
     {
-      "title": "إحصائيات",
+      "title": "سطر الأرقام (إحصائيات)",
       "icon": "sicon-calculator",
-      "name": "stat-strip",
+      "name": "figure-row",
       "key": "1f6a2c84-7b15-4e30-8d41-a9c3e5b70f12",
       "image": "",
       "props": {
@@ -1763,6 +1991,17 @@
             "ar": "",
             "en": ""
           }
+        },
+        {
+          "id": "count_up",
+          "type": "boolean",
+          "format": "switch",
+          "label": "حركة العد",
+          "icon": "sicon-toggle-off",
+          "required": false,
+          "description": "الأرقام تعدّ من الصفر أول ما يظهر القسم. النص حول الرقم يبقى كما هو.",
+          "value": true,
+          "selected": true
         },
         {
           "id": "items",
@@ -1894,9 +2133,9 @@
       ]
     },
     {
-      "title": "الماركات التجارية",
+      "title": "جدار الماركات",
       "icon": "sicon-star2",
-      "name": "brand-row",
+      "name": "brand-wall",
       "key": "2a7b3d95-8c26-4f41-9e52-b0d4f6c81a23",
       "image": "",
       "props": {
@@ -2119,9 +2358,9 @@
       ]
     },
     {
-      "title": "شركاء النجاح",
+      "title": "بطاقات الشركاء (شركاء النجاح)",
       "icon": "sicon-store",
-      "name": "partner-row",
+      "name": "credit-cards",
       "key": "3b8c4ea6-9d37-4a52-8f63-c1e5a7d92b34",
       "image": "",
       "props": {
@@ -2306,9 +2545,9 @@
       ]
     },
     {
-      "title": "التواصل السريع",
+      "title": "فهرس التواصل (تواصل سريع)",
       "icon": "sicon-link",
-      "name": "quick-contact",
+      "name": "contact-index",
       "key": "4c9d5fb7-ae48-4b63-9a74-d2f6b8ea3c45",
       "image": "",
       "props": {
@@ -2569,9 +2808,9 @@
       ]
     },
     {
-      "title": "فوتر الصفحة",
+      "title": "خاتمة المجلة (الفوتر)",
       "icon": "sicon-link",
-      "name": "page-footer",
+      "name": "edit-footer",
       "key": "b7e2c4a1-6f38-4d90-8b15-3a9c0e7d2f64",
       "image": "",
       "props": {

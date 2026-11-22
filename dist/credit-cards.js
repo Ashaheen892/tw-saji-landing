@@ -31,6 +31,16 @@ function unwrapValue(value) {
   return Array.isArray(value) ? unwrapValue(((_a = value[0]) == null ? void 0 : _a.value) ?? value[0] ?? "") : value && typeof value == "object" && "value" in value ? value.value : value ?? "";
 }
 __name(unwrapValue, "unwrapValue");
+function getCollectionItems(items, prefix) {
+  return Array.isArray(items) ? items.map((item) => {
+    if (!item || typeof item != "object") return {};
+    const normalized = {};
+    for (const [key, val] of Object.entries(item))
+      normalized[key.startsWith(`${prefix}.`) ? key.slice(prefix.length + 1) : key] = val;
+    return normalized;
+  }) : [];
+}
+__name(getCollectionItems, "getCollectionItems");
 function watchLocale(host) {
   const update = /* @__PURE__ */ __name(() => host.requestUpdate(), "update");
   return window.addEventListener("language-changed", update), () => window.removeEventListener("language-changed", update);
@@ -41,13 +51,36 @@ function schemeOf(cfg) {
   return scheme === "dark" ? "rw-dark" : scheme === "light" ? "rw-light" : "rw-auto";
 }
 __name(schemeOf, "schemeOf");
+function markEditing() {
+  var _a, _b;
+  const root = document.documentElement, read = /* @__PURE__ */ __name(() => {
+    var _a2, _b2;
+    let on = !0;
+    try {
+      const salla = window.Salla;
+      on = window.self !== window.top || ((_b2 = (_a2 = salla == null ? void 0 : salla.config) == null ? void 0 : _a2.get) == null ? void 0 : _b2.call(_a2, "page.is_landing_page")) !== !0;
+    } catch {
+      on = !0;
+    }
+    root.dataset.lpEditing = on ? "1" : "0";
+  }, "read");
+  if (!root.dataset.lpEditing) {
+    read();
+    try {
+      (_b = (_a = window.Salla) == null ? void 0 : _a.onReady) == null || _b.call(_a, read);
+    } catch {
+    }
+  }
+}
+__name(markEditing, "markEditing");
 function injectStyles(id, css2) {
-  if (document.getElementById(id)) return;
+  if (markEditing(), document.getElementById(id)) return;
   const style = document.createElement("style");
   style.id = id, style.textContent = css2, document.head.appendChild(style);
 }
 __name(injectStyles, "injectStyles");
 const LIGHT = "--rw-surface:#f5f6f8; --rw-surface-2:#e8ebef; --rw-card:#ffffff; --rw-soft:#eef1f4; --rw-text:var(--color-text, #1a1d21); --rw-muted:#5c6570; --rw-border:#e1e5ea;", DARK = "--rw-surface:#121417; --rw-surface-2:#1c2026; --rw-card:#1e2329; --rw-soft:#262c33; --rw-text:#f4f6f8; --rw-muted:#b7c0c9; --rw-border:rgb(255 255 255 / 14%);", baseCss = `
+html[data-lp-editing="0"] .rw-empty, html[data-lp-editing="0"] .rw-hint { display: none !important; }
 .rw-host { display: block; width: 100%; min-width: 0; container-type: inline-size; color: inherit; }
 .component-card:has(> .rw-host:not(:empty)) { min-height: 0; }
 .rw-block { ${LIGHT}
@@ -109,18 +142,14 @@ var __defProp2 = Object.defineProperty, __decorateClass = /* @__PURE__ */ __name
   return result && __defProp2(target, key, result), result;
 }, "__decorateClass");
 const css = `
-.rw-quick { display: grid; }
-@container (min-width: 760px) { .rw-quick { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-.rw-quick a { display: block; padding: 1rem 1rem 1rem 0; border-block-start: 1px solid var(--rw-border); color: inherit; text-decoration: none; }
-.rw-quick small { display: block; color: var(--rw-muted); font-size: .78rem; }
-.rw-quick b { display: block; margin-top: .3rem; font-size: 1.08rem; }
-.rw-quick a:hover b { text-decoration: underline; text-underline-offset: .18rem; }
-`;
-function digits(value) {
-  return (typeof value == "string" ? value : localizedString(value)).replace(/\D/g, "");
-}
-__name(digits, "digits");
-const _QuickContact = class _QuickContact extends LitElement {
+.rw-partners { display: grid; gap: 1rem; counter-reset: rw-partner; }
+@container (min-width: 640px) { .rw-partners { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@container (min-width: 900px) { .rw-partners { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.rw-partner { counter-increment: rw-partner; position: relative; padding: 1.35rem 1.25rem 1.25rem; border-radius: 1rem; background: var(--rw-card); border: 1px solid var(--rw-border); }
+.rw-partner::before { content: counter(rw-partner, decimal-leading-zero); display: block; margin-bottom: 1.6rem; font-size: 2.1rem; font-weight: 800; line-height: 1; letter-spacing: -.04em; color: transparent; -webkit-text-stroke: 1px var(--rw-muted); font-variant-numeric: tabular-nums; }
+.rw-partner b { display: block; font-size: 1.1rem; }
+.rw-partner span { display: block; margin-top: .35rem; color: var(--rw-muted); line-height: 1.6; }
+`, _PartnerRow = class _PartnerRow extends LitElement {
   constructor() {
     super(...arguments), this.stop = () => {
     };
@@ -129,31 +158,27 @@ const _QuickContact = class _QuickContact extends LitElement {
     return this;
   }
   connectedCallback() {
-    super.connectedCallback(), this.classList.add("rw-host"), injectStyles("rw-base", baseCss), injectStyles("rw-quick-contact", css), this.stop = watchLocale(this);
+    super.connectedCallback(), this.classList.add("rw-host"), injectStyles("rw-base", baseCss), injectStyles("rw-partner-row", css), this.stop = watchLocale(this);
   }
   disconnectedCallback() {
     this.stop(), super.disconnectedCallback();
   }
   render() {
-    const cfg = getConfig(this.config), phone = digits(cfg.phone), wa = digits(cfg.whatsapp || "201153958512"), email = String(cfg.email || "").trim(), message = localizedString(cfg.whatsapp_message), actions = [
-      phone ? { kicker: localizedString(cfg.phone_label) || t({ ar: "اتصال", en: "Call" }), value: localizedString(cfg.phone_text) || phone, href: `tel:+${phone}` } : null,
-      wa ? { kicker: localizedString(cfg.whatsapp_label) || t({ ar: "واتساب", en: "WhatsApp" }), value: localizedString(cfg.whatsapp_text) || t({ ar: "راسل المشغل", en: "Message the workshop" }), href: `https://wa.me/${wa}${message ? `?text=${encodeURIComponent(message)}` : ""}` } : null,
-      email ? { kicker: localizedString(cfg.email_label) || t({ ar: "البريد", en: "Email" }), value: email, href: `mailto:${email}` } : null
-    ].filter(Boolean);
-    return html`<section id="rw-contact" class="rw-block rw-section ${schemeOf(cfg)}" style=${sectionStyle(cfg)} aria-label=${localizedString(cfg.title) || "contact"}>
+    const cfg = getConfig(this.config), items = getCollectionItems(cfg.items, "items").map((item) => ({ name: localizedString(item.name), note: localizedString(item.note) })).filter((item) => item.name);
+    return html`<section id="rw-partners" class="rw-block rw-section ${schemeOf(cfg)}" style=${sectionStyle(cfg)} aria-label=${localizedString(cfg.title) || "partners"}>
       <div class="rw-container">
         ${heading(cfg)}
-        ${actions.length ? html`<div class="rw-quick">${actions.map((item) => html`<a href=${item.href}><small>${item.kicker}</small><b>${item.value}</b></a>`)}</div>` : emptyCopy()}
+        ${items.length ? html`<div class="rw-partners">${items.map((item) => html`<article class="rw-partner"><b>${item.name}</b>${item.note ? html`<span>${item.note}</span>` : nothing}</article>`)}</div>` : emptyCopy()}
       </div>
     </section>`;
   }
 };
-__name(_QuickContact, "QuickContact");
-let QuickContact = _QuickContact;
+__name(_PartnerRow, "PartnerRow");
+let PartnerRow = _PartnerRow;
 __decorateClass([
   property({ type: Object })
-], QuickContact.prototype, "config");
-typeof QuickContact < "u" && QuickContact.registerSallaComponent("salla-quick-contact");
+], PartnerRow.prototype, "config");
+typeof PartnerRow < "u" && PartnerRow.registerSallaComponent("salla-credit-cards");
 export {
-  QuickContact as default
+  PartnerRow as default
 };

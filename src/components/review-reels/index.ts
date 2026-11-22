@@ -199,7 +199,7 @@ export default class ReviewReels extends LitElement {
                   : html`<iframe src=${frameSrc(item.source, true, true)} title=${item.name || item.quote || "reel"} allow="autoplay; encrypted-media; picture-in-picture"></iframe>`
                 : item.poster
                   ? media(item.poster, item.name || item.quote)
-                  : html`<div class="rw-ph">${item.source ? "▶" : t({ ar: "أضف فيديو التجربة", en: "Add the experience video" })}</div>`}
+                  : html`<div class="rw-ph">${item.source ? "▶" : html`<span class="rw-hint">${t({ ar: "أضف فيديو التجربة", en: "Add the experience video" })}</span>`}</div>`}
               ${live ? nothing : html`<button type="button" class="rw-reel__hit" aria-label=${item.name || t({ ar: "تشغيل", en: "Play" })} @click=${(event: Event) => this.playCard(index, event)}></button>`}
               ${live ? html`<button type="button" class="rw-reel__sound" aria-pressed=${voiced ? "true" : "false"} @click=${(event: Event) => (auto ? this.toggleSound(index) : this.playCard(index, event))}>${voiced ? t({ ar: "كتم", en: "Mute" }) : t({ ar: "صوت", en: "Sound" })}</button>` : nothing}
               <div class="rw-reel__meta">

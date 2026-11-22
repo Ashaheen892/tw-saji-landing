@@ -61,13 +61,13 @@ const sw = (id, label, value, desc = null) => ({
   id, type: "boolean", format: "switch", label, icon: "sicon-toggle-off", required: false, description: desc, value, selected: value,
 });
 const px = (id, width) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=${width}`;
-const SHIRT = px(5709665, 1400);
-const RACK = px(996329, 1400);
+const SHIRT = px(22441297, 1400);
+const RACK = px(17281873, 1400);
 const LAYERS = px(3755706, 1400);
 const SHOP = px(7679720, 1800);
 const SEW = px(3738088, 1400);
-const TEE = px(6311652, 1400);
-const DRESS = px(1055691, 1400);
+const TEE = px(37166936, 1400);
+const DRESS = px(5191435, 1400);
 const LOOK = "https://videos.pexels.com/video-files/8322527/8322527-hd_2048_1080_25fps.mp4";
 const REEL_MIRROR = "https://videos.pexels.com/video-files/5585950/5585950-sd_360_640_30fps.mp4";
 const REEL_ADJUST = "https://videos.pexels.com/video-files/8788548/8788548-sd_360_640_25fps.mp4";
@@ -133,15 +133,28 @@ const ctaHint = "في صفحة منتج يفتح الشراء السريع. في
 
 const components = [
   {
-    title: "رأس الصفحة",
+    title: "رأس المجلة",
     icon: "sicon-store",
-    name: "page-bar",
+    name: "edit-bar",
     key: "c4e8a1b2-7f30-4a6e-9c15-2d8b6f0e4a71",
     image: "",
     props: { "min-height": "88px" },
     fields: [
-      text("announce", "الشريط الإعلاني", L("شحن مجاني فوق ٢٥٠ ر.س · تبديل المقاس خلال ١٤ يوم", "Free shipping over SAR 250 · size exchange within 14 days"), { desc: "يظهر فوق الشعار. اتركه فارغاً لإخفاء الشريط." }),
-      drop("announce_mode", "حركة الشريط", [["move", "متحرك", KEY.annMove], ["still", "ثابت", KEY.annStill]], "move", "المتحرك يمرّ الجملة باستمرار. الثابت يُبقيها في الوسط."),
+      collection("bars", "شريط", [
+        text("text", "نص الشريط", L("", ""), { max: 140 }),
+        drop("media", "بجانب النص", [["none", "بدون", "ebf61642-2e54-47ae-9018-bfaf1857177c"], ["icon", "أيقونة", "fb70e3e4-c43f-45b1-a75e-7c043d6e36dc"], ["image", "صورة مصغرة", "39dea639-0118-4a0d-a29b-f48851a0e796"]], "icon", "اختر أيقونة من مكتبة سلة أو صورة صغيرة لمنتج أو شعار."),
+        icon("icon", "الأيقونة", "sicon-megaphone"),
+        image("image", "الصورة المصغرة", "المقاس المقترح 112×112 بكسل، مربعة بزوايا مدورة، PNG أو WebP بخلفية شفافة أو صورة منتج. تظهر بحجم ٢٨×٢٨ بكسل بزوايا مدورة. تُستخدم عند اختيار «صورة مصغرة» في «بجانب النص»."),
+        drop("motion", "حركة الشريط", [["move", "متحرك", "3750fc54-ea15-44bb-8e54-a1931e8558e4"], ["still", "ثابت", "216c574a-63b0-49e2-b720-b0934addcaf0"]], "move", "المتحرك يمرّ الجملة باستمرار. الثابت يُبقيها في الوسط."),
+        url("link", "رابط الشريط", "", "اختياري. يفتح عند الضغط على الشريط."),
+        color("bg", "خلفية هذا الشريط", "", "اتركه فارغاً ليأخذ لون الشريط العام."),
+        color("ink", "كتابة هذا الشريط", "", "اتركه فارغاً ليأخذ لون الكتابة العام."),
+      ], [
+        { text: L("شحن مجاني فوق ٢٥٠ ر.س", "Free shipping over SAR 250"), media: [{ label: "أيقونة", value: "icon", key: "fb70e3e4-c43f-45b1-a75e-7c043d6e36dc" }], icon: "sicon-shipping-fast", image: "", motion: [{ label: "متحرك", value: "move", key: "3750fc54-ea15-44bb-8e54-a1931e8558e4" }], link: "", bg: "", ink: "" },
+        { text: L("قميص الكتان متوفر بكل المقاسات", "The linen shirt is back in every size"), media: [{ label: "صورة مصغرة", value: "image", key: "39dea639-0118-4a0d-a29b-f48851a0e796" }], icon: "sicon-megaphone", image: "https://images.pexels.com/photos/22441297/pexels-photo-22441297.jpeg?auto=compress&cs=tinysrgb&w=200", motion: [{ label: "ثابت", value: "still", key: "216c574a-63b0-49e2-b720-b0934addcaf0" }], link: "", bg: "", ink: "" },
+        { text: L("تبديل المقاس خلال ١٤ يوم", "Size exchange within 14 days"), media: [{ label: "أيقونة", value: "icon", key: "fb70e3e4-c43f-45b1-a75e-7c043d6e36dc" }], icon: "sicon-rotate", image: "", motion: [{ label: "متحرك", value: "move", key: "3750fc54-ea15-44bb-8e54-a1931e8558e4" }], link: "", bg: "", ink: "" },
+      ], 0, 5),
+      drop("bars_layout", "عرض الأشرطة", [["stack", "كل شريط في سطر", "9e5cba9e-6c76-44b6-87e1-98233ac5e0d3"], ["rotate", "شريط واحد يتبدل", "fa0cb8d3-ce22-4c2c-8b88-05e28058b3f4"]], "rotate", "كل شريط في سطر يعرض الأشرطة فوق بعضها. شريط واحد يتبدل يعرض شريطاً كل ٤ ثوانٍ ويتوقف عند مرور المؤشر."),
       line("pb-announce"),
       image("logo", "شعار مخصص", "اتركه فارغاً ليظهر شعار المتجر."),
       image("logo_dark", "شعار للخلفية الداكنة", "يظهر فوق السلايدر الشفاف وفي الوضع الداكن. بدونه يُستخدم الشعار الأساسي."),
@@ -286,9 +299,9 @@ const components = [
     ],
   },
   {
-    title: "دعوة الختام",
+    title: "الصفحة الأخيرة (دعوة الختام)",
     icon: "sicon-megaphone",
-    name: "close-invite",
+    name: "closing-page",
     key: "df171afb-b40e-4933-93ae-38e480e6bf60",
     image: "",
     props: { "min-height": "320px" },
@@ -626,6 +639,7 @@ const components = [
       text("title", "اسم القسم", L("افتتاح الصفحة", "Page opening")),
       collection("items", "شريحة", [
         image("image", "صورة الشريحة", "المقاس المقترح 1400×900 بكسل، صورة أفقية للمنتج أو الاستخدام."),
+        url("video", "فيديو الشريحة (اختياري)", "", "رابط ملف MP4 أو يوتيوب أو فيميو. يعمل بلا صوت ويتكرر، والصورة تظهر قبل تحميله. الشريحة تنتقل عند انتهاء الملف."),
         text("alt", "وصف الصورة", L("المنتج في الاستخدام", "The product in use")),
         text("title", "العنوان", L("القطعة التي تبيع نفسها من أول نظرة", "The piece that explains itself at first glance")),
         area("text", "النص", L("اكتب جملة واحدة عن القماش أو القصة، ثم ادعُ الزائر للطلب.", "Write one sentence about the fabric or the cut, then invite the visitor to order.")),
@@ -633,7 +647,7 @@ const components = [
         url("url", "رابط الزر", "", ctaHint),
       ], [
         { image: SHIRT, alt: L("قميص كتان فاتح على علاقة", "A light linen shirt on a hanger"), title: L("قميص كتان من أول نظرة", "A linen shirt at first glance"), text: L("أزرار ظاهرة وجيب صدر. المقاس في القسم التالي.", "Visible buttons and a chest pocket. The size is in the next section."), button: L("شاهد القطعة", "See the piece"), url: "#rw-product" },
-        { image: RACK, alt: L("ملابس على علاقات خشبية", "Clothes on wooden hangers"), title: L("التشكيلة على العلاقة", "The collection on the rail"), text: L("أكثر من قطعة، واللون يُرى قبل الاختيار.", "More than one piece, and the color shows before you choose."), button: L("اطلب الآن", "Order now"), url: "" },
+        { image: RACK, video: LOOK, alt: L("قمصان بيضاء على علاقات خشبية", "White shirts on wooden hangers"), title: L("التشكيلة على العلاقة", "The collection on the rail"), text: L("أكثر من قطعة، واللون يُرى قبل الاختيار.", "More than one piece, and the color shows before you choose."), button: L("اطلب الآن", "Order now"), url: "" },
         { image: SHOP, alt: L("اختيار قطعة من علاقة الملابس", "Choosing a piece from a clothing rail"), title: L("الاختيار قبل الخروج", "The choice before leaving"), text: L("من العلاقة إلى المقاس. لا خطوات أكثر من ذلك.", "From the rail to the size. No more steps than that."), button: L("أضف للطلب", "Add to the order"), url: "" },
       ], 1, 6),
       color("bg_color", "لون الخلفية"),
@@ -661,7 +675,7 @@ const components = [
         text("alt", "وصف الصورة", L("المنتج من الأمام", "The product from the front")),
       ], [
         { image: SHIRT, label: L("القميص", "Shirt"), alt: L("قميص الكتان من الأمام", "The linen shirt from the front") },
-        { image: RACK, label: L("العلاقة", "Rail"), alt: L("قطع على علاقات خشبية", "Pieces on wooden hangers") },
+        { image: RACK, label: L("العلاقة", "Rail"), alt: L("قمصان على علاقات خشبية", "Shirts on wooden hangers") },
         { image: LAYERS, label: L("الطبقة", "Layer"), alt: L("جاكيت فوق قميص", "A jacket over a shirt") },
       ], 1, 6),
       color("bg_color", "لون الخلفية"),
@@ -705,7 +719,7 @@ const components = [
     ],
   },
   {
-    title: "ريلز التجارب",
+    title: "ريلز الآراء",
     icon: "sicon-star",
     name: "review-reels",
     key: "d4e8b1c6-2f70-4a93-9c15-6e8a0b3d7f24",
@@ -737,9 +751,9 @@ const components = [
     ],
   },
   {
-    title: "فوتر الصفحة",
+    title: "خاتمة المجلة (الفوتر)",
     icon: "sicon-link",
-    name: "page-footer",
+    name: "edit-footer",
     key: "b7e2c4a1-6f38-4d90-8b15-3a9c0e7d2f64",
     image: "",
     props: { "min-height": "160px" },
@@ -775,14 +789,14 @@ const components = [
 ];
 
 const catalog = [
-  "page-bar",
+  "edit-bar",
   "open-slider",
   "product-hero",
   "open-video",
   "review-reels",
   "promise-row",
   "detail-duo",
-  "close-invite",
+  "closing-page",
   "split-intro",
   "chapter-path",
   "voice-stack",
@@ -798,7 +812,7 @@ const catalog = [
   "care-thread",
   "maker-letter",
   "shelf-tags",
-  "page-footer",
+  "edit-footer",
 ];
 components.sort((a, b) => catalog.indexOf(a.name) - catalog.indexOf(b.name));
 
@@ -808,21 +822,21 @@ const templates = [
     id: "846b8092-8d09-493a-a59e-4485260dd34c",
     is_default: true,
     primary_color: "#2457c5",
-    order: [["page-bar", { sticky: true, show_mode_toggle: true }], "open-slider", "product-hero", "promise-row", "open-video", "detail-duo", "close-invite", "page-footer"],
+    order: [["edit-bar", { sticky: true, show_mode_toggle: true }], "open-slider", "product-hero", "promise-row", "open-video", "detail-duo", "closing-page", "edit-footer"],
   },
   {
     name: "zakham",
     id: "f4a1ec56-5f6a-4683-ab2d-9f25426104e6",
     is_default: false,
     primary_color: "#0f6e6a",
-    order: [["page-bar", { sticky: true, transparent: true, show_shadow: false, default_mode: "dark" }], "dock-hero", "count-band", "reason-rail", "versus-board", "offer-panel", "situation-pick", "page-footer"],
+    order: [["edit-bar", { sticky: true, transparent: true, show_shadow: false, default_mode: "dark" }], "dock-hero", "count-band", "reason-rail", "versus-board", "offer-panel", "situation-pick", "edit-footer"],
   },
   {
     name: "saji",
     id: "9d14165d-429f-4cbc-9254-ae64d434d1d7",
     is_default: false,
     primary_color: "#1c3d36",
-    order: ["page-bar", "origin-card", "receipt-note", "day-parts", "care-thread", "maker-letter", "shelf-tags", "page-footer"],
+    order: ["edit-bar", "origin-card", "receipt-note", "day-parts", "care-thread", "maker-letter", "shelf-tags", "edit-footer"],
   },
 ];
 

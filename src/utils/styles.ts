@@ -1,4 +1,24 @@
+
+/** Editor hints ("add items in the settings") show in the Salla editor and local preview, never on the live page. */
+function markEditing(): void {
+  const root = document.documentElement;
+  const read = () => {
+    let on = true;
+    try {
+      const salla = (window as any).Salla;
+      on = window.self !== window.top || salla?.config?.get?.("page.is_landing_page") !== true;
+    } catch {
+      on = true;
+    }
+    root.dataset.lpEditing = on ? "1" : "0";
+  };
+  if (root.dataset.lpEditing) return;
+  read();
+  try { (window as any).Salla?.onReady?.(read); } catch { /* Salla is not on the page */ }
+}
+
 export function injectStyles(id: string, css: string): void {
+  markEditing();
   if (document.getElementById(id)) return;
   const style = document.createElement("style");
   style.id = id;
@@ -10,6 +30,7 @@ const LIGHT = `--rw-surface:#f5f6f8; --rw-surface-2:#e8ebef; --rw-card:#ffffff; 
 const DARK = `--rw-surface:#121417; --rw-surface-2:#1c2026; --rw-card:#1e2329; --rw-soft:#262c33; --rw-text:#f4f6f8; --rw-muted:#b7c0c9; --rw-border:rgb(255 255 255 / 14%);`;
 
 export const baseCss = `
+html[data-lp-editing="0"] .rw-empty, html[data-lp-editing="0"] .rw-hint { display: none !important; }
 .rw-host { display: block; width: 100%; min-width: 0; container-type: inline-size; color: inherit; }
 .component-card:has(> .rw-host:not(:empty)) { min-height: 0; }
 .rw-block { ${LIGHT}

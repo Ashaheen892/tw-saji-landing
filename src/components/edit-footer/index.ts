@@ -49,7 +49,7 @@ export default class PageFoot extends LitElement {
     super.connectedCallback();
     this.classList.add("rw-host");
     injectStyles("rw-base", baseCss);
-    injectStyles("rw-announce", announceCss("rw"));
+    injectStyles("rw-announce", announceCss("rw", "tile"));
     injectStyles("rw-page-footer", css);
     const onTone = () => {
       this.dark = currentTone() === "dark";

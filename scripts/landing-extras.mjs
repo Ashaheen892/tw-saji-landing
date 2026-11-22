@@ -54,7 +54,7 @@ const SPEC = {
 export function applyLandingExtras(ctx) {
   const { components, catalog, templates, L, text, color, sw, drop, line, collection, image, url, scheme, KEY } = ctx;
   const spec = SPEC;
-  const footer = components.find((item) => item.name === "page-footer");
+  const footer = components.find((item) => item.name === "edit-footer");
   if (footer && !footer.fields.some((field) => field.id === "show_whatsapp")) {
     const sides = [["start", "بداية السطر", KEY.dockStart], ["end", "نهاية السطر", KEY.dockEnd]];
     const dock = [
@@ -81,28 +81,28 @@ export function applyLandingExtras(ctx) {
     footer.fields.splice(at < 0 ? footer.fields.length : at, 0, ...dock);
   }
 
-  if (!components.some((item) => item.name === "stat-strip")) {
-    const made = blocks({ L, text, color, collection, image, url, scheme, spec });
-    const index = components.findIndex((item) => item.name === "page-footer");
+  if (!components.some((item) => item.name === "figure-row")) {
+    const made = blocks({ L, text, color, collection, image, url, scheme, sw, spec });
+    const index = components.findIndex((item) => item.name === "edit-footer");
     components.splice(index < 0 ? components.length : index, 0, ...made);
     if (spec.schemeMode === "after") made.forEach((item) => item.fields.push(scheme()));
   }
 
   if (Array.isArray(catalog)) {
-    const names = ["stat-strip", "brand-row", "partner-row", "quick-contact"];
-    const at = catalog.indexOf("page-footer");
+    const names = ["figure-row", "brand-wall", "credit-cards", "contact-index"];
+    const at = catalog.indexOf("edit-footer");
     names.slice().reverse().forEach((name) => {
       if (!catalog.includes(name)) catalog.splice(at < 0 ? catalog.length : at, 0, name);
     });
   }
 
-  const required = ["stat-strip", "brand-row", "partner-row", "quick-contact"];
+  const required = ["figure-row", "brand-wall", "credit-cards", "contact-index"];
   for (const template of templates) {
     const next = [];
     let added = false;
     for (const entry of template.order) {
       const name = Array.isArray(entry) ? entry[0] : entry;
-      if (name === "page-footer" && !added) {
+      if (name === "edit-footer" && !added) {
         next.push(...required);
         added = true;
       }
@@ -113,7 +113,7 @@ export function applyLandingExtras(ctx) {
   }
 }
 
-function blocks({ L, text, color, collection, image, url, scheme, spec }) {
+function blocks({ L, text, color, collection, image, url, scheme, sw, spec }) {
   const end = (fields) => {
     fields.push(color("bg_color", "لون الخلفية"));
     if (spec.schemeMode === "field") fields.push(scheme());
@@ -126,9 +126,9 @@ function blocks({ L, text, color, collection, image, url, scheme, spec }) {
   ];
   return [
     {
-      title: "إحصائيات",
+      title: "سطر الأرقام (إحصائيات)",
       icon: "sicon-calculator",
-      name: "stat-strip",
+      name: "figure-row",
       key: spec.stat.key,
       image: "",
       props: { "min-height": "180px" },
@@ -136,6 +136,7 @@ function blocks({ L, text, color, collection, image, url, scheme, spec }) {
         text("kicker", "السطر الصغير", L(...spec.stat.kicker)),
         text("title", "العنوان", L(...spec.stat.title)),
         text("subtitle", "السطر تحت العنوان", L("", "")),
+        sw("count_up", "حركة العد", true, "الأرقام تعدّ من الصفر أول ما يظهر القسم. النص حول الرقم يبقى كما هو."),
         collection("items", "رقم", [
           text("value", "الرقم", L("١٢", "12")),
           text("label", "الوصف", L("وصف الرقم", "What the number means")),
@@ -143,9 +144,9 @@ function blocks({ L, text, color, collection, image, url, scheme, spec }) {
       ]),
     },
     {
-      title: "الماركات التجارية",
+      title: "جدار الماركات",
       icon: "sicon-star2",
-      name: "brand-row",
+      name: "brand-wall",
       key: spec.brand.key,
       image: "",
       props: { "min-height": "160px" },
@@ -162,9 +163,9 @@ function blocks({ L, text, color, collection, image, url, scheme, spec }) {
       ]),
     },
     {
-      title: "شركاء النجاح",
+      title: "بطاقات الشركاء (شركاء النجاح)",
       icon: "sicon-store",
-      name: "partner-row",
+      name: "credit-cards",
       key: spec.partner.key,
       image: "",
       props: { "min-height": "180px" },
@@ -180,9 +181,9 @@ function blocks({ L, text, color, collection, image, url, scheme, spec }) {
       ]),
     },
     {
-      title: "التواصل السريع",
+      title: "فهرس التواصل (تواصل سريع)",
       icon: "sicon-link",
-      name: "quick-contact",
+      name: "contact-index",
       key: spec.contact.key,
       image: "",
       props: { "min-height": "160px" },

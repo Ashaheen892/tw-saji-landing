@@ -6,11 +6,14 @@ import { baseCss, injectStyles, sectionStyle } from "../../utils/styles.js";
 import { emptyCopy, heading } from "../../utils/ui.js";
 
 const css = `
-.rw-brands { display: flex; flex-wrap: wrap; align-items: center; }
-.rw-brand { display: inline-flex; align-items: center; gap: .7rem; padding: .85rem 1.15rem; color: inherit; text-decoration: none; border-inline-end: 1px solid var(--rw-border); }
-.rw-brand img { height: 2rem; width: auto; max-width: 6.5rem; object-fit: contain; }
-.rw-brand b { font-weight: 750; letter-spacing: .01em; }
-.rw-brand small { display: block; color: var(--rw-muted); font-size: .78rem; }
+.rw-brands { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-block-start: 1px solid var(--rw-border); border-inline-start: 1px solid var(--rw-border); }
+@container (min-width: 720px) { .rw-brands { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.rw-brand { display: grid; place-items: center; align-content: center; gap: .45rem; min-height: 8.5rem; padding: 1.2rem .8rem; text-align: center; color: inherit; text-decoration: none; border-inline-end: 1px solid var(--rw-border); border-block-end: 1px solid var(--rw-border); transition: background .2s ease; }
+a.rw-brand:hover { background: var(--rw-soft); }
+.rw-brand img { height: 2.4rem; width: auto; max-width: 8rem; object-fit: contain; filter: grayscale(1); opacity: .85; }
+a.rw-brand:hover img { filter: none; opacity: 1; }
+.rw-brand b { display: block; font-size: 1.05rem; font-weight: 750; letter-spacing: -.01em; }
+.rw-brand small { display: block; color: var(--rw-muted); font-size: .8rem; }
 `;
 
 export default class BrandRow extends LitElement {

@@ -51,13 +51,36 @@ function schemeOf(cfg) {
   return scheme === "dark" ? "rw-dark" : scheme === "light" ? "rw-light" : "rw-auto";
 }
 __name(schemeOf, "schemeOf");
+function markEditing() {
+  var _a, _b;
+  const root = document.documentElement, read = /* @__PURE__ */ __name(() => {
+    var _a2, _b2;
+    let on = !0;
+    try {
+      const salla = window.Salla;
+      on = window.self !== window.top || ((_b2 = (_a2 = salla == null ? void 0 : salla.config) == null ? void 0 : _a2.get) == null ? void 0 : _b2.call(_a2, "page.is_landing_page")) !== !0;
+    } catch {
+      on = !0;
+    }
+    root.dataset.lpEditing = on ? "1" : "0";
+  }, "read");
+  if (!root.dataset.lpEditing) {
+    read();
+    try {
+      (_b = (_a = window.Salla) == null ? void 0 : _a.onReady) == null || _b.call(_a, read);
+    } catch {
+    }
+  }
+}
+__name(markEditing, "markEditing");
 function injectStyles(id, css2) {
-  if (document.getElementById(id)) return;
+  if (markEditing(), document.getElementById(id)) return;
   const style = document.createElement("style");
   style.id = id, style.textContent = css2, document.head.appendChild(style);
 }
 __name(injectStyles, "injectStyles");
 const LIGHT = "--rw-surface:#f5f6f8; --rw-surface-2:#e8ebef; --rw-card:#ffffff; --rw-soft:#eef1f4; --rw-text:var(--color-text, #1a1d21); --rw-muted:#5c6570; --rw-border:#e1e5ea;", DARK = "--rw-surface:#121417; --rw-surface-2:#1c2026; --rw-card:#1e2329; --rw-soft:#262c33; --rw-text:#f4f6f8; --rw-muted:#b7c0c9; --rw-border:rgb(255 255 255 / 14%);", baseCss = `
+html[data-lp-editing="0"] .rw-empty, html[data-lp-editing="0"] .rw-hint { display: none !important; }
 .rw-host { display: block; width: 100%; min-width: 0; container-type: inline-size; color: inherit; }
 .component-card:has(> .rw-host:not(:empty)) { min-height: 0; }
 .rw-block { ${LIGHT}
@@ -119,11 +142,14 @@ var __defProp2 = Object.defineProperty, __decorateClass = /* @__PURE__ */ __name
   return result && __defProp2(target, key, result), result;
 }, "__decorateClass");
 const css = `
-.rw-brands { display: flex; flex-wrap: wrap; align-items: center; }
-.rw-brand { display: inline-flex; align-items: center; gap: .7rem; padding: .85rem 1.15rem; color: inherit; text-decoration: none; border-inline-end: 1px solid var(--rw-border); }
-.rw-brand img { height: 2rem; width: auto; max-width: 6.5rem; object-fit: contain; }
-.rw-brand b { font-weight: 750; letter-spacing: .01em; }
-.rw-brand small { display: block; color: var(--rw-muted); font-size: .78rem; }
+.rw-brands { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-block-start: 1px solid var(--rw-border); border-inline-start: 1px solid var(--rw-border); }
+@container (min-width: 720px) { .rw-brands { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.rw-brand { display: grid; place-items: center; align-content: center; gap: .45rem; min-height: 8.5rem; padding: 1.2rem .8rem; text-align: center; color: inherit; text-decoration: none; border-inline-end: 1px solid var(--rw-border); border-block-end: 1px solid var(--rw-border); transition: background .2s ease; }
+a.rw-brand:hover { background: var(--rw-soft); }
+.rw-brand img { height: 2.4rem; width: auto; max-width: 8rem; object-fit: contain; filter: grayscale(1); opacity: .85; }
+a.rw-brand:hover img { filter: none; opacity: 1; }
+.rw-brand b { display: block; font-size: 1.05rem; font-weight: 750; letter-spacing: -.01em; }
+.rw-brand small { display: block; color: var(--rw-muted); font-size: .8rem; }
 `, _BrandRow = class _BrandRow extends LitElement {
   constructor() {
     super(...arguments), this.stop = () => {
@@ -161,7 +187,7 @@ let BrandRow = _BrandRow;
 __decorateClass([
   property({ type: Object })
 ], BrandRow.prototype, "config");
-typeof BrandRow < "u" && BrandRow.registerSallaComponent("salla-brand-row");
+typeof BrandRow < "u" && BrandRow.registerSallaComponent("salla-brand-wall");
 export {
   BrandRow as default
 };

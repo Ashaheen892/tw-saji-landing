@@ -4,11 +4,12 @@ import { getCollectionItems, getConfig, isRtl, localizedString, t, watchLocale }
 import { renderCta, schemeOf } from "../../utils/landing.js";
 import { baseCss, injectStyles, sectionStyle } from "../../utils/styles.js";
 import { emptyCopy, media } from "../../utils/ui.js";
+import { clipUrl, frameSrc, isFileClip } from "../../utils/video.js";
 
 const css = `
 .rw-opener { display: grid; background: var(--rw-card); }
 .rw-opener__media { position: relative; order: -1; min-height: 18rem; aspect-ratio: 4 / 3; overflow: hidden; background: var(--rw-soft); touch-action: pan-y; }
-.rw-opener__media img, .rw-opener__media .rw-ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: rw-opener-in .4s ease; }
+.rw-opener__media img, .rw-opener__media video, .rw-opener__media iframe, .rw-opener__media .rw-ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: rw-opener-in .4s ease; }
 @container (min-width: 860px) {
   .rw-opener { grid-template-columns: minmax(17rem, .72fr) minmax(0, 1.28fr); min-height: 34rem; }
   .rw-opener__media { order: 0; min-height: 0; aspect-ratio: auto; }
@@ -29,6 +30,9 @@ const css = `
 .rw-opener__jumps b { color: var(--color-primary, #1a1d21); font-size: .85rem; font-weight: 700; }
 .rw-opener__jumps span { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .rw-opener__nav button:focus-visible, .rw-opener__jumps button:focus-visible { outline: 2px solid var(--color-primary, #1a1d21); outline-offset: 2px; }
+.rw-opener__media iframe { border: 0; pointer-events: none; }
+.rw-opener__sound { position: absolute; z-index: 2; top: .75rem; inset-inline-end: .75rem; min-height: 2.3rem; padding: 0 .9rem; border: 0; border-radius: 999px; background: rgb(18 20 23 / 74%); color: #fff; font: inherit; font-size: .85rem; font-weight: 700; cursor: pointer; }
+.rw-opener__tag { position: absolute; z-index: 1; top: .75rem; inset-inline-start: .75rem; padding: .25rem .7rem; border-radius: 999px; background: var(--color-primary, #1a1d21); color: var(--color-primary-reverse, #fff); font-size: .78rem; font-weight: 700; }
 @keyframes rw-opener-in { from { opacity: .45; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .rw-opener__media img { animation: none; } }
 `;
@@ -36,6 +40,10 @@ const css = `
 export default class OpenSlider extends LitElement {
   @property({ type: Object }) config?: Record<string, any>;
   @state() private index = 0;
+  @state() private sound = false;
+  private waited = 0;
+  private kinds: string[] = [];
+  private failed = new Set<string>();
   private stop = () => {};
   private timer = 0;
   private count = 1;
@@ -86,7 +94,14 @@ export default class OpenSlider extends LitElement {
     window.clearInterval(this.timer);
     this.timer = 0;
     if (this.reduced) return;
-    this.timer = window.setInterval(() => { if (!this.paused) this.step(1); }, 7000);
+    this.timer = window.setInterval(() => {
+      if (this.paused) return;
+      const kind = this.kinds[this.index];
+      if (kind === "file") return; // a video file moves on when it ends
+      if (kind === "frame" && ++this.waited < 3) return; // embeds get three ticks
+      this.waited = 0;
+      this.step(1);
+    }, 7000);
   }
 
   private step(dir: number) {
@@ -96,10 +111,12 @@ export default class OpenSlider extends LitElement {
 
   private choose(index: number) {
     this.index = index;
+    this.waited = 0;
     this.arm();
   }
 
   private move(dir: number) {
+    this.waited = 0;
     this.step(dir);
     this.arm();
   }
@@ -120,6 +137,18 @@ export default class OpenSlider extends LitElement {
     this.release();
   };
 
+  private slideMedia(slide: { image: string; alt: string; title: string; video: string }, total: number) {
+    if (!slide.video) return media(slide.image, slide.alt || slide.title);
+    const tag = html`<span class="rw-opener__tag">${t({ ar: "فيديو", en: "Video" })}</span>`;
+    if (isFileClip(slide.video)) {
+      return html`${tag}<video src=${slide.video} poster=${slide.image || nothing} .muted=${!this.sound} autoplay playsinline preload="metadata"
+          ?loop=${total < 2 || this.reduced} aria-label=${slide.alt || slide.title}
+          @ended=${() => this.move(1)} @error=${() => { this.failed.add(slide.video); this.requestUpdate(); }}></video>
+        <button type="button" class="rw-opener__sound" @click=${() => { this.sound = !this.sound; this.hold(); }}>${this.sound ? t({ ar: "كتم الصوت", en: "Mute" }) : t({ ar: "تشغيل الصوت", en: "Sound on" })}</button>`;
+    }
+    return html`${tag}<iframe src=${frameSrc(slide.video, true, true)} title=${slide.alt || slide.title} allow="autoplay; encrypted-media; picture-in-picture" loading="lazy"></iframe>`;
+  }
+
   render() {
     const cfg = getConfig(this.config);
     const slides = getCollectionItems<Record<string, any>>(cfg.items, "items")
@@ -130,9 +159,11 @@ export default class OpenSlider extends LitElement {
         text: localizedString(item.text),
         button: localizedString(item.button),
         url: String(item.url || ""),
+        video: clipUrl(item.video),
       }))
       .filter((item) => item.title);
     this.count = slides.length;
+    this.kinds = slides.map((item) => (item.video && !this.failed.has(item.video) ? (isFileClip(item.video) ? "file" : "frame") : "image"));
     const slide = slides[this.index] || slides[0];
     const label = localizedString(cfg.title) || t({ ar: "سلايدر", en: "Slider" });
     const rtl = isRtl();
@@ -157,7 +188,7 @@ export default class OpenSlider extends LitElement {
                 : nothing}
             </div>
             <div class="rw-opener__media" @pointerdown=${this.down} @pointerup=${this.up} @pointercancel=${this.up}>
-              ${media(slide.image, slide.alt || slide.title)}
+              ${this.slideMedia(slide, slides.length)}
               ${slides.length > 1
                 ? html`<div class="rw-opener__nav">
                     <button type="button" dir="ltr" aria-label=${t({ ar: "الشريحة السابقة", en: "Previous slide" })} @click=${() => this.move(-1)}>${prevIcon}</button>

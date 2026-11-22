@@ -20,5 +20,5 @@ export function emptyCopy() {
 
 export function media(src: string, alt: string, className = "") {
   if (src) return html`<img class=${className} src=${src} alt=${alt} loading="lazy" />`;
-  return html`<div class="rw-ph ${className}">${t({ ar: "أضف الصورة من إعدادات القسم. المقاس المقترح مذكور بجانب الحقل.", en: "Add an image in the section settings. The suggested size is next to the field." })}</div>`;
+  return html`<div class="rw-ph ${className}"><span class="rw-hint">${t({ ar: "أضف الصورة من إعدادات القسم. المقاس المقترح مذكور بجانب الحقل.", en: "Add an image in the section settings. The suggested size is next to the field." })}</span></div>`;
 }

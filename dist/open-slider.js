@@ -106,13 +106,36 @@ function schemeOf(cfg) {
   return scheme === "dark" ? "rw-dark" : scheme === "light" ? "rw-light" : "rw-auto";
 }
 __name(schemeOf, "schemeOf");
+function markEditing() {
+  var _a, _b;
+  const root = document.documentElement, read = /* @__PURE__ */ __name(() => {
+    var _a2, _b2;
+    let on = !0;
+    try {
+      const salla2 = window.Salla;
+      on = window.self !== window.top || ((_b2 = (_a2 = salla2 == null ? void 0 : salla2.config) == null ? void 0 : _a2.get) == null ? void 0 : _b2.call(_a2, "page.is_landing_page")) !== !0;
+    } catch {
+      on = !0;
+    }
+    root.dataset.lpEditing = on ? "1" : "0";
+  }, "read");
+  if (!root.dataset.lpEditing) {
+    read();
+    try {
+      (_b = (_a = window.Salla) == null ? void 0 : _a.onReady) == null || _b.call(_a, read);
+    } catch {
+    }
+  }
+}
+__name(markEditing, "markEditing");
 function injectStyles(id, css2) {
-  if (document.getElementById(id)) return;
+  if (markEditing(), document.getElementById(id)) return;
   const style = document.createElement("style");
   style.id = id, style.textContent = css2, document.head.appendChild(style);
 }
 __name(injectStyles, "injectStyles");
 const LIGHT = "--rw-surface:#f5f6f8; --rw-surface-2:#e8ebef; --rw-card:#ffffff; --rw-soft:#eef1f4; --rw-text:var(--color-text, #1a1d21); --rw-muted:#5c6570; --rw-border:#e1e5ea;", DARK = "--rw-surface:#121417; --rw-surface-2:#1c2026; --rw-card:#1e2329; --rw-soft:#262c33; --rw-text:#f4f6f8; --rw-muted:#b7c0c9; --rw-border:rgb(255 255 255 / 14%);", baseCss = `
+html[data-lp-editing="0"] .rw-empty, html[data-lp-editing="0"] .rw-hint { display: none !important; }
 .rw-host { display: block; width: 100%; min-width: 0; container-type: inline-size; color: inherit; }
 .component-card:has(> .rw-host:not(:empty)) { min-height: 0; }
 .rw-block { ${LIGHT}
@@ -159,9 +182,56 @@ function emptyCopy() {
 }
 __name(emptyCopy, "emptyCopy");
 function media(src, alt, className = "") {
-  return src ? html`<img class=${className} src=${src} alt=${alt} loading="lazy" />` : html`<div class="rw-ph ${className}">${t({ ar: "أضف الصورة من إعدادات القسم. المقاس المقترح مذكور بجانب الحقل.", en: "Add an image in the section settings. The suggested size is next to the field." })}</div>`;
+  return src ? html`<img class=${className} src=${src} alt=${alt} loading="lazy" />` : html`<div class="rw-ph ${className}"><span class="rw-hint">${t({ ar: "أضف الصورة من إعدادات القسم. المقاس المقترح مذكور بجانب الحقل.", en: "Add an image in the section settings. The suggested size is next to the field." })}</span></div>`;
 }
 __name(media, "media");
+function clipUrl(value) {
+  const raw = unwrapValue(value);
+  if (typeof raw == "string") return raw.trim();
+  if (raw && typeof raw == "object") {
+    const url = raw.url ?? raw.src;
+    if (typeof url == "string") return url.trim();
+  }
+  return "";
+}
+__name(clipUrl, "clipUrl");
+function isFileClip(url) {
+  return /\.(mp4|webm|ogg|mov|m4v)(\?|#|$)/i.test(url);
+}
+__name(isFileClip, "isFileClip");
+function kindOf(url) {
+  if (isFileClip(url)) return "file";
+  try {
+    const host = new URL(url).hostname.replace(/^www\./, "");
+    if (host === "youtu.be" || host.includes("youtube.com") || host.includes("youtube-nocookie.com")) return "youtube";
+    if (host.includes("vimeo.com")) return "vimeo";
+  } catch {
+  }
+  return "other";
+}
+__name(kindOf, "kindOf");
+function frameSrc(url, silent, clean = !1) {
+  var _a, _b;
+  let frame = url;
+  const kind = kindOf(url);
+  try {
+    const parsed = new URL(url);
+    if (kind === "youtube") {
+      const host = parsed.hostname.replace(/^www\./, "");
+      let id = "";
+      host === "youtu.be" ? id = parsed.pathname.split("/").filter(Boolean)[0] || "" : parsed.pathname.includes("/embed/") ? id = ((_a = parsed.pathname.split("/embed/")[1]) == null ? void 0 : _a.split("/")[0]) || "" : parsed.pathname.includes("/shorts/") ? id = ((_b = parsed.pathname.split("/shorts/")[1]) == null ? void 0 : _b.split("/")[0]) || "" : id = parsed.searchParams.get("v") || "", id && (frame = `https://www.youtube-nocookie.com/embed/${id}`);
+    } else if (kind === "vimeo") {
+      const id = parsed.pathname.split("/").filter(Boolean).pop() || "";
+      /^\d+$/.test(id) && (frame = `https://player.vimeo.com/video/${id}`);
+    }
+  } catch {
+    frame = url;
+  }
+  if (kind === "file") return frame;
+  const params = new URLSearchParams();
+  return params.set("autoplay", "1"), params.set("playsinline", "1"), kind === "youtube" ? (params.set("mute", "1"), params.set("rel", "0"), params.set("enablejsapi", "1"), clean && params.set("controls", "0")) : kind === "vimeo" ? (params.set("muted", "1"), clean && (params.set("controls", "0"), params.set("loop", "1"), params.set("title", "0"), params.set("byline", "0"), params.set("portrait", "0"))) : (params.set("mute", "1"), params.set("muted", "1")), `${frame}${frame.includes("?") ? "&" : "?"}${params.toString()}`;
+}
+__name(frameSrc, "frameSrc");
 var __defProp2 = Object.defineProperty, __decorateClass = /* @__PURE__ */ __name((decorators, target, key, kind) => {
   for (var result = void 0, i = decorators.length - 1, decorator; i >= 0; i--)
     (decorator = decorators[i]) && (result = decorator(target, key, result) || result);
@@ -170,7 +240,7 @@ var __defProp2 = Object.defineProperty, __decorateClass = /* @__PURE__ */ __name
 const css = `
 .rw-opener { display: grid; background: var(--rw-card); }
 .rw-opener__media { position: relative; order: -1; min-height: 18rem; aspect-ratio: 4 / 3; overflow: hidden; background: var(--rw-soft); touch-action: pan-y; }
-.rw-opener__media img, .rw-opener__media .rw-ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: rw-opener-in .4s ease; }
+.rw-opener__media img, .rw-opener__media video, .rw-opener__media iframe, .rw-opener__media .rw-ph { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: rw-opener-in .4s ease; }
 @container (min-width: 860px) {
   .rw-opener { grid-template-columns: minmax(17rem, .72fr) minmax(0, 1.28fr); min-height: 34rem; }
   .rw-opener__media { order: 0; min-height: 0; aspect-ratio: auto; }
@@ -191,11 +261,14 @@ const css = `
 .rw-opener__jumps b { color: var(--color-primary, #1a1d21); font-size: .85rem; font-weight: 700; }
 .rw-opener__jumps span { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .rw-opener__nav button:focus-visible, .rw-opener__jumps button:focus-visible { outline: 2px solid var(--color-primary, #1a1d21); outline-offset: 2px; }
+.rw-opener__media iframe { border: 0; pointer-events: none; }
+.rw-opener__sound { position: absolute; z-index: 2; top: .75rem; inset-inline-end: .75rem; min-height: 2.3rem; padding: 0 .9rem; border: 0; border-radius: 999px; background: rgb(18 20 23 / 74%); color: #fff; font: inherit; font-size: .85rem; font-weight: 700; cursor: pointer; }
+.rw-opener__tag { position: absolute; z-index: 1; top: .75rem; inset-inline-start: .75rem; padding: .25rem .7rem; border-radius: 999px; background: var(--color-primary, #1a1d21); color: var(--color-primary-reverse, #fff); font-size: .78rem; font-weight: 700; }
 @keyframes rw-opener-in { from { opacity: .45; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .rw-opener__media img { animation: none; } }
 `, _OpenSlider = class _OpenSlider extends LitElement {
   constructor() {
-    super(...arguments), this.index = 0, this.stop = () => {
+    super(...arguments), this.index = 0, this.sound = !1, this.waited = 0, this.kinds = [], this.failed = /* @__PURE__ */ new Set(), this.stop = () => {
     }, this.timer = 0, this.count = 1, this.paused = !1, this.reduced = !1, this.point = 0, this.pointing = !1, this.hold = () => {
       this.paused = !0;
     }, this.release = () => {
@@ -227,17 +300,31 @@ const css = `
   }
   arm() {
     window.clearInterval(this.timer), this.timer = 0, !this.reduced && (this.timer = window.setInterval(() => {
-      this.paused || this.step(1);
+      if (this.paused) return;
+      const kind = this.kinds[this.index];
+      kind !== "file" && (kind === "frame" && ++this.waited < 3 || (this.waited = 0, this.step(1)));
     }, 7e3));
   }
   step(dir) {
     this.count < 2 || (this.index = (this.index + dir + this.count) % this.count);
   }
   choose(index) {
-    this.index = index, this.arm();
+    this.index = index, this.waited = 0, this.arm();
   }
   move(dir) {
-    this.step(dir), this.arm();
+    this.waited = 0, this.step(dir), this.arm();
+  }
+  slideMedia(slide, total) {
+    if (!slide.video) return media(slide.image, slide.alt || slide.title);
+    const tag = html`<span class="rw-opener__tag">${t({ ar: "فيديو", en: "Video" })}</span>`;
+    return isFileClip(slide.video) ? html`${tag}<video src=${slide.video} poster=${slide.image || nothing} .muted=${!this.sound} autoplay playsinline preload="metadata"
+          ?loop=${total < 2 || this.reduced} aria-label=${slide.alt || slide.title}
+          @ended=${() => this.move(1)} @error=${() => {
+      this.failed.add(slide.video), this.requestUpdate();
+    }}></video>
+        <button type="button" class="rw-opener__sound" @click=${() => {
+      this.sound = !this.sound, this.hold();
+    }}>${this.sound ? t({ ar: "كتم الصوت", en: "Mute" }) : t({ ar: "تشغيل الصوت", en: "Sound on" })}</button>` : html`${tag}<iframe src=${frameSrc(slide.video, !0, !0)} title=${slide.alt || slide.title} allow="autoplay; encrypted-media; picture-in-picture" loading="lazy"></iframe>`;
   }
   render() {
     const cfg = getConfig(this.config), slides = getCollectionItems(cfg.items, "items").map((item) => ({
@@ -246,9 +333,10 @@ const css = `
       title: localizedString(item.title),
       text: localizedString(item.text),
       button: localizedString(item.button),
-      url: String(item.url || "")
+      url: String(item.url || ""),
+      video: clipUrl(item.video)
     })).filter((item) => item.title);
-    this.count = slides.length;
+    this.count = slides.length, this.kinds = slides.map((item) => item.video && !this.failed.has(item.video) ? isFileClip(item.video) ? "file" : "frame" : "image");
     const slide = slides[this.index] || slides[0], label = localizedString(cfg.title) || t({ ar: "سلايدر", en: "Slider" }), rtl = isRtl(), pointLeft = html`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 5.5 8 12l6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>`, pointRight = html`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 5.5 16 12l-6.5 6.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" /></svg>`, prevIcon = rtl ? pointRight : pointLeft, nextIcon = rtl ? pointLeft : pointRight;
     return html`<section class="rw-block ${schemeOf(cfg)}" style=${sectionStyle(cfg)} aria-roledescription="carousel" aria-label=${label}>
       ${slide ? html`<div class="rw-opener">
@@ -264,7 +352,7 @@ const css = `
                   </button>`)}</div>` : nothing}
             </div>
             <div class="rw-opener__media" @pointerdown=${this.down} @pointerup=${this.up} @pointercancel=${this.up}>
-              ${media(slide.image, slide.alt || slide.title)}
+              ${this.slideMedia(slide, slides.length)}
               ${slides.length > 1 ? html`<div class="rw-opener__nav">
                     <button type="button" dir="ltr" aria-label=${t({ ar: "الشريحة السابقة", en: "Previous slide" })} @click=${() => this.move(-1)}>${prevIcon}</button>
                     <span class="rw-opener__count" dir="ltr">${`${String(this.index + 1).padStart(2, "0")} / ${String(slides.length).padStart(2, "0")}`}</span>
@@ -283,6 +371,9 @@ __decorateClass([
 __decorateClass([
   state()
 ], OpenSlider.prototype, "index");
+__decorateClass([
+  state()
+], OpenSlider.prototype, "sound");
 typeof OpenSlider < "u" && OpenSlider.registerSallaComponent("salla-open-slider");
 export {
   OpenSlider as default

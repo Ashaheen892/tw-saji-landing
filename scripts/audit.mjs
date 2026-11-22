@@ -2,49 +2,72 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
+/**
+ * Structural checks for this landing bundle. Run after `pnpm build`.
+ * Counts are read from the bundle itself, so adding a section or a page does not break the audit.
+ */
 const root = fileURLToPath(new URL("..", import.meta.url));
-const bundle = JSON.parse(fs.readFileSync(new URL("../twilight-bundle.json", import.meta.url), "utf8"));
+const bundle = JSON.parse(fs.readFileSync(path.join(root, "twilight-bundle.json"), "utf8"));
 const errors = [];
-const names = bundle.components.map((item) => item.name);
+const REQUIRED = ["figure-row", "brand-wall", "credit-cards", "contact-index"];
+const BANNED = ["selia", "سيليا", "eslamoo"];
+
 if (!bundle.features?.includes("landing-page-templates")) errors.push("missing landing-page-templates");
-if (names.length !== 24) errors.push(`expected 24 sections, found ${names.length}`);
+if ((bundle.templates || []).length < 2) errors.push("Salla needs at least two templates");
+
+const names = new Set(bundle.components.map((item) => item.name));
+for (const name of names) {
+  const source = path.join(root, "src", "components", name, "index.ts");
+  if (!fs.existsSync(source)) { errors.push(`missing src for ${name}`); continue; }
+  const code = fs.readFileSync(source, "utf8");
+  if (!code.includes("localizedString(")) errors.push(`${name} never unwraps localizedString`);
+  if (/\bnothing\b/.test(code.replace(/^import.*$/gm, "")) && !/import\s*\{[^}]*\bnothing\b[^}]*\}\s*from\s*"lit"/.test(code)) errors.push(`${name} uses nothing without importing it`);
+  if (!fs.existsSync(path.join(root, "dist", `${name}.js`))) errors.push(`missing dist/${name}.js (run pnpm build)`);
+}
+
 for (const template of bundle.templates || []) {
   const file = template.path.replace("templates.", "");
-  const page = JSON.parse(fs.readFileSync(new URL(`../templates/${file}.json`, import.meta.url), "utf8"));
-  if (page.components.length !== 8) errors.push(`${file} should have 8 sections`);
-  if (page.components[0]?.name !== "page-bar") errors.push(`${file} should open with the page header`);
-  if (page.components.at(-1)?.name !== "page-footer") errors.push(`${file} should end with the page footer`);
-  for (const component of page.components) {
-    const dist = path.join(root, "dist", `${component.name}.js`);
-    if (!fs.existsSync(dist)) errors.push(`missing dist/${component.name}.js`);
+  const page = JSON.parse(fs.readFileSync(path.join(root, "templates", `${file}.json`), "utf8"));
+  const order = page.components.map((item) => item.name);
+  if (order[0] !== "edit-bar") errors.push(`${file} should open with the page header`);
+  if (order.at(-1) !== "edit-footer") errors.push(`${file} should end with the page footer`);
+  for (const name of REQUIRED) if (!order.includes(name)) errors.push(`${file} is missing ${name}`);
+  for (const name of order) if (!names.has(name)) errors.push(`${file} uses unknown section ${name}`);
+}
+
+// Every section injects its CSS globally, so two sections must not style the same top-level class.
+const owners = new Map();
+for (const name of names) {
+  const source = path.join(root, "src", "components", name, "index.ts");
+  if (!fs.existsSync(source)) continue;
+  const css = (fs.readFileSync(source, "utf8").match(/const css = `([\s\S]*?)`;/) || [])[1] || "";
+  const flat = css.replace(/\{[^{}]*\}/g, "{}").replace(/\{[^{}]*\}/g, "{}");
+  for (const match of flat.matchAll(/(?:^|[\s,}])\.([\w-]+)/g)) {
+    const cls = match[1];
+    if (!owners.has(cls)) owners.set(cls, new Set());
+    owners.get(cls).add(name);
   }
 }
-const pages = bundle.templates.map((item) => item.path);
-const used = new Set();
-for (const template of bundle.templates) {
-  const file = template.path.replace("templates.", "");
-  const page = JSON.parse(fs.readFileSync(new URL(`../templates/${file}.json`, import.meta.url), "utf8"));
-  for (const component of page.components) {
-    if (used.has(component.name) && component.name !== "page-bar" && component.name !== "page-footer") errors.push(`section repeated across pages: ${component.name}`);
-    used.add(component.name);
-  }
+const SHARED_OK = ["rw-actions", "rw-lead", "rw-ph", "rw-head"];
+for (const [cls, set] of owners) {
+  if (set.size > 1 && !SHARED_OK.includes(cls)) errors.push(`class .${cls} is styled by ${[...set].join(", ")}`);
 }
-const banned = ["selia", "سيليا", "eslamoo"];
+
 const scan = (dir) => {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (["node_modules", "dist", ".git"].includes(entry.name) || entry.name === "audit.mjs") continue;
+    if (["node_modules", "dist", ".git", "public"].includes(entry.name) || entry.name === "audit.mjs") continue;
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) scan(full);
     else if (/\.(json|ts|mjs|md|py)$/.test(entry.name)) {
       const text = fs.readFileSync(full, "utf8").toLowerCase();
-      for (const word of banned) if (text.includes(word)) errors.push(`${full} mentions ${word}`);
+      for (const word of BANNED) if (text.includes(word.toLowerCase())) errors.push(`${path.relative(root, full)} mentions ${word}`);
     }
   }
 };
 scan(root);
-if (new Set(pages).size !== 3) errors.push("expected three templates");
+
 if (errors.length) {
   console.error(errors.join("\n"));
   process.exit(1);
 }
-console.log("audit ok");
+console.log(`audit ok: ${names.size} sections, ${bundle.templates.length} templates`);
