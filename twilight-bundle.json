@@ -4,8 +4,8 @@
         "en": "Saji Collection"
     },
     "description": {
-        "ar": "ثلاث صفحات هبوط لأي متجر. كل صفحة تبدأ برأس فيه الشعار ووضع الألوان، ثم الأقسام بترتيب الشراء، وتنتهي بفوتر.",
-        "en": "Three landing pages for any store. Each page starts with a header for the logo and the color mode, then the sections in purchase order, and ends with a footer."
+        "ar": null,
+        "en": null
     },
     "author": {
         "name": "Saji",
@@ -13,7 +13,7 @@
         "url": "https://saji-tech.com/"
     },
     "author_email": "sajispprt@gmail.com",
-    "support_url": "https://github.com/Ashaheen892/tw-saji-landing",
+    "support_url": null,
     "repository": "https://github.com/Ashaheen892/tw-saji-landing",
     "features": [
         "landing-page-templates"
