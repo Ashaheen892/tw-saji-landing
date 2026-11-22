@@ -83,6 +83,8 @@ html.${p}-mode-dark .${p}-ann.${p}-auto, .${p}-ann.${p}-dark {
   animation: ${p}-ann-ltr var(--ann-speed, 18s) linear infinite;
 }
 .${p}-ann.is-rtl .${p}-ann__item { animation-name: ${p}-ann-rtl; }
+.${p}-ann.is-back .${p}-ann__item { animation-name: ${p}-ann-ltr-back; }
+.${p}-ann.is-rtl.is-back .${p}-ann__item { animation-name: ${p}-ann-rtl-back; }
 .${p}-ann__list:hover .${p}-ann__item { animation-play-state: paused; }
 .${p}-ann__text {
   display: inline-flex;
@@ -132,8 +134,10 @@ html.${p}-mode-dark .${p}-ann.${p}-auto, .${p}-ann.${p}-dark {
 .${p}-anns.is-rotate > .${p}-ann.is-on { opacity: 1; visibility: visible; transition: opacity .45s ease; }
 @keyframes ${p}-ann-ltr { to { transform: translateX(-100%); } }
 @keyframes ${p}-ann-rtl { to { transform: translateX(100%); } }
+@keyframes ${p}-ann-ltr-back { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+@keyframes ${p}-ann-rtl-back { from { transform: translateX(100%); } to { transform: translateX(0); } }
 @media (prefers-reduced-motion: reduce) {
-  .${p}-ann__item { animation: none; }
+  .${p}-ann .${p}-ann__item { animation: none !important; }
   .${p}-ann__item[aria-hidden="true"] { display: none; }
   .${p}-ann__list { justify-content: center; }
   .${p}-ann__item .${p}-ann__text::after { display: none; }
@@ -157,9 +161,14 @@ export function announceTone(cfg: Record<string, any>): string {
   ].filter(Boolean).join(";");
 }
 
-function marquee(prefix: string, extraClass: string, style: string, body: unknown, own = false) {
-  const rtl = isRtl() ? " is-rtl" : "";
-  return html`<div class="${prefix}-ann${rtl}${own ? " is-own" : ""} ${extraClass}" style=${style}>
+/**
+ * `go` is where the words travel on screen. The copies are laid out in the page direction,
+ * so travelling against it starts one copy early and slides back to zero, leaving no gap.
+ */
+function marquee(prefix: string, extraClass: string, style: string, body: unknown, own = false, go: "left" | "right" | "" = "") {
+  const rtl = isRtl();
+  const back = go === (rtl ? "left" : "right");
+  return html`<div class="${prefix}-ann${rtl ? " is-rtl" : ""}${back ? " is-back" : ""}${own ? " is-own" : ""} ${extraClass}" style=${style}>
     <ul class="${prefix}-ann__list">
       ${Array.from({ length: COPIES }, (_, index) => html`<li class="${prefix}-ann__item" aria-hidden=${index ? "true" : "false"}><span class="${prefix}-ann__text">${body}</span></li>`)}
     </ul>
@@ -184,6 +193,7 @@ type Strip = {
   image: string;
   link: string;
   still: boolean;
+  go: "left" | "right" | "";
   bg: string;
   ink: string;
 };
@@ -193,18 +203,20 @@ export function readStrips(cfg: Record<string, any>): Strip[] {
   if (!Array.isArray(cfg.bars)) {
     const text = localizedString(cfg.announce).trim();
     if (!text) return [];
-    return [{ text, media: "none", icon: "", image: "", link: "", still: String(unwrapValue(cfg.announce_mode) || "move") === "still", bg: "", ink: "" }];
+    return [{ text, media: "none", icon: "", image: "", link: "", still: String(unwrapValue(cfg.announce_mode) || "move") === "still", go: "", bg: "", ink: "" }];
   }
   return getCollectionItems<Record<string, any>>(cfg.bars, "bars")
     .map((row) => {
       const kind = String(unwrapValue(row.media) || "none");
+      const motion = String(unwrapValue(row.motion) || "right");
       return {
         text: localizedString(row.text).trim(),
         media: (kind === "icon" || kind === "image" ? kind : "none") as Strip["media"],
         icon: String(unwrapValue(row.icon) || "").trim(),
         image: String(unwrapValue(row.image) || "").trim(),
         link: linkHref(row.link),
-        still: String(unwrapValue(row.motion) || "move") === "still",
+        still: motion === "still",
+        go: (motion === "left" || motion === "right" ? motion : "") as Strip["go"],
         bg: String(row.bg || "").trim(),
         ink: String(row.ink || "").trim(),
       };
@@ -239,7 +251,7 @@ export function announceStrips(cfg: Record<string, any>, prefix: string, look: A
       const on = rotate && index === 0 ? " is-on" : "";
       return html`<div class="${prefix}-ann ${prefix}-ann__still${own ? " is-own" : ""}${on} ${extraClass}" style=${style} aria-hidden=${rotate && index ? "true" : "false"}><span class="${prefix}-ann__text">${body}</span></div>`;
     }
-    return marquee(prefix, extraClass, style, body, own);
+    return marquee(prefix, extraClass, style, body, own, row.go);
   });
   return html`<div class="${prefix}-anns ${rotate ? "is-rotate" : "is-stack"}" style=${tone} data-ann-rotate=${rotate ? String(rows.length) : "0"} role="region" aria-label=${isRtl() ? "إعلانات المتجر" : "Store announcements"}>${strips}</div>`;
 }

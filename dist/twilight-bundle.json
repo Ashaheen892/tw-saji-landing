@@ -4,8 +4,8 @@
         "en": "Saji Collection"
     },
     "description": {
-        "ar": null,
-        "en": null
+        "ar": "ثلاث صفحات هبوط لأي متجر. كل صفحة تبدأ برأس فيه الشعار ووضع الألوان، ثم الأقسام بترتيب الشراء، وتنتهي بفوتر.",
+        "en": "Three landing pages for any store. Each page starts with a header for the logo and the color mode, then the sections in purchase order, and ends with a footer."
     },
     "author": {
         "name": "Saji",
@@ -13,7 +13,7 @@
         "url": "https://saji-tech.com/"
     },
     "author_email": "sajispprt@gmail.com",
-    "support_url": null,
+    "support_url": "https://github.com/Ashaheen892/tw-saji-landing",
     "repository": "https://github.com/Ashaheen892/tw-saji-landing",
     "features": [
         "landing-page-templates"
@@ -102,7 +102,6 @@
                             "label": "الأيقونة",
                             "icon": "sicon-star2",
                             "required": false,
-                            "class": "form--inline",
                             "value": "sicon-megaphone"
                         },
                         {
@@ -123,12 +122,17 @@
                             "label": "حركة الشريط",
                             "icon": "sicon-list",
                             "required": false,
-                            "description": "المتحرك يمرّ الجملة باستمرار. الثابت يُبقيها في الوسط.",
+                            "description": "المتحرك يمرّ الجملة باستمرار في الاتجاه المختار ويتوقف عند مرور المؤشر. الثابت يُبقيها في الوسط.",
                             "options": [
                                 {
-                                    "label": "متحرك",
-                                    "value": "move",
-                                    "key": "3750fc54-ea15-44bb-8e54-a1931e8558e4"
+                                    "label": "متحرك لليمين →",
+                                    "value": "right",
+                                    "key": "e1df8893-de2d-4647-8eff-5ff7838911e9"
+                                },
+                                {
+                                    "label": "متحرك لليسار ←",
+                                    "value": "left",
+                                    "key": "bbef0116-486e-4a1d-9864-d4ea4da97729"
                                 },
                                 {
                                     "label": "ثابت",
@@ -138,16 +142,16 @@
                             ],
                             "selected": [
                                 {
-                                    "label": "متحرك",
-                                    "value": "move",
-                                    "key": "3750fc54-ea15-44bb-8e54-a1931e8558e4"
+                                    "label": "متحرك لليمين →",
+                                    "value": "right",
+                                    "key": "e1df8893-de2d-4647-8eff-5ff7838911e9"
                                 }
                             ],
                             "value": [
                                 {
-                                    "label": "متحرك",
-                                    "value": "move",
-                                    "key": "3750fc54-ea15-44bb-8e54-a1931e8558e4"
+                                    "label": "متحرك لليمين →",
+                                    "value": "right",
+                                    "key": "e1df8893-de2d-4647-8eff-5ff7838911e9"
                                 }
                             ]
                         },
@@ -201,9 +205,9 @@
                             "bars.image": "",
                             "bars.motion": [
                                 {
-                                    "label": "متحرك",
-                                    "value": "move",
-                                    "key": "3750fc54-ea15-44bb-8e54-a1931e8558e4"
+                                    "label": "متحرك لليمين →",
+                                    "value": "right",
+                                    "key": "e1df8893-de2d-4647-8eff-5ff7838911e9"
                                 }
                             ],
                             "bars.link": "",
@@ -251,9 +255,9 @@
                             "bars.image": "",
                             "bars.motion": [
                                 {
-                                    "label": "متحرك",
-                                    "value": "move",
-                                    "key": "3750fc54-ea15-44bb-8e54-a1931e8558e4"
+                                    "label": "متحرك لليمين →",
+                                    "value": "right",
+                                    "key": "e1df8893-de2d-4647-8eff-5ff7838911e9"
                                 }
                             ],
                             "bars.link": "",

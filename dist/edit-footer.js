@@ -1,28 +1,14 @@
 var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __name = (target, value) => __defProp(target, "name", { value, configurable: true });
-var __decorateClass = (decorators, target, key, kind) => {
-  var result = kind > 1 ? void 0 : kind ? __getOwnPropDesc(target, key) : target;
-  for (var i = decorators.length - 1, decorator; i >= 0; i--)
-    if (decorator = decorators[i])
-      result = (kind ? decorator(target, key, result) : decorator(result)) || result;
-  if (kind && result) __defProp(target, key, result);
-  return result;
-};
-
-// src/components/edit-footer/index.ts
-import { html as html3, LitElement, nothing as nothing3 } from "lit";
+var __name = (target, value) => __defProp(target, "name", { value, configurable: !0 });
+import { nothing, html, LitElement } from "lit";
 import { property, state } from "lit/decorators.js";
-
-// src/utils/config.ts
 function getConfig(raw) {
-  if (!raw) return {};
-  if (raw.component && typeof raw.component === "object") return raw.component;
-  return raw;
+  return raw ? raw.component && typeof raw.component == "object" ? raw.component : raw : {};
 }
 __name(getConfig, "getConfig");
 function getLocale() {
-  const lang = window.Salla?.lang?.getLocale?.() || document.documentElement.lang || "ar";
+  var _a, _b, _c;
+  const lang = ((_c = (_b = (_a = window.Salla) == null ? void 0 : _a.lang) == null ? void 0 : _b.getLocale) == null ? void 0 : _c.call(_b)) || document.documentElement.lang || "ar";
   return String(lang).toLowerCase().startsWith("en") ? "en" : "ar";
 }
 __name(getLocale, "getLocale");
@@ -31,12 +17,11 @@ function isRtl() {
 }
 __name(isRtl, "isRtl");
 function localizedString(value) {
-  if (value === null || value === void 0 || value === "") return "";
-  if (typeof value === "string") return value;
-  if (typeof value === "object") {
-    const obj = value;
-    const text = obj[getLocale()] || obj.ar || obj.en;
-    return typeof text === "string" ? text : "";
+  if (value == null || value === "") return "";
+  if (typeof value == "string") return value;
+  if (typeof value == "object") {
+    const obj = value, text = obj[getLocale()] || obj.ar || obj.en;
+    return typeof text == "string" ? text : "";
   }
   return String(value);
 }
@@ -46,16 +31,15 @@ function t(strings) {
 }
 __name(t, "t");
 function unwrapValue(value) {
-  if (Array.isArray(value)) return unwrapValue(value[0]?.value ?? value[0] ?? "");
-  if (value && typeof value === "object" && "value" in value) return value.value;
-  return value ?? "";
+  var _a;
+  return Array.isArray(value) ? unwrapValue(((_a = value[0]) == null ? void 0 : _a.value) ?? value[0] ?? "") : value && typeof value == "object" && "value" in value ? value.value : value ?? "";
 }
 __name(unwrapValue, "unwrapValue");
 function linkHref(value) {
   if (value == null || value === "") return "";
-  if (typeof value === "string") return value.trim();
+  if (typeof value == "string") return value.trim();
   if (Array.isArray(value)) return linkHref(value[0]);
-  if (typeof value === "object") {
+  if (typeof value == "object") {
     const obj = value;
     if (obj.url) return linkHref(obj.url);
     if ("value" in obj) return linkHref(obj.value);
@@ -66,53 +50,41 @@ function linkHref(value) {
 __name(linkHref, "linkHref");
 function flag(value) {
   const raw = unwrapValue(value);
-  return raw === true || raw === "true" || raw === 1 || raw === "1";
+  return raw === !0 || raw === "true" || raw === 1 || raw === "1";
 }
 __name(flag, "flag");
 function getCollectionItems(items, prefix) {
-  if (!Array.isArray(items)) return [];
-  return items.map((item) => {
-    if (!item || typeof item !== "object") return {};
+  return Array.isArray(items) ? items.map((item) => {
+    if (!item || typeof item != "object") return {};
     const normalized = {};
-    for (const [key, val] of Object.entries(item)) {
+    for (const [key, val] of Object.entries(item))
       normalized[key.startsWith(`${prefix}.`) ? key.slice(prefix.length + 1) : key] = val;
-    }
     return normalized;
-  });
+  }) : [];
 }
 __name(getCollectionItems, "getCollectionItems");
 function watchLocale(host) {
   const update = /* @__PURE__ */ __name(() => host.requestUpdate(), "update");
-  window.addEventListener("language-changed", update);
-  return () => window.removeEventListener("language-changed", update);
+  return window.addEventListener("language-changed", update), () => window.removeEventListener("language-changed", update);
 }
 __name(watchLocale, "watchLocale");
-
-// src/utils/announce.ts
-import { html, nothing } from "lit";
-var COPIES = 12;
-var ANN_THUMB = {
+const COPIES = 12, ANN_THUMB = {
   tile: { w: 28, h: 28 },
   bean: { w: 28, h: 28 },
   arch: { w: 24, h: 30 },
   slant: { w: 40, h: 26 }
-};
-var lookCss = /* @__PURE__ */ __name((p, look) => {
-  const box = ANN_THUMB[look];
-  const size = `.${p}-ann__media { width: ${box.w}px; height: ${box.h}px; }`;
-  if (look === "bean") return `${size}
+}, lookCss = /* @__PURE__ */ __name((p, look) => {
+  const box = ANN_THUMB[look], size = `.${p}-ann__media { width: ${box.w}px; height: ${box.h}px; }`;
+  return look === "bean" ? `${size}
 .${p}-ann__media { border-radius: 50%; box-shadow: 0 0 0 2px color-mix(in srgb, currentColor 30%, transparent); }
 .${p}-ann__item .${p}-ann__text::after { width: .55rem; height: .32rem; border-radius: 50%; transform: rotate(-35deg); box-shadow: inset 1px 0 0 color-mix(in srgb, var(--ann-fill) 70%, transparent); }
-.${p}-anns.is-stack > .${p}-ann + .${p}-ann { box-shadow: none; background-image: linear-gradient(90deg, color-mix(in srgb, currentColor 35%, transparent) 50%, transparent 0); background-size: 10px 1px; background-repeat: repeat-x; }`;
-  if (look === "arch") return `${size}
+.${p}-anns.is-stack > .${p}-ann + .${p}-ann { box-shadow: none; background-image: linear-gradient(90deg, color-mix(in srgb, currentColor 35%, transparent) 50%, transparent 0); background-size: 10px 1px; background-repeat: repeat-x; }` : look === "arch" ? `${size}
 .${p}-ann__media { border-radius: 999px 999px 3px 3px; outline: 1px solid color-mix(in srgb, currentColor 45%, transparent); outline-offset: 2px; }
 .${p}-ann__label { letter-spacing: .02em; }
-.${p}-ann__item .${p}-ann__text::after { width: .38rem; height: .38rem; border-radius: 0; transform: rotate(45deg); opacity: .7; }`;
-  if (look === "slant") return `${size}
+.${p}-ann__item .${p}-ann__text::after { width: .38rem; height: .38rem; border-radius: 0; transform: rotate(45deg); opacity: .7; }` : look === "slant" ? `${size}
 .${p}-ann__media { border-radius: 0; clip-path: polygon(16% 0, 100% 0, 84% 100%, 0 100%); }
 .${p}-ann__label { font-weight: 800; font-style: italic; text-transform: uppercase; letter-spacing: .03em; }
-.${p}-ann__item .${p}-ann__text::after { content: "/"; width: auto; height: auto; border-radius: 0; background: none; font-weight: 900; font-style: normal; opacity: .6; }`;
-  return `${size}
+.${p}-ann__item .${p}-ann__text::after { content: "/"; width: auto; height: auto; border-radius: 0; background: none; font-weight: 900; font-style: normal; opacity: .6; }` : `${size}
 .${p}-ann__media { border-radius: 7px; }`;
 }, "lookCss");
 function announceCss(prefix, look = "tile") {
@@ -159,6 +131,8 @@ html.${p}-mode-dark .${p}-ann.${p}-auto, .${p}-ann.${p}-dark {
   animation: ${p}-ann-ltr var(--ann-speed, 18s) linear infinite;
 }
 .${p}-ann.is-rtl .${p}-ann__item { animation-name: ${p}-ann-rtl; }
+.${p}-ann.is-back .${p}-ann__item { animation-name: ${p}-ann-ltr-back; }
+.${p}-ann.is-rtl.is-back .${p}-ann__item { animation-name: ${p}-ann-rtl-back; }
 .${p}-ann__list:hover .${p}-ann__item { animation-play-state: paused; }
 .${p}-ann__text {
   display: inline-flex;
@@ -208,8 +182,10 @@ html.${p}-mode-dark .${p}-ann.${p}-auto, .${p}-ann.${p}-dark {
 .${p}-anns.is-rotate > .${p}-ann.is-on { opacity: 1; visibility: visible; transition: opacity .45s ease; }
 @keyframes ${p}-ann-ltr { to { transform: translateX(-100%); } }
 @keyframes ${p}-ann-rtl { to { transform: translateX(100%); } }
+@keyframes ${p}-ann-ltr-back { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+@keyframes ${p}-ann-rtl-back { from { transform: translateX(100%); } to { transform: translateX(0); } }
 @media (prefers-reduced-motion: reduce) {
-  .${p}-ann__item { animation: none; }
+  .${p}-ann .${p}-ann__item { animation: none !important; }
   .${p}-ann__item[aria-hidden="true"] { display: none; }
   .${p}-ann__list { justify-content: center; }
   .${p}-ann__item .${p}-ann__text::after { display: none; }
@@ -219,9 +195,9 @@ ${lookCss(p, look)}
 `;
 }
 __name(announceCss, "announceCss");
-function marquee(prefix, extraClass, style, body, own = false) {
-  const rtl = isRtl() ? " is-rtl" : "";
-  return html`<div class="${prefix}-ann${rtl}${own ? " is-own" : ""} ${extraClass}" style=${style}>
+function marquee(prefix, extraClass, style, body, own = !1, go = "") {
+  const rtl = isRtl();
+  return html`<div class="${prefix}-ann${rtl ? " is-rtl" : ""}${go === (rtl ? "left" : "right") ? " is-back" : ""}${own ? " is-own" : ""} ${extraClass}" style=${style}>
     <ul class="${prefix}-ann__list">
       ${Array.from({ length: COPIES }, (_, index) => html`<li class="${prefix}-ann__item" aria-hidden=${index ? "true" : "false"}><span class="${prefix}-ann__text">${body}</span></li>`)}
     </ul>
@@ -230,21 +206,12 @@ function marquee(prefix, extraClass, style, body, own = false) {
 __name(marquee, "marquee");
 function announceBar(cfg, prefix, extraClass = "", tone = "") {
   const text = localizedString(cfg.announce).trim();
-  if (!text) return nothing;
-  const moving = String(unwrapValue(cfg.announce_mode) || "move") !== "still";
-  if (!moving) {
-    return html`<div class="${prefix}-ann ${prefix}-ann__still ${extraClass}" style=${tone}><span class="${prefix}-ann__text">${text}</span></div>`;
-  }
-  return marquee(prefix, extraClass, tone, text);
+  return text ? String(unwrapValue(cfg.announce_mode) || "move") !== "still" ? marquee(prefix, extraClass, tone, text) : html`<div class="${prefix}-ann ${prefix}-ann__still ${extraClass}" style=${tone}><span class="${prefix}-ann__text">${text}</span></div>` : nothing;
 }
 __name(announceBar, "announceBar");
-
-// src/utils/dock.ts
-var WA = `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 4.2A7.8 7.8 0 0 0 5.3 16l-.7 3.2 3.3-.7A7.8 7.8 0 1 0 12 4.2Zm3.7 10.3c-.2.5-1 .9-1.4 1-.4.1-.8.1-1.3-.1-.3-.1-.7-.2-1.2-.5-2.1-1.1-3.4-3.2-3.5-3.4-.1-.2-.9-1.2-.9-2.3s.6-1.6.8-1.8c.2-.2.4-.3.6-.3h.4c.2 0 .3 0 .5.4.2.5.6 1.6.7 1.7.1.2 0 .3-.1.5l-.3.4c-.1.1-.2.2 0 .4.2.3.7 1 1.5 1.6.6.5 1.1.6 1.3.5l.4-.3c.2-.1.3-.1.5 0 .2.2 1 .8 1.1 1 .1.1.1.3 0 .5Z"></path></svg>`;
-var UP = `<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 19V8.8L7.4 12.4 6 11l6-6 6 6-1.4 1.4L13 8.8V19h-2Z"></path></svg>`;
+const WA = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 4.2A7.8 7.8 0 0 0 5.3 16l-.7 3.2 3.3-.7A7.8 7.8 0 1 0 12 4.2Zm3.7 10.3c-.2.5-1 .9-1.4 1-.4.1-.8.1-1.3-.1-.3-.1-.7-.2-1.2-.5-2.1-1.1-3.4-3.2-3.5-3.4-.1-.2-.9-1.2-.9-2.3s.6-1.6.8-1.8c.2-.2.4-.3.6-.3h.4c.2 0 .3 0 .5.4.2.5.6 1.6.7 1.7.1.2 0 .3-.1.5l-.3.4c-.1.1-.2.2 0 .4.2.3.7 1 1.5 1.6.6.5 1.1.6 1.3.5l.4-.3c.2-.1.3-.1.5 0 .2.2 1 .8 1.1 1 .1.1.1.3 0 .5Z"></path></svg>', UP = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 19V8.8L7.4 12.4 6 11l6-6 6 6-1.4 1.4L13 8.8V19h-2Z"></path></svg>';
 function shown(value) {
-  if (value == null || value === "") return true;
-  return flag(value);
+  return value == null || value === "" ? !0 : flag(value);
 }
 __name(shown, "shown");
 function sideOf(value, fallback) {
@@ -252,98 +219,59 @@ function sideOf(value, fallback) {
 }
 __name(sideOf, "sideOf");
 function digitsOf(value) {
-  const raw = typeof value === "string" ? value : localizedString(value);
-  return raw.replace(/\D/g, "");
+  return (typeof value == "string" ? value : localizedString(value)).replace(/\D/g, "");
 }
 __name(digitsOf, "digitsOf");
 function paint(el, bg, ink) {
-  el.style.background = String(bg || "").trim();
-  el.style.color = String(ink || "").trim();
+  el.style.background = String(bg || "").trim(), el.style.color = String(ink || "").trim();
 }
 __name(paint, "paint");
 function place(el, side, raised) {
-  el.style.bottom = raised ? "5.6rem" : "1.15rem";
-  el.style.insetInlineStart = side === "start" ? "1.15rem" : "auto";
-  el.style.insetInlineEnd = side === "end" ? "1.15rem" : "auto";
+  el.style.bottom = raised ? "5.6rem" : "1.15rem", el.style.insetInlineStart = side === "start" ? "1.15rem" : "auto", el.style.insetInlineEnd = side === "end" ? "1.15rem" : "auto";
 }
 __name(place, "place");
 function syncDocks(cfg, prefix, nodes, onTop, options = {}) {
-  const showWa = shown(cfg.show_whatsapp);
-  const showTop = shown(cfg.show_top) && !options.hideTop;
-  const waSide = sideOf(cfg.whatsapp_side, "start");
-  const topSide = sideOf(cfg.top_side, "end");
-  const stacked = showWa && showTop && waSide === topSide;
-  const digits = digitsOf(cfg.whatsapp_number || "201153958512");
-  const message = localizedString(cfg.whatsapp_message);
-  const href = digits ? `https://wa.me/${digits}${message ? `?text=${encodeURIComponent(message)}` : ""}` : "";
+  const showWa = shown(cfg.show_whatsapp), showTop = shown(cfg.show_top) && !options.hideTop, waSide = sideOf(cfg.whatsapp_side, "start"), topSide = sideOf(cfg.top_side, "end"), stacked = showWa && showTop && waSide === topSide, digits = digitsOf(cfg.whatsapp_number || "201153958512"), message = localizedString(cfg.whatsapp_message), href = digits ? `https://wa.me/${digits}${message ? `?text=${encodeURIComponent(message)}` : ""}` : "";
   if (showWa && href) {
     if (!nodes.wa) {
       const link = document.createElement("a");
-      link.className = `${prefix}-dock ${prefix}-dock--wa`;
-      link.target = "_blank";
-      link.rel = "noopener noreferrer";
-      link.innerHTML = WA;
-      document.body.appendChild(link);
-      nodes.wa = link;
+      link.className = `${prefix}-dock ${prefix}-dock--wa`, link.target = "_blank", link.rel = "noopener noreferrer", link.innerHTML = WA, document.body.appendChild(link), nodes.wa = link;
     }
-    nodes.wa.href = href;
-    nodes.wa.setAttribute("aria-label", t({ ar: "\u0648\u0627\u062A\u0633\u0627\u0628", en: "WhatsApp" }));
-    paint(nodes.wa, cfg.whatsapp_bg, cfg.whatsapp_ink);
-    place(nodes.wa, waSide, stacked);
-    nodes.wa.hidden = false;
-  } else if (nodes.wa) nodes.wa.hidden = true;
-  const label = localizedString(cfg.top_label) || t({ ar: "\u0623\u0639\u0644\u0649", en: "Top" });
+    nodes.wa.href = href, nodes.wa.setAttribute("aria-label", t({ ar: "واتساب", en: "WhatsApp" })), paint(nodes.wa, cfg.whatsapp_bg, cfg.whatsapp_ink), place(nodes.wa, waSide, stacked), nodes.wa.hidden = !1;
+  } else nodes.wa && (nodes.wa.hidden = !0);
+  const label = localizedString(cfg.top_label) || t({ ar: "أعلى", en: "Top" });
   if (shown(cfg.show_top)) {
     if (!nodes.top) {
       const button = document.createElement("button");
-      button.type = "button";
-      button.className = `${prefix}-dock ${prefix}-dock--top`;
-      button.innerHTML = UP;
-      button.addEventListener("click", onTop);
-      document.body.appendChild(button);
-      nodes.top = button;
+      button.type = "button", button.className = `${prefix}-dock ${prefix}-dock--top`, button.innerHTML = UP, button.addEventListener("click", onTop), document.body.appendChild(button), nodes.top = button;
     }
-    nodes.top.setAttribute("aria-label", label);
-    if (options.topText) {
+    if (nodes.top.setAttribute("aria-label", label), options.topText) {
       let caption = nodes.top.querySelector("span");
-      if (!caption) {
-        caption = document.createElement("span");
-        nodes.top.appendChild(caption);
-      }
-      caption.textContent = label;
+      caption || (caption = document.createElement("span"), nodes.top.appendChild(caption)), caption.textContent = label;
     }
-    paint(nodes.top, cfg.top_bg, cfg.top_ink);
-    place(nodes.top, topSide, false);
-    nodes.top.hidden = !showTop;
-  } else if (nodes.top) nodes.top.hidden = true;
+    paint(nodes.top, cfg.top_bg, cfg.top_ink), place(nodes.top, topSide, !1), nodes.top.hidden = !showTop;
+  } else nodes.top && (nodes.top.hidden = !0);
   return nodes;
 }
 __name(syncDocks, "syncDocks");
 function clearDocks(nodes) {
-  nodes.wa?.remove();
-  nodes.top?.remove();
-  nodes.wa = null;
-  nodes.top = null;
+  var _a, _b;
+  (_a = nodes.wa) == null || _a.remove(), (_b = nodes.top) == null || _b.remove(), nodes.wa = null, nodes.top = null;
 }
 __name(clearDocks, "clearDocks");
 function scrollPageTop(event, host) {
-  if (event.cancelable) event.preventDefault();
-  const targets = /* @__PURE__ */ new Set();
-  const addDoc = /* @__PURE__ */ __name((doc) => {
-    targets.add(doc.documentElement);
-    if (doc.body) targets.add(doc.body);
-    if (doc.scrollingElement) targets.add(doc.scrollingElement);
+  event.cancelable && event.preventDefault();
+  const targets = /* @__PURE__ */ new Set(), addDoc = /* @__PURE__ */ __name((doc) => {
+    targets.add(doc.documentElement), doc.body && targets.add(doc.body), doc.scrollingElement && targets.add(doc.scrollingElement);
   }, "addDoc");
   addDoc(document);
   try {
-    if (window.parent && window.parent !== window) addDoc(window.parent.document);
+    window.parent && window.parent !== window && addDoc(window.parent.document);
   } catch {
   }
   let node = host;
-  while (node) {
-    if (node.scrollHeight > node.clientHeight + 4) targets.add(node);
-    node = node.parentElement;
-  }
+  for (; node; )
+    node.scrollHeight > node.clientHeight + 4 && targets.add(node), node = node.parentElement;
   targets.forEach((el) => {
     el.scrollTop = 0;
   });
@@ -353,9 +281,6 @@ function scrollPageTop(event, host) {
   }
 }
 __name(scrollPageTop, "scrollPageTop");
-
-// src/utils/landing.ts
-import { html as html2, nothing as nothing2 } from "lit";
 function currentTone() {
   return document.documentElement.classList.contains("rw-mode-dark") ? "dark" : "light";
 }
@@ -365,40 +290,35 @@ function schemeOf(cfg) {
   return scheme === "dark" ? "rw-dark" : scheme === "light" ? "rw-light" : "rw-auto";
 }
 __name(schemeOf, "schemeOf");
-
-// src/utils/styles.ts
 function markEditing() {
-  const root = document.documentElement;
-  const read = /* @__PURE__ */ __name(() => {
-    let on = true;
+  var _a, _b;
+  const root = document.documentElement, read = /* @__PURE__ */ __name(() => {
+    var _a2, _b2;
+    let on = !0;
     try {
       const salla = window.Salla;
-      on = window.self !== window.top || salla?.config?.get?.("page.is_landing_page") !== true;
+      on = window.self !== window.top || ((_b2 = (_a2 = salla == null ? void 0 : salla.config) == null ? void 0 : _a2.get) == null ? void 0 : _b2.call(_a2, "page.is_landing_page")) !== !0;
     } catch {
-      on = true;
+      on = !0;
     }
     root.dataset.lpEditing = on ? "1" : "0";
   }, "read");
-  if (root.dataset.lpEditing) return;
-  read();
-  try {
-    window.Salla?.onReady?.(read);
-  } catch {
+  if (!root.dataset.lpEditing) {
+    read();
+    try {
+      (_b = (_a = window.Salla) == null ? void 0 : _a.onReady) == null || _b.call(_a, read);
+    } catch {
+    }
   }
 }
 __name(markEditing, "markEditing");
 function injectStyles(id, css2) {
-  markEditing();
-  if (document.getElementById(id)) return;
+  if (markEditing(), document.getElementById(id)) return;
   const style = document.createElement("style");
-  style.id = id;
-  style.textContent = css2;
-  document.head.appendChild(style);
+  style.id = id, style.textContent = css2, document.head.appendChild(style);
 }
 __name(injectStyles, "injectStyles");
-var LIGHT = `--rw-surface:#f5f6f8; --rw-surface-2:#e8ebef; --rw-card:#ffffff; --rw-soft:#eef1f4; --rw-text:var(--color-text, #1a1d21); --rw-muted:#5c6570; --rw-border:#e1e5ea;`;
-var DARK = `--rw-surface:#121417; --rw-surface-2:#1c2026; --rw-card:#1e2329; --rw-soft:#262c33; --rw-text:#f4f6f8; --rw-muted:#b7c0c9; --rw-border:rgb(255 255 255 / 14%);`;
-var baseCss = `
+const LIGHT = "--rw-surface:#f5f6f8; --rw-surface-2:#e8ebef; --rw-card:#ffffff; --rw-soft:#eef1f4; --rw-text:var(--color-text, #1a1d21); --rw-muted:#5c6570; --rw-border:#e1e5ea;", DARK = "--rw-surface:#121417; --rw-surface-2:#1c2026; --rw-card:#1e2329; --rw-soft:#262c33; --rw-text:#f4f6f8; --rw-muted:#b7c0c9; --rw-border:rgb(255 255 255 / 14%);", baseCss = `
 html[data-lp-editing="0"] .rw-empty, html[data-lp-editing="0"] .rw-hint { display: none !important; }
 .rw-host { display: block; width: 100%; min-width: 0; container-type: inline-size; color: inherit; }
 .component-card:has(> .rw-host:not(:empty)) { min-height: 0; }
@@ -441,9 +361,12 @@ function sectionStyle(cfg) {
   return cfg.bg_color ? `--rw-section-bg:${cfg.bg_color}` : "";
 }
 __name(sectionStyle, "sectionStyle");
-
-// src/components/edit-footer/index.ts
-var css = `
+var __defProp2 = Object.defineProperty, __decorateClass = /* @__PURE__ */ __name((decorators, target, key, kind) => {
+  for (var result = void 0, i = decorators.length - 1, decorator; i >= 0; i--)
+    (decorator = decorators[i]) && (result = decorator(target, key, result) || result);
+  return result && __defProp2(target, key, result), result;
+}, "__decorateClass");
+const css = `
 .rw-foot.rw-section { padding-block: 1.6rem 1.15rem; }
 .rw-foot { border-top: 1px solid var(--rw-border); background: var(--rw-surface-2); }
 .rw-foot__top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; }
@@ -467,115 +390,90 @@ var css = `
 .rw-dock svg { width: 1.45rem; height: 1.45rem; display: block; }
 .rw-dock--wa { background: #128C7E; color: #fff; }
 .rw-dock--top { background: #1a1d21; color: #fff; }
-`;
-var _PageFoot = class _PageFoot extends LitElement {
+`, _PageFoot = class _PageFoot extends LitElement {
   constructor() {
-    super(...arguments);
-    this.store = { logo: "", name: "", url: "" };
-    this.dark = false;
-    this.stop = /* @__PURE__ */ __name(() => {
-    }, "stop");
-    this.docks = { wa: null, top: null };
+    super(...arguments), this.store = { logo: "", name: "", url: "" }, this.dark = !1, this.stop = () => {
+    }, this.docks = { wa: null, top: null };
   }
   createRenderRoot() {
     return this;
   }
   connectedCallback() {
-    super.connectedCallback();
-    this.classList.add("rw-host");
-    injectStyles("rw-base", baseCss);
-    injectStyles("rw-announce", announceCss("rw", "tile"));
-    injectStyles("rw-page-footer", css);
+    var _a;
+    super.connectedCallback(), this.classList.add("rw-host"), injectStyles("rw-base", baseCss), injectStyles("rw-announce", announceCss("rw", "tile")), injectStyles("rw-page-footer", css);
     const onTone = /* @__PURE__ */ __name(() => {
       this.dark = currentTone() === "dark";
     }, "onTone");
-    onTone();
-    window.addEventListener("rw-tone", onTone);
+    onTone(), window.addEventListener("rw-tone", onTone);
     const stopLocale = watchLocale(this);
     this.stop = () => {
-      window.removeEventListener("rw-tone", onTone);
-      stopLocale();
-    };
-    this.readStore();
+      window.removeEventListener("rw-tone", onTone), stopLocale();
+    }, this.readStore();
     const api = window.Salla;
-    api?.onReady?.().then(() => this.readStore());
+    (_a = api == null ? void 0 : api.onReady) == null || _a.call(api).then(() => this.readStore());
   }
   readStore() {
+    var _a, _b, _c;
     const api = window.Salla;
     try {
       this.store = {
-        logo: api?.config?.get("store.logo") || "",
-        name: api?.config?.get("store.name") || "",
-        url: api?.config?.get("store.url") || ""
+        logo: ((_a = api == null ? void 0 : api.config) == null ? void 0 : _a.get("store.logo")) || "",
+        name: ((_b = api == null ? void 0 : api.config) == null ? void 0 : _b.get("store.name")) || "",
+        url: ((_c = api == null ? void 0 : api.config) == null ? void 0 : _c.get("store.url")) || ""
       };
     } catch {
     }
   }
   disconnectedCallback() {
-    this.stop();
-    clearDocks(this.docks);
-    super.disconnectedCallback();
+    this.stop(), clearDocks(this.docks), super.disconnectedCallback();
   }
   updated() {
     this.docks = syncDocks(getConfig(this.config), "rw", this.docks, (event) => scrollPageTop(event, this));
   }
   render() {
-    const cfg = getConfig(this.config);
-    const name = this.store.name || t({ ar: "\u0627\u0644\u0645\u062A\u062C\u0631", en: "Store" });
-    const logo = String(cfg.logo || this.store.logo || "");
-    const darkLogo = String(cfg.logo_dark || "");
-    const invert = this.dark || schemeOf(cfg) === "rw-dark";
-    const note = localizedString(cfg.note);
-    const legal = localizedString(cfg.legal);
-    const storeUrl = String(this.store.url || "").trim();
-    const links = getCollectionItems(cfg.links, "links").map((item) => {
+    const cfg = getConfig(this.config), name = this.store.name || t({ ar: "المتجر", en: "Store" }), logo = String(cfg.logo || this.store.logo || ""), darkLogo = String(cfg.logo_dark || ""), invert = this.dark || schemeOf(cfg) === "rw-dark", note = localizedString(cfg.note), legal = localizedString(cfg.legal), storeUrl = String(this.store.url || "").trim(), links = getCollectionItems(cfg.links, "links").map((item) => {
       const own = linkHref(item.url);
       return { label: localizedString(item.label), url: own && own !== "#" ? own : storeUrl };
-    }).filter((item) => item.label && item.url);
-    const badges = getCollectionItems(cfg.badges, "badges").map((item) => ({ image: String(item.image || "").trim(), alt: localizedString(item.alt), url: linkHref(item.url) })).filter((item) => (item.image || item.alt) && item.url && item.url !== "#");
-    if (flag(cfg.show_store) && this.store.url) {
-      links.unshift({ label: localizedString(cfg.store_label) || t({ ar: "\u0627\u0644\u0645\u062A\u062C\u0631", en: "Store" }), url: this.store.url });
-    }
-    const mark = logo ? html3`<img class="rw-foot__logo rw-foot__logo--light${darkLogo ? " has-alt" : ""}" src=${logo} alt=${name} />
-          ${darkLogo ? html3`<img class="rw-foot__logo rw-foot__logo--dark" src=${darkLogo} alt="" />` : nothing3}` : html3`<span class="rw-foot__name">${name}</span>`;
-    const brand = this.store.url ? html3`<a class="rw-foot__brand" href=${this.store.url}>${mark}</a>` : html3`<span class="rw-foot__brand">${mark}</span>`;
-    const year = (/* @__PURE__ */ new Date()).getFullYear();
-    return html3`${announceBar(cfg, "rw", "rw-block")}
-    <footer class="rw-block rw-section rw-foot ${schemeOf(cfg)} ${invert ? "is-invert" : ""}" style=${sectionStyle(cfg)} aria-label=${t({ ar: "\u0630\u064A\u0644 \u0627\u0644\u0635\u0641\u062D\u0629", en: "Page footer" })}>
+    }).filter((item) => item.label && item.url), badges = getCollectionItems(cfg.badges, "badges").map((item) => ({ image: String(item.image || "").trim(), alt: localizedString(item.alt), url: linkHref(item.url) })).filter((item) => (item.image || item.alt) && item.url && item.url !== "#");
+    flag(cfg.show_store) && this.store.url && links.unshift({ label: localizedString(cfg.store_label) || t({ ar: "المتجر", en: "Store" }), url: this.store.url });
+    const mark = logo ? html`<img class="rw-foot__logo rw-foot__logo--light${darkLogo ? " has-alt" : ""}" src=${logo} alt=${name} />
+          ${darkLogo ? html`<img class="rw-foot__logo rw-foot__logo--dark" src=${darkLogo} alt="" />` : nothing}` : html`<span class="rw-foot__name">${name}</span>`, brand = this.store.url ? html`<a class="rw-foot__brand" href=${this.store.url}>${mark}</a>` : html`<span class="rw-foot__brand">${mark}</span>`, year = (/* @__PURE__ */ new Date()).getFullYear();
+    return html`${announceBar(cfg, "rw", "rw-block")}
+    <footer class="rw-block rw-section rw-foot ${schemeOf(cfg)} ${invert ? "is-invert" : ""}" style=${sectionStyle(cfg)} aria-label=${t({ ar: "ذيل الصفحة", en: "Page footer" })}>
       <div class="rw-container">
         <div class="rw-foot__top">
           ${brand}
-          ${note ? html3`<p class="rw-foot__note">${note}</p>` : nothing3}
+          ${note ? html`<p class="rw-foot__note">${note}</p>` : nothing}
         </div>
-        ${links.length ? html3`<nav class="rw-foot__links" aria-label=${t({ ar: "\u0631\u0648\u0627\u0628\u0637", en: "Links" })}>
-          ${links.map((item) => html3`<a href=${item.url}>${item.label}</a>`)}
-        </nav>` : nothing3}
-        ${badges.length ? html3`<div class="rw-foot__badges">
-          ${badges.map((item) => html3`<a href=${item.url} target="_blank" rel="noopener noreferrer">
-            ${item.image ? html3`<img src=${item.image} alt=${item.alt || ""} />` : nothing3}
-            ${item.alt ? html3`<span>${item.alt}</span>` : nothing3}
+        ${links.length ? html`<nav class="rw-foot__links" aria-label=${t({ ar: "روابط", en: "Links" })}>
+          ${links.map((item) => html`<a href=${item.url}>${item.label}</a>`)}
+        </nav>` : nothing}
+        ${badges.length ? html`<div class="rw-foot__badges">
+          ${badges.map((item) => html`<a href=${item.url} target="_blank" rel="noopener noreferrer">
+            ${item.image ? html`<img src=${item.image} alt=${item.alt || ""} />` : nothing}
+            ${item.alt ? html`<span>${item.alt}</span>` : nothing}
           </a>`)}
-        </div>` : nothing3}
+        </div>` : nothing}
         <div class="rw-foot__base">
           <span>© ${year} ${name}</span>
-          ${legal ? html3`<span>${legal}</span>` : nothing3}
+          ${legal ? html`<span>${legal}</span>` : nothing}
         </div>
       </div>
     </footer>`;
   }
 };
 __name(_PageFoot, "PageFoot");
+let PageFoot = _PageFoot;
 __decorateClass([
   property({ type: Object })
-], _PageFoot.prototype, "config", 2);
+], PageFoot.prototype, "config");
 __decorateClass([
   state()
-], _PageFoot.prototype, "store", 2);
+], PageFoot.prototype, "store");
 __decorateClass([
   state()
-], _PageFoot.prototype, "dark", 2);
-var PageFoot = _PageFoot;
+], PageFoot.prototype, "dark");
+typeof PageFoot < "u" && PageFoot.registerSallaComponent("salla-edit-footer");
 export {
   PageFoot as default
 };
-typeof PageFoot < "u" && PageFoot.registerSallaComponent("salla-edit-footer");
