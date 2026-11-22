@@ -3,22 +3,65 @@ import { isRtl, localizedString, unwrapValue } from "./config.js";
 
 const COPIES = 12;
 
-/** Full-width announcement bar. `move` slides the sentence; `still` centers it. */
+/** Full-width announcement bar. Color is the store primary unless a tone is passed. */
 export function announceCss(prefix: string): string {
   return `
-.${prefix}-ann.${prefix}-ann { overflow: hidden; border: 0; font-family: var(--font-main, inherit); background: var(--ann-bg, var(--color-primary, #1a1d21)); color: var(--ann-ink, var(--color-primary-reverse, #fff)); }
-.${prefix}-ann__still { padding: .55rem 1rem; text-align: center; font-size: .92rem; font-weight: 700; line-height: 1.55; }
-.${prefix}-ann__list { display: flex; margin: 0; padding: .5rem 0; list-style: none; white-space: nowrap; }
-.${prefix}-ann__item { flex: none; display: flex; align-items: center; font-size: .92rem; font-weight: 700; line-height: 1.5; animation: ${prefix}-ann-ltr var(--ann-speed, 12s) linear infinite; }
+.${prefix}-ann.${prefix}-ann {
+  overflow: hidden;
+  padding-block: 5px;
+  border: 0;
+  font-family: var(--font-main, inherit);
+  background: var(--ann-bg, var(--color-primary));
+  color: var(--ann-ink, var(--color-primary-reverse, #fff));
+}
+.${prefix}-ann__still {
+  padding: 5px 1.5rem;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 26px;
+}
+.${prefix}-ann__list {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 5px 0;
+  list-style: none;
+  white-space: nowrap;
+}
+.${prefix}-ann__item {
+  flex: none;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 26px;
+  animation: ${prefix}-ann-ltr var(--ann-speed, 18s) linear infinite;
+}
 .${prefix}-ann.is-rtl .${prefix}-ann__item { animation-name: ${prefix}-ann-rtl; }
 .${prefix}-ann__list:hover .${prefix}-ann__item { animation-play-state: paused; }
-.${prefix}-ann__text { padding-inline: 1rem; }
+.${prefix}-ann__text {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-inline: 1.5rem;
+}
+.${prefix}-ann__text::after {
+  content: "";
+  width: .35rem;
+  height: .35rem;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: .55;
+  flex: none;
+}
 @keyframes ${prefix}-ann-ltr { to { transform: translateX(-100%); } }
 @keyframes ${prefix}-ann-rtl { to { transform: translateX(100%); } }
 @media (prefers-reduced-motion: reduce) {
   .${prefix}-ann__item { animation: none; }
   .${prefix}-ann__item[aria-hidden="true"] { display: none; }
   .${prefix}-ann__list { justify-content: center; }
+  .${prefix}-ann__text::after { display: none; }
 }
 `;
 }

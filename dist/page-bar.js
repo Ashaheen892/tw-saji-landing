@@ -1,6 +1,6 @@
 var __defProp = Object.defineProperty;
 var __name = (target, value) => __defProp(target, "name", { value, configurable: !0 });
-import { LitElement, nothing, html } from "lit";
+import { nothing, html, LitElement } from "lit";
 import { property, state } from "lit/decorators.js";
 function getConfig(raw) {
   return raw ? raw.component && typeof raw.component == "object" ? raw.component : raw : {};
@@ -12,6 +12,10 @@ function getLocale() {
   return String(lang).toLowerCase().startsWith("en") ? "en" : "ar";
 }
 __name(getLocale, "getLocale");
+function isRtl() {
+  return (document.documentElement.dir || (getLocale() === "ar" ? "rtl" : "ltr")) === "rtl";
+}
+__name(isRtl, "isRtl");
 function localizedString(value) {
   if (value == null || value === "") return "";
   if (typeof value == "string") return value;
@@ -31,6 +35,19 @@ function unwrapValue(value) {
   return Array.isArray(value) ? unwrapValue(((_a = value[0]) == null ? void 0 : _a.value) ?? value[0] ?? "") : value && typeof value == "object" && "value" in value ? value.value : value ?? "";
 }
 __name(unwrapValue, "unwrapValue");
+function linkHref(value) {
+  if (value == null || value === "") return "";
+  if (typeof value == "string") return value.trim();
+  if (Array.isArray(value)) return linkHref(value[0]);
+  if (typeof value == "object") {
+    const obj = value;
+    if (obj.url) return linkHref(obj.url);
+    if ("value" in obj) return linkHref(obj.value);
+    if (obj.href) return linkHref(obj.href);
+  }
+  return "";
+}
+__name(linkHref, "linkHref");
 function flag(value) {
   const raw = unwrapValue(value);
   return raw === !0 || raw === "true" || raw === 1 || raw === "1";
@@ -41,6 +58,82 @@ function watchLocale(host) {
   return window.addEventListener("language-changed", update), () => window.removeEventListener("language-changed", update);
 }
 __name(watchLocale, "watchLocale");
+const COPIES = 12;
+function announceCss(prefix) {
+  return `
+.${prefix}-ann.${prefix}-ann {
+  overflow: hidden;
+  padding-block: 5px;
+  border: 0;
+  font-family: var(--font-main, inherit);
+  background: var(--ann-bg, var(--color-primary));
+  color: var(--ann-ink, var(--color-primary-reverse, #fff));
+}
+.${prefix}-ann__still {
+  padding: 5px 1.5rem;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 26px;
+}
+.${prefix}-ann__list {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 5px 0;
+  list-style: none;
+  white-space: nowrap;
+}
+.${prefix}-ann__item {
+  flex: none;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 26px;
+  animation: ${prefix}-ann-ltr var(--ann-speed, 18s) linear infinite;
+}
+.${prefix}-ann.is-rtl .${prefix}-ann__item { animation-name: ${prefix}-ann-rtl; }
+.${prefix}-ann__list:hover .${prefix}-ann__item { animation-play-state: paused; }
+.${prefix}-ann__text {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-inline: 1.5rem;
+}
+.${prefix}-ann__text::after {
+  content: "";
+  width: .35rem;
+  height: .35rem;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: .55;
+  flex: none;
+}
+@keyframes ${prefix}-ann-ltr { to { transform: translateX(-100%); } }
+@keyframes ${prefix}-ann-rtl { to { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) {
+  .${prefix}-ann__item { animation: none; }
+  .${prefix}-ann__item[aria-hidden="true"] { display: none; }
+  .${prefix}-ann__list { justify-content: center; }
+  .${prefix}-ann__text::after { display: none; }
+}
+`;
+}
+__name(announceCss, "announceCss");
+function announceBar(cfg, prefix, extraClass = "", tone = "") {
+  const text = localizedString(cfg.announce).trim();
+  if (!text) return nothing;
+  if (!(String(unwrapValue(cfg.announce_mode) || "move") !== "still"))
+    return html`<div class="${prefix}-ann ${prefix}-ann__still ${extraClass}" style=${tone}>${text}</div>`;
+  const rtl = isRtl() ? " is-rtl" : "";
+  return html`<div class="${prefix}-ann${rtl} ${extraClass}" style=${tone}>
+    <ul class="${prefix}-ann__list">
+      ${Array.from({ length: COPIES }, (_, index) => html`<li class="${prefix}-ann__item" aria-hidden=${index ? "true" : "false"}><span class="${prefix}-ann__text">${text}</span></li>`)}
+    </ul>
+  </div>`;
+}
+__name(announceBar, "announceBar");
 function applyTone(mode) {
   document.documentElement.classList.remove("rw-mode-light", "rw-mode-dark"), document.documentElement.classList.add(mode === "dark" ? "rw-mode-dark" : "rw-mode-light");
   try {
@@ -143,7 +236,7 @@ const css = `
   }
   connectedCallback() {
     var _a;
-    super.connectedCallback(), this.classList.add("rw-host"), injectStyles("rw-base", baseCss), injectStyles("rw-page-bar", css), document.addEventListener("scroll", this.onScroll, { capture: !0, passive: !0 });
+    super.connectedCallback(), this.classList.add("rw-host"), injectStyles("rw-base", baseCss), injectStyles("rw-announce", announceCss("rw")), injectStyles("rw-page-bar", css), document.addEventListener("scroll", this.onScroll, { capture: !0, passive: !0 });
     const onTone = /* @__PURE__ */ __name(() => {
       this.dark = currentTone() === "dark";
     }, "onTone");
@@ -230,7 +323,7 @@ const css = `
     }), this.opened = [], this.held = null, this.heldSticky = !1, this.heldClear = !1;
   }
   render() {
-    const cfg = getConfig(this.config), height = Math.min(Math.max(Number(cfg.logo_height) || 52, 28), 120), start = String(unwrapValue(cfg.align) || "center") === "start", clear = flag(cfg.transparent) && !this.solid, invert = clear || this.dark || schemeOf(cfg) === "rw-dark", logo = String(cfg.logo || this.store.logo || ""), darkLogo = String(cfg.logo_dark || ""), name = this.store.name || t({ ar: "المتجر", en: "Store" }), linkLabel = localizedString(cfg.link_label), classes = [
+    const cfg = getConfig(this.config), height = Math.min(Math.max(Number(cfg.logo_height) || 52, 28), 120), start = String(unwrapValue(cfg.align) || "center") === "start", clear = flag(cfg.transparent) && !this.solid, invert = clear || this.dark || schemeOf(cfg) === "rw-dark", logo = String(cfg.logo || this.store.logo || ""), darkLogo = String(cfg.logo_dark || ""), name = this.store.name || t({ ar: "المتجر", en: "Store" }), linkLabel = localizedString(cfg.link_label), linkUrl = linkHref(cfg.link_url), classes = [
       "rw-block rw-bar",
       schemeOf(cfg),
       start ? "rw-bar--start" : "rw-bar--center",
@@ -239,10 +332,11 @@ const css = `
       flag(cfg.show_shadow) && !clear ? "is-line" : ""
     ].filter(Boolean).join(" "), mark = logo ? html`<img class="rw-bar__logo rw-bar__logo--light${darkLogo ? " has-alt" : ""}" src=${logo} alt=${name} />
           ${darkLogo ? html`<img class="rw-bar__logo rw-bar__logo--dark" src=${darkLogo} alt="" />` : nothing}` : html`<span class="rw-bar__name">${name}</span>`, brand = flag(cfg.link_to_store) && this.store.url ? html`<a class="rw-bar__brand" href=${this.store.url}>${mark}</a>` : html`<span class="rw-bar__brand">${mark}</span>`;
-    return html`<header class=${classes} style=${`${sectionStyle(cfg)};--rw-logo:${height}px`}>
+    return html`${announceBar(cfg, "rw", "rw-block")}
+    <header class=${classes} style=${`${sectionStyle(cfg)};--rw-logo:${height}px`}>
       <div class="rw-bar__row">
         ${brand}
-        ${linkLabel && cfg.link_url ? html`<a class="rw-bar__link" href=${cfg.link_url}>${linkLabel}</a>` : nothing}
+        ${linkLabel && linkUrl ? html`<a class="rw-bar__link" href=${linkUrl}>${linkLabel}</a>` : nothing}
         ${flag(cfg.show_mode_toggle) ? html`<button type="button" class="rw-bar__tone" aria-pressed=${this.dark ? "true" : "false"} aria-label=${this.dark ? t({ ar: "التبديل إلى الوضع الفاتح", en: "Switch to light mode" }) : t({ ar: "التبديل إلى الوضع الداكن", en: "Switch to dark mode" })} @mousedown=${(event) => event.preventDefault()} @click=${() => this.place(() => applyTone(this.dark ? "light" : "dark"))}>
               ${this.dark ? html`<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="currentColor" /><g fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.1 5.1l1.6 1.6M17.3 17.3l1.6 1.6M18.9 5.1l-1.6 1.6M6.7 17.3l-1.6 1.6" /></g></svg>` : html`<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M14.5 2.4a9 9 0 1 0 7.1 13.6A8 8 0 0 1 14.5 2.4z" /></svg>`}
             </button>` : nothing}

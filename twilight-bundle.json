@@ -7,6 +7,11 @@
         "ar": "ثلاث صفحات هبوط لأي متجر. كل صفحة تبدأ برأس فيه الشعار ووضع الألوان، ثم الأقسام بترتيب الشراء، وتنتهي بفوتر.",
         "en": "Three landing pages for any store. Each page starts with a header for the logo and the color mode, then the sections in purchase order, and ends with a footer."
     },
+    "author": {
+        "name": "Saji",
+        "email": "sajispprt@gmail.com",
+        "url": "https://saji-tech.com/"
+    },
     "author_email": "sajispprt@gmail.com",
     "support_url": "https://github.com/Ashaheen892/tw-saji-landing",
     "repository": "https://github.com/Ashaheen892/tw-saji-landing",
@@ -3115,12 +3120,16 @@
                 {
                     "id": "ends_at",
                     "type": "string",
-                    "format": "datetime-local",
+                    "format": "datetime",
                     "inputType": "datetime-local",
-                    "label": "موعد انتهاء العرض",
-                    "icon": "sicon-calendar-date",
+                    "label": "تاريخ انتهاء العرض",
+                    "icon": "sicon-calendar-time",
+                    "multilanguage": false,
                     "required": false,
-                    "description": "اتركه فارغاً ليبدأ العد من ٧٢ ساعة عند أول زيارة.",
+                    "description": "اختر التاريخ والوقت من الحقل. اتركه فارغاً ليبدأ العد من ٧٢ ساعة عند أول زيارة.",
+                    "placeholder": "2026-12-05T23:59",
+                    "minLength": 0,
+                    "maxLength": 40,
                     "value": ""
                 },
                 {
@@ -7023,10 +7032,5 @@
             "thumbnail": "",
             "is_default": false
         }
-    ],
-    "author": {
-        "name": "Saji",
-        "email": "sajispprt@gmail.com",
-        "url": "https://saji-tech.com/"
-    }
+    ]
 }

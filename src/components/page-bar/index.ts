@@ -1,6 +1,6 @@
 import { html, LitElement, nothing } from "lit";
 import { property, state } from "lit/decorators.js";
-import { flag, getConfig, localizedString, t, unwrapValue, watchLocale } from "../../utils/config.js";
+import { flag, getConfig, linkHref, localizedString, t, unwrapValue, watchLocale } from "../../utils/config.js";
 import { announceBar, announceCss } from "../../utils/announce.js";
 import { applyTone, currentTone, schemeOf } from "../../utils/landing.js";
 import { baseCss, injectStyles, sectionStyle } from "../../utils/styles.js";
@@ -208,6 +208,7 @@ export default class PageBar extends LitElement {
     const darkLogo = String(cfg.logo_dark || "");
     const name = this.store.name || t({ ar: "المتجر", en: "Store" });
     const linkLabel = localizedString(cfg.link_label);
+    const linkUrl = linkHref(cfg.link_url);
     const classes = [
       "rw-block rw-bar",
       schemeOf(cfg),
@@ -227,7 +228,7 @@ export default class PageBar extends LitElement {
     <header class=${classes} style=${`${sectionStyle(cfg)};--rw-logo:${height}px`}>
       <div class="rw-bar__row">
         ${brand}
-        ${linkLabel && cfg.link_url ? html`<a class="rw-bar__link" href=${cfg.link_url}>${linkLabel}</a>` : nothing}
+        ${linkLabel && linkUrl ? html`<a class="rw-bar__link" href=${linkUrl}>${linkLabel}</a>` : nothing}
         ${flag(cfg.show_mode_toggle)
           ? html`<button type="button" class="rw-bar__tone" aria-pressed=${this.dark ? "true" : "false"} aria-label=${this.dark ? t({ ar: "التبديل إلى الوضع الفاتح", en: "Switch to light mode" }) : t({ ar: "التبديل إلى الوضع الداكن", en: "Switch to dark mode" })} @mousedown=${(event: Event) => event.preventDefault()} @click=${() => this.place(() => applyTone(this.dark ? "light" : "dark"))}>
               ${this.dark

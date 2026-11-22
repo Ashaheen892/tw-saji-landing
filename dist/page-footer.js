@@ -1,6 +1,6 @@
 var __defProp = Object.defineProperty;
 var __name = (target, value) => __defProp(target, "name", { value, configurable: !0 });
-import { LitElement, nothing, html } from "lit";
+import { nothing, html, LitElement } from "lit";
 import { property, state } from "lit/decorators.js";
 function getConfig(raw) {
   return raw ? raw.component && typeof raw.component == "object" ? raw.component : raw : {};
@@ -12,6 +12,10 @@ function getLocale() {
   return String(lang).toLowerCase().startsWith("en") ? "en" : "ar";
 }
 __name(getLocale, "getLocale");
+function isRtl() {
+  return (document.documentElement.dir || (getLocale() === "ar" ? "rtl" : "ltr")) === "rtl";
+}
+__name(isRtl, "isRtl");
 function localizedString(value) {
   if (value == null || value === "") return "";
   if (typeof value == "string") return value;
@@ -64,6 +68,154 @@ function watchLocale(host) {
   return window.addEventListener("language-changed", update), () => window.removeEventListener("language-changed", update);
 }
 __name(watchLocale, "watchLocale");
+const COPIES = 12;
+function announceCss(prefix) {
+  return `
+.${prefix}-ann.${prefix}-ann {
+  overflow: hidden;
+  padding-block: 5px;
+  border: 0;
+  font-family: var(--font-main, inherit);
+  background: var(--ann-bg, var(--color-primary));
+  color: var(--ann-ink, var(--color-primary-reverse, #fff));
+}
+.${prefix}-ann__still {
+  padding: 5px 1.5rem;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 26px;
+}
+.${prefix}-ann__list {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 5px 0;
+  list-style: none;
+  white-space: nowrap;
+}
+.${prefix}-ann__item {
+  flex: none;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 26px;
+  animation: ${prefix}-ann-ltr var(--ann-speed, 18s) linear infinite;
+}
+.${prefix}-ann.is-rtl .${prefix}-ann__item { animation-name: ${prefix}-ann-rtl; }
+.${prefix}-ann__list:hover .${prefix}-ann__item { animation-play-state: paused; }
+.${prefix}-ann__text {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding-inline: 1.5rem;
+}
+.${prefix}-ann__text::after {
+  content: "";
+  width: .35rem;
+  height: .35rem;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: .55;
+  flex: none;
+}
+@keyframes ${prefix}-ann-ltr { to { transform: translateX(-100%); } }
+@keyframes ${prefix}-ann-rtl { to { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) {
+  .${prefix}-ann__item { animation: none; }
+  .${prefix}-ann__item[aria-hidden="true"] { display: none; }
+  .${prefix}-ann__list { justify-content: center; }
+  .${prefix}-ann__text::after { display: none; }
+}
+`;
+}
+__name(announceCss, "announceCss");
+function announceBar(cfg, prefix, extraClass = "", tone = "") {
+  const text = localizedString(cfg.announce).trim();
+  if (!text) return nothing;
+  if (!(String(unwrapValue(cfg.announce_mode) || "move") !== "still"))
+    return html`<div class="${prefix}-ann ${prefix}-ann__still ${extraClass}" style=${tone}>${text}</div>`;
+  const rtl = isRtl() ? " is-rtl" : "";
+  return html`<div class="${prefix}-ann${rtl} ${extraClass}" style=${tone}>
+    <ul class="${prefix}-ann__list">
+      ${Array.from({ length: COPIES }, (_, index) => html`<li class="${prefix}-ann__item" aria-hidden=${index ? "true" : "false"}><span class="${prefix}-ann__text">${text}</span></li>`)}
+    </ul>
+  </div>`;
+}
+__name(announceBar, "announceBar");
+const WA = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 4.2A7.8 7.8 0 0 0 5.3 16l-.7 3.2 3.3-.7A7.8 7.8 0 1 0 12 4.2Zm3.7 10.3c-.2.5-1 .9-1.4 1-.4.1-.8.1-1.3-.1-.3-.1-.7-.2-1.2-.5-2.1-1.1-3.4-3.2-3.5-3.4-.1-.2-.9-1.2-.9-2.3s.6-1.6.8-1.8c.2-.2.4-.3.6-.3h.4c.2 0 .3 0 .5.4.2.5.6 1.6.7 1.7.1.2 0 .3-.1.5l-.3.4c-.1.1-.2.2 0 .4.2.3.7 1 1.5 1.6.6.5 1.1.6 1.3.5l.4-.3c.2-.1.3-.1.5 0 .2.2 1 .8 1.1 1 .1.1.1.3 0 .5Z"></path></svg>', UP = '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M11 19V8.8L7.4 12.4 6 11l6-6 6 6-1.4 1.4L13 8.8V19h-2Z"></path></svg>';
+function shown(value) {
+  return value == null || value === "" ? !0 : flag(value);
+}
+__name(shown, "shown");
+function sideOf(value, fallback) {
+  return String(unwrapValue(value) || fallback) === "end" ? "end" : "start";
+}
+__name(sideOf, "sideOf");
+function digitsOf(value) {
+  return (typeof value == "string" ? value : localizedString(value)).replace(/\D/g, "");
+}
+__name(digitsOf, "digitsOf");
+function paint(el, bg, ink) {
+  el.style.background = String(bg || "").trim(), el.style.color = String(ink || "").trim();
+}
+__name(paint, "paint");
+function place(el, side, raised) {
+  el.style.bottom = raised ? "5.6rem" : "1.15rem", el.style.insetInlineStart = side === "start" ? "1.15rem" : "auto", el.style.insetInlineEnd = side === "end" ? "1.15rem" : "auto";
+}
+__name(place, "place");
+function syncDocks(cfg, prefix, nodes, onTop, options = {}) {
+  const showWa = shown(cfg.show_whatsapp), showTop = shown(cfg.show_top) && !options.hideTop, waSide = sideOf(cfg.whatsapp_side, "start"), topSide = sideOf(cfg.top_side, "end"), stacked = showWa && showTop && waSide === topSide, digits = digitsOf(cfg.whatsapp_number || "201153958512"), message = localizedString(cfg.whatsapp_message), href = digits ? `https://wa.me/${digits}${message ? `?text=${encodeURIComponent(message)}` : ""}` : "";
+  if (showWa && href) {
+    if (!nodes.wa) {
+      const link = document.createElement("a");
+      link.className = `${prefix}-dock ${prefix}-dock--wa`, link.target = "_blank", link.rel = "noopener noreferrer", link.innerHTML = WA, document.body.appendChild(link), nodes.wa = link;
+    }
+    nodes.wa.href = href, nodes.wa.setAttribute("aria-label", t({ ar: "واتساب", en: "WhatsApp" })), paint(nodes.wa, cfg.whatsapp_bg, cfg.whatsapp_ink), place(nodes.wa, waSide, stacked), nodes.wa.hidden = !1;
+  } else nodes.wa && (nodes.wa.hidden = !0);
+  const label = localizedString(cfg.top_label) || t({ ar: "أعلى", en: "Top" });
+  if (shown(cfg.show_top)) {
+    if (!nodes.top) {
+      const button = document.createElement("button");
+      button.type = "button", button.className = `${prefix}-dock ${prefix}-dock--top`, button.innerHTML = UP, button.addEventListener("click", onTop), document.body.appendChild(button), nodes.top = button;
+    }
+    if (nodes.top.setAttribute("aria-label", label), options.topText) {
+      let caption = nodes.top.querySelector("span");
+      caption || (caption = document.createElement("span"), nodes.top.appendChild(caption)), caption.textContent = label;
+    }
+    paint(nodes.top, cfg.top_bg, cfg.top_ink), place(nodes.top, topSide, !1), nodes.top.hidden = !showTop;
+  } else nodes.top && (nodes.top.hidden = !0);
+  return nodes;
+}
+__name(syncDocks, "syncDocks");
+function clearDocks(nodes) {
+  var _a, _b;
+  (_a = nodes.wa) == null || _a.remove(), (_b = nodes.top) == null || _b.remove(), nodes.wa = null, nodes.top = null;
+}
+__name(clearDocks, "clearDocks");
+function scrollPageTop(event, host) {
+  event.cancelable && event.preventDefault();
+  const targets = /* @__PURE__ */ new Set(), addDoc = /* @__PURE__ */ __name((doc) => {
+    targets.add(doc.documentElement), doc.body && targets.add(doc.body), doc.scrollingElement && targets.add(doc.scrollingElement);
+  }, "addDoc");
+  addDoc(document);
+  try {
+    window.parent && window.parent !== window && addDoc(window.parent.document);
+  } catch {
+  }
+  let node = host;
+  for (; node; )
+    node.scrollHeight > node.clientHeight + 4 && targets.add(node), node = node.parentElement;
+  targets.forEach((el) => {
+    el.scrollTop = 0;
+  });
+  try {
+    window.scrollTo(0, 0);
+  } catch {
+  }
+}
+__name(scrollPageTop, "scrollPageTop");
 function currentTone() {
   return document.documentElement.classList.contains("rw-mode-dark") ? "dark" : "light";
 }
@@ -145,17 +297,22 @@ const css = `
 .rw-foot__badges a { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 3.2rem; padding: .4rem .7rem; border: 1px solid var(--rw-border); border-radius: .7rem; background: #fff; color: #16324f; font-weight: 800; font-size: .84rem; text-decoration: none; }
 .rw-foot__badges img { display: block; height: 2.4rem; width: auto; max-width: 9.5rem; object-fit: contain; }
 .rw-foot__base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .35rem 1rem; margin-top: 1.05rem; padding-top: .85rem; border-top: 1px solid var(--rw-border); color: var(--rw-muted); font-size: .9rem; }
+.rw-dock { position: fixed; z-index: 80; display: inline-grid; place-items: center; width: 3.45rem; height: 3.45rem; padding: 0; border: 0; border-radius: 999px; font-family: var(--font-main, inherit); cursor: pointer; text-decoration: none; box-shadow: 0 14px 30px rgb(0 0 0 / 18%); }
+.rw-dock[hidden] { display: none; }
+.rw-dock svg { width: 1.45rem; height: 1.45rem; display: block; }
+.rw-dock--wa { background: #128C7E; color: #fff; }
+.rw-dock--top { background: #1a1d21; color: #fff; }
 `, _PageFoot = class _PageFoot extends LitElement {
   constructor() {
     super(...arguments), this.store = { logo: "", name: "", url: "" }, this.dark = !1, this.stop = () => {
-    };
+    }, this.docks = { wa: null, top: null };
   }
   createRenderRoot() {
     return this;
   }
   connectedCallback() {
     var _a;
-    super.connectedCallback(), this.classList.add("rw-host"), injectStyles("rw-base", baseCss), injectStyles("rw-page-footer", css);
+    super.connectedCallback(), this.classList.add("rw-host"), injectStyles("rw-base", baseCss), injectStyles("rw-announce", announceCss("rw")), injectStyles("rw-page-footer", css);
     const onTone = /* @__PURE__ */ __name(() => {
       this.dark = currentTone() === "dark";
     }, "onTone");
@@ -180,7 +337,10 @@ const css = `
     }
   }
   disconnectedCallback() {
-    this.stop(), super.disconnectedCallback();
+    this.stop(), clearDocks(this.docks), super.disconnectedCallback();
+  }
+  updated() {
+    this.docks = syncDocks(getConfig(this.config), "rw", this.docks, (event) => scrollPageTop(event, this));
   }
   render() {
     const cfg = getConfig(this.config), name = this.store.name || t({ ar: "المتجر", en: "Store" }), logo = String(cfg.logo || this.store.logo || ""), darkLogo = String(cfg.logo_dark || ""), invert = this.dark || schemeOf(cfg) === "rw-dark", note = localizedString(cfg.note), legal = localizedString(cfg.legal), storeUrl = String(this.store.url || "").trim(), links = getCollectionItems(cfg.links, "links").map((item) => {
@@ -190,7 +350,8 @@ const css = `
     flag(cfg.show_store) && this.store.url && links.unshift({ label: localizedString(cfg.store_label) || t({ ar: "المتجر", en: "Store" }), url: this.store.url });
     const mark = logo ? html`<img class="rw-foot__logo rw-foot__logo--light${darkLogo ? " has-alt" : ""}" src=${logo} alt=${name} />
           ${darkLogo ? html`<img class="rw-foot__logo rw-foot__logo--dark" src=${darkLogo} alt="" />` : nothing}` : html`<span class="rw-foot__name">${name}</span>`, brand = this.store.url ? html`<a class="rw-foot__brand" href=${this.store.url}>${mark}</a>` : html`<span class="rw-foot__brand">${mark}</span>`, year = (/* @__PURE__ */ new Date()).getFullYear();
-    return html`<footer class="rw-block rw-section rw-foot ${schemeOf(cfg)} ${invert ? "is-invert" : ""}" style=${sectionStyle(cfg)} aria-label=${t({ ar: "ذيل الصفحة", en: "Page footer" })}>
+    return html`${announceBar(cfg, "rw", "rw-block")}
+    <footer class="rw-block rw-section rw-foot ${schemeOf(cfg)} ${invert ? "is-invert" : ""}" style=${sectionStyle(cfg)} aria-label=${t({ ar: "ذيل الصفحة", en: "Page footer" })}>
       <div class="rw-container">
         <div class="rw-foot__top">
           ${brand}
